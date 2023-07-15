@@ -36,3 +36,15 @@ class AppColors {
   static const Color error10 = Color.fromRGBO(255, 175, 165, 1);
   static const Color background40 = Color.fromRGBO(35, 35, 35, 0.4);
 }
+
+// Example of usage:
+// Container(
+//   color: AppColors.primary50,
+//   child: Text(
+//     'Hello World',
+//     style: TextStyle(
+//       color: AppColors.grayscale100,
+//       fontSize: 20,
+//     ),
+//   ),
+// ),
