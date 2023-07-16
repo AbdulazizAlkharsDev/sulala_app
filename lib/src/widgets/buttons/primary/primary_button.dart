@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
@@ -27,11 +28,26 @@ class PrimaryButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(24),
           ),
         ),
-        child: Text(
-          text,
-          style: AppFonts.body1(
-            color: _getTextColor(status),
-          ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Visibility(
+              visible: status == ButtonStatus.loading,
+              child: const SpinKitFadingCircle(
+                color: AppColors.grayscale0,
+                size: 24,
+              ),
+            ),
+            Visibility(
+              visible: status != ButtonStatus.loading,
+              child: Text(
+                text,
+                style: AppFonts.body1(
+                  color: _getTextColor(status),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

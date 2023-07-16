@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
@@ -27,26 +28,42 @@ class NavigateButtonLeft extends StatelessWidget {
             borderRadius: BorderRadius.circular(24),
           ),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.arrow_back_rounded,
-              color: _getArrowColor(status),
-            ),
-            const SizedBox(
-              width: 8,
-            ), // Add a space of width 8 between the arrow and the text
-            Text(
-              text,
-              style: AppFonts.body1(
-                color: _getTextColor(status),
-              ),
-            ),
-          ],
-        ),
+        child: _buildButtonContent(),
       ),
     );
+  }
+
+  Widget _buildButtonContent() {
+    if (status == ButtonStatus.loading) {
+      return const Stack(
+        alignment: Alignment.center,
+        children: [
+          SpinKitFadingCircle(
+            color: AppColors.error100,
+            size: 24,
+          ),
+        ],
+      );
+    } else {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.arrow_back_rounded,
+            color: _getArrowColor(status),
+          ),
+          const SizedBox(
+            width: 8,
+          ), // Add a small space of 8 pixels between the arrow and the text
+          Text(
+            text,
+            style: AppFonts.body1(
+              color: _getTextColor(status),
+            ),
+          ),
+        ],
+      );
+    }
   }
 
   Color _getButtonColor(ButtonStatus status) {
@@ -71,7 +88,7 @@ class NavigateButtonLeft extends StatelessWidget {
       case ButtonStatus.pressed:
         return AppColors.error100;
       case ButtonStatus.disabled:
-        return AppColors.grayscale50;
+        return _getTextColor(status);
       default:
         return AppColors.error100;
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
@@ -27,17 +28,25 @@ class SecondaryButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(24),
           ),
         ),
-        child: status == ButtonStatus.loading
-            ? Image.asset('assets/icons/frame/20px/Frame-6.png',
-                color: AppColors.grayscale90)
-            : Text(
-                text,
-                style: AppFonts.body1(
-                  color: _getTextColor(status),
-                ),
-              ),
+        child: _buildButtonContent(),
       ),
     );
+  }
+
+  Widget _buildButtonContent() {
+    if (status == ButtonStatus.loading) {
+      return const SpinKitFadingCircle(
+        color: AppColors.grayscale90,
+        size: 24,
+      );
+    } else {
+      return Text(
+        text,
+        style: AppFonts.body1(
+          color: _getTextColor(status),
+        ),
+      );
+    }
   }
 
   Color _getButtonColor(ButtonStatus status) {
