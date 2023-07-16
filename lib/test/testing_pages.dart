@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:sulala_app/src/widgets/buttons/secondary/secondary_button.dart';
+import 'package:sulala_app/src/widgets/buttons/flat/flat_button_right.dart';
 
 class FarmsListView extends StatelessWidget {
   const FarmsListView({
@@ -14,8 +14,8 @@ class FarmsListView extends StatelessWidget {
         title: const Text('Farms List'),
       ),
       body: Center(
-        child: SecondaryButton(
-          status: ButtonStatus.loading,
+        child: FlatButtonRight(
+          status: ButtonStatus.idle,
           text: 'Submit',
           onPressed: () {
             // Handle button press

@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import '../../../theme/colors/colors.dart';
 
-class PrimaryButton extends StatelessWidget {
+enum ButtonStatus {
+  idle,
+  pressed,
+  loading,
+  disabled,
+}
+
+class FlatButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
   final ButtonStatus status;
 
-  const PrimaryButton({
+  const FlatButton({
     Key? key,
     required this.text,
     required this.onPressed,
@@ -23,8 +29,8 @@ class PrimaryButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: status == ButtonStatus.disabled ? null : onPressed,
         style: ElevatedButton.styleFrom(
+          elevation: 0, // Set elevation to 0 to remove the shadow
           backgroundColor: _getButtonColor(status),
-          elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
           ),
@@ -34,8 +40,8 @@ class PrimaryButton extends StatelessWidget {
           children: [
             Visibility(
               visible: status == ButtonStatus.loading,
-              child: const SpinKitFadingCircle(
-                color: AppColors.grayscale0,
+              child: SpinKitFadingCircle(
+                color: AppColors.grayscale90,
                 size: 24,
               ),
             ),
@@ -43,7 +49,7 @@ class PrimaryButton extends StatelessWidget {
               visible: status != ButtonStatus.loading,
               child: Text(
                 text,
-                style: AppFonts.body1(
+                style: TextStyle(
                   color: _getTextColor(status),
                 ),
               ),
@@ -57,34 +63,30 @@ class PrimaryButton extends StatelessWidget {
   Color _getButtonColor(ButtonStatus status) {
     switch (status) {
       case ButtonStatus.idle:
-        return AppColors.primary40;
+        return AppColors.grayscale00;
       case ButtonStatus.pressed:
-        return AppColors.primary50;
+        return AppColors.grayscale10;
       case ButtonStatus.loading:
-        return AppColors.primary40;
+        return AppColors.grayscale00;
       case ButtonStatus.disabled:
-        return AppColors.grayscale50;
+        return AppColors.grayscale00;
       default:
-        return AppColors.primary40;
+        return AppColors.grayscale00;
     }
   }
 
   Color _getTextColor(ButtonStatus status) {
     switch (status) {
       case ButtonStatus.idle:
+        return AppColors.grayscale90;
       case ButtonStatus.pressed:
+        return AppColors.grayscale90;
       case ButtonStatus.loading:
+        return AppColors.grayscale90;
       case ButtonStatus.disabled:
-        return AppColors.grayscale0;
+        return AppColors.grayscale50;
       default:
-        return AppColors.grayscale0;
+        return AppColors.grayscale90;
     }
   }
-}
-
-enum ButtonStatus {
-  idle,
-  pressed,
-  loading,
-  disabled,
 }

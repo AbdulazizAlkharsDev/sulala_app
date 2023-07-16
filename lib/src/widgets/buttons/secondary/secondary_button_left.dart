@@ -24,6 +24,7 @@ class SecondaryButtonLeft extends StatelessWidget {
         onPressed: status == ButtonStatus.disabled ? null : onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: _getButtonColor(status),
+          elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
           ),
