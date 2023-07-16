@@ -27,14 +27,12 @@ class PrimaryButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(24),
           ),
         ),
-        child: status == ButtonStatus.loading
-            ? Image.asset('assets/icons/frame/20px/Frame-6.png')
-            : Text(
-                text,
-                style: AppFonts.body1(
-                    color: _getTextColor(
-                        status)), // Use the AppFonts.body1 style directly
-              ),
+        child: Text(
+          text,
+          style: AppFonts.body1(
+            color: _getTextColor(status),
+          ),
+        ),
       ),
     );
   }
@@ -59,9 +57,8 @@ class PrimaryButton extends StatelessWidget {
       case ButtonStatus.idle:
       case ButtonStatus.pressed:
       case ButtonStatus.loading:
-        return AppColors.grayscale0;
       case ButtonStatus.disabled:
-        return AppColors.grayscale20;
+        return AppColors.grayscale0;
       default:
         return AppColors.grayscale0;
     }

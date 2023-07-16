@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/primary_button.dart';
+
+import '../src/widgets/buttons/primary/primary_button.dart';
 
 class FarmsListView extends StatelessWidget {
   const FarmsListView({
@@ -10,7 +11,7 @@ class FarmsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Farms List'),
+        title: const Text('Farms List'),
       ),
       body: Center(
         child: PrimaryButton(
