@@ -84,6 +84,16 @@ class AppFonts {
     );
   }
 
+  static TextStyle headline4({required Color color}) {
+    return GoogleFonts.ibmPlexSans(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      height: 0.24,
+      letterSpacing: 0,
+      color: color,
+    );
+  }
+
   // Body
   static TextStyle body1({required Color color}) {
     return GoogleFonts.ibmPlexSans(

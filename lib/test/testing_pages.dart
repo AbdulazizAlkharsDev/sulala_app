@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:sulala_app/src/widgets/buttons/flat/flat_button_right.dart';
 
 class FarmsListView extends StatelessWidget {

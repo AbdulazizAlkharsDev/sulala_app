@@ -40,7 +40,7 @@ class FlatButton extends StatelessWidget {
           children: [
             Visibility(
               visible: status == ButtonStatus.loading,
-              child: SpinKitFadingCircle(
+              child: const SpinKitFadingCircle(
                 color: AppColors.grayscale90,
                 size: 24,
               ),
