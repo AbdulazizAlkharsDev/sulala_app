@@ -68,8 +68,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Card(
                         color: const Color.fromRGBO(225, 236, 185, 1),
                         child: Container(
-                          width: 150,
-                          height: 220,
+                          width: 165,
+                          height: 208,
                           padding: const EdgeInsets.all(16),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Center(
                                 child: SizedBox(
-                                  width: 150,
+                                  width: 133,
                                   height: 40,
                                   child: PrimaryButton(
                                     status: ButtonStatus.idle,
@@ -132,12 +132,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Card(
                         color: const Color.fromRGBO(246, 239, 205, 1),
                         child: Container(
-                          width: 150,
-                          height: 220,
+                          width: 165,
+                          height: 208,
                           padding: const EdgeInsets.all(16),
+                          alignment: Alignment.center,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
                                 decoration: const BoxDecoration(
@@ -153,41 +154,30 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                               ),
-                              const Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Search For',
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Farms',
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
+                              const SizedBox(height: 20),
+                              Text(
+                                'Search For',
+                                style: AppFonts.headline3(
+                                  color: AppColors.grayscale100,
                                 ),
                               ),
-                              Center(
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor:
-                                        const Color.fromARGB(255, 36, 86, 38),
-                                  ),
+                              const SizedBox(height: 20),
+                              Text(
+                                'Farms',
+                                style: AppFonts.headline3(
+                                  color: AppColors.grayscale100,
+                                ),
+                              ),
+                              const SizedBox(height: 20),
+                              SizedBox(
+                                height: 40,
+                                width: 133,
+                                child: PrimaryButton(
+                                  status: ButtonStatus.idle,
+                                  text: 'Find Farms',
                                   onPressed: () {
-                                    // Handle button 2 press
+                                    // Handle button press
                                   },
-                                  child: const Text(
-                                    'Find Farms',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
                                 ),
                               ),
                             ],
@@ -198,15 +188,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 const SizedBox(height: 120),
-                const Text(
-                  'Want To Start Your Farm\nRight Now & Join',
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Text(
+                  'Want to start your farm',
+                  style: AppFonts.title4(color: AppColors.grayscale100),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'right now and Join',
+                  style: AppFonts.title4(color: AppColors.grayscale100),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 24),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 36, 86, 38),
