@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/buttons/flat/flat_button_right.dart';
+
+import 'package:sulala_app/src/widgets/tags/tags.dart';
 
 class FarmsListView extends StatelessWidget {
   const FarmsListView({
@@ -13,12 +14,34 @@ class FarmsListView extends StatelessWidget {
         title: const Text('Farms List'),
       ),
       body: Center(
-        child: FlatButtonRight(
-          status: ButtonStatus.idle,
-          text: 'Submit',
-          onPressed: () {
-            // Handle button press
-          },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Tags(
+              text: 'Tag 1',
+              icon: Icons.ac_unit,
+              onPress: () {
+                // Handle tag click
+              },
+              status: TagStatus.active,
+            ),
+            Tags(
+              text: 'Tag 1',
+              icon: Icons.ac_unit,
+              onPress: () {
+                // Handle tag click
+              },
+              status: TagStatus.notActive,
+            ),
+            Tags(
+              text: 'Tag 1',
+              icon: Icons.ac_unit,
+              onPress: () {
+                // Handle tag click
+              },
+              status: TagStatus.disabled,
+            ),
+          ],
         ),
       ),
     );
