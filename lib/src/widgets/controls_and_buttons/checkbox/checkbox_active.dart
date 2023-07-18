@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import '../../theme/colors/colors.dart';
+import '../../../theme/colors/colors.dart';
 
 class CheckBoxActive extends StatefulWidget {
   final bool checked;

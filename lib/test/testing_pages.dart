@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/switches/switch_disabled.dart';
-import 'package:sulala_app/src/widgets/checkbox/checkbox_active.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/switches/switch_disabled.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/checkbox/checkbox_active.dart';
 
 class FarmsListView extends StatelessWidget {
   const FarmsListView({

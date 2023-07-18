@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../theme/colors/colors.dart';
+import '../../../theme/colors/colors.dart';
 
 class Tags extends StatefulWidget {
   final String text;

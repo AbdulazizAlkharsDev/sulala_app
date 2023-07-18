@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/main_widgets/navigation_bar.dart';
+import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar.dart';
 
 void main() {
   runApp(const MyApp());
