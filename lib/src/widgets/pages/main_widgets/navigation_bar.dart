@@ -18,7 +18,7 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
     const HomeScreen(),
-    const FarmsListView(),
+    const ExamplePage(),
     const HomeScreen(),
   ];
 

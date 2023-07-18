@@ -1,34 +1,42 @@
-import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/switches/switch_disabled.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/checkbox/checkbox_active.dart';
+// ignore_for_file: library_private_types_in_public_api
 
-class FarmsListView extends StatelessWidget {
-  const FarmsListView({
-    Key? key,
-  }) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/radio/radio_active.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/radio/radio_disabled.dart';
+
+class ExamplePage extends StatefulWidget {
+  const ExamplePage({Key? key}) : super(key: key);
+
+  @override
+  _ExamplePageState createState() => _ExamplePageState();
+}
+
+class _ExamplePageState extends State<ExamplePage> {
+  int selectedValue = 1; // Provide a default non-null value
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Farms List'),
+        title: const Text('Example Page'),
       ),
       body: Center(
-          child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CheckBoxActive(
-            checked: true, // or false depending on the initial state
-            onChanged: (bool checked) {
-              // Handle the checked status change here
-            },
-          ),
-          const SizedBox(width: 20),
-          const CheckBoxDisabled(
-            checked: true,
-          ),
-        ],
-      )),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            RadioActive(
+              isActive: true,
+              onChanged: (isActive) {
+                if (isActive) {
+                } else {}
+              },
+            ),
+            const SizedBox(height: 16),
+            const RadioDisabled(isActive: false)
+          ],
+        ),
+      ),
     );
   }
 }
