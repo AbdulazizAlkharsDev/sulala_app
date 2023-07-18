@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:sulala_app/src/widgets/tags/tags.dart';
+import 'package:sulala_app/src/widgets/switches/switch_disabled.dart';
+import 'package:sulala_app/src/widgets/checkbox/checkbox_active.dart';
 
 class FarmsListView extends StatelessWidget {
   const FarmsListView({
@@ -14,36 +14,21 @@ class FarmsListView extends StatelessWidget {
         title: const Text('Farms List'),
       ),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Tags(
-              text: 'Tag 1',
-              icon: Icons.ac_unit,
-              onPress: () {
-                // Handle tag click
-              },
-              status: TagStatus.active,
-            ),
-            Tags(
-              text: 'Tag 1',
-              icon: Icons.ac_unit,
-              onPress: () {
-                // Handle tag click
-              },
-              status: TagStatus.notActive,
-            ),
-            Tags(
-              text: 'Tag 1',
-              icon: Icons.ac_unit,
-              onPress: () {
-                // Handle tag click
-              },
-              status: TagStatus.disabled,
-            ),
-          ],
-        ),
-      ),
+          child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CheckBoxActive(
+            checked: true, // or false depending on the initial state
+            onChanged: (bool checked) {
+              // Handle the checked status change here
+            },
+          ),
+          const SizedBox(width: 20),
+          const CheckBoxDisabled(
+            checked: true,
+          ),
+        ],
+      )),
     );
   }
 }
