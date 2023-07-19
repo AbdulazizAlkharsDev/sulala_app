@@ -1,8 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/radio/radio_active.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/radio/radio_disabled.dart';
+import '../src/widgets/controls_and_buttons/buttons/social_media/apple_button.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -25,15 +24,27 @@ class _ExamplePageState extends State<ExamplePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            RadioActive(
-              isActive: true,
-              onChanged: (isActive) {
-                if (isActive) {
-                } else {}
+            AppleButton(
+              status: ButtonStatus.idle,
+              onPressed: () {
+                // print("idle");
               },
             ),
             const SizedBox(height: 16),
-            const RadioDisabled(isActive: false)
+            AppleButton(
+              status: ButtonStatus.pressed,
+              onPressed: () {
+                // print("pressed");
+              },
+            ),
+            const SizedBox(height: 16),
+            const AppleButton(
+              status: ButtonStatus.loading,
+            ),
+            const SizedBox(height: 16),
+            const AppleButton(
+              status: ButtonStatus.disabled,
+            )
           ],
         ),
       ),
