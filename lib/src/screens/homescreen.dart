@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 import '../widgets/controls_and_buttons/buttons/primary/primary_button.dart';
 import '../widgets/pages/homepage_widgets/card.dart';
 import '../widgets/pages/homepage_widgets/circle_icon_button.dart';
@@ -85,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            const SizedBox(height: 120),
+            const SizedBox(height: 50),
             const TitleText(text: 'Want to start your farm'),
             const SizedBox(height: 25),
             const TitleText(text: 'right now and join?'),
@@ -100,14 +101,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             const SizedBox(height: 10),
-            TextButton(
+            PrimaryTextButton(
+              status: TextStatus.pressed,
+              text: 'Sign in',
               onPressed: () {
-                // Handle text button press
+                // print("Sign In");
               },
-              child: Text(
-                'Sign In',
-                style: AppFonts.body1(color: AppColors.primary40),
-              ),
             ),
           ],
         ),

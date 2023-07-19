@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import '../src/widgets/controls_and_buttons/buttons/social_media/apple_button.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/icon_buttons/flat_icon_button.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -24,27 +24,34 @@ class _ExamplePageState extends State<ExamplePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AppleButton(
-              status: ButtonStatus.idle,
+            FlatIconButton(
+              status: FlatIconButtonStatus.loading,
+              icon: Icons.add,
               onPressed: () {
-                // print("idle");
+                print('Button pressed');
               },
             ),
             const SizedBox(height: 16),
-            AppleButton(
-              status: ButtonStatus.pressed,
+            FlatIconButton(
+              status: FlatIconButtonStatus.idle,
+              icon: Icons.add,
               onPressed: () {
-                // print("pressed");
+                print('Button pressed');
               },
             ),
             const SizedBox(height: 16),
-            const AppleButton(
-              status: ButtonStatus.loading,
+            const FlatIconButton(
+              status: FlatIconButtonStatus.disabled,
+              icon: Icons.add,
             ),
             const SizedBox(height: 16),
-            const AppleButton(
-              status: ButtonStatus.disabled,
-            )
+            FlatIconButton(
+              status: FlatIconButtonStatus.pressed,
+              icon: Icons.add,
+              onPressed: () {
+                print('Button pressed');
+              },
+            ),
           ],
         ),
       ),

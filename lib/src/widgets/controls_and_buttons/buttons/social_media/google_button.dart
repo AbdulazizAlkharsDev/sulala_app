@@ -3,11 +3,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
-class AppleButton extends StatelessWidget {
+class GoogleButton extends StatelessWidget {
   final ButtonStatus status;
   final VoidCallback? onPressed;
 
-  const AppleButton({
+  const GoogleButton({
     Key? key,
     required this.status,
     this.onPressed,
@@ -38,6 +38,7 @@ class AppleButton extends StatelessWidget {
         child: SpinKitFadingCircle(
           color: AppColors.grayscale90,
           size: 24,
+          
         ),
       );
     } else {
@@ -45,12 +46,12 @@ class AppleButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Image.asset(
-            'assets/icons/frame/24px/24_Apple.png',
+            'assets/icons/frame/24px/24_Google.png',
             width: 24,
             height: 24,
           ),
           Text(
-            'Continue with Apple',
+            'Continue with Google',
             style: AppFonts.body1(color: _getTextColor(status)),
           ),
           const SizedBox(width: 30),
