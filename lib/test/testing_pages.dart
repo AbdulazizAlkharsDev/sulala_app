@@ -1,8 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/icon_buttons/flat_icon_button.dart';
-import 'package:sulala_app/src/widgets/inputs/search_bars/button_search_bar.dart';
+import 'package:sulala_app/src/widgets/inputs/text_fields/label_text_field.dart';
+import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -12,7 +12,15 @@ class ExamplePage extends StatefulWidget {
 }
 
 class _ExamplePageState extends State<ExamplePage> {
-  int selectedValue = 1; // Provide a default non-null value
+  final TextEditingController _textEditingController = TextEditingController();
+  String _enteredText = '';
+  bool _hasError = false;
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,40 +34,51 @@ class _ExamplePageState extends State<ExamplePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 48,
-              width: 343,
-              child: ButtonSearchBar(
-                onChange: (value) {
-                  print('Search query: $value');
-                  print('###############)))add##');
+              width: 300,
+              child: PrimaryTextField(
+                hintText: 'Enter your username',
+                errorMessage:
+                    _hasError ? 'Username should not contain numbers' : null,
+                onChanged: (value) {
+                  setState(() {
+                    _enteredText = value;
+                    _hasError =
+                        value.contains(RegExp(r'[0-9]')); // Set the error state
+                  });
                 },
-                hintText: 'Search',
-                icon: Icons.filter_alt_outlined,
-                onIconPressed: () {
-                  print('Button pressed');
+                onErrorChanged: (hasError) {
+                  setState(() {
+                    _hasError = hasError; // Update the error state
+                  });
                 },
               ),
             ),
-            const SizedBox(height: 16),
-            FlatIconButton(
-              status: FlatIconButtonStatus.idle,
-              icon: Icons.add,
-              onPressed: () {
-                print('Button pressed');
-              },
-            ),
-            const SizedBox(height: 16),
-            const FlatIconButton(
-              status: FlatIconButtonStatus.disabled,
-              icon: Icons.add,
-            ),
-            const SizedBox(height: 16),
-            FlatIconButton(
-              status: FlatIconButtonStatus.pressed,
-              icon: Icons.add,
-              onPressed: () {
-                print('Button pressed');
-              },
+            const SizedBox(height: 100),
+            // SizedBox(
+            //   width: 300,
+            //   child: LabelTextField(
+            //     hintText: 'Enter your username',
+            //     labelText: 'Text label',
+            //     errorMessage:
+            //         _hasError ? 'Username should not contain numbers' : null,
+            //     onChanged: (value) {
+            //       setState(() {
+            //         _enteredText = value;
+            //         _hasError =
+            //             value.contains(RegExp(r'[0-9]')); // Set the error state
+            //       });
+            //     },
+            //     onErrorChanged: (hasError) {
+            //       setState(() {
+            //         _hasError = hasError; // Update the error state
+            //       });
+            //     },
+            //   ),
+            // ),
+            const SizedBox(height: 100),
+            Text(
+              'Entered Text: $_enteredText',
+              style: TextStyle(fontSize: 16),
             ),
           ],
         ),
