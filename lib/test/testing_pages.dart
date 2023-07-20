@@ -31,7 +31,7 @@ class _ExamplePageState extends State<ExamplePage> {
               child: ButtonSearchBar(
                 onChange: (value) {
                   print('Search query: $value');
-                  print('#################');
+                  print('###############)))add##');
                 },
                 hintText: 'Search',
                 icon: Icons.filter_alt_outlined,
