@@ -28,7 +28,7 @@ class _ExamplePageState extends State<ExamplePage> {
               status: FlatIconButtonStatus.loading,
               icon: Icons.add,
               onPressed: () {
-                print('Button pressed');
+                print('Button pressekkd');
               },
             ),
             const SizedBox(height: 16),
