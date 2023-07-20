@@ -1,7 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
 import 'package:sulala_app/src/widgets/inputs/text_fields/disabled_label_text_field.dart';
 import 'package:sulala_app/src/widgets/inputs/text_fields/disabled_primary_text_field.dart';
 
@@ -14,8 +13,7 @@ class ExamplePage extends StatefulWidget {
 
 class _ExamplePageState extends State<ExamplePage> {
   final TextEditingController _textEditingController = TextEditingController();
-  String _enteredText = '';
-  bool _hasError = false;
+  final String _enteredText = '';
 
   @override
   void dispose() {
