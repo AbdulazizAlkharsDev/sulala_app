@@ -1,8 +1,9 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/inputs/text_fields/label_text_field.dart';
 import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
+import 'package:sulala_app/src/widgets/inputs/text_fields/disabled_label_text_field.dart';
+import 'package:sulala_app/src/widgets/inputs/text_fields/disabled_primary_text_field.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -33,52 +34,23 @@ class _ExamplePageState extends State<ExamplePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
+                width: 300,
+                child: DisabledPrimaryTextField(
+                  hintText: 'Enter your text',
+                )),
+            const SizedBox(height: 100),
+            const SizedBox(
               width: 300,
-              child: PrimaryTextField(
-                hintText: 'Enter your username',
-                errorMessage:
-                    _hasError ? 'Username should not contain numbers' : null,
-                onChanged: (value) {
-                  setState(() {
-                    _enteredText = value;
-                    _hasError =
-                        value.contains(RegExp(r'[0-9]')); // Set the error state
-                  });
-                },
-                onErrorChanged: (hasError) {
-                  setState(() {
-                    _hasError = hasError; // Update the error state
-                  });
-                },
+              child: DisabledLabelTextField(
+                labelText: 'Text label',
+                hintText: 'Enter your text',
               ),
             ),
             const SizedBox(height: 100),
-            // SizedBox(
-            //   width: 300,
-            //   child: LabelTextField(
-            //     hintText: 'Enter your username',
-            //     labelText: 'Text label',
-            //     errorMessage:
-            //         _hasError ? 'Username should not contain numbers' : null,
-            //     onChanged: (value) {
-            //       setState(() {
-            //         _enteredText = value;
-            //         _hasError =
-            //             value.contains(RegExp(r'[0-9]')); // Set the error state
-            //       });
-            //     },
-            //     onErrorChanged: (hasError) {
-            //       setState(() {
-            //         _hasError = hasError; // Update the error state
-            //       });
-            //     },
-            //   ),
-            // ),
-            const SizedBox(height: 100),
             Text(
               'Entered Text: $_enteredText',
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
           ],
         ),
