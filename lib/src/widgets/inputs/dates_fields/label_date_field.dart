@@ -251,3 +251,12 @@ class _LabelDateFieldState extends State<LabelDateField> {
             //     },
             //   ),
             // ),
+
+            // Text(
+            //   'Entered Text: ${_selectedDate != null ? _formatDate(_selectedDate!) : ""}',
+            //   style: const TextStyle(fontSize: 16),
+            // ),
+
+            //           String _formatDate(DateTime date) {
+            //   return "${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year.toString()}";
+            // }
