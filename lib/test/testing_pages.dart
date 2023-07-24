@@ -1,8 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/inputs/paragraph_text_fields/disabled_paragraph_text_field.dart';
-import 'package:sulala_app/src/widgets/inputs/paragraph_text_fields/paragraph_text_field.dart'; // Replace with the actual path to your PasswordField widget
+import 'package:sulala_app/src/widgets/inputs/paragraph_text_fields/paragraph_text_field.dart';
+import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({super.key});
@@ -11,6 +11,7 @@ class ExamplePage extends StatefulWidget {
   _ExamplePageState createState() => _ExamplePageState();
 }
 
+// ignore: unused_element
 String _enteredText = '';
 bool _hasError = false;
 
@@ -18,6 +19,7 @@ class _ExamplePageState extends State<ExamplePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         title: const Text('Example Page'),
       ),
@@ -48,21 +50,38 @@ class _ExamplePageState extends State<ExamplePage> {
               ),
             ),
             const SizedBox(height: 16.0),
-            const SizedBox(
-              width: 350,
-              child: DisabledParagraphTextField(
-                labelText: 'Enter your paragraph text',
-                hintText: 'Start typing your text here...',
-                maxLines: 5, // Adjust the number of lines you want to display
-              ),
+            ElevatedButton(
+              onPressed: () {
+                _showFilterModalSheet(context);
+              },
+              child: const Text('Open Filter Modal Sheet'),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.done),
-      ),
+    );
+  }
+
+  void _showFilterModalSheet(BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      isScrollControlled: true,
+      isDismissible: true,
+      builder: (BuildContext context) {
+        return Container(
+          color: Colors.transparent,
+          child: const DrowupWidget(
+            // heading: 'Filter',
+            content: Column(
+              children: [
+                Text('Hello World'),
+                // Add Your Widgets Here
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
