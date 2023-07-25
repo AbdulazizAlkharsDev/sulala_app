@@ -130,21 +130,37 @@ class _FileUploaderFieldState extends State<FileUploaderField> {
               height: 150,
               child: Padding(
                 padding: const EdgeInsets.all(8),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.file_copy_outlined,
-                      color: AppColors.grayscale50,
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      "Upload file",
-                      style: AppFonts.body1(color: AppColors.grayscale50),
-                    ),
-                  ],
-                ),
+                child: _uploadedFiles.isNotEmpty
+                    ? Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.file_copy_outlined,
+                            color: AppColors.primary20,
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            "Upload file",
+                            style: AppFonts.body1(color: AppColors.primary20),
+                          ),
+                        ],
+                      )
+                    : Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.file_copy_outlined,
+                            color: AppColors.grayscale50,
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            "Upload file",
+                            style: AppFonts.body1(color: AppColors.grayscale50),
+                          ),
+                        ],
+                      ),
               ),
             ),
           );
