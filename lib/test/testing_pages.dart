@@ -1,14 +1,12 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/widgets/inputs/paragraph_text_fields/paragraph_text_field.dart';
-import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
+import 'package:sulala_app/test/file_uploader_field.dart';
 
 class ExamplePage extends StatefulWidget {
-  const ExamplePage({super.key});
+  const ExamplePage({Key? key}) : super(key: key);
 
   @override
-  _ExamplePageState createState() => _ExamplePageState();
+  State<ExamplePage> createState() => _ExamplePageState();
 }
 
 // ignore: unused_element
@@ -50,38 +48,17 @@ class _ExamplePageState extends State<ExamplePage> {
               ),
             ),
             const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                _showFilterModalSheet(context);
-              },
-              child: const Text('Open Filter Modal Sheet'),
+            Focus(
+              onFocusChange: (hasFocus) {}, // Dummy onFocusChange callback
+              child: const SizedBox(
+                height: 300,
+                width: 300,
+                child: FileUploaderField(),
+              ),
             ),
           ],
         ),
       ),
-    );
-  }
-
-  void _showFilterModalSheet(BuildContext context) {
-    showModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      context: context,
-      isScrollControlled: true,
-      isDismissible: true,
-      builder: (BuildContext context) {
-        return Container(
-          color: Colors.transparent,
-          child: const DrowupWidget(
-            // heading: 'Filter',
-            content: Column(
-              children: [
-                Text('Hello World'),
-                // Add Your Widgets Here
-              ],
-            ),
-          ),
-        );
-      },
     );
   }
 }
