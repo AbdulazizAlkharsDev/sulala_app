@@ -42,3 +42,37 @@ class DrowupWidget extends StatelessWidget {
     );
   }
 }
+
+
+// Example of use:
+
+
+// ElevatedButton(
+//               onPressed: () {
+//                 _showFilterModalSheet(context);
+//               },
+//               child: const Text('Open Filter Modal Sheet'),
+//             ),
+
+// void _showFilterModalSheet(BuildContext context) {
+//     showModalBottomSheet(
+//       backgroundColor: Colors.transparent,
+//       context: context,
+//       isScrollControlled: true,
+//       isDismissible: true,
+//       builder: (BuildContext context) {
+//         return Container(
+//           color: Colors.transparent,
+//           child: const DrowupWidget(
+//             // heading: 'Filter',
+//             content: Column(
+//               children: [
+//                 Text('Hello World'),
+//                 // Add Your Widgets Here
+//               ],
+//             ),
+//           ),
+//         );
+//       },
+//     );
+//   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/widgets/inputs/paragraph_text_fields/paragraph_text_field.dart';
-import 'package:sulala_app/test/file_uploader_field.dart';
+import 'package:sulala_app/src/widgets/inputs/file_uploader_fields/file_uploader_field.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -48,12 +48,16 @@ class _ExamplePageState extends State<ExamplePage> {
               ),
             ),
             const SizedBox(height: 16.0),
-            Focus(
-              onFocusChange: (hasFocus) {}, // Dummy onFocusChange callback
-              child: const SizedBox(
-                height: 300,
-                width: 300,
-                child: FileUploaderField(),
+            SizedBox(
+              height: 400,
+              width: 350,
+              child: Focus(
+                onFocusChange: (hasFocus) {}, // Dummy onFocusChange callback
+                child: const SizedBox(
+                  // height: 100,
+                  width: 350,
+                  child: FileUploaderField(),
+                ),
               ),
             ),
           ],
