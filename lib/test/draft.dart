@@ -35,6 +35,11 @@ class DividedElevatedButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            const SizedBox(width: 16),
+            const Icon(
+              Icons.add,
+              color: AppColors.grayscale90,
+            ),
             Expanded(
               child: Material(
                 color: Colors.transparent,
