@@ -1,175 +1,89 @@
 import 'package:flutter/material.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
-class Draft extends StatefulWidget {
-  const Draft({Key? key}) : super(key: key);
+class DividedElevatedButton extends StatelessWidget {
+  final String leftText;
+  final String rightText;
+  final VoidCallback? onLeftPressed;
+  final VoidCallback? onRightPressed;
 
-  @override
-  State<Draft> createState() => _DraftState();
-}
-
-class _DraftState extends State<Draft> {
-  final List<String> _uploadedFiles = [];
-  bool _loading = false;
-  double _uploadProgress = 0.0;
-
-  Future<void> _chooseFile() async {
-    try {
-      FilePickerResult? result = await FilePicker.platform.pickFiles();
-
-      if (result != null && result.files.isNotEmpty) {
-        // Add the uploaded file name to the list
-        setState(() {
-          _uploadedFiles.add(result.files.single.name);
-          _loading = false;
-        });
-
-        // Start uploading the file
-        await _uploadFile(result.files.single.path!);
-      } else {
-        // User canceled file selection
-        setState(() {
-          _loading = false;
-        });
-      }
-    } catch (e) {
-      // Handle any potential errors when picking the file
-      setState(() {
-        _loading = false;
-      });
-    }
-  }
-
-  Future<void> _uploadFile(String filePath) async {
-    // Set loading state to true when starting the upload process
-    setState(() {
-      _loading = true;
-      _uploadProgress = 0.0;
-    });
-
-    // Simulate file upload process (you should implement your upload logic here)
-    for (int i = 0; i <= 100; i += 10) {
-      await Future.delayed(const Duration(milliseconds: 500));
-      setState(() {
-        _uploadProgress = i / 100;
-      });
-    }
-
-    // Set the loading state to false after the upload is complete
-    setState(() {
-      _loading = false;
-    });
-  }
-
-  void _deleteFile(String fileName) {
-    // Remove the file from the list
-    setState(() {
-      _uploadedFiles.remove(fileName);
-    });
-  }
+  const DividedElevatedButton({
+    super.key,
+    required this.leftText,
+    required this.rightText,
+    this.onLeftPressed,
+    this.onRightPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final borderColor =
-        _uploadedFiles.isNotEmpty ? AppColors.primary20 : AppColors.grayscale20;
-
-    final uploadButton = ElevatedButton(
-      onPressed: _loading ? null : _chooseFile,
+    return ElevatedButton(
+      onPressed: null, // Disable the main button's onPressed
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.grayscale0,
-        elevation: 0,
-        padding: const EdgeInsets.all(0),
+        padding: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24.0),
+        ),
       ),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          return DottedBorder(
-            borderType: BorderType.RRect,
-            radius: const Radius.circular(16),
-            color: borderColor,
-            strokeWidth: 1,
-            dashPattern: const [12, 12],
-            child: SizedBox(
-              width: constraints.maxWidth,
-              height: 150,
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.file_copy_outlined,
-                      color: AppColors.grayscale50,
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: AppColors.grayscale20, width: 1.0),
+          borderRadius: BorderRadius.circular(24.0),
+          color: AppColors.grayscale0,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(
+                  MediaQuery.of(context).size.width * 0.075,
+                  0,
+                  MediaQuery.of(context).size.width * 0.075,
+                  0),
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: onLeftPressed,
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(24.0),
+                    bottomLeft: Radius.circular(24.0),
+                  ),
+                  child: Center(
+                    child: Text(
+                      leftText,
+                      style: AppFonts.body2(color: AppColors.grayscale90),
                     ),
-                    const SizedBox(height: 16),
-                    Text(
-                      "Upload file",
-                      style: AppFonts.body1(color: AppColors.grayscale50),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),
-          );
-        },
-      ),
-    );
-
-    return Column(
-      children: [
-        uploadButton,
-        const SizedBox(
-          height: 16,
-        ),
-        // Use ListView.builder to create a list of uploaded files
-        ListView.builder(
-          shrinkWrap: true,
-          itemCount: _uploadedFiles.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.file_copy_outlined,
-                    color: AppColors.primary30,
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: 1,
+              color: AppColors.grayscale20,
+            ),
+            Expanded(
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: onRightPressed,
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(24.0),
+                    bottomRight: Radius.circular(24.0),
                   ),
-                  const SizedBox(width: 8),
-                  Expanded(
+                  child: Center(
                     child: Text(
-                      _uploadedFiles[index],
-                      style: AppFonts.body1(color: AppColors.grayscale90),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                      rightText,
+                      style: AppFonts.body2(color: AppColors.grayscale90),
                     ),
                   ),
-                  const SizedBox(width: 8),
-                  if (_loading)
-                    Expanded(
-                      child: LinearProgressIndicator(
-                        value: _uploadProgress,
-                        valueColor: const AlwaysStoppedAnimation<Color>(
-                          AppColors.primary30,
-                        ),
-                        backgroundColor: AppColors.grayscale10,
-                      ),
-                    ),
-                  IconButton(
-                    onPressed: () => _deleteFile(_uploadedFiles[index]),
-                    icon: const Icon(
-                      Icons.delete_outline,
-                      color: AppColors.error100,
-                    ),
-                  ),
-                ],
+                ),
               ),
-            );
-          },
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
