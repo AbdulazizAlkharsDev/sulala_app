@@ -27,7 +27,7 @@ class _ExamplePageState extends State<ExamplePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: 300,
+              width: 350,
               height: 50,
               child: DividedElevatedButton(
                 leftText: 'Left',

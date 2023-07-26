@@ -35,12 +35,7 @@ class DividedElevatedButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(
-                  MediaQuery.of(context).size.width * 0.075,
-                  0,
-                  MediaQuery.of(context).size.width * 0.075,
-                  0),
+            Expanded(
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
@@ -64,6 +59,7 @@ class DividedElevatedButton extends StatelessWidget {
               color: AppColors.grayscale20,
             ),
             Expanded(
+              flex: 2,
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
