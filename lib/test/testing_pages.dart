@@ -10,10 +10,16 @@ class ExamplePage extends StatefulWidget {
   State<ExamplePage> createState() => _ExamplePageState();
 }
 
-// ignore: unused_element
-String _enteredText = '';
-
 class _ExamplePageState extends State<ExamplePage> {
+  String _enteredText = '';
+  String? savedPhoneNumber;
+
+  void savePhoneNumber(String phoneNumber) {
+    setState(() {
+      savedPhoneNumber = phoneNumber;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,20 +32,15 @@ class _ExamplePageState extends State<ExamplePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.9,
-              // height: 200,
-              child: PhoneNumberField(
-                leftText: 'Left',
-                rightText: 'Right',
-                onLeftPressed: () {
-                  print("left");
-                },
-                onRightPressed: () {
-                  print("right");
-                },
-              ),
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: PhoneNumberField(
+                    label: 'Phone Number', onSave: savePhoneNumber)),
+            const SizedBox(height: 16),
+            Text(
+              savedPhoneNumber != null
+                  ? 'Saved Phone Number: $savedPhoneNumber'
+                  : 'Phone number not saved yet',
             ),
-            const SizedBox(height: 50.0),
           ],
         ),
       ),

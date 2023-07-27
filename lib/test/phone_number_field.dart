@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/lists/countries_data.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
 
 class PhoneNumberField extends StatefulWidget {
-  final String leftText;
-  final String rightText;
-  final VoidCallback? onLeftPressed;
-  final VoidCallback? onRightPressed;
+  final String? label;
+  final Function(String)? onSave;
 
   const PhoneNumberField({
-    super.key,
-    required this.leftText,
-    required this.rightText,
-    this.onLeftPressed,
-    this.onRightPressed,
-  });
+    Key? key,
+    this.label,
+    this.onSave,
+  }) : super(key: key);
 
   @override
   State<PhoneNumberField> createState() => _PhoneNumberFieldState();
@@ -82,114 +79,18 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Phone number",
-                style: AppFonts.caption2(color: AppColors.grayscale90),
-              ),
-              const SizedBox(height: 5.0),
-              ElevatedButton(
-                onPressed: null,
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.zero,
-                  backgroundColor: _backgroundColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24.0),
-                    side: BorderSide(color: _borderColor, width: 1.0),
-                  ),
+          if (widget.label != null) // Conditionally show the label
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.label!,
+                  style: AppFonts.caption2(color: AppColors.grayscale90),
                 ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(24.0),
-                    color: _backgroundColor,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: InkWell(
-                          onTap: () {
-                            _showFilterModalSheet(context);
-                          },
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(24.0),
-                            bottomLeft: Radius.circular(24.0),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const SizedBox(width: 8.0),
-                              Image.asset(
-                                'assets/icons/frame/24px/FlagTest.png',
-                                width: 24,
-                              ),
-                              Text(
-                                countryCode,
-                                style: AppFonts.body2(
-                                    color: AppColors.grayscale90),
-                              ),
-                              Image.asset(
-                                "assets/icons/frame/24px/16_Chevron_down.png",
-                              ),
-                              const SizedBox(width: 5.0),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.05,
-                        width: 1,
-                        color: _borderColor,
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: Material(
-                          color: Colors.transparent,
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: TextField(
-                              controller: _textEditingController,
-                              onChanged: (value) {
-                                setState(() {
-                                  phoneNumber = value;
-                                });
-                                _validatePhoneNumber(value); // Validate input
-                              },
-                              keyboardType: TextInputType.phone,
-                              style:
-                                  AppFonts.body2(color: AppColors.grayscale90),
-                              decoration: InputDecoration(
-                                hintText: "Enter phone number",
-                                border: InputBorder.none,
-                                hintStyle: AppFonts.body1(
-                                    color: AppColors.grayscale50),
-                                suffixIcon: phoneNumber.isNotEmpty
-                                    ? InkWell(
-                                        onTap: () {
-                                          setState(() {
-                                            _clearText();
-                                            phoneNumber = "";
-                                          });
-                                        },
-                                        child: Image.asset(
-                                          'assets/icons/frame/24px/20_Clear_form.png',
-                                        ),
-                                      )
-                                    : null,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+                _buildPhoneNumberField(),
+              ],
+            ),
+          if (widget.label == null) _buildPhoneNumberField(),
           if (_hasError)
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
@@ -199,6 +100,106 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
               ),
             ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildPhoneNumberField() {
+    return ElevatedButton(
+      onPressed: null,
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.zero,
+        backgroundColor: _backgroundColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24.0),
+          side: BorderSide(color: _borderColor, width: 1.0),
+        ),
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(24.0),
+          color: _backgroundColor,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: InkWell(
+                onTap: () {
+                  _showFilterModalSheet(context);
+                },
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(24.0),
+                  bottomLeft: Radius.circular(24.0),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(width: MediaQuery.of(context).size.width * 0.025),
+                    Image.asset(
+                      'assets/icons/frame/24px/FlagTest.png',
+                      width: 24,
+                    ),
+                    Text(
+                      countryCode,
+                      style: AppFonts.body2(color: AppColors.grayscale90),
+                    ),
+                    Image.asset(
+                      "assets/icons/frame/24px/16_Chevron_down.png",
+                    ),
+                    SizedBox(width: MediaQuery.of(context).size.width * 0.005),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.05,
+              width: 1,
+              color: _borderColor,
+            ),
+            Expanded(
+              flex: 2,
+              child: Material(
+                color: Colors.transparent,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: TextField(
+                    controller: _textEditingController,
+                    onChanged: (value) {
+                      _validatePhoneNumber(value);
+                      setState(() {
+                        phoneNumber = value;
+                        if (!_hasError && widget.onSave != null) {
+                          widget.onSave!(value);
+                        }
+                      });
+                    },
+                    keyboardType: TextInputType.phone,
+                    style: AppFonts.body2(color: AppColors.grayscale90),
+                    decoration: InputDecoration(
+                      hintText: "Enter phone number",
+                      border: InputBorder.none,
+                      hintStyle: AppFonts.body1(color: AppColors.grayscale50),
+                      suffixIcon: phoneNumber.isNotEmpty
+                          ? InkWell(
+                              onTap: () {
+                                setState(() {
+                                  _clearText();
+                                  phoneNumber = "";
+                                });
+                              },
+                              child: Image.asset(
+                                'assets/icons/frame/24px/20_Clear_form.png',
+                              ),
+                            )
+                          : null,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -213,12 +214,26 @@ void _showFilterModalSheet(BuildContext context) {
     builder: (BuildContext context) {
       return Container(
         color: Colors.transparent,
-        child: const DrowupWidget(
+        child: DrowupWidget(
           heading: 'Filter',
           content: Column(
             children: [
-              Text('Hello World'),
-              // Add Your Widgets Here
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.9,
+                child: ListView.builder(
+                  itemCount: countriesData.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      leading: Image.asset(countriesData[index].flagImagePath),
+                      title: Text(countriesData[index].countryName),
+                      subtitle: Text(countriesData[index].countryCode),
+                      onTap: () {
+                        // Handle country item tap here if needed
+                      },
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),
