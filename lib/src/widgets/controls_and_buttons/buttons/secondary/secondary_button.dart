@@ -3,76 +3,123 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
+enum SecondaryButtonPosition {
+  primary,
+  left,
+  right,
+}
+
 class SecondaryButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-  final ButtonStatus status;
+  final SecondaryButtonStatus status;
+  final SecondaryButtonPosition position;
 
   const SecondaryButton({
     Key? key,
     required this.text,
     required this.onPressed,
-    this.status = ButtonStatus.idle,
+    this.status = SecondaryButtonStatus.idle,
+    this.position = SecondaryButtonPosition.primary,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 343,
-      height: 52,
-      child: ElevatedButton(
-        onPressed: status == ButtonStatus.disabled ? null : onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: _getButtonColor(status),
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
-          ),
+    return ElevatedButton(
+      onPressed: status == SecondaryButtonStatus.disabled ? null : onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: _getButtonColor(status),
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
         ),
-        child: _buildButtonContent(),
       ),
+      child: _buildButtonContent(),
     );
   }
 
   Widget _buildButtonContent() {
-    if (status == ButtonStatus.loading) {
+    if (status == SecondaryButtonStatus.loading) {
       return const SpinKitFadingCircle(
         color: AppColors.grayscale90,
         size: 24,
       );
     } else {
-      return Text(
-        text,
-        style: AppFonts.body1(
-          color: _getTextColor(status),
-        ),
-      );
+      switch (position) {
+        case SecondaryButtonPosition.left:
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.arrow_back_rounded,
+                color: _getArrowColor(status),
+              ),
+              const SizedBox(width: 8),
+              Text(
+                text,
+                style: AppFonts.body1(color: _getTextColor(status)),
+              ),
+            ],
+          );
+        case SecondaryButtonPosition.right:
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                text,
+                style: AppFonts.body1(color: _getTextColor(status)),
+              ),
+              const SizedBox(width: 8),
+              Icon(
+                Icons.arrow_forward_rounded,
+                color: _getArrowColor(status),
+              ),
+            ],
+          );
+        default:
+          return Text(
+            text,
+            style: AppFonts.body1(color: _getTextColor(status)),
+          );
+      }
     }
   }
 
-  Color _getButtonColor(ButtonStatus status) {
+  Color _getButtonColor(SecondaryButtonStatus status) {
     switch (status) {
-      case ButtonStatus.idle:
+      case SecondaryButtonStatus.idle:
         return AppColors.grayscale10;
-      case ButtonStatus.pressed:
+      case SecondaryButtonStatus.pressed:
         return AppColors.grayscale20;
-      case ButtonStatus.loading:
+      case SecondaryButtonStatus.loading:
         return AppColors.grayscale10;
-      case ButtonStatus.disabled:
+      case SecondaryButtonStatus.disabled:
         return AppColors.grayscale20;
       default:
         return AppColors.grayscale10;
     }
   }
 
-  Color _getTextColor(ButtonStatus status) {
+  Color _getArrowColor(SecondaryButtonStatus status) {
     switch (status) {
-      case ButtonStatus.idle:
-      case ButtonStatus.pressed:
+      case SecondaryButtonStatus.idle:
+      case SecondaryButtonStatus.loading:
+      case SecondaryButtonStatus.pressed:
         return AppColors.grayscale90;
-      case ButtonStatus.loading:
+      case SecondaryButtonStatus.disabled:
+        return AppColors.grayscale50;
+      default:
         return AppColors.grayscale90;
-      case ButtonStatus.disabled:
+    }
+  }
+
+  Color _getTextColor(SecondaryButtonStatus status) {
+    switch (status) {
+      case SecondaryButtonStatus.idle:
+      case SecondaryButtonStatus.pressed:
+      case SecondaryButtonStatus.loading:
+        return AppColors.grayscale90;
+      case SecondaryButtonStatus.disabled:
         return AppColors.grayscale50;
       default:
         return AppColors.grayscale90;
@@ -80,9 +127,25 @@ class SecondaryButton extends StatelessWidget {
   }
 }
 
-enum ButtonStatus {
+enum SecondaryButtonStatus {
   idle,
   pressed,
   loading,
   disabled,
 }
+
+
+// Example of use:
+
+// SizedBox(
+//               width: MediaQuery.of(context).size.width * 0.9,
+//               height: MediaQuery.of(context).size.height * 0.05,
+//               child: SecondaryButton(
+//                 text: 'Button Text',
+//                 onPressed: () {
+//                   // Your onPressed logic here
+//                 },
+//                 status: SecondaryButtonStatus.idle,
+//                 position: SecondaryButtonPosition.right,
+//               ),
+//             ),

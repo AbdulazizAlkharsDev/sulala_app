@@ -77,7 +77,7 @@ class CardWidget extends StatelessWidget {
                   width: 133,
                   height: 40,
                   child: PrimaryButton(
-                    status: ButtonStatus.idle,
+                    status: PrimaryButtonStatus.idle,
                     text: buttonText,
                     onPressed: onPressed,
                   ),

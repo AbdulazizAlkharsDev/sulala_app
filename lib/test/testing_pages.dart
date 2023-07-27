@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/inputs/otp_fields/otp_field.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/flat/flat_button.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/navigate/navigate_button.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary/primary_button.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/secondary/secondary_button.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -9,20 +12,6 @@ class ExamplePage extends StatefulWidget {
 }
 
 class _ExamplePageState extends State<ExamplePage> {
-  String? savedPhoneNumber;
-
-  void onOTPFilled(String otp) {
-    // print('OTP entered: $otp');
-    // Here, you can handle the entered OTP as per your backend logic.
-    // For example, you can make an API call to verify the OTP, etc.
-  }
-
-  bool isOTPError(String otp) {
-    // Dummy error check: Consider OTP "123456" as the correct OTP
-    const correctOTP = '123456';
-    return otp != correctOTP;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,9 +25,14 @@ class _ExamplePageState extends State<ExamplePage> {
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.9,
-              child: OTPField(
-                onFilled: onOTPFilled,
-                onError: isOTPError,
+              height: MediaQuery.of(context).size.height * 0.05,
+              child: FlatButton(
+                text: 'Button Text',
+                onPressed: () {
+                  // Your onPressed logic here
+                },
+                status: FlatButtonStatus.loading,
+                position: FlatButtonPosition.left,
               ),
             ),
           ],

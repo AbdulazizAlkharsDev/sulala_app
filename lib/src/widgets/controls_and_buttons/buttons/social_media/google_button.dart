@@ -38,7 +38,6 @@ class GoogleButton extends StatelessWidget {
         child: SpinKitFadingCircle(
           color: AppColors.grayscale90,
           size: 24,
-          
         ),
       );
     } else {

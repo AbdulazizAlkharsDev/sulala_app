@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: PrimaryButton(
                 text: 'Join now',
                 onPressed: () {},
-                status: ButtonStatus.idle,
+                status: PrimaryButtonStatus.idle,
               ),
             ),
             const SizedBox(height: 10),
