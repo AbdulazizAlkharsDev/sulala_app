@@ -17,7 +17,7 @@ class DrowupWidget extends StatelessWidget {
       body: Align(
         alignment: Alignment.bottomCenter, // Align to the bottom of the screen
         child: FractionallySizedBox(
-          heightFactor: 0.5,
+          heightFactor: 0.6,
           child: Container(
             decoration: const BoxDecoration(
               color: AppColors.grayscale0,
