@@ -1,8 +1,5 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/inputs/phone_number_field.dart/phone_number_field.dart';
-import 'package:sulala_app/src/widgets/inputs/phone_number_field.dart/disabled_phone_number_field.dart';
+import 'package:sulala_app/src/widgets/inputs/otp_fields/otp_field.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -14,10 +11,16 @@ class ExamplePage extends StatefulWidget {
 class _ExamplePageState extends State<ExamplePage> {
   String? savedPhoneNumber;
 
-  void savePhoneNumber(String phoneNumber) {
-    setState(() {
-      savedPhoneNumber = phoneNumber;
-    });
+  void onOTPFilled(String otp) {
+    // print('OTP entered: $otp');
+    // Here, you can handle the entered OTP as per your backend logic.
+    // For example, you can make an API call to verify the OTP, etc.
+  }
+
+  bool isOTPError(String otp) {
+    // Dummy error check: Consider OTP "123456" as the correct OTP
+    const correctOTP = '123456';
+    return otp != correctOTP;
   }
 
   @override
@@ -33,25 +36,11 @@ class _ExamplePageState extends State<ExamplePage> {
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.9,
-              child: PhoneNumberField(
-                  label: 'Phone Number', onSave: savePhoneNumber),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              savedPhoneNumber != null
-                  ? 'Saved Phone Number: $savedPhoneNumber'
-                  : 'Phone number not saved yet',
-            ),
-            const SizedBox(height: 32),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.9,
-              child: const DisabledPhoneNumberField(
-                label: 'Phone Number',
-                countryCode: '+966',
-                countryFlag: 'assets/icons/flags/Country=SA.png',
-                phoneNumber: '60909090',
+              child: OTPField(
+                onFilled: onOTPFilled,
+                onError: isOTPError,
               ),
-            )
+            ),
           ],
         ),
       ),
