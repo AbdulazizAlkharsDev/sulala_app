@@ -46,7 +46,6 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
         selectedCountry = countryInfo;
         countryCode = countryInfo.countryCode;
         countryFlag = countryInfo.flagImagePath;
-        print(countryInfo.countryName);
       },
     );
     Navigator.pop(context);
@@ -185,7 +184,7 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
                       setState(() {
                         phoneNumber = value;
                         if (!_hasError && widget.onSave != null) {
-                          widget.onSave!(value);
+                          widget.onSave!(countryCode + phoneNumber);
                         }
                       });
                     },
@@ -246,3 +245,37 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
     );
   }
 }
+
+
+//Example of use:
+
+
+
+//Functions to be used in the example page:
+  // String? savedPhoneNumber;
+
+  // void savePhoneNumber(String phoneNumber) {
+  //   setState(() {
+  //     savedPhoneNumber = phoneNumber;
+  //   });
+  // }
+
+//ExamplePage build:
+// Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             SizedBox(
+//               width: MediaQuery.of(context).size.width * 0.9,
+//               child: PhoneNumberField(
+//                   label: 'Phone Number', onSave: savePhoneNumber),
+//             ),
+//             const SizedBox(height: 16),
+//             Text(
+//               savedPhoneNumber != null
+//                   ? 'Saved Phone Number: $savedPhoneNumber'
+//                   : 'Phone number not saved yet',
+//             ),
+//           ],
+//         ),
+//       ),

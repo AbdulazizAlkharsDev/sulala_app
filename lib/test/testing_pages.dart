@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:sulala_app/test/phone_number_field.dart';
+import 'package:sulala_app/src/widgets/inputs/phone_number_field.dart/phone_number_field.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -31,9 +31,10 @@ class _ExamplePageState extends State<ExamplePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-                width: MediaQuery.of(context).size.width * 0.9,
-                child: PhoneNumberField(
-                    label: 'Phone Number', onSave: savePhoneNumber)),
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: PhoneNumberField(
+                  label: 'Phone Number', onSave: savePhoneNumber),
+            ),
             const SizedBox(height: 16),
             Text(
               savedPhoneNumber != null

@@ -10,6 +10,9 @@ class CountryInfo {
   });
 }
 
+// Example of use:
+//  List<CountryInfo> filteredCountries = countriesData;
+
 // List of country information for Asian countries
 List<CountryInfo> countriesData = [
   CountryInfo(

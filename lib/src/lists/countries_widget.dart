@@ -73,3 +73,28 @@ class _CountriesWidgetState extends State<CountriesWidget> {
 }
 
 typedef CountrySelectionCallback = void Function(CountryInfo countryInfo);
+
+// Example of use: 
+
+
+//Functions to be added to the class:
+// void _onCountrySelected(CountryInfo countryInfo) {
+//     setState(
+//       () {
+//         selectedCountry = countryInfo;
+//         countryCode = countryInfo.countryCode;
+//         countryFlag = countryInfo.flagImagePath;
+//         print(countryInfo.countryName);
+//       },
+//     );
+//     Navigator.pop(context);
+//   }
+
+
+
+// SizedBox(
+//                   height: MediaQuery.of(context).size.height * 0.95,
+//                   child: CountriesWidget(
+//                     onCountrySelected: _onCountrySelected,
+//                   ),
+//                 ),
