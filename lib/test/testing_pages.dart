@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/inputs/file_uploader_fields/file_uploader_field.dart';
 import 'package:sulala_app/test/draft.dart';
 
 class ExamplePage extends StatefulWidget {
@@ -27,8 +26,8 @@ class _ExamplePageState extends State<ExamplePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: 350,
-              height: 50,
+              width: MediaQuery.of(context).size.width * 0.9,
+              // height: 200,
               child: DividedElevatedButton(
                 leftText: 'Left',
                 rightText: 'Right',
@@ -40,19 +39,7 @@ class _ExamplePageState extends State<ExamplePage> {
                 },
               ),
             ),
-            const SizedBox(height: 16.0),
-            SizedBox(
-              height: 400,
-              width: 350,
-              child: Focus(
-                onFocusChange: (hasFocus) {}, // Dummy onFocusChange callback
-                child: const SizedBox(
-                  // height: 100,
-                  width: 350,
-                  child: FileUploaderField(),
-                ),
-              ),
-            ),
+            const SizedBox(height: 50.0),
           ],
         ),
       ),
