@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
+
+enum TextButtonPosition {
+  primary,
+  left,
+  right,
+}
 
 class PrimaryTextButton extends StatelessWidget {
   final TextStatus status;
   final VoidCallback? onPressed;
   final String text;
+  final TextButtonPosition position;
 
   const PrimaryTextButton({
     Key? key,
     required this.status,
     required this.text,
     this.onPressed,
+    this.position = TextButtonPosition.primary,
   }) : super(key: key);
 
   @override
@@ -35,9 +42,11 @@ class PrimaryTextButton extends StatelessWidget {
     switch (status) {
       case TextStatus.idle:
       case TextStatus.pressed:
-        return Text(
+        return _buildTextWithArrow(
           text,
-          style: AppFonts.body1(color: _getTextColor(status)),
+          _getTextColor(status),
+          position == TextButtonPosition.right,
+          position == TextButtonPosition.left,
         );
       case TextStatus.loading:
         return const Row(
@@ -54,11 +63,40 @@ class PrimaryTextButton extends StatelessWidget {
           ],
         );
       case TextStatus.disabled:
-        return Text(
+        return _buildTextWithArrow(
           text,
-          style: AppFonts.body1(color: AppColors.grayscale50),
+          AppColors.grayscale50,
+          position == TextButtonPosition.right,
+          position == TextButtonPosition.left,
         );
     }
+  }
+
+  Widget _buildTextWithArrow(
+    String text,
+    Color textColor,
+    bool showRightArrow,
+    bool showLeftArrow,
+  ) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        if (showLeftArrow)
+          Icon(
+            Icons.arrow_back_rounded,
+            color: textColor,
+          ),
+        Text(
+          text,
+          style: TextStyle(color: textColor),
+        ),
+        if (showRightArrow)
+          Icon(
+            Icons.arrow_forward_rounded,
+            color: textColor,
+          ),
+      ],
+    );
   }
 
   bool _getButtonEnabled(TextStatus status) {
@@ -87,12 +125,16 @@ enum TextStatus {
 }
 
 
+
 // Example of use:
 
-// PrimaryTextButton(
-//               status: TextStatus.pressed,
-//               text: 'Sign in',
-//               onPressed: () {
-//                 // print("Sign In");
-//               },
+// SizedBox(
+//               width: MediaQuery.of(context).size.width * 0.9,
+//               height: MediaQuery.of(context).size.height * 0.05,
+//               child: PrimaryTextButton(
+//                 status: TextStatus.idle,
+//                 onPressed: () {},
+//                 text: 'Text Button',
+//                 position: TextButtonPosition.right,
+//               ),
 //             ),

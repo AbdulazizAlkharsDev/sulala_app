@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/flat/flat_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/navigate/navigate_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary/primary_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/secondary/secondary_button.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -26,13 +23,11 @@ class _ExamplePageState extends State<ExamplePage> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.9,
               height: MediaQuery.of(context).size.height * 0.05,
-              child: FlatButton(
-                text: 'Button Text',
-                onPressed: () {
-                  // Your onPressed logic here
-                },
-                status: FlatButtonStatus.loading,
-                position: FlatButtonPosition.left,
+              child: PrimaryTextButton(
+                status: TextStatus.idle,
+                onPressed: () {},
+                text: 'Text Button',
+                position: TextButtonPosition.right,
               ),
             ),
           ],
