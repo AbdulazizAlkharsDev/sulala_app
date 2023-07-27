@@ -11,7 +11,6 @@ class ExamplePage extends StatefulWidget {
 }
 
 class _ExamplePageState extends State<ExamplePage> {
-  String _enteredText = '';
   String? savedPhoneNumber;
 
   void savePhoneNumber(String phoneNumber) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/lists/countries_data.dart';
+import 'package:sulala_app/src/data/countries_data.dart';
+import 'package:sulala_app/src/lists/countries_widget.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
@@ -20,12 +21,14 @@ class PhoneNumberField extends StatefulWidget {
 
 class _PhoneNumberFieldState extends State<PhoneNumberField> {
   String countryCode = "+965";
+  String countryFlag = "assets/icons/frame/24px/FlagTest.png";
   String phoneNumber = "";
   Color _borderColor = AppColors.grayscale20;
   Color _backgroundColor = AppColors.grayscale0;
   final FocusNode _focusNode = FocusNode();
   final TextEditingController _textEditingController = TextEditingController();
   bool _hasError = false;
+  CountryInfo? selectedCountry;
 
   void _clearText() {
     _textEditingController.clear();
@@ -35,6 +38,18 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
       _borderColor = AppColors.grayscale20;
       _backgroundColor = AppColors.grayscale0;
     });
+  }
+
+  void _onCountrySelected(CountryInfo countryInfo) {
+    setState(
+      () {
+        selectedCountry = countryInfo;
+        countryCode = countryInfo.countryCode;
+        countryFlag = countryInfo.flagImagePath;
+        print(countryInfo.countryName);
+      },
+    );
+    Navigator.pop(context);
   }
 
   void _validatePhoneNumber(String value) {
@@ -137,7 +152,7 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
                   children: [
                     SizedBox(width: MediaQuery.of(context).size.width * 0.025),
                     Image.asset(
-                      'assets/icons/frame/24px/FlagTest.png',
+                      countryFlag,
                       width: 24,
                     ),
                     Text(
@@ -203,41 +218,31 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
       ),
     );
   }
-}
 
-void _showFilterModalSheet(BuildContext context) {
-  showModalBottomSheet(
-    backgroundColor: Colors.transparent,
-    context: context,
-    isScrollControlled: true,
-    isDismissible: true,
-    builder: (BuildContext context) {
-      return Container(
-        color: Colors.transparent,
-        child: DrowupWidget(
-          heading: 'Filter',
-          content: Column(
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.9,
-                child: ListView.builder(
-                  itemCount: countriesData.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      leading: Image.asset(countriesData[index].flagImagePath),
-                      title: Text(countriesData[index].countryName),
-                      subtitle: Text(countriesData[index].countryCode),
-                      onTap: () {
-                        // Handle country item tap here if needed
-                      },
-                    );
-                  },
+  void _showFilterModalSheet(BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      isScrollControlled: true,
+      isDismissible: true,
+      builder: (BuildContext context) {
+        return Container(
+          color: Colors.transparent,
+          child: DrowupWidget(
+            heading: 'Filter',
+            content: Column(
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.95,
+                  child: CountriesWidget(
+                    onCountrySelected: _onCountrySelected,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      );
-    },
-  );
+        );
+      },
+    );
+  }
 }
