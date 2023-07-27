@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
-import '../widgets/controls_and_buttons/buttons/primary/primary_button.dart';
+import '../widgets/controls_and_buttons/buttons/primary_button.dart';
 import '../widgets/pages/homepage_widgets/card.dart';
 import '../widgets/pages/homepage_widgets/circle_icon_button.dart';
 import '../widgets/pages/homepage_widgets/title_text.dart';

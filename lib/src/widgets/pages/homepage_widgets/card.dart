@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../theme/colors/colors.dart';
 import '../../../theme/fonts/fonts.dart';
-import '../../controls_and_buttons/buttons/primary/primary_button.dart';
+import '../../controls_and_buttons/buttons/primary_button.dart';
 
 class CardWidget extends StatelessWidget {
   final Color color;
