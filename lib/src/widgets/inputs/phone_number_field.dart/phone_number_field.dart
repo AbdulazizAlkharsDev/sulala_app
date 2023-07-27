@@ -20,8 +20,8 @@ class PhoneNumberField extends StatefulWidget {
 }
 
 class _PhoneNumberFieldState extends State<PhoneNumberField> {
-  String countryCode = "+965";
-  String countryFlag = "assets/icons/frame/24px/FlagTest.png";
+  String countryCode = "+966";
+  String countryFlag = "assets/icons/flags/Country=SA.png";
   String phoneNumber = "";
   Color _borderColor = AppColors.grayscale20;
   Color _backgroundColor = AppColors.grayscale0;
