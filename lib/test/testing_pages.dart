@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:sulala_app/test/draft.dart';
+import 'package:sulala_app/test/phone_number_field.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -28,7 +28,7 @@ class _ExamplePageState extends State<ExamplePage> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.9,
               // height: 200,
-              child: DividedElevatedButton(
+              child: PhoneNumberField(
                 leftText: 'Left',
                 rightText: 'Right',
                 onLeftPressed: () {
