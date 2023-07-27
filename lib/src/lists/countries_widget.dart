@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/data/countries_data.dart';
+import 'package:sulala_app/src/theme/colors/colors.dart';
+import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/inputs/search_bars/search_bar.dart';
 
 class CountriesWidget extends StatefulWidget {
@@ -14,19 +16,24 @@ class CountriesWidget extends StatefulWidget {
 
 class _CountriesWidgetState extends State<CountriesWidget> {
   List<CountryInfo> filteredCountries = countriesData;
+  String searchQuery = "";
 
   void _filterCountries(String query) {
     setState(() {
+      searchQuery = query;
       filteredCountries = countriesData
           .where((country) =>
               country.countryName.toLowerCase().contains(query.toLowerCase()) ||
-              country.countryCode.contains(query))
+              country.countryCode.toLowerCase().contains(query.toLowerCase()))
           .toList();
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final bool showNotFoundText =
+        searchQuery.isNotEmpty && filteredCountries.isEmpty;
+
     return Column(
       children: [
         Padding(
@@ -36,6 +43,14 @@ class _CountriesWidgetState extends State<CountriesWidget> {
             onChange: _filterCountries,
           ),
         ),
+        if (showNotFoundText)
+          Container(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "Country not found!",
+              style: AppFonts.headline2(color: AppColors.grayscale90),
+            ),
+          ),
         Expanded(
           child: ListView.builder(
             itemCount: filteredCountries.length,
