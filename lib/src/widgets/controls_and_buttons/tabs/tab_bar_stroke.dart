@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import '../../../theme/colors/colors.dart';
 
@@ -14,7 +12,7 @@ class TabBarStroke extends StatefulWidget {
   });
 
   @override
-  _TabBarStrokeState createState() => _TabBarStrokeState();
+  State<TabBarStroke> createState() => _TabBarStrokeState();
 }
 
 class _TabBarStrokeState extends State<TabBarStroke> {

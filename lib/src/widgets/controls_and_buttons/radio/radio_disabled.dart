@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import '../../../theme/colors/colors.dart';
 
@@ -12,7 +10,7 @@ class RadioDisabled extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _RadioDisabledState createState() => _RadioDisabledState();
+  State<RadioDisabled> createState() => _RadioDisabledState();
 }
 
 class _RadioDisabledState extends State<RadioDisabled> {

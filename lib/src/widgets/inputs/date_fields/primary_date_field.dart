@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
@@ -19,7 +17,7 @@ class PrimaryDateField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _PrimaryDateFieldState createState() => _PrimaryDateFieldState();
+  State<PrimaryDateField> createState() => _PrimaryDateFieldState();
 }
 
 class _PrimaryDateFieldState extends State<PrimaryDateField> {

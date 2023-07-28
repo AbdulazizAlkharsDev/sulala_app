@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import '../../../theme/colors/colors.dart';
 
@@ -14,7 +12,7 @@ class CustomSwitchActive extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _CustomSwitchActiveState createState() => _CustomSwitchActiveState();
+  State<CustomSwitchActive> createState() => _CustomSwitchActiveState();
 }
 
 class _CustomSwitchActiveState extends State<CustomSwitchActive> {

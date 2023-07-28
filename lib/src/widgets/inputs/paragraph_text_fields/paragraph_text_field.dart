@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
@@ -23,7 +21,7 @@ class ParagraphTextField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _ParagraphTextFieldState createState() => _ParagraphTextFieldState();
+  State<ParagraphTextField> createState() => _ParagraphTextFieldState();
 }
 
 class _ParagraphTextFieldState extends State<ParagraphTextField> {
