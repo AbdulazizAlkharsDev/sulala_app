@@ -27,6 +27,14 @@ class PrimaryTextButton extends StatelessWidget {
     return TextButton(
       onPressed: _getButtonEnabled(status) ? onPressed : null,
       style: ButtonStyle(
+        overlayColor: MaterialStateProperty.resolveWith<Color>(
+          (states) {
+            if (states.contains(MaterialState.pressed)) {
+              return AppColors.grayscale20;
+            }
+            return Colors.transparent;
+          },
+        ),
         foregroundColor: MaterialStateProperty.resolveWith<Color>((states) {
           if (states.contains(MaterialState.disabled)) {
             return AppColors.grayscale50;
@@ -79,7 +87,7 @@ class PrimaryTextButton extends StatelessWidget {
     bool showLeftArrow,
   ) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         if (showLeftArrow)
           Icon(
