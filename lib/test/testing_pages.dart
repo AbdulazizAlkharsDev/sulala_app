@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/lists/animal_ids_widget.dart';
 import 'package:sulala_app/src/lists/notification_widget.dart';
 
 class ExamplePage extends StatefulWidget {
