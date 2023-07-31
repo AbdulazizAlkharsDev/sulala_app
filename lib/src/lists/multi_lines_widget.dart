@@ -14,6 +14,14 @@ class MultiLinesWidget extends StatelessWidget {
     required this.onPressed,
   }) : super(key: key);
 
+  String truncateTextWithEllipsis(String text, int maxLength) {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return '${text.substring(0, maxLength)}...';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -32,7 +40,7 @@ class MultiLinesWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    textHead,
+                    truncateTextWithEllipsis(textHead, 15),
                     style: AppFonts.body1(
                       color: AppColors.grayscale90,
                     ),
@@ -41,7 +49,7 @@ class MultiLinesWidget extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 0.0046,
                   ),
                   Text(
-                    textBody,
+                    truncateTextWithEllipsis(textBody, 20),
                     style: AppFonts.body2(
                       color: AppColors.grayscale70,
                     ),

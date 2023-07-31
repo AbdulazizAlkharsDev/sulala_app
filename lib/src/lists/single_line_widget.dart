@@ -12,6 +12,14 @@ class SingleLineWidget extends StatelessWidget {
     required this.onPressed,
   }) : super(key: key);
 
+  String truncateTextWithEllipsis(String text, int maxLength) {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return '${text.substring(0, maxLength)}...';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -26,7 +34,7 @@ class SingleLineWidget extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.0389,
               ),
               Text(
-                textHead,
+                truncateTextWithEllipsis(textHead, 15),
                 style: AppFonts.body2(
                   color: AppColors.grayscale90,
                 ),

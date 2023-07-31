@@ -18,6 +18,14 @@ class StaffListWidget extends StatelessWidget {
     required this.onPressed,
   }) : super(key: key);
 
+  String truncateTextWithEllipsis(String text, int maxLength) {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return '${text.substring(0, maxLength)}...';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -41,13 +49,13 @@ class StaffListWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                textHead,
+                truncateTextWithEllipsis(textHead, 15),
                 style: AppFonts.headline3(
                   color: AppColors.grayscale90,
                 ),
               ),
               Text(
-                textBody,
+                truncateTextWithEllipsis(textBody, 20),
                 style: AppFonts.body2(
                   color: AppColors.grayscale70,
                 ),

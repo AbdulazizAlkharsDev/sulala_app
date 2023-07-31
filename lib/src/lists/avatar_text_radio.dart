@@ -19,6 +19,14 @@ class AvatarTextRadio extends StatefulWidget {
     required this.onChanged,
   }) : super(key: key);
 
+  String truncateTextWithEllipsis(String text, int maxLength) {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return '${text.substring(0, maxLength)}...';
+    }
+  }
+
   @override
   State<AvatarTextRadio> createState() => _AvatarTextRadioState();
 }
@@ -37,7 +45,7 @@ class _AvatarTextRadioState extends State<AvatarTextRadio> {
             width: MediaQuery.of(context).size.width *
                 0.0243), // You can adjust the spacing between avatar and text
         Text(
-          widget.text,
+          widget.truncateTextWithEllipsis(widget.text, 15),
           style: AppFonts.body2(
             color: AppColors.grayscale90,
           ),

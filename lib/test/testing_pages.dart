@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/lists/animal_list_widget.dart';
-import 'package:sulala_app/src/lists/staff_list_widget.dart';
-import 'package:sulala_app/src/lists/multi_lines_widget.dart';
-import 'package:sulala_app/src/lists/single_line_widget.dart';
+import 'package:sulala_app/src/lists/animal_ids_widget.dart';
+import 'package:sulala_app/src/lists/notification_widget.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -24,11 +22,16 @@ class _ExamplePageState extends State<ExamplePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.9,
+              width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.055,
-              child: SingleLineWidget(
+              child: NotificationListWidget(
+                avatarRadius: 30,
+                imagePath: 'assets/avatars/120px/Cat.png',
+                textBody: 'Text',
+                // timeText: "1 hour ago",
                 textHead:
-                    'Hello', // Replace with the actual text you want to display
+                    'animal', // Replace with the actual text you want to display
+                textTime: "1 hour ago",
                 onPressed: () {
                   // Do something when the row is pressed
                   // For example, you can navigate to a new page, update the UI, etc.
