@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
+import 'package:sulala_app/src/lists/avatar_text_checkbox.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -21,13 +21,25 @@ class _ExamplePageState extends State<ExamplePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.5,
-              height: MediaQuery.of(context).size.height * 0.05,
-              child: PrimaryTextButton(
-                status: TextStatus.idle,
-                onPressed: () {},
-                text: 'Text Button',
-                position: TextButtonPosition.left,
+              width: MediaQuery.of(context).size.width * 0.9,
+              height: MediaQuery.of(context).size.height * 0.1,
+              child: AvatarTextCheckbox(
+                avatarRadius:
+                    30.0, // Set the desired radius for the circle avatar
+                imagePath:
+                    'assets/avatars/120px/Duck.png', // Replace with the actual image path
+                text:
+                    'Text', // Replace with the actual text you want to display
+                checked:
+                    true, // Replace with the actual boolean value for the radio button state
+                onChanged: (isActive) {
+                  // Do something when the radio button is toggled
+                  if (isActive) {
+                    // Handle the case when the radio button is active
+                  } else {
+                    // Handle the case when the radio button is not active
+                  }
+                },
               ),
             ),
           ],
