@@ -33,8 +33,9 @@ class _AvatarTextCheckboxState extends State<AvatarTextCheckbox> {
           radius: widget.avatarRadius,
           backgroundImage: AssetImage(widget.imagePath),
         ),
-        const SizedBox(
-            width: 10), // You can adjust the spacing between avatar and text
+        SizedBox(
+            width: MediaQuery.of(context).size.width *
+                0.0243), // You can adjust the spacing between avatar and text
         Text(
           widget.text,
           style: AppFonts.body2(
