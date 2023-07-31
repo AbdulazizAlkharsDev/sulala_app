@@ -1,5 +1,10 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/lists/notification_widget.dart';
+import 'package:sulala_app/test/default_text_widget.dart';
+import 'package:sulala_app/test/text_checkbox_widget.dart';
+import 'package:sulala_app/test/text_radio_widget.dart';
+import 'package:sulala_app/test/text_toggle_widget.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -7,6 +12,8 @@ class ExamplePage extends StatefulWidget {
   @override
   State<ExamplePage> createState() => _ExamplePageState();
 }
+
+bool _isRowChecked = false;
 
 class _ExamplePageState extends State<ExamplePage> {
   @override
@@ -22,19 +29,68 @@ class _ExamplePageState extends State<ExamplePage> {
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.055,
-              child: NotificationListWidget(
-                avatarRadius: 30,
-                imagePath: 'assets/avatars/120px/Cat.png',
-                textBody: 'Text',
-                // timeText: "1 hour ago",
-                textHead:
-                    'animal', // Replace with the actual text you want to display
-                textTime: "1 hour ago",
-                onPressed: () {
-                  // Do something when the row is pressed
-                  // For example, you can navigate to a new page, update the UI, etc.
-                },
+              height: MediaQuery.of(context).size.height * 0.5,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  DefaultTextWidget(
+                    textHead: 'Hello',
+                    onPressed: (isChecked) {
+                      setState(() {
+                        _isRowChecked = isChecked;
+                      });
+                      if (_isRowChecked) {
+                        // Do something when the row is checked
+                      } else {
+                        // Do something else when the row is unchecked
+                      }
+                    },
+                  ),
+                  TextCheckboxWidget(
+                    text: 'Text Radio Widget',
+                    checked: true,
+                    onChanged: (isActive) {
+                      // Do something when the radio button is toggled
+                      if (isActive) {
+                        // Handle the case when the radio button is active
+                        print('Box Checked is active');
+                      } else {
+                        // Handle the case when the radio button is not active
+                        print('Box Ckecked is not active');
+                      }
+                    },
+                  ),
+                  TextRadioWidget(
+                    text: 'Text Radio Widget',
+                    isActive:
+                        true, // Replace with the actual boolean value for the radio button state
+                    onChanged: (isActive) {
+                      // Do something when the radio button is toggled
+                      if (isActive) {
+                        // Handle the case when the radio button is active
+                        print('Radio button is active');
+                      } else {
+                        // Handle the case when the radio button is not active
+                        print('Radio button is not active');
+                      }
+                    },
+                  ),
+                  TextToggleWidget(
+                    text: 'Text Toggle Widget',
+                    isActive:
+                        true, // Replace with the actual boolean value for the radio button state
+                    onChanged: (isActive) {
+                      // Do something when the radio button is toggled
+                      if (isActive) {
+                        // Handle the case when the radio button is active
+                        print('Toggle button is active');
+                      } else {
+                        // Handle the case when the radio button is not active
+                        print('Toggle button is not active');
+                      }
+                    },
+                  ),
+                ],
               ),
             ),
           ],

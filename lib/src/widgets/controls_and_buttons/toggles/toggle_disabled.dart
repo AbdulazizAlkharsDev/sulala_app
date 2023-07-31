@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../../theme/colors/colors.dart';
 
-class CheckBoxDisabled extends StatelessWidget {
+class ToggleDisabled extends StatelessWidget {
   final bool checked;
 
-  const CheckBoxDisabled({
+  const ToggleDisabled({
     Key? key,
     required this.checked,
   }) : super(key: key);

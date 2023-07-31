@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import '../../../theme/colors/colors.dart';
 
-class CustomSwitchActive extends StatefulWidget {
+class ToggleActive extends StatefulWidget {
   final bool value;
   final Function(bool) onChanged;
 
-  const CustomSwitchActive({
+  const ToggleActive({
     Key? key,
     required this.value,
     required this.onChanged,
   }) : super(key: key);
 
   @override
-  State<CustomSwitchActive> createState() => _CustomSwitchActiveState();
+  State<ToggleActive> createState() => _ToggleActiveState();
 }
 
-class _CustomSwitchActiveState extends State<CustomSwitchActive> {
+class _ToggleActiveState extends State<ToggleActive> {
   late bool _value;
 
   @override
