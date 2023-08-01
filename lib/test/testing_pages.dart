@@ -5,8 +5,8 @@ import '../src/widgets/lists/default_text/default_text_widget.dart';
 import '../src/widgets/lists/default_text/disabled_default_text_widget.dart';
 import '../src/widgets/lists/radio_text/disable_text_radio_widget.dart';
 import '../src/widgets/lists/radio_text/text_radio_widget.dart';
-import '../src/widgets/lists/text_checkbox/disabled_text_checkbox_widget.dart';
-import '../src/widgets/lists/text_checkbox/text_checkbox_widget.dart';
+import '../src/widgets/lists/checkbox_text/disabled_text_checkbox_widget.dart';
+import '../src/widgets/lists/checkbox_text/text_checkbox_widget.dart';
 import '../src/widgets/lists/toggle_text/disabled_text_toggle_widget.dart';
 import '../src/widgets/lists/toggle_text/text_toggle_widget.dart';
 
