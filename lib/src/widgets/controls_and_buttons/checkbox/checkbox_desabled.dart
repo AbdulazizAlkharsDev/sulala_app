@@ -24,7 +24,7 @@ class CheckBoxDisabled extends StatelessWidget {
         borderRadius: BorderRadius.circular(4.0),
         border: Border.all(
           color: borderColor,
-          width: 2.0,
+          width: 1.0,
         ),
       ),
       child: checked

@@ -70,7 +70,7 @@ class _TextRadioWidgetState extends State<TextRadioWidget> {
                 borderRadius: BorderRadius.circular(12),
                 color: isActive ? AppColors.primary20 : AppColors.grayscale0,
                 border: Border.all(
-                  width: 2,
+                  width: 1,
                   color: isActive ? AppColors.primary20 : AppColors.grayscale30,
                 ),
               ),

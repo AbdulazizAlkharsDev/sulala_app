@@ -31,7 +31,7 @@ class _RadioDisabledState extends State<RadioDisabled> {
         borderRadius: BorderRadius.circular(12),
         color: isActive ? AppColors.grayscale50 : AppColors.grayscale20,
         border: Border.all(
-          width: 2,
+          width: 1,
           color: isActive ? AppColors.grayscale50 : AppColors.grayscale30,
         ),
       ),

@@ -1,10 +1,14 @@
 // ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
-import 'package:sulala_app/test/default_text_widget.dart';
-import 'package:sulala_app/test/text_checkbox_widget.dart';
-import 'package:sulala_app/test/text_radio_widget.dart';
-import 'package:sulala_app/test/text_toggle_widget.dart';
+
+import '../src/widgets/lists/default_text/default_text_widget.dart';
+import '../src/widgets/lists/default_text/disabled_default_text_widget.dart';
+import '../src/widgets/lists/radio_text/disable_text_radio_widget.dart';
+import '../src/widgets/lists/radio_text/text_radio_widget.dart';
+import '../src/widgets/lists/text_checkbox/disabled_text_checkbox_widget.dart';
+import '../src/widgets/lists/text_checkbox/text_checkbox_widget.dart';
+import '../src/widgets/lists/toggle_text/disabled_text_toggle_widget.dart';
+import '../src/widgets/lists/toggle_text/text_toggle_widget.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -47,7 +51,7 @@ class _ExamplePageState extends State<ExamplePage> {
                     },
                   ),
                   TextCheckboxWidget(
-                    text: 'Text Radio Widget',
+                    text: 'Text Checkbox Widget',
                     checked: true,
                     onChanged: (isActive) {
                       // Do something when the radio button is toggled
@@ -89,6 +93,22 @@ class _ExamplePageState extends State<ExamplePage> {
                         print('Toggle button is not active');
                       }
                     },
+                  ),
+                  const DisablesDefaultTextWidget(
+                    textHead: 'Hello',
+                    isChecked: true,
+                  ),
+                  const DisableTextRadioWidget(
+                    isActive: true,
+                    text: 'Text Radio Widget',
+                  ),
+                  const DisabledTextCheckboxWidget(
+                    text: 'Text Checkbox Widget',
+                    checked: true,
+                  ),
+                  const DisabledTextToggleWidget(
+                    text: 'Text Toggle Widget',
+                    isActive: true,
                   ),
                 ],
               ),
