@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -51,14 +52,25 @@ class _TableClickableTextState extends State<TableClickableText> {
               ),
             ),
             const Spacer(),
-            GestureDetector(
-              onTap: _launchUrl,
-              child: Text(
-                widget.urlText,
-                style: AppFonts.body2(
-                  color: AppColors.grayscale90,
+            Row(
+              children: [
+                Image.asset(
+                  'assets/icons/frame/24px/16_Mail.png',
                 ),
-              ),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.0194),
+                GestureDetector(
+                  onTap: _launchUrl,
+                  child: Text(
+                    widget.urlText,
+                    style: TextStyle(
+                      fontFamily: GoogleFonts.ibmPlexSans().fontFamily,
+                      color: AppColors.primary30,
+                      decoration: TextDecoration.underline,
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
+              ],
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.0389,

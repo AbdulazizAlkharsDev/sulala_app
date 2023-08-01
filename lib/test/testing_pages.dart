@@ -1,8 +1,6 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/lists/table_lsit/table_clickable_link.dart';
-import 'package:sulala_app/src/widgets/lists/table_lsit/table_text.dart';
-import 'package:sulala_app/src/widgets/lists/table_lsit/table_textbutton.dart';
+import 'package:sulala_app/test/family_tree_item.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -23,30 +21,21 @@ class _ExamplePageState extends State<ExamplePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.2,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TableTextButton(
-                    textHead: 'Text Button',
-                    textButton: 'Button',
-                    onPressed: (bool isChecked) {
-                      print('Text Button Pressed');
-                    },
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  height: MediaQuery.of(context).size.width * 0.5,
+                  child: const FamilyTreeItem(
+                    id: "12345",
+                    name: "Harry",
+                    sex: "Male",
+                    tag: "Borrower",
+                    imageUrl: "assets/avatars/120px/Horse.png",
                   ),
-                  const TableText(
-                    text1: 'Text',
-                    text2: 'Text',
-                  ),
-                  const TableClickableText(
-                    text1: 'Clickable Text',
-                    urlText: 'Email@gmail.com',
-                    url: "https://www.royalbabycenter.com/",
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
