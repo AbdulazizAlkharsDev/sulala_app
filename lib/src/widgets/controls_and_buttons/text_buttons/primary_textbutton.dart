@@ -27,14 +27,13 @@ class PrimaryTextButton extends StatelessWidget {
     return TextButton(
       onPressed: _getButtonEnabled(status) ? onPressed : null,
       style: ButtonStyle(
-        overlayColor: MaterialStateProperty.resolveWith<Color>(
-          (states) {
-            if (states.contains(MaterialState.pressed)) {
-              return AppColors.grayscale20;
-            }
-            return Colors.transparent;
-          },
+        padding: MaterialStateProperty.all(
+          const EdgeInsets.symmetric(
+            vertical: 0,
+            horizontal: 0,
+          ),
         ),
+        overlayColor: MaterialStateProperty.all(Colors.transparent),
         foregroundColor: MaterialStateProperty.resolveWith<Color>((states) {
           if (states.contains(MaterialState.disabled)) {
             return AppColors.grayscale50;
@@ -90,18 +89,18 @@ class PrimaryTextButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         if (showLeftArrow)
-          Icon(
-            Icons.arrow_back_rounded,
-            color: textColor,
+          Image.asset(
+            'assets/icons/frame/24px/20_Chevron_left.png',
           ),
+        const SizedBox(width: 8), //Don't use MediaQuery Here
         Text(
           text,
           style: TextStyle(color: textColor),
         ),
+        const SizedBox(width: 8), //Don't use MediaQuery Here
         if (showRightArrow)
-          Icon(
-            Icons.arrow_forward_rounded,
-            color: textColor,
+          Image.asset(
+            'assets/icons/frame/24px/20_Chevron_right.png',
           ),
       ],
     );

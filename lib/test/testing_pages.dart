@@ -1,14 +1,8 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
-
-import '../src/widgets/lists/default_text/default_text_widget.dart';
-import '../src/widgets/lists/default_text/disabled_default_text_widget.dart';
-import '../src/widgets/lists/radio_text/disable_text_radio_widget.dart';
-import '../src/widgets/lists/radio_text/text_radio_widget.dart';
-import '../src/widgets/lists/checkbox_text/disabled_text_checkbox_widget.dart';
-import '../src/widgets/lists/checkbox_text/text_checkbox_widget.dart';
-import '../src/widgets/lists/toggle_text/disabled_text_toggle_widget.dart';
-import '../src/widgets/lists/toggle_text/text_toggle_widget.dart';
+import 'package:sulala_app/src/widgets/lists/table_lsit/table_clickable_link.dart';
+import 'package:sulala_app/src/widgets/lists/table_lsit/table_text.dart';
+import 'package:sulala_app/src/widgets/lists/table_lsit/table_textbutton.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -16,8 +10,6 @@ class ExamplePage extends StatefulWidget {
   @override
   State<ExamplePage> createState() => _ExamplePageState();
 }
-
-bool _isRowChecked = false;
 
 class _ExamplePageState extends State<ExamplePage> {
   @override
@@ -33,82 +25,25 @@ class _ExamplePageState extends State<ExamplePage> {
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.5,
+              height: MediaQuery.of(context).size.height * 0.2,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  DefaultTextWidget(
-                    textHead: 'Hello',
-                    onPressed: (isChecked) {
-                      setState(() {
-                        _isRowChecked = isChecked;
-                      });
-                      if (_isRowChecked) {
-                        // Do something when the row is checked
-                      } else {
-                        // Do something else when the row is unchecked
-                      }
+                  TableTextButton(
+                    textHead: 'Text Button',
+                    textButton: 'Button',
+                    onPressed: (bool isChecked) {
+                      print('Text Button Pressed');
                     },
                   ),
-                  TextCheckboxWidget(
-                    text: 'Text Checkbox Widget',
-                    checked: true,
-                    onChanged: (isActive) {
-                      // Do something when the radio button is toggled
-                      if (isActive) {
-                        // Handle the case when the radio button is active
-                        print('Box Checked is active');
-                      } else {
-                        // Handle the case when the radio button is not active
-                        print('Box Ckecked is not active');
-                      }
-                    },
+                  const TableText(
+                    text1: 'Text',
+                    text2: 'Text',
                   ),
-                  TextRadioWidget(
-                    text: 'Text Radio Widget',
-                    isActive:
-                        true, // Replace with the actual boolean value for the radio button state
-                    onChanged: (isActive) {
-                      // Do something when the radio button is toggled
-                      if (isActive) {
-                        // Handle the case when the radio button is active
-                        print('Radio button is active');
-                      } else {
-                        // Handle the case when the radio button is not active
-                        print('Radio button is not active');
-                      }
-                    },
-                  ),
-                  TextToggleWidget(
-                    text: 'Text Toggle Widget',
-                    isActive:
-                        true, // Replace with the actual boolean value for the radio button state
-                    onChanged: (isActive) {
-                      // Do something when the radio button is toggled
-                      if (isActive) {
-                        // Handle the case when the radio button is active
-                        print('Toggle button is active');
-                      } else {
-                        // Handle the case when the radio button is not active
-                        print('Toggle button is not active');
-                      }
-                    },
-                  ),
-                  const DisablesDefaultTextWidget(
-                    textHead: 'Hello',
-                    isChecked: true,
-                  ),
-                  const DisableTextRadioWidget(
-                    isActive: true,
-                    text: 'Text Radio Widget',
-                  ),
-                  const DisabledTextCheckboxWidget(
-                    text: 'Text Checkbox Widget',
-                    checked: true,
-                  ),
-                  const DisabledTextToggleWidget(
-                    text: 'Text Toggle Widget',
-                    isActive: true,
+                  const TableClickableText(
+                    text1: 'Clickable Text',
+                    urlText: 'Email@gmail.com',
+                    url: "https://www.royalbabycenter.com/",
                   ),
                 ],
               ),
