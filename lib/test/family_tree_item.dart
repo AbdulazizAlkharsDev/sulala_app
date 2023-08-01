@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../src/theme/colors/colors.dart';
 import '../src/theme/fonts/fonts.dart';
 
@@ -11,24 +10,29 @@ class FamilyTreeItem extends StatelessWidget {
   final String tag;
 
   const FamilyTreeItem({
-    super.key,
+    Key? key, // Add 'Key?' type to the key parameter
     this.imageUrl,
     required this.name,
     required this.sex,
     required this.tag,
     required this.id,
-  });
+  }) : super(key: key); // Call the super constructor with the provided key
 
   @override
   Widget build(BuildContext context) {
+    ImageProvider<Object>? getImage() {
+      if (imageUrl != null) {
+        return NetworkImage(imageUrl!);
+      } else {
+        return const AssetImage("assets/avatars/120px/Horse.png");
+      }
+    }
+
     return Column(
       children: [
         CircleAvatar(
           backgroundColor: Colors.transparent,
-          backgroundImage:
-              // imageUrl != null ? NetworkImage(imageUrl!) :
-              // NetworkImage(imageUrl!),
-              const AssetImage("assets/avatars/120px/Horse.png"),
+          backgroundImage: getImage(),
           radius: MediaQuery.of(context).size.width * 0.0875,
         ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.009),
@@ -44,7 +48,7 @@ class FamilyTreeItem extends StatelessWidget {
             SizedBox(width: MediaQuery.of(context).size.width * 0.01),
             sex.toLowerCase() != "male"
                 ? Image.asset("assets/icons/frame/24px/16_Gender_female.png")
-                : Image.asset("assets/icons/frame/24px/16_Gender_male.png")
+                : Image.asset("assets/icons/frame/24px/16_Gender_male.png"),
           ],
         ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.004),
@@ -65,4 +69,14 @@ class FamilyTreeItem extends StatelessWidget {
     );
   }
 }
-// 'assets/avatars/80px/Horse_80.png'
+
+
+// Example of use:
+
+// const FamilyTreeItem(
+//                     id: "12345",
+//                     name: "Harry",
+//                     sex: "Male",
+//                     tag: "Borrower",
+//                     imageUrl: null,
+//                   ),

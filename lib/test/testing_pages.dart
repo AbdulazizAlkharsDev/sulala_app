@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/widgets/other/information_block.dart';
 import 'package:sulala_app/test/family_tree_item.dart';
 
 class ExamplePage extends StatefulWidget {
@@ -21,21 +22,26 @@ class _ExamplePageState extends State<ExamplePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  height: MediaQuery.of(context).size.width * 0.5,
-                  child: const FamilyTreeItem(
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.5,
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  FamilyTreeItem(
                     id: "12345",
                     name: "Harry",
                     sex: "Male",
                     tag: "Borrower",
-                    imageUrl: "assets/avatars/120px/Horse.png",
+                    imageUrl: null,
                   ),
-                ),
-              ],
+                  InformationBlock(
+                    head1: "Head 1",
+                    head2: "Head 2",
+                    head3: "Head 3",
+                  ),
+                ],
+              ),
             ),
           ],
         ),
