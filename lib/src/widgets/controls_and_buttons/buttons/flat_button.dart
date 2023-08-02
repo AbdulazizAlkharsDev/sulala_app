@@ -41,7 +41,7 @@ class FlatButton extends StatelessWidget {
     if (status == FlatButtonStatus.loading) {
       return const SpinKitFadingCircle(
         color: AppColors.grayscale90,
-        size: 24,
+        size: 24, //Don't use MediaQuery here
       );
     } else {
       switch (position) {
@@ -53,7 +53,7 @@ class FlatButton extends StatelessWidget {
                 Icons.arrow_back_rounded,
                 color: _getArrowColor(status),
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 8), //Don't use MediaQuery here
               Text(
                 text,
                 style: TextStyle(
@@ -72,7 +72,7 @@ class FlatButton extends StatelessWidget {
                   color: _getTextColor(status),
                 ),
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 8), //Don't use MediaQuery here
               Icon(
                 Icons.arrow_forward_rounded,
                 color: _getArrowColor(status),

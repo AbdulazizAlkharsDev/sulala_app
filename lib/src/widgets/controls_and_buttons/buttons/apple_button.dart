@@ -15,20 +15,16 @@ class AppleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 343,
-      height: 52,
-      child: ElevatedButton(
-        onPressed: status == ButtonStatus.disabled ? null : onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: _getButtonColor(status),
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
-          ),
+    return ElevatedButton(
+      onPressed: status == ButtonStatus.disabled ? null : onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: _getButtonColor(status),
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
         ),
-        child: _buildButtonContent(),
       ),
+      child: _buildButtonContent(),
     );
   }
 
@@ -37,7 +33,7 @@ class AppleButton extends StatelessWidget {
       return const Center(
         child: SpinKitFadingCircle(
           color: AppColors.grayscale90,
-          size: 24,
+          size: 24, //Don't use MediaQuery here
         ),
       );
     } else {
@@ -51,7 +47,9 @@ class AppleButton extends StatelessWidget {
           ),
           Text(
             'Continue with Apple',
-            style: AppFonts.body1(color: _getTextColor(status)),
+            style: AppFonts.body1(
+              color: _getTextColor(status),
+            ),
           ),
           const SizedBox(width: 30),
         ],

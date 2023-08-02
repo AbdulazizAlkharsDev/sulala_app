@@ -8,7 +8,7 @@ class CardWidget extends StatelessWidget {
   final Color color;
   final String iconPath;
   final String title;
-  final String subtitle;
+
   final String buttonText;
   final VoidCallback onPressed;
 
@@ -17,74 +17,59 @@ class CardWidget extends StatelessWidget {
     required this.color,
     required this.iconPath,
     required this.title,
-    required this.subtitle,
     required this.buttonText,
     required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Card(
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14),
-        ),
-        color: color,
-        child: Container(
-          width: 165,
-          height: 208,
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CircleAvatar(
-                backgroundColor: Colors.white,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(
-                    iconPath,
-                    width: 40,
-                    height: 40,
-                  ),
-                ),
+    return Card(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(14),
+      ),
+      color: color,
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.44,
+        height: MediaQuery.of(context).size.height * 0.25,
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: MediaQuery.of(context).size.width * 0.0591,
+              child: Image.asset(
+                iconPath,
               ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      title,
-                      style: AppFonts.headline3(
-                        color: AppColors.grayscale100,
-                      ),
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    title,
+                    style: AppFonts.headline3(
+                      color: AppColors.grayscale100,
                     ),
-                    const SizedBox(height: 20),
-                    Text(
-                      subtitle,
-                      style: AppFonts.headline3(
-                        color: AppColors.grayscale100,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Center(
-                child: SizedBox(
-                  width: 133,
-                  height: 40,
-                  child: PrimaryButton(
-                    status: PrimaryButtonStatus.idle,
-                    text: buttonText,
-                    onPressed: onPressed,
                   ),
+                ],
+              ),
+            ),
+            Center(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.35,
+                height: MediaQuery.of(context).size.height * 0.05,
+                child: PrimaryButton(
+                  status: PrimaryButtonStatus.idle,
+                  text: buttonText,
+                  onPressed: onPressed,
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

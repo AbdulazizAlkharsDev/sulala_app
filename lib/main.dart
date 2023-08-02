@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar.dart';
 
 void main() {
@@ -10,9 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Sulala App',
-      home: MyAppHomePage(),
+      home: Builder(
+        builder: (context) {
+          AppFonts.setWidthFactor(context);
+          return const MyAppHomePage();
+        },
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
