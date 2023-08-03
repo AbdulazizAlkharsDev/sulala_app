@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/inputs/search_bars/search_bar.dart';
+import 'package:sulala_app/src/widgets/lists/animal_list/animal_list_widget.dart';
 import 'package:sulala_app/src/widgets/lists/staff_text/staff_list_widget.dart';
 import 'package:sulala_app/test/search_details.dart';
 
@@ -178,6 +179,49 @@ class _SearchPageState extends State<SearchPage> {
                         textBody: option['subtitle'],
                         avatarRadius: MediaQuery.of(context).size.width * 0.064,
                         onPressed: () => navigateToDetailsPage(option),
+                      ),
+                    );
+                  }
+                },
+              ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+            Padding(
+              padding: EdgeInsets.fromLTRB(
+                  MediaQuery.of(context).size.width * 0.042,
+                  MediaQuery.of(context).size.width * 0.01,
+                  MediaQuery.of(context).size.width * 0.042,
+                  MediaQuery.of(context).size.width * 0.01),
+              child: Text(
+                'Animals',
+                style: AppFonts.caption1(color: AppColors.grayscale80),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.167,
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: 1, //change it later please
+                itemBuilder: (context, index) {
+                  //final option = filteredOptions[index];
+
+                  if (filteredOptions.isEmpty) {
+                    return Center(
+                      child: Text(
+                        'No Farmers Found',
+                        style: AppFonts.body1(color: AppColors.grayscale80),
+                      ),
+                    );
+                  } else {
+                    return Padding(
+                      padding: EdgeInsets.all(
+                          MediaQuery.of(context).size.width * 0.026),
+                      child: AnimalListWidget(
+                        avatarRadius: MediaQuery.of(context).size.width * 0.064,
+                        imagePath: 'assets/avatars/120px/Horse_avatar.png',
+                        textHead: 'Horse',
+                        textBody: '',
+                        onPressed: () {},
                       ),
                     );
                   }
