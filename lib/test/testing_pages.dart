@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/other/information_block.dart';
+import 'package:sulala_app/src/widgets/other/three_information_block.dart';
 import 'package:sulala_app/src/widgets/other/family_tree_item.dart';
 
 class ExamplePage extends StatefulWidget {
@@ -35,7 +35,7 @@ class _ExamplePageState extends State<ExamplePage> {
                     tag: "Borrower",
                     imageUrl: null,
                   ),
-                  InformationBlock(
+                  ThreeInformationBlock(
                     head1: "Head 1",
                     head2: "Head 2",
                     head3: "Head 3",

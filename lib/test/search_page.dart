@@ -40,7 +40,7 @@ class _SearchPageState extends State<SearchPage> {
         'phoneNumber': '+1 234 567 890',
       },
       {
-        'imagePath': 'assets/avatars/120px/Staff2.png',
+        'imagePath': 'assets/avatars/120px/Staff3.png',
         'title': 'Rebecca Wilson',
         'subtitle': 'Helper',
         'email': 'paul@example.com',
@@ -54,7 +54,7 @@ class _SearchPageState extends State<SearchPage> {
         'phoneNumber': '+1 234 567 890',
       },
       {
-        'imagePath': 'assets/avatars/120px/Staff2.png',
+        'imagePath': 'assets/avatars/120px/Staff3.png',
         'title': 'Scott Simmons',
         'subtitle': 'Worker',
         'email': 'paul@example.com',

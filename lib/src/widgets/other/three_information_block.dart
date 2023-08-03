@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
-class InformationBlock extends StatelessWidget {
+class ThreeInformationBlock extends StatelessWidget {
   final String head1;
 
   final String head2;
 
   final String head3;
 
-  const InformationBlock({
+  const ThreeInformationBlock({
     required this.head1,
     required this.head2,
     required this.head3,

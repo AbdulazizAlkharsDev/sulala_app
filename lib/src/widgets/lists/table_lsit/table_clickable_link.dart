@@ -8,12 +8,14 @@ class TableClickableText extends StatefulWidget {
   final String text1;
   final String urlText;
   final String url;
+  final String iconPath;
 
   const TableClickableText({
     Key? key,
     required this.text1,
     required this.urlText,
     required this.url,
+    required this.iconPath,
   }) : super(key: key);
 
   @override
@@ -55,7 +57,7 @@ class _TableClickableTextState extends State<TableClickableText> {
             Row(
               children: [
                 Image.asset(
-                  'assets/icons/frame/24px/16_Mail.png',
+                  widget.iconPath,
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.0194),
                 GestureDetector(

@@ -42,11 +42,8 @@ class IconSecondaryButton extends StatelessWidget {
       return Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.arrow_back_rounded,
-            color: _getArrowColor(status),
-          ),
-          const SizedBox(width: 8),
+          Image.asset(iconPath),
+          const SizedBox(width: 10),
           Text(
             text,
             style: AppFonts.body1(color: _getTextColor(status)),
@@ -69,19 +66,6 @@ Color _getButtonColor(SecondaryButtonStatus status) {
       return AppColors.grayscale20;
     default:
       return AppColors.grayscale10;
-  }
-}
-
-Color _getArrowColor(SecondaryButtonStatus status) {
-  switch (status) {
-    case SecondaryButtonStatus.idle:
-    case SecondaryButtonStatus.loading:
-    case SecondaryButtonStatus.pressed:
-      return AppColors.grayscale90;
-    case SecondaryButtonStatus.disabled:
-      return AppColors.grayscale50;
-    default:
-      return AppColors.grayscale90;
   }
 }
 
