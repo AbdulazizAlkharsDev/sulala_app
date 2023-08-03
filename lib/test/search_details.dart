@@ -96,7 +96,7 @@ class _SearchDetails extends State<SearchDetails> {
                 children: [
                   Flexible(
                     child: SizedBox(
-                      // width: MediaQuery.of(context).size.width * 0.42,
+                      width: MediaQuery.of(context).size.width * 0.45,
                       height: MediaQuery.of(context).size.height * 0.05,
                       child: IconSecondaryButton(
                         iconPath: 'assets/icons/frame/24px/20_Status-farm.png',
@@ -379,6 +379,7 @@ class _SearchDetails extends State<SearchDetails> {
                     child: SizedBox(
                       // width: MediaQuery.of(context).size.width * 0.42,
                       height: MediaQuery.of(context).size.height * 0.05,
+                      width: MediaQuery.of(context).size.width * 0.45,
                       child: IconSecondaryButton(
                         iconPath:
                             'assets/icons/frame/24px/Outlined_Cow_green_icon.png',
