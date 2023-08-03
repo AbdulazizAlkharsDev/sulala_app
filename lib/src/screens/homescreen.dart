@@ -18,113 +18,123 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Stack(
-        children: [
-          // Background Image (Bottom Sheet)
-          Positioned(
-            bottom: MediaQuery.of(context).size.height * 0.075,
-            left: MediaQuery.of(context).size.width * 0.6,
-            right: MediaQuery.of(context).size.width * 0.05,
-            child: Image.asset(
-              'assets/illustrations/cow_eating.png',
-              fit: BoxFit.fill,
-            ),
-          ),
-          // Content
-          Scaffold(
-            backgroundColor: Colors.transparent,
-            body: Padding(
-              padding:
-                  EdgeInsets.all(MediaQuery.of(context).size.width * 0.0426),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height * 0.867,
+            child: Stack(
+              children: [
+                // Background Image (Bottom Sheet)
+                Positioned(
+                  bottom: MediaQuery.of(context).size.height * 0.07,
+                  left: MediaQuery.of(context).size.width * 0.6,
+                  right: MediaQuery.of(context).size.width * 0.05,
+                  child: Image.asset(
+                    'assets/illustrations/cow_eating.png',
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                // Content
+                Padding(
+                  padding: EdgeInsets.all(
+                      MediaQuery.of(context).size.width * 0.0426),
+                  child: Column(
                     children: [
-                      Text(
-                        'Welcome',
-                        style: AppFonts.title3(color: AppColors.grayscale100),
-                      ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CircleIconButton(
-                            icon: Icons.search,
-                            onPressed: () {
-                              // Handle search button press
-                            },
+                          Text(
+                            'Welcome',
+                            style:
+                                AppFonts.title3(color: AppColors.grayscale100),
                           ),
-                          SizedBox(
-                              width:
-                                  MediaQuery.of(context).size.width * 0.0097),
-                          CircleIconButton(
-                            icon: Icons.notifications_outlined,
-                            onPressed: () {
-                              // Handle notifications button press
-                            },
+                          Row(
+                            children: [
+                              CircleIconButton(
+                                icon: Icons.search,
+                                onPressed: () {
+                                  Navigator.of(context).pushNamed('/search');
+                                },
+                              ),
+                              SizedBox(
+                                  width: MediaQuery.of(context).size.width *
+                                      0.0097),
+                              CircleIconButton(
+                                icon: Icons.notifications_outlined,
+                                onPressed: () {
+                                  // Handle notifications button press
+                                },
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.0168),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: CardWidget(
-                          color: const Color.fromRGBO(225, 236, 185, 1),
-                          iconPath: 'assets/icons/frame/24px/Cow_Icon.png',
-                          title: 'Searching\nfor animals?',
-                          buttonText: 'Find animals',
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.0168),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CardWidget(
+                              color: const Color.fromRGBO(225, 236, 185, 1),
+                              iconPath: 'assets/icons/frame/24px/Cow_Icon.png',
+                              title: 'Searching\nfor animals?',
+                              buttonText: 'Find animals',
+                              onPressed: () {
+                                // Handle button press
+                                // print('Find animals');
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.015),
+                          Expanded(
+                            child: CardWidget(
+                              color: const Color.fromRGBO(246, 239, 205, 1),
+                              iconPath:
+                                  'assets/icons/frame/24px/Farm_house.png',
+                              title: 'Searching \nfor farm?',
+                              buttonText: 'Find farms',
+                              onPressed: () {
+                                // Handle button press
+                                // print('Find farms');
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.135),
+                      const TitleText(
+                          text: 'Want to start your farm\nright now and join?'),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.03),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.06,
+                        width: MediaQuery.of(context).size.width * 0.288,
+                        child: PrimaryButton(
+                          text: 'Join now',
                           onPressed: () {
-                            // Handle button press
-                            // print('Find animals');
+                            // print("Join now");
                           },
+                          status: PrimaryButtonStatus.idle,
                         ),
                       ),
                       SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.015),
-                      Expanded(
-                        child: CardWidget(
-                          color: const Color.fromRGBO(246, 239, 205, 1),
-                          iconPath: 'assets/icons/frame/24px/Farm_house.png',
-                          title: 'Searching \nfor farm?',
-                          buttonText: 'Find farms',
-                          onPressed: () {
-                            // Handle button press
-                            // print('Find farms');
-                          },
-                        ),
+                          height: MediaQuery.of(context).size.height * 0.011),
+                      PrimaryTextButton(
+                        status: TextStatus.idle,
+                        text: 'Sign in',
+                        onPressed: () {
+                          // print("Sign In");
+                        },
                       ),
                     ],
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.135),
-                  const TitleText(
-                      text: 'Want to start your farm\nright now and join?'),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.06,
-                    width: MediaQuery.of(context).size.width * 0.288,
-                    child: PrimaryButton(
-                      text: 'Join now',
-                      onPressed: () {
-                        // print("Join now");
-                      },
-                      status: PrimaryButtonStatus.idle,
-                    ),
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.011),
-                  PrimaryTextButton(
-                    status: TextStatus.idle,
-                    text: 'Sign in',
-                    onPressed: () {
-                      // print("Sign In");
-                    },
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }

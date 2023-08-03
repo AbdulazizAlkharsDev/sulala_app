@@ -5,11 +5,13 @@ import 'package:sulala_app/src/theme/fonts/fonts.dart';
 class PrimarySearchBar extends StatefulWidget {
   final ValueChanged<String> onChange;
   final String hintText;
+  final TextEditingController? controller;
 
   const PrimarySearchBar({
     Key? key,
     required this.onChange,
     required this.hintText,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -17,7 +19,7 @@ class PrimarySearchBar extends StatefulWidget {
 }
 
 class _PrimarySearchBarState extends State<PrimarySearchBar> {
-  final TextEditingController _textEditingController = TextEditingController();
+  late TextEditingController _textEditingController;
   late FocusNode _focusNode;
   bool isFocused = false;
 
@@ -26,6 +28,10 @@ class _PrimarySearchBarState extends State<PrimarySearchBar> {
     super.initState();
     _focusNode = FocusNode();
     _focusNode.addListener(_onFocusChange);
+    _textEditingController = widget.controller ?? TextEditingController();
+    if (widget.controller != null) {
+      _textEditingController.addListener(_onControllerChange);
+    }
   }
 
   @override
@@ -35,8 +41,17 @@ class _PrimarySearchBarState extends State<PrimarySearchBar> {
     super.dispose();
   }
 
+  void _onControllerChange() {
+    widget.onChange(_textEditingController.text);
+    setState(() {});
+  }
+
   void _onChanged(String value) {
-    widget.onChange(value);
+    if (widget.controller == null) {
+      widget.onChange(value);
+    } else {
+      widget.controller!.text = value;
+    }
     setState(() {});
   }
 
@@ -62,36 +77,42 @@ class _PrimarySearchBarState extends State<PrimarySearchBar> {
           width: 1.0,
         ),
       ),
-      child: TextField(
-        controller: _textEditingController,
-        onChanged: _onChanged,
-        focusNode: _focusNode,
-        onTap: () {
-          _focusNode.requestFocus();
-        },
-        onEditingComplete: () {
-          _focusNode.unfocus();
-        },
-        decoration: InputDecoration(
-          hintText: widget.hintText,
-          hintStyle: AppFonts.body2(
-            color: hintTextColor,
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              controller: _textEditingController,
+              onChanged: _onChanged,
+              focusNode: _focusNode,
+              onTap: () {
+                _focusNode.requestFocus();
+              },
+              onEditingComplete: () {
+                _focusNode.unfocus();
+              },
+              decoration: InputDecoration(
+                hintText: widget.hintText,
+                hintStyle: AppFonts.body2(
+                  color: hintTextColor,
+                ),
+                border: InputBorder.none,
+                prefixIcon: const Icon(
+                  Icons.search,
+                  color: AppColors.grayscale90,
+                ),
+              ),
+              style: AppFonts.body2(
+                color: AppColors.grayscale90,
+              ),
+              textAlignVertical: TextAlignVertical.center,
+            ),
           ),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-          border: InputBorder.none,
-          prefixIcon: const Icon(
-            Icons.search,
-            color: AppColors.grayscale90,
-          ),
-        ),
-        style: AppFonts.body2(
-          color: AppColors.grayscale90,
-        ),
-        textAlignVertical: TextAlignVertical.center,
+        ],
       ),
     );
   }
 }
+
 
 
 

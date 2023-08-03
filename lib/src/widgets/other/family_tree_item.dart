@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../src/theme/colors/colors.dart';
-import '../src/theme/fonts/fonts.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
 
 class FamilyTreeItem extends StatelessWidget {
   final String? imageUrl;

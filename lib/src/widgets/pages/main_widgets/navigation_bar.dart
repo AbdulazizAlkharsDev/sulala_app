@@ -26,62 +26,44 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
         index: _currentIndex,
         children: _pages,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: <BottomNavigationBarItem>[
-          const BottomNavigationBarItem(
-            icon: Padding(
-              padding: EdgeInsets.only(bottom: 10),
-              child: Icon(Icons.home_outlined),
+      bottomNavigationBar: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.074,
+        child: BottomNavigationBar(
+          iconSize: MediaQuery.of(context).size.width * 0.064,
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          items: <BottomNavigationBarItem>[
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.home_outlined),
+              activeIcon: Icon(Icons.home),
+              label: 'Home',
             ),
-            activeIcon: Padding(
-              padding: EdgeInsets.only(bottom: 10),
-              child: Icon(Icons.home),
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Padding(
-              padding: const EdgeInsets.only(bottom: 7),
-              child: Column(
-                children: [
-                  Image.asset("assets/icons/frame/24px/Outlined_Cow_Icon.png"),
-                  const SizedBox(height: 4),
-                ],
+            BottomNavigationBarItem(
+              icon: Image.asset(
+                "assets/icons/frame/24px/Outlined_Cow_Icon.png",
+                scale: 24 / (MediaQuery.of(context).size.width * 0.064),
               ),
-            ),
-            activeIcon: Padding(
-              padding: const EdgeInsets.only(bottom: 7),
-              child: Column(
-                children: [
-                  Image.asset("assets/icons/frame/24px/Filled_Cow_Icon.png"),
-                  const SizedBox(height: 4),
-                ],
+              activeIcon: Image.asset(
+                "assets/icons/frame/24px/Filled_Cow_Icon.png",
+                scale: 24 / (MediaQuery.of(context).size.width * 0.064),
               ),
+              label: 'Animals',
             ),
-            label: 'Farms',
-          ),
-          const BottomNavigationBarItem(
-            icon: Padding(
-              padding: EdgeInsets.only(bottom: 12),
-              child: Icon(Icons.account_circle_outlined),
-            ),
-            activeIcon: Padding(
-              padding: EdgeInsets.only(bottom: 12),
-              child: Icon(Icons.account_circle),
-            ),
-            label: 'Profile',
-          )
-        ],
-        selectedItemColor: AppColors.primary20,
-        unselectedItemColor: AppColors.grayscale50,
-        selectedLabelStyle: AppFonts.caption3(color: AppColors.primary20),
-        unselectedLabelStyle: AppFonts.caption3(color: AppColors.grayscale50),
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle_outlined),
+              activeIcon: Icon(Icons.account_circle),
+              label: 'Profile',
+            )
+          ],
+          selectedItemColor: AppColors.primary20,
+          unselectedItemColor: AppColors.grayscale50,
+          selectedLabelStyle: AppFonts.caption3(color: AppColors.primary20),
+          unselectedLabelStyle: AppFonts.caption3(color: AppColors.grayscale50),
+        ),
       ),
     );
   }

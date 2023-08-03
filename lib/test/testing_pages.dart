@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/widgets/other/information_block.dart';
-import 'package:sulala_app/test/family_tree_item.dart';
+import 'package:sulala_app/src/widgets/other/family_tree_item.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
