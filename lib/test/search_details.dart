@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/theme/colors/colors.dart';
+import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
 class SearchDetails extends StatefulWidget {
   final String imagePath;
@@ -7,7 +9,8 @@ class SearchDetails extends StatefulWidget {
   final String email;
   final String phoneNumber;
 
-  const SearchDetails({super.key, 
+  const SearchDetails({
+    super.key,
     required this.imagePath,
     required this.title,
     required this.subtitle,
@@ -33,56 +36,59 @@ class _SearchDetails extends State<SearchDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         leading: IconButton(
+          color: AppColors.grayscale90,
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Center(
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(
+          MediaQuery.of(context).size.width * 0.042,
+          0,
+          MediaQuery.of(context).size.width * 0.042,
+          0,
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.029,
+              ),
+              Center(
                 child: CircleAvatar(
-                  radius: 70,
+                  backgroundColor: Colors.transparent,
+                  radius: MediaQuery.of(context).size.width * 0.16,
                   backgroundImage: AssetImage(widget.imagePath),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.019,
+              ),
+              Text(
                 widget.title,
-                style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppFonts.title4(color: AppColors.grayscale90),
               ),
-            ),
-            Text(
-              widget.email,
-              style: const TextStyle(fontSize: 18, color: Colors.grey),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
-              child: Text(
+              Text(
+                widget.email,
+                style: AppFonts.body2(color: AppColors.primary30),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.019,
+              ),
+              Text(
                 'House Farm',
-                style: TextStyle(
-                  fontSize: 18,
-                ),
+                style: AppFonts.body2(color: AppColors.grayscale70),
               ),
-            ),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.029,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Flexible(
                     child: ElevatedButton(
@@ -390,148 +396,149 @@ class _SearchDetails extends State<SearchDetails> {
                   ),
                 ],
               ),
-            ),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(8),
-              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 242, 240, 218),
-                borderRadius: BorderRadius.circular(10),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(8),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 242, 240, 218),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          '24',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'Animals',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          '4',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'Collaborations',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    children: [
-                      Text(
-                        '24',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                        ),
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Animals',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ],
+                  const SizedBox(
+                    height: 15,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        '4',
-                        style: TextStyle(
-                          fontSize: 14,
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Text(
+                      'Contact Details',
+                      style: TextStyle(
+                          fontSize: 24,
                           color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  ListTile(
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'Phone Number',
                         ),
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Collaborations',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.phone_outlined,
+                              color: Color.fromARGB(255, 36, 86, 38),
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                widget.phoneNumber,
+                                style: const TextStyle(
+                                  color: Color.fromARGB(255, 36, 86, 38),
+                                  fontSize: 16,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
+                  ),
+                  ListTile(
+                    title: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'Email Address',
+                        ),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.email_outlined,
+                              color: Color.fromARGB(255, 36, 86, 38),
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                widget.email,
+                                style: const TextStyle(
+                                  color: Color.fromARGB(255, 36, 86, 38),
+                                  fontSize: 16,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  const SizedBox(
+                    height: 15,
                   ),
                 ],
               ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 15,
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Text(
-                    'Contact Details',
-                    style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                ListTile(
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Phone Number',
-                      ),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.phone_outlined,
-                            color: Color.fromARGB(255, 36, 86, 38),
-                          ),
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              widget.phoneNumber,
-                              style: const TextStyle(
-                                color: Color.fromARGB(255, 36, 86, 38),
-                                fontSize: 16,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                ListTile(
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Email Address',
-                      ),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.email_outlined,
-                            color: Color.fromARGB(255, 36, 86, 38),
-                          ),
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              widget.email,
-                              style: const TextStyle(
-                                color: Color.fromARGB(255, 36, 86, 38),
-                                fontSize: 16,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: Padding(

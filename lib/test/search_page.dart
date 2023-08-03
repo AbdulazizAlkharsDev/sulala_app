@@ -28,7 +28,7 @@ class _SearchPageState extends State<SearchPage> {
 
   Future<void> fetchDataFromBackend() async {
     // Simulate fetching data from the backend
-    await Future.delayed(const Duration(seconds: 2));
+    // await Future.delayed(const Duration(seconds: 2));
 
     // Update the options list with the fetched data
     List<Map<String, dynamic>> newData = [
