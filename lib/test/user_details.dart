@@ -4,16 +4,16 @@ import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/icon_secondary_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/src/widgets/lists/table_lsit/table_clickable_link.dart';
-import 'package:sulala_app/test/two_information_block.dart';
+import 'package:sulala_app/src/widgets/other/two_information_block.dart';
 
-class SearchDetails extends StatefulWidget {
+class UserDetails extends StatefulWidget {
   final String imagePath;
   final String title;
   final String subtitle;
   final String email;
   final String phoneNumber;
 
-  const SearchDetails({
+  const UserDetails({
     super.key,
     required this.imagePath,
     required this.title,
@@ -23,10 +23,10 @@ class SearchDetails extends StatefulWidget {
   });
 
   @override
-  State<SearchDetails> createState() => _SearchDetails();
+  State<UserDetails> createState() => _SearchDetails();
 }
 
-class _SearchDetails extends State<SearchDetails> {
+class _SearchDetails extends State<UserDetails> {
   bool isHelperSelected = false;
   bool isWorkerSelected = false;
   bool isViewOnlySelected = true;
