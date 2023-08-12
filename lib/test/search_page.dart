@@ -6,7 +6,6 @@ import 'package:sulala_app/src/widgets/lists/animal_list/animal_list_widget.dart
 import 'package:sulala_app/src/widgets/lists/staff_text/staff_list_widget.dart';
 import 'package:sulala_app/test/animal_details.dart';
 import 'package:sulala_app/test/user_details.dart';
-
 import '../src/widgets/controls_and_buttons/icon_buttons/secondary_icon_button.dart';
 
 class SearchPage extends StatefulWidget {

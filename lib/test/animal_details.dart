@@ -5,20 +5,23 @@ class AnimalDetails extends StatefulWidget {
   final String title;
   final String geninfo;
 
-  AnimalDetails(
-      {required this.imagePath, required this.title, required this.geninfo});
+  const AnimalDetails({super.key, 
+    required this.imagePath,
+    required this.title,
+    required this.geninfo,
+  });
 
   @override
-  _SearchAnimalDetails createState() => _SearchAnimalDetails();
+  State<AnimalDetails> createState() => _AnimalDetailsState();
 }
 
-class _SearchAnimalDetails extends State<AnimalDetails> {
+class _AnimalDetailsState extends State<AnimalDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightGreen,
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -62,96 +65,113 @@ class _SearchAnimalDetails extends State<AnimalDetails> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          margin: const EdgeInsets.only(top: 100),
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30),
-              topRight: Radius.circular(30),
+      body: Stack(
+        children: [
+          Align(
+            alignment: Alignment.topCenter,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: Image.asset(
+                'assets/graphic/Animal_p.png',
+                fit: BoxFit.fitWidth,
+              ),
             ),
           ),
-          child: Column(
-            children: [
-              const SizedBox(height: 20),
-              Align(
-                alignment: Alignment.topCenter,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    FractionalTranslation(
-                      translation: const Offset(0.0, -0.6),
-                      child: CircleAvatar(
-                        radius: 70,
-                        backgroundImage: AssetImage(widget.imagePath),
-                      ),
-                    ),
-                  ],
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.228,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
                 ),
               ),
-              Transform.translate(
-                offset: const Offset(
-                    0.0, -60.0), // Adjust the Y offset to move the text up
-                child: Column(
-                  children: [
-                    Text(
-                      widget.title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+              child: Column(
+                children: [
+                  // const SizedBox(height: 0),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Stack(
+                      alignment: Alignment.center,
                       children: [
-                        _buildInfoBox('Mammal'),
-                        const SizedBox(width: 8),
-                        _buildInfoBox('Herbivore'),
-                        const SizedBox(width: 8),
+                        FractionalTranslation(
+                          translation: const Offset(0.0, -0.5),
+                          child: CircleAvatar(
+                            radius: 70,
+                            backgroundImage: AssetImage(widget.imagePath),
+                          ),
+                        ),
                       ],
                     ),
-                    SizedBox(height: 25),
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'General Information',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
+                  ),
+                  Transform.translate(
+                    offset: const Offset(
+                        0.0, -60.0), // Adjust the Y offset to move the text up
+                    child: Column(
+                      children: [
+                        Text(
+                          widget.title,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                            color: Colors.black,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            _buildInfoBox('Mammal'),
+                            const SizedBox(width: 8),
+                            _buildInfoBox('Herbivore'),
+                            const SizedBox(width: 8),
+                          ],
+                        ),
+                        SizedBox(height: 25),
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'General Information',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 25,
+                                  ),
+                                ),
+                                SizedBox(height: 25),
+                                Text(
+                                  widget.geninfo,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                Text(
+                                  'The horse is a domesticated to have been widespread by 3000BC',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          SizedBox(height: 25),
-                          Text(
-                            widget.geninfo,
-                            style: TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                          Text(
-                            'The horse is a domesticated, one-toed, hoofed mammal. It belongs to the taxonomic family Equidae and is one of two extant subspecies of Equus ferus. The horse has evolved over the past 45 to 55 million years from a small multi-toed creature, close to Eohippus, into the large, single-toed animal of today. Humans began domesticating horses around 4000 BCE, and their domestication is believed to have been widespread by 3000 BC',
-                            style: TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-
-              // Tab Bar
-            ],
+            ),
           ),
-        ),
+        ],
       ),
       floatingActionButton: ElevatedButton(
         style: ElevatedButton.styleFrom(
@@ -176,23 +196,23 @@ class _SearchAnimalDetails extends State<AnimalDetails> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
-}
 
-Widget _buildInfoBox(String label) {
-  return Container(
-    width: 100,
-    height: 40,
-    decoration: BoxDecoration(
-      color: const Color.fromARGB(255, 255, 242, 122),
-      borderRadius: BorderRadius.circular(50),
-    ),
-    child: Center(
-      child: Text(
-        label,
-        style: const TextStyle(
-          fontSize: 14,
+  Widget _buildInfoBox(String label) {
+    return Container(
+      width: 100,
+      height: 40,
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 255, 242, 122),
+        borderRadius: BorderRadius.circular(50),
+      ),
+      child: Center(
+        child: Text(
+          label,
+          style: const TextStyle(
+            fontSize: 14,
+          ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
