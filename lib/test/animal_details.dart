@@ -5,7 +5,8 @@ class AnimalDetails extends StatefulWidget {
   final String title;
   final String geninfo;
 
-  const AnimalDetails({super.key, 
+  const AnimalDetails({
+    super.key,
     required this.imagePath,
     required this.title,
     required this.geninfo,
@@ -134,33 +135,30 @@ class _AnimalDetailsState extends State<AnimalDetails> {
                           ],
                         ),
                         SizedBox(height: 25),
-                        Padding(
-                          padding: const EdgeInsets.all(12.0),
+                        SizedBox(
+                          height: 400,
                           child: SingleChildScrollView(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'General Information',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 25,
+                            child: Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'General Information',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 25,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 25),
-                                Text(
-                                  widget.geninfo,
-                                  style: TextStyle(
-                                    fontSize: 16,
+                                  SizedBox(height: 25),
+                                  Text(
+                                    widget.geninfo + widget.geninfo,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  'The horse is a domesticated to have been widespread by 3000BC',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
