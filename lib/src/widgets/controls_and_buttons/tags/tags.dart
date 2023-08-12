@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import '../../../theme/colors/colors.dart';
 
 class Tags extends StatefulWidget {
   final String text;
-  final IconData icon;
+  final IconData? icon;
   final VoidCallback? onPress;
   final TagStatus status;
 
   const Tags({
     Key? key,
     required this.text,
-    required this.icon,
+    this.icon,
     this.onPress,
     this.status = TagStatus.notActive,
   }) : super(key: key);
@@ -44,37 +45,33 @@ class _TagsState extends State<Tags> {
         break;
     }
 
-    return SizedBox(
-      width: 87,
-      height: 36,
-      child: ElevatedButton(
-        onPressed: widget.onPress,
-        style: ElevatedButton.styleFrom(
-          foregroundColor: textColor,
-          backgroundColor: backgroundColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
-          ),
-          elevation: 0,
+    return ElevatedButton(
+      onPressed: widget.onPress,
+      style: ElevatedButton.styleFrom(
+        foregroundColor: textColor,
+        backgroundColor: backgroundColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              widget.icon,
-              color: iconColor,
-              size: 18,
+        elevation: 0,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (widget.icon != null)
+            Row(
+              children: [
+                Icon(
+                  widget.icon,
+                  color: iconColor,
+                  size: MediaQuery.of(context).size.width * 0.0533,
+                ),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+              ],
             ),
-            const SizedBox(width: 4),
-            Text(
-              widget.text,
-              style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.normal,
-              ),
-            ),
-          ],
-        ),
+          Text(widget.text,
+              style: AppFonts.body2(color: AppColors.grayscale90)),
+        ],
       ),
     );
   }
@@ -88,30 +85,30 @@ enum TagStatus {
 
 
 //Example of use:
-//            Tags(
-//               text: 'Tag 1',
-//               icon: Icons.ac_unit,
-//               onPress: () {
-//                 // Handle tag click
-//               },
-//               status: TagStatus.active,
-//             ),
-//             Tags(
-//               text: 'Tag 1',
-//               icon: Icons.ac_unit,
-//               onPress: () {
-//                 // Handle tag click
-//               },
-//               status: TagStatus.notActive,
-//             ),
-//             Tags(
-//               text: 'Tag 1',
-//               icon: Icons.ac_unit,
-//               onPress: () {
-//                 // Handle tag click
-//               },
-//               status: TagStatus.disabled,
-//             ),
-//
-//
+          //  Tags(
+          //     text: 'Tag 1',
+          //     icon: Icons.ac_unit,
+          //     onPress: () {
+          //       // Handle tag click
+          //     },
+          //     status: TagStatus.active,
+          //   ),
+          //   Tags(
+          //     text: 'Tag 1',
+          //     icon: Icons.ac_unit,
+          //     onPress: () {
+          //       // Handle tag click
+          //     },
+          //     status: TagStatus.notActive,
+          //   ),
+          //   Tags(
+          //     text: 'Tag 1',
+          //     icon: Icons.ac_unit,
+          //     onPress: () {
+          //       // Handle tag click
+          //     },
+          //     status: TagStatus.disabled,
+          //   ),
+
+
 //You can also pass images instead of icons.

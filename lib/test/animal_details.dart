@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/theme/colors/colors.dart';
+import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/tags/tags.dart';
 
 class AnimalDetails extends StatefulWidget {
   final String imagePath;
@@ -6,11 +10,11 @@ class AnimalDetails extends StatefulWidget {
   final String geninfo;
 
   const AnimalDetails({
-    super.key,
+    Key? key,
     required this.imagePath,
     required this.title,
     required this.geninfo,
-  });
+  }) : super(key: key);
 
   @override
   State<AnimalDetails> createState() => _AnimalDetailsState();
@@ -19,33 +23,13 @@ class AnimalDetails extends StatefulWidget {
 class _AnimalDetailsState extends State<AnimalDetails> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.white,
-            ),
-            child: IconButton(
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-                // Handle back button press
-                // Add your code here
-              },
-            ),
-          ),
-        ),
-        actions: [
-          Padding(
+    return SafeArea(
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
               decoration: const BoxDecoration(
@@ -54,162 +38,151 @@ class _AnimalDetailsState extends State<AnimalDetails> {
               ),
               child: IconButton(
                 icon: const Icon(
-                  Icons.edit,
+                  Icons.arrow_back,
                   color: Colors.black,
                 ),
                 onPressed: () {
-                  // Handle edit button press
-                  // Add your code here
+                  Navigator.pop(context);
                 },
               ),
             ),
           ),
-        ],
-      ),
-      body: Stack(
-        children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Image.asset(
-                'assets/graphic/Animal_p.png',
-                fit: BoxFit.fitWidth,
-              ),
-            ),
-          ),
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.228,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
+        ),
+        body: Stack(
+          children: [
+            Align(
+              alignment: Alignment.topCenter,
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Image.asset(
+                  'assets/graphic/Animal_p.png',
+                  fit: BoxFit.fitWidth,
                 ),
               ),
-              child: Column(
-                children: [
-                  // const SizedBox(height: 0),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        FractionalTranslation(
-                          translation: const Offset(0.0, -0.5),
-                          child: CircleAvatar(
-                            radius: 70,
-                            backgroundImage: AssetImage(widget.imagePath),
-                          ),
-                        ),
-                      ],
-                    ),
+            ),
+            Positioned(
+              top: MediaQuery.of(context).size.height * 0.228,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(
+                        MediaQuery.of(context).size.width * 0.085),
+                    topRight: Radius.circular(
+                        MediaQuery.of(context).size.width * 0.085),
                   ),
-                  Transform.translate(
-                    offset: const Offset(
-                        0.0, -60.0), // Adjust the Y offset to move the text up
-                    child: Column(
-                      children: [
-                        Text(
-                          widget.title,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25,
-                            color: Colors.black,
+                ),
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          FractionalTranslation(
+                            translation: const Offset(0.0, -0.5),
+                            child: CircleAvatar(
+                              radius: MediaQuery.of(context).size.width * 0.16,
+                              backgroundImage: AssetImage(widget.imagePath),
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            _buildInfoBox('Mammal'),
-                            const SizedBox(width: 8),
-                            _buildInfoBox('Herbivore'),
-                            const SizedBox(width: 8),
-                          ],
-                        ),
-                        SizedBox(height: 25),
-                        SizedBox(
-                          height: 400,
-                          child: SingleChildScrollView(
-                            child: Padding(
-                              padding: const EdgeInsets.all(12.0),
+                        ],
+                      ),
+                    ),
+                    Transform.translate(
+                      offset: Offset(
+                          0.0, -MediaQuery.of(context).size.height * 0.07),
+                      child: Column(
+                        children: [
+                          Text(
+                            widget.title,
+                            style:
+                                AppFonts.title4(color: AppColors.grayscale90),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.02,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Tags(
+                                text: 'Mammal',
+                                icon: null,
+                                onPress: () {
+                                  // Handle tag click
+                                },
+                                status: TagStatus.active,
+                              ),
+                              SizedBox(
+                                width:
+                                    MediaQuery.of(context).size.width * 0.021,
+                              ),
+                              Tags(
+                                text: 'Herbivore',
+                                icon: null,
+                                onPress: () {
+                                  // Handle tag click
+                                },
+                                status: TagStatus.active,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.03,
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.42,
+                            child: SingleChildScrollView(
+                              padding: EdgeInsets.symmetric(
+                                horizontal:
+                                    MediaQuery.of(context).size.width * 0.042,
+                              ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     'General Information',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 25,
+                                    style: AppFonts.title5(
+                                      color: AppColors.grayscale90,
                                     ),
                                   ),
-                                  SizedBox(height: 25),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.017,
+                                  ),
                                   Text(
-                                    widget.geninfo + widget.geninfo,
-                                    style: TextStyle(
-                                      fontSize: 16,
+                                    widget.geninfo * 3,
+                                    style: AppFonts.body2(
+                                      color: AppColors.grayscale100,
                                     ),
                                   ),
                                 ],
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
-      ),
-      floatingActionButton: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          elevation: 0,
-          backgroundColor: const Color.fromARGB(255, 36, 86, 38),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
+          ],
+        ),
+        floatingActionButton: SizedBox(
+          height: MediaQuery.of(context).size.height * 0.064,
+          width: MediaQuery.of(context).size.width * 0.4,
+          child: PrimaryButton(
+            text: "Start your farm",
+            onPressed: () {},
+            status: PrimaryButtonStatus.idle,
+            position: PrimaryButtonPosition.primary,
           ),
         ),
-        onPressed: () {
-          // Handle join farm button press
-          Navigator.pop(context); // Close the modal sheet
-        },
-        child: const Padding(
-          padding: EdgeInsets.symmetric(vertical: 16),
-          child: Text(
-            'Start Your Farm',
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-    );
-  }
-
-  Widget _buildInfoBox(String label) {
-    return Container(
-      width: 100,
-      height: 40,
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 255, 242, 122),
-        borderRadius: BorderRadius.circular(50),
-      ),
-      child: Center(
-        child: Text(
-          label,
-          style: const TextStyle(
-            fontSize: 14,
-          ),
-        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
     );
   }
