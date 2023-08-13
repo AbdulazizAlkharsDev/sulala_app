@@ -5,8 +5,10 @@ import 'package:sulala_app/src/theme/fonts/fonts.dart';
 class DrowupWidget extends StatelessWidget {
   final Widget content;
   final String? heading;
+  final double? heightFactor;
 
-  const DrowupWidget({Key? key, required this.content, this.heading})
+  const DrowupWidget(
+      {Key? key, required this.content, this.heading, this.heightFactor})
       : super(key: key);
 
   @override
@@ -17,8 +19,9 @@ class DrowupWidget extends StatelessWidget {
       body: Align(
         alignment: Alignment.bottomCenter, // Align to the bottom of the screen
         child: FractionallySizedBox(
-          heightFactor: 0.6,
+          heightFactor: heightFactor ?? 0.6, // Take 70% of the screen height
           child: Container(
+            width: double.infinity,
             decoration: const BoxDecoration(
               color: AppColors.grayscale0,
               backgroundBlendMode: null,

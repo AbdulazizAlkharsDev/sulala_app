@@ -6,21 +6,21 @@ import 'package:sulala_app/src/theme/fonts/fonts.dart';
 class IconSecondaryButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-  final SecondaryButtonStatus status;
+  final SecondaryIconStatus status;
   final String iconPath;
 
   const IconSecondaryButton({
     Key? key,
     required this.text,
     required this.onPressed,
-    this.status = SecondaryButtonStatus.idle,
+    this.status = SecondaryIconStatus.idle,
     required this.iconPath,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: status == SecondaryButtonStatus.disabled ? null : onPressed,
+      onPressed: status == SecondaryIconStatus.disabled ? null : onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: _getButtonColor(status),
         elevation: 0,
@@ -33,7 +33,7 @@ class IconSecondaryButton extends StatelessWidget {
   }
 
   Widget _buildButtonContent() {
-    if (status == SecondaryButtonStatus.loading) {
+    if (status == SecondaryIconStatus.loading) {
       return const SpinKitFadingCircle(
         color: AppColors.grayscale90,
         size: 24,
@@ -54,35 +54,35 @@ class IconSecondaryButton extends StatelessWidget {
   }
 }
 
-Color _getButtonColor(SecondaryButtonStatus status) {
+Color _getButtonColor(SecondaryIconStatus status) {
   switch (status) {
-    case SecondaryButtonStatus.idle:
+    case SecondaryIconStatus.idle:
       return AppColors.grayscale10;
-    case SecondaryButtonStatus.pressed:
+    case SecondaryIconStatus.pressed:
       return AppColors.grayscale20;
-    case SecondaryButtonStatus.loading:
+    case SecondaryIconStatus.loading:
       return AppColors.grayscale10;
-    case SecondaryButtonStatus.disabled:
+    case SecondaryIconStatus.disabled:
       return AppColors.grayscale20;
     default:
       return AppColors.grayscale10;
   }
 }
 
-Color _getTextColor(SecondaryButtonStatus status) {
+Color _getTextColor(SecondaryIconStatus status) {
   switch (status) {
-    case SecondaryButtonStatus.idle:
-    case SecondaryButtonStatus.pressed:
-    case SecondaryButtonStatus.loading:
+    case SecondaryIconStatus.idle:
+    case SecondaryIconStatus.pressed:
+    case SecondaryIconStatus.loading:
       return AppColors.grayscale90;
-    case SecondaryButtonStatus.disabled:
+    case SecondaryIconStatus.disabled:
       return AppColors.grayscale50;
     default:
       return AppColors.grayscale90;
   }
 }
 
-enum SecondaryButtonStatus {
+enum SecondaryIconStatus {
   idle,
   pressed,
   loading,

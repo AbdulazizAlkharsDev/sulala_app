@@ -3,6 +3,8 @@ import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/icon_secondary_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/secondary_button.dart';
+import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
 import 'package:sulala_app/src/widgets/lists/table_lsit/table_clickable_link.dart';
 import 'package:sulala_app/src/widgets/other/two_information_block.dart';
 
@@ -104,278 +106,9 @@ class _SearchDetails extends State<UserDetails> {
                               'assets/icons/frame/24px/20_Status-farm.png',
                           onPressed: () {},
                           text: "Join farm",
-                          status: SecondaryButtonStatus.idle,
+                          status: SecondaryIconStatus.idle,
                         ),
                       ),
-
-                      // ElevatedButton(
-                      //   onPressed: () {
-                      //     showModalBottomSheet(
-                      //       context: context,
-                      //       builder: (BuildContext context) {
-                      //         return SizedBox(
-                      //           height: 400,
-                      //           width: double.infinity,
-                      //           child: Padding(
-                      //             padding: const EdgeInsets.all(8.0),
-                      //             child: Column(
-                      //               crossAxisAlignment: CrossAxisAlignment.start,
-                      //               children: [
-                      //                 const SizedBox(height: 20),
-                      //                 const Center(
-                      //                   child: Text(
-                      //                     'Image',
-                      //                     style: TextStyle(fontSize: 50),
-                      //                   ),
-                      //                 ),
-                      //                 const SizedBox(
-                      //                   height: 20,
-                      //                 ),
-                      //                 const Text(
-                      //                   'Join This Farm?',
-                      //                   style: TextStyle(fontSize: 35),
-                      //                 ),
-                      //                 const SizedBox(height: 20),
-                      //                 const Text(
-                      //                   "If you join the farm, you won't be able to start your farm",
-                      //                   style: TextStyle(fontSize: 18),
-                      //                 ),
-                      //                 const SizedBox(height: 20),
-                      //                 Padding(
-                      //                   padding: const EdgeInsets.all(12.0),
-                      //                   child: Row(
-                      //                     mainAxisAlignment:
-                      //                         MainAxisAlignment.spaceEvenly,
-                      //                     children: [
-                      //                       Flexible(
-                      //                         child: ElevatedButton(
-                      //                           onPressed: () {
-                      //                             showModalBottomSheet(
-                      //                               context: context,
-                      //                               builder:
-                      //                                   (BuildContext context) {
-                      //                                 return SizedBox(
-                      //                                   height: 400,
-                      //                                   width: double.infinity,
-                      //                                   child: Padding(
-                      //                                     padding:
-                      //                                         const EdgeInsets
-                      //                                             .all(8.0),
-                      //                                     child: Column(
-                      //                                       crossAxisAlignment:
-                      //                                           CrossAxisAlignment
-                      //                                               .start,
-                      //                                       children: [
-                      //                                         const SizedBox(
-                      //                                             height: 20),
-                      //                                         const Center(
-                      //                                           child: Text(
-                      //                                             'Image',
-                      //                                             style: TextStyle(
-                      //                                                 fontSize:
-                      //                                                     50),
-                      //                                           ),
-                      //                                         ),
-                      //                                         const SizedBox(
-                      //                                           height: 20,
-                      //                                         ),
-                      //                                         const Text(
-                      //                                           'Join This Farm?',
-                      //                                           style: TextStyle(
-                      //                                               fontSize: 35),
-                      //                                         ),
-                      //                                         const SizedBox(
-                      //                                             height: 20),
-                      //                                         const Text(
-                      //                                           "If you join the farm, you won't be able to start your farm",
-                      //                                           style: TextStyle(
-                      //                                               fontSize: 18),
-                      //                                         ),
-                      //                                         const SizedBox(
-                      //                                             height: 20),
-                      //                                         FractionallySizedBox(
-                      //                                           widthFactor:
-                      //                                               0.8, // Adjust the value as needed
-                      //                                           child: Row(
-                      //                                             mainAxisAlignment:
-                      //                                                 MainAxisAlignment
-                      //                                                     .spaceEvenly,
-                      //                                             children: [
-                      //                                               ElevatedButton(
-                      //                                                 style: ElevatedButton
-                      //                                                     .styleFrom(
-                      //                                                   elevation:
-                      //                                                       0,
-                      //                                                   backgroundColor: const Color
-                      //                                                       .fromARGB(
-                      //                                                       255,
-                      //                                                       225,
-                      //                                                       225,
-                      //                                                       225),
-                      //                                                   shape:
-                      //                                                       RoundedRectangleBorder(
-                      //                                                     borderRadius:
-                      //                                                         BorderRadius.circular(50),
-                      //                                                   ),
-                      //                                                 ),
-                      //                                                 onPressed:
-                      //                                                     () {
-                      //                                                   // Handle cancel button press
-                      //                                                   Navigator.pop(
-                      //                                                       context); // Close the modal sheet
-                      //                                                 },
-                      //                                                 child:
-                      //                                                     const Padding(
-                      //                                                   padding: EdgeInsets.symmetric(
-                      //                                                       vertical:
-                      //                                                           16),
-                      //                                                   child: Text(
-                      //                                                       'Cancel'),
-                      //                                                 ),
-                      //                                               ),
-                      //                                               ElevatedButton(
-                      //                                                 style: ElevatedButton
-                      //                                                     .styleFrom(
-                      //                                                   elevation:
-                      //                                                       0,
-                      //                                                   backgroundColor: const Color
-                      //                                                       .fromARGB(
-                      //                                                       255,
-                      //                                                       36,
-                      //                                                       86,
-                      //                                                       38),
-                      //                                                   shape:
-                      //                                                       RoundedRectangleBorder(
-                      //                                                     borderRadius:
-                      //                                                         BorderRadius.circular(50),
-                      //                                                   ),
-                      //                                                 ),
-                      //                                                 onPressed:
-                      //                                                     () {
-                      //                                                   // Handle join farm button press
-                      //                                                   Navigator.pop(
-                      //                                                       context); // Close the modal sheet
-                      //                                                 },
-                      //                                                 child:
-                      //                                                     const Padding(
-                      //                                                   padding: EdgeInsets.symmetric(
-                      //                                                       vertical:
-                      //                                                           16),
-                      //                                                   child: Text(
-                      //                                                       'Join Farm'),
-                      //                                                 ),
-                      //                                               ),
-                      //                                             ],
-                      //                                           ),
-                      //                                         ),
-                      //                                       ],
-                      //                                     ),
-                      //                                   ),
-                      //                                 );
-                      //                               },
-                      //                             );
-                      //                           },
-                      //                           style: ElevatedButton.styleFrom(
-                      //                             elevation: 0,
-                      //                             backgroundColor:
-                      //                                 const Color.fromARGB(
-                      //                                     255, 225, 225, 225),
-                      //                             shape: RoundedRectangleBorder(
-                      //                               borderRadius:
-                      //                                   BorderRadius.circular(50),
-                      //                             ),
-                      //                           ),
-                      //                           child: const Padding(
-                      //                             padding: EdgeInsets.all(20.0),
-                      //                             child: Row(
-                      //                               mainAxisAlignment:
-                      //                                   MainAxisAlignment.center,
-                      //                               children: [
-                      //                                 Flexible(
-                      //                                   child: Text(
-                      //                                     'Cancel',
-                      //                                     style: TextStyle(
-                      //                                         color:
-                      //                                             Colors.black),
-                      //                                   ),
-                      //                                 ),
-                      //                               ],
-                      //                             ),
-                      //                           ),
-                      //                         ),
-                      //                       ),
-                      //                       const SizedBox(
-                      //                           width:
-                      //                               16), // Add a SizedBox with desired width for the gap
-                      //                       Flexible(
-                      //                         child: ElevatedButton(
-                      //                           onPressed: () {
-                      //                             // Handle button 2 press
-                      //                           },
-                      //                           style: ElevatedButton.styleFrom(
-                      //                             elevation: 0,
-                      //                             backgroundColor:
-                      //                                 const Color.fromARGB(
-                      //                                     255, 36, 86, 38),
-                      //                             shape: RoundedRectangleBorder(
-                      //                               borderRadius:
-                      //                                   BorderRadius.circular(50),
-                      //                             ),
-                      //                           ),
-                      //                           child: const Padding(
-                      //                             padding: EdgeInsets.all(20.0),
-                      //                             child: Row(
-                      //                               mainAxisAlignment:
-                      //                                   MainAxisAlignment.center,
-                      //                               children: [
-                      //                                 Flexible(
-                      //                                   child: Text(
-                      //                                     'Join Farm',
-                      //                                     style: TextStyle(
-                      //                                         color:
-                      //                                             Colors.white),
-                      //                                   ),
-                      //                                 ),
-                      //                               ],
-                      //                             ),
-                      //                           ),
-                      //                         ),
-                      //                       ),
-                      //                     ],
-                      //                   ),
-                      //                 ),
-                      //               ],
-                      //             ),
-                      //           ),
-                      //         );
-                      //       },
-                      //     );
-                      //   },
-                      //   style: ElevatedButton.styleFrom(
-                      //     elevation: 0,
-                      //     backgroundColor:
-                      //         const Color.fromARGB(255, 225, 225, 225),
-                      //     shape: RoundedRectangleBorder(
-                      //       borderRadius: BorderRadius.circular(50),
-                      //     ),
-                      //   ),
-                      //   child: const Padding(
-                      //     padding: EdgeInsets.all(8.0),
-                      //     child: Row(
-                      //       mainAxisAlignment: MainAxisAlignment.center,
-                      //       children: [
-                      //         Icon(Icons.holiday_village),
-                      //         SizedBox(width: 8),
-                      //         Flexible(
-                      //           child: Text(
-                      //             'Join Farm',
-                      //             style: TextStyle(color: Colors.black),
-                      //           ),
-                      //         ),
-                      //       ],
-                      //     ),
-                      //   ),
-                      // ),
                     ),
                     Flexible(
                       child: SizedBox(
@@ -387,7 +120,7 @@ class _SearchDetails extends State<UserDetails> {
                               'assets/icons/frame/24px/Outlined_Cow_green_icon.png',
                           onPressed: () {},
                           text: "Join farm",
-                          status: SecondaryButtonStatus.idle,
+                          status: SecondaryIconStatus.idle,
                         ),
                       ),
                     ),
@@ -429,20 +162,89 @@ class _SearchDetails extends State<UserDetails> {
                         height: MediaQuery.of(context).size.height * 0.065),
                   ],
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.064,
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  child: PrimaryButton(
-                    text: 'Start your farm',
-                    onPressed: () {},
-                    status: PrimaryButtonStatus.idle,
-                  ),
-                ),
               ],
             ),
           ),
         ),
+        floatingActionButton: SizedBox(
+          height: MediaQuery.of(context).size.height * 0.064,
+          width: MediaQuery.of(context).size.width * 0.4,
+          child: PrimaryButton(
+            text: "Start your farm",
+            onPressed: () {
+              _showFilterModalSheet(context);
+            },
+            status: PrimaryButtonStatus.idle,
+            position: PrimaryButtonPosition.primary,
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
+    );
+  }
+
+  void _showFilterModalSheet(BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      isScrollControlled: true,
+      isDismissible: true,
+      builder: (BuildContext context) {
+        return Container(
+          color: Colors.transparent,
+          child: DrowupWidget(
+            heightFactor: 0.46,
+            // heading: 'Filter',
+            content: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Center(
+                  child: Image(
+                      image: AssetImage('assets/illustrations/farm_gray.png')),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.029,
+                ),
+                Text(
+                  'Join this farm?',
+                  style: AppFonts.title3(color: AppColors.grayscale90),
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+                Text(
+                  "If you join ${widget.title}, you won't be able to create your own farm.",
+                  style: AppFonts.body2(color: AppColors.grayscale70),
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.029),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.064,
+                      width: MediaQuery.of(context).size.width * 0.44,
+                      child: SecondaryButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        text: "Cancel",
+                        status: SecondaryButtonStatus.idle,
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.064,
+                      width: MediaQuery.of(context).size.width * 0.44,
+                      child: PrimaryButton(
+                        onPressed: () {},
+                        text: "Join farm",
+                        status: PrimaryButtonStatus.idle,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
