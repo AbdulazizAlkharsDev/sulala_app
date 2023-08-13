@@ -75,95 +75,84 @@ class _AnimalDetailsState extends State<AnimalDetails> {
                         MediaQuery.of(context).size.width * 0.085),
                   ),
                 ),
+                child: const SizedBox(),
+              ),
+            ),
+            FractionalTranslation(
+              translation:
+                  Offset(0, MediaQuery.of(context).size.height * 0.00022),
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.78,
                 child: Column(
                   children: [
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          FractionalTranslation(
-                            translation: const Offset(0.0, -0.5),
-                            child: CircleAvatar(
-                              radius: MediaQuery.of(context).size.width * 0.16,
-                              backgroundImage: AssetImage(widget.imagePath),
-                            ),
-                          ),
-                        ],
-                      ),
+                    CircleAvatar(
+                      radius: MediaQuery.of(context).size.width * 0.16,
+                      backgroundImage: AssetImage(widget.imagePath),
                     ),
-                    Transform.translate(
-                      offset: Offset(
-                          0.0, -MediaQuery.of(context).size.height * 0.07),
-                      child: Column(
-                        children: [
-                          Text(
-                            widget.title,
-                            style:
-                                AppFonts.title4(color: AppColors.grayscale90),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.02,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Tags(
-                                text: 'Mammal',
-                                icon: null,
-                                onPress: () {
-                                  // Handle tag click
-                                },
-                                status: TagStatus.active,
-                              ),
-                              SizedBox(
-                                width:
-                                    MediaQuery.of(context).size.width * 0.021,
-                              ),
-                              Tags(
-                                text: 'Herbivore',
-                                icon: null,
-                                onPress: () {
-                                  // Handle tag click
-                                },
-                                status: TagStatus.active,
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.03,
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.42,
-                            child: SingleChildScrollView(
-                              padding: EdgeInsets.symmetric(
-                                horizontal:
-                                    MediaQuery.of(context).size.width * 0.042,
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'General Information',
-                                    style: AppFonts.title5(
-                                      color: AppColors.grayscale90,
-                                    ),
+                    Text(
+                      widget.title,
+                      style: AppFonts.title4(color: AppColors.grayscale90),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.02,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Tags(
+                          text: 'Mammal',
+                          icon: null,
+                          onPress: () {
+                            // Handle tag click
+                          },
+                          status: TagStatus.active,
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.021,
+                        ),
+                        Tags(
+                          text: 'Herbivore',
+                          icon: null,
+                          onPress: () {
+                            // Handle tag click
+                          },
+                          status: TagStatus.active,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.03,
+                    ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.of(context).size.width * 0.042,
+                        ),
+                        child: Column(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'General Information',
+                                  style: AppFonts.title5(
+                                    color: AppColors.grayscale90,
                                   ),
-                                  SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.017,
+                                ),
+                                SizedBox(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.017,
+                                ),
+                                Text(
+                                  widget.geninfo * 5,
+                                  style: AppFonts.body2(
+                                    color: AppColors.grayscale100,
                                   ),
-                                  Text(
-                                    widget.geninfo * 3,
-                                    style: AppFonts.body2(
-                                      color: AppColors.grayscale100,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ],
