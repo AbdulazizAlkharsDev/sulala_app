@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/icon_buttons/secondary_icon_button.dart';
 
 class ButtonSearchBar extends StatefulWidget {
   final ValueChanged<String> onChange;
   final String hintText;
   final IconData icon;
   final VoidCallback? onIconPressed;
+  final TextEditingController? controller;
 
   const ButtonSearchBar({
     Key? key,
@@ -15,6 +15,7 @@ class ButtonSearchBar extends StatefulWidget {
     required this.hintText,
     required this.icon,
     this.onIconPressed,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -98,12 +99,18 @@ class _ButtonSearchBarState extends State<ButtonSearchBar> {
               textAlignVertical: TextAlignVertical.center,
             ),
           ),
-          SecondaryIconButton(
-            status: SecondaryIconButtonStatus.idle,
-            icon: widget.icon,
-            onPressed: () {
-              widget.onIconPressed?.call();
-            },
+          Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: InkWell(
+              onTap: widget.onIconPressed,
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              child: const Image(
+                image: AssetImage(
+                  'assets/icons/frame/24px/filter.png',
+                ),
+              ),
+            ),
           ),
         ],
       ),

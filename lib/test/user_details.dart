@@ -104,7 +104,9 @@ class _SearchDetails extends State<UserDetails> {
                         child: IconSecondaryButton(
                           iconPath:
                               'assets/icons/frame/24px/20_Status-farm.png',
-                          onPressed: () {},
+                          onPressed: () {
+                            _showFilterModalSheet(context);
+                          },
                           text: "Join farm",
                           status: SecondaryIconStatus.idle,
                         ),
@@ -118,8 +120,10 @@ class _SearchDetails extends State<UserDetails> {
                         child: IconSecondaryButton(
                           iconPath:
                               'assets/icons/frame/24px/Outlined_Cow_green_icon.png',
-                          onPressed: () {},
-                          text: "Join farm",
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/search_house_farm');
+                          },
+                          text: "View animals",
                           status: SecondaryIconStatus.idle,
                         ),
                       ),
@@ -171,9 +175,7 @@ class _SearchDetails extends State<UserDetails> {
           width: MediaQuery.of(context).size.width * 0.4,
           child: PrimaryButton(
             text: "Start your farm",
-            onPressed: () {
-              _showFilterModalSheet(context);
-            },
+            onPressed: () {},
             status: PrimaryButtonStatus.idle,
             position: PrimaryButtonPosition.primary,
           ),
