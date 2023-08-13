@@ -86,8 +86,11 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
   void filterOptions(String searchText) {
     setState(() {
       filteredAnimals = animals
-          .where((option) =>
-              option['title'].toLowerCase().contains(searchText.toLowerCase()))
+          .where(
+            (option) => option['title']
+                .toLowerCase()
+                .contains(searchText.toLowerCase()),
+          )
           .toList();
     });
   }
@@ -170,10 +173,41 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
             if (filteredAnimals.isNotEmpty)
               Expanded(
                 child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: filteredAnimals.length, //change it later please
-                    itemBuilder: (context, index) {
-                      final option = filteredAnimals[index];
+                  shrinkWrap: true,
+                  itemCount: filteredAnimals.length, //change it later please
+                  itemBuilder: (context, index) {
+                    final option = filteredAnimals[index];
+                    if (filteredOptions.isNotEmpty) {
+                      Expanded(
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Image(
+                                  image: AssetImage(
+                                      'assets/illustrations/home_search.png')),
+                              SizedBox(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.04),
+                              Text(
+                                "No animals found",
+                                style: AppFonts.headline3(
+                                    color: AppColors.grayscale90),
+                              ),
+                              SizedBox(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.005),
+                              Text(
+                                "Try adjusting the filters",
+                                style: AppFonts.body2(
+                                    color: AppColors.grayscale70),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    } else {
                       return Padding(
                         padding: EdgeInsets.all(
                             MediaQuery.of(context).size.width * 0.026),
@@ -188,7 +222,36 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
                           },
                         ),
                       );
-                    }),
+                    }
+                    return null;
+                  },
+                ),
+              ),
+            if (filteredAnimals.isEmpty)
+              Expanded(
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Image(
+                          image: AssetImage(
+                              'assets/illustrations/home_search.png')),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.04),
+                      Text(
+                        "No animals found",
+                        style: AppFonts.headline3(color: AppColors.grayscale90),
+                      ),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.005),
+                      Text(
+                        "Try adjusting the filters",
+                        style: AppFonts.body2(color: AppColors.grayscale70),
+                      ),
+                    ],
+                  ),
+                ),
               ),
           ],
         ),
