@@ -3,7 +3,8 @@ import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/inputs/search_bars/button_search_bar.dart';
 import 'package:sulala_app/src/widgets/lists/animal_list/animal_list_widget.dart';
-import 'package:sulala_app/test/animal_details.dart';
+
+import 'package:sulala_app/test/owned_animal_detail.dart';
 import 'package:sulala_app/test/user_details.dart';
 
 class SearchPageHouseFarm extends StatefulWidget {
@@ -114,7 +115,7 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => AnimalDetails(
+        builder: (context) => OwnedAnimalDetails(
           imagePath: option['imagePath'],
           title: option['title'],
           geninfo: option['geninfo'],
@@ -157,16 +158,14 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
                   MediaQuery.of(context).size.width * 0.01,
                   MediaQuery.of(context).size.width * 0.042,
                   MediaQuery.of(context).size.width * 0.01),
-              child: Expanded(
-                child: ButtonSearchBar(
-                  onChange: filterOptions,
-                  hintText: "Search by name or ID",
-                  icon: Icons.filter_alt_outlined,
-                  controller: _searchController,
-                  onIconPressed: () {
-                    // print("Filter Pressed");
-                  },
-                ),
+              child: ButtonSearchBar(
+                onChange: filterOptions,
+                hintText: "Search by name or ID",
+                icon: Icons.filter_alt_outlined,
+                controller: _searchController,
+                onIconPressed: () {
+                  // print("Filter Pressed");
+                },
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.03),
