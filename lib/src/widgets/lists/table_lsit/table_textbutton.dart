@@ -6,7 +6,7 @@ import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary
 class TableTextButton extends StatefulWidget {
   final String textHead;
   final String textButton;
-  final Function(bool isChecked) onPressed;
+  final VoidCallback onPressed;
 
   const TableTextButton({
     Key? key,
@@ -48,9 +48,7 @@ class _TableTextButtonState extends State<TableTextButton> {
             PrimaryTextButton(
               status: TextStatus.idle,
               position: TextButtonPosition.right,
-              onPressed: () {
-                widget.onPressed(true);
-              },
+              onPressed: widget.onPressed,
               text: widget.textButton,
             ),
             SizedBox(
@@ -69,7 +67,7 @@ class _TableTextButtonState extends State<TableTextButton> {
 // TextButtonTextWidget(
 //                     textHead: 'Text Button',
 //                     textButton: 'Button',
-//                     onPressed: (bool isChecked) {
+//                     onPressed: () {
 //                       print('Text Button Pressed');
 //                     },
 //                   ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/tags/tags.dart';
+import 'package:sulala_app/src/widgets/pages/general_info_animal_widget.dart';
 
 class OwnedAnimalDetails extends StatefulWidget {
   final String imagePath;
@@ -20,7 +20,22 @@ class OwnedAnimalDetails extends StatefulWidget {
   State<OwnedAnimalDetails> createState() => _OwnedAnimalDetailsState();
 }
 
-class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails> {
+class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -50,7 +65,7 @@ class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails> {
           actions: [
             InkWell(
               onTap: () {
-                // print("Edit button pressed");
+                // Handle edit button tap
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -75,7 +90,7 @@ class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails> {
               child: SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Image.asset(
-                  'assets/graphic/Animal_p.png',
+                  "assets/graphic/Animal_p.png",
                   fit: BoxFit.fitWidth,
                 ),
               ),
@@ -95,7 +110,7 @@ class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails> {
                         MediaQuery.of(context).size.width * 0.085),
                   ),
                 ),
-                child: const SizedBox(),
+                child: const SizedBox(), // Add your content here
               ),
             ),
             FractionalTranslation(
@@ -123,61 +138,87 @@ class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.019,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Tags(
-                          text: 'Mammal',
-                          icon: Icons.pets,
-                          onPress: () {
-                            // Handle tag click
-                          },
-                          status: TagStatus.active,
+                    IntrinsicWidth(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Tags(
+                            text: 'Mammal',
+                            icon: Icons.pets,
+                            onPress: () {
+                              // Handle tag click
+                            },
+                            status: TagStatus.active,
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.021,
+                          ),
+                          Tags(
+                            text: 'Herbivore',
+                            icon: Icons.pets,
+                            onPress: () {
+                              // Handle tag click
+                            },
+                            status: TagStatus.active,
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.039,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.91,
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      decoration: BoxDecoration(
+                        color: AppColors.grayscale10,
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      child: TabBar(
+                        controller: _tabController,
+                        indicator: BoxDecoration(
+                          color: AppColors.primary50,
+                          borderRadius: BorderRadius.circular(24),
                         ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.021,
-                        ),
-                        Tags(
-                          text: 'Herbivore',
-                          icon: Icons.pets,
-                          onPress: () {
-                            // Handle tag click
-                          },
-                          status: TagStatus.active,
-                        ),
-                      ],
+                        indicatorSize: TabBarIndicatorSize.tab,
+                        indicatorColor: Colors.transparent,
+                        labelColor: AppColors.grayscale0,
+                        unselectedLabelColor: AppColors.grayscale60,
+                        labelStyle: AppFonts.body2(color: AppColors.grayscale0),
+                        tabs: const [
+                          Tab(text: 'General'),
+                          Tab(text: 'Breeding'),
+                          Tab(text: 'Medical'),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.03,
                     ),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width * 0.042,
-                        ),
-                        child: Column(
+                    Center(
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.35,
+                        width: MediaQuery.of(context).size.width * 0.91,
+                        child: TabBarView(
+                          controller: _tabController,
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'General Information',
-                                  style: AppFonts.title5(
-                                    color: AppColors.grayscale90,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: MediaQuery.of(context).size.height *
-                                      0.017,
-                                ),
-                                Text(
-                                  widget.geninfo * 5,
-                                  style: AppFonts.body2(
-                                    color: AppColors.grayscale100,
-                                  ),
-                                ),
-                              ],
+                            // Content for the 'General' tab
+                            GeneralInfoAnimalWidget(
+                              onDateOfBirthPressed: () {},
+                              onDateOfDeathPressed: () {},
+                              onDateOfMatingPressed: () {},
+                              onDateOfSalePressed: () {},
+                              onDateOfWeaningPressed: () {},
+                              age: "3 years",
+                              type: "Mammal",
+                              sex: "Female",
                             ),
+
+                            // Content for the 'Breeding' tab
+                            const Center(child: Text('Breeding Tab Content')),
+
+                            // Content for the 'Medical' tab
+                            const Center(child: Text('Medical Tab Content')),
                           ],
                         ),
                       ),
@@ -188,17 +229,6 @@ class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails> {
             ),
           ],
         ),
-        floatingActionButton: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.064,
-          width: MediaQuery.of(context).size.width * 0.4,
-          child: PrimaryButton(
-            text: "Start your farm",
-            onPressed: () {},
-            status: PrimaryButtonStatus.idle,
-            position: PrimaryButtonPosition.primary,
-          ),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
     );
   }
