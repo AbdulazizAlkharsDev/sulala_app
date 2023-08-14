@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/tags/tags.dart';
-import 'package:sulala_app/src/widgets/pages/general_info_animal_widget.dart';
+import 'package:sulala_app/src/widgets/pages/owned_animal/general_info_animal_widget.dart';
 
 class OwnedAnimalDetails extends StatefulWidget {
   final String imagePath;
