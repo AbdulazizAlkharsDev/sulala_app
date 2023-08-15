@@ -7,6 +7,7 @@ class PrimaryTextField extends StatefulWidget {
   final String? errorMessage;
   final ValueChanged<String>? onChanged;
   final ValueChanged<bool>? onErrorChanged;
+  final TextEditingController controller;
 
   const PrimaryTextField({
     Key? key,
@@ -14,6 +15,7 @@ class PrimaryTextField extends StatefulWidget {
     this.errorMessage,
     this.onChanged,
     this.onErrorChanged,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -21,7 +23,6 @@ class PrimaryTextField extends StatefulWidget {
 }
 
 class _PrimaryTextFieldState extends State<PrimaryTextField> {
-  final TextEditingController _textEditingController = TextEditingController();
   late FocusNode _focusNode;
   bool isFocused = false;
 
@@ -34,7 +35,6 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
 
   @override
   void dispose() {
-    _textEditingController.dispose();
     _focusNode.dispose();
     super.dispose();
   }
@@ -46,28 +46,25 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
   }
 
   void _clearText() {
-    _textEditingController.clear();
+    widget.controller.clear();
     if (widget.onErrorChanged != null) {
       widget.onErrorChanged!(false); // Clear the error state
     }
   }
 
   void _onChanged(String value) {
-    if (widget.onChanged != null) {
-      widget.onChanged!(value);
-      final hasNumbers = value.contains(RegExp(r'[0-9]'));
-      if (widget.onErrorChanged != null) {
-        widget.onErrorChanged!(hasNumbers); // Report the error state
-      }
+    widget.onChanged!(value);
+    final hasNumbers = value.contains(RegExp(r'[0-9]'));
+    if (widget.onErrorChanged != null) {
+      widget.onErrorChanged!(hasNumbers); // Report the error state
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final bool isTyping = _textEditingController.text.isNotEmpty;
+    final bool isTyping = widget.controller.text.isNotEmpty;
 
-    final Color hintTextColor =
-        isTyping ? AppColors.grayscale90 : AppColors.grayscale50;
+    const Color hintTextColor = AppColors.grayscale50;
 
     final Color borderColor = widget.errorMessage != null
         ? AppColors.error100
@@ -91,7 +88,7 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
             ),
           ),
           child: TextField(
-            controller: _textEditingController,
+            controller: widget.controller,
             onChanged: _onChanged,
             focusNode: _focusNode,
             onTap: () {

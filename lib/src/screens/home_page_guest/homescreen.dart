@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
-import '../widgets/controls_and_buttons/buttons/primary_button.dart';
-import '../widgets/pages/homepage_widgets/card.dart';
-import '../widgets/pages/homepage_widgets/circle_icon_button.dart';
-import '../widgets/pages/homepage_widgets/title_text.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/pages/homepage_widgets/card.dart';
+import '../../widgets/pages/homepage_widgets/circle_icon_button.dart';
+import '../../widgets/pages/homepage_widgets/title_text.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: PrimaryButton(
                           text: 'Join now',
                           onPressed: () {
-                            // print("Join now");
+                            Navigator.of(context).pushNamed('/join_now');
                           },
                           status: PrimaryButtonStatus.idle,
                         ),

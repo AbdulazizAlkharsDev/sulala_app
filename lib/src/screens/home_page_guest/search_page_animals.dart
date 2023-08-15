@@ -4,17 +4,17 @@ import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/inputs/search_bars/button_search_bar.dart';
 import 'package:sulala_app/src/widgets/lists/animal_list/animal_list_widget.dart';
 
-import 'package:sulala_app/test/owned_animal_detail.dart';
-import 'package:sulala_app/test/user_details.dart';
+import 'package:sulala_app/src/screens/home_page_guest/owned_animal_detail.dart';
+import 'package:sulala_app/src/screens/home_page_guest/user_details.dart';
 
-class SearchPageHouseFarm extends StatefulWidget {
-  const SearchPageHouseFarm({super.key});
+class SearchPageAnimals extends StatefulWidget {
+  const SearchPageAnimals({super.key});
 
   @override
-  State<SearchPageHouseFarm> createState() => _SearchPageHouseFarmState();
+  State<SearchPageAnimals> createState() => _SearchPageAnimalsState();
 }
 
-class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
+class _SearchPageAnimalsState extends State<SearchPageAnimals> {
   List<Map<String, dynamic>> animals = [
     {
       'imagePath': 'assets/avatars/120px/Staff3.png',
@@ -149,7 +149,7 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
                   MediaQuery.of(context).size.width * 0.01,
                   MediaQuery.of(context).size.width * 0.042,
                   MediaQuery.of(context).size.width * 0.01),
-              child: Text("House Farm",
+              child: Text("Animals",
                   style: AppFonts.title3(color: AppColors.grayscale90)),
             ),
             Padding(
@@ -185,7 +185,7 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
                             children: [
                               const Image(
                                   image: AssetImage(
-                                      'assets/illustrations/home_search.png')),
+                                      'assets/illustrations/cow_search.png')),
                               SizedBox(
                                   height: MediaQuery.of(context).size.height *
                                       0.04),
@@ -235,7 +235,7 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
                     children: [
                       const Image(
                           image: AssetImage(
-                              'assets/illustrations/home_search.png')),
+                              'assets/illustrations/cow_search.png')),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.04),
                       Text(
