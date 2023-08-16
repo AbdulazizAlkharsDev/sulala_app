@@ -6,6 +6,7 @@ import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/google_butto
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 import 'package:sulala_app/src/widgets/inputs/phone_number_field.dart/phone_number_field.dart';
+import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
 import 'package:sulala_app/test/otp_page.dart';
 
 class SignUp extends StatefulWidget {
@@ -18,32 +19,68 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
-  TextEditingController controller = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   PrimaryButtonStatus buttonStatus = PrimaryButtonStatus.idle;
   AppleButtonStatus appleButtonStatus = AppleButtonStatus.idle;
   GoogleButtonStatus googleButtonStatus = GoogleButtonStatus.idle;
   TextStatus textStatus = TextStatus.idle;
+  bool showEmailField = false;
+  bool _hasError = false;
 
   @override
   void dispose() {
-    controller.dispose();
+    phoneController.dispose();
+    emailController.dispose();
     super.dispose();
   }
 
+  String? savedEmailAddress;
   String? savedPhoneNumber;
 
-  void savePhoneNumber(String phoneNumber) {
-    setState(() {
-      savedPhoneNumber = phoneNumber;
-    });
+  void saveEmailAddress(String emailAddress) {
+    if (isValidEmail(emailAddress)) {
+      setState(() {
+        savedEmailAddress = emailAddress;
+      });
+    }
   }
 
-  void navigateToOTPPage(Map<String, dynamic> option) {
+  void savePhoneNumber(String phoneNumber) {
+    if (isValidPhoneNumber(phoneNumber)) {
+      setState(() {
+        savedPhoneNumber = phoneNumber;
+      });
+    }
+  }
+
+  bool isValidEmail(String email) {
+    final emailRegExp = RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
+    return emailRegExp.hasMatch(email);
+  }
+
+  bool isValidPhoneNumber(String phoneNumber) {
+    final phoneRegExp = RegExp(r'^[0-9]+$');
+    return phoneRegExp.hasMatch(phoneNumber);
+  }
+
+  void navigateToPhoneOTPPage(Map<String, dynamic> option) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => OTPPage(
           phoneNumber: savedPhoneNumber.toString(),
+        ),
+      ),
+    );
+  }
+
+  void navigateToEmailOTPPage(Map<String, dynamic> option) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => OTPPage(
+          emailAddress: savedEmailAddress.toString(),
         ),
       ),
     );
@@ -114,9 +151,7 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                         MediaQuery.of(context).size.width * 0.042,
                         0,
                         MediaQuery.of(context).size.width * 0.042,
-                        MediaQuery.of(context)
-                            .viewInsets
-                            .bottom, // Adjusts for keyboard
+                        MediaQuery.of(context).viewInsets.bottom,
                       ),
                       child: Column(
                         children: [
@@ -135,7 +170,34 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                                 height:
                                     MediaQuery.of(context).size.height * 0.05,
                               ),
-                              PhoneNumberField(onSave: savePhoneNumber),
+                              if (showEmailField)
+                                PrimaryTextField(
+                                  controller: emailController,
+                                  hintText: 'Enter your username',
+                                  errorMessage: _hasError == true
+                                      ? 'Invalid email address'
+                                      : null,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      savedEmailAddress = value;
+                                      _hasError !=
+                                          isValidEmail(
+                                              value); // Set the error state
+                                    });
+                                  },
+                                  onErrorChanged: (hasError) {
+                                    setState(() {
+                                      _hasError =
+                                          hasError; // Update the error state
+                                    });
+                                  },
+                                )
+                              else
+                                PhoneNumberField(onSave: (value) {
+                                  setState(() {
+                                    savedPhoneNumber = value;
+                                  });
+                                }),
                               SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.03,
@@ -149,12 +211,30 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                                   text: "Continue",
                                   onPressed: () {
                                     setState(() {
-                                      buttonStatus =
-                                          PrimaryButtonStatus.loading;
+                                      if (showEmailField == false) {
+                                        buttonStatus =
+                                            PrimaryButtonStatus.loading;
 
-                                      navigateToOTPPage({
-                                        "phoneNumber": savedPhoneNumber,
-                                      });
+                                        navigateToPhoneOTPPage(
+                                          {
+                                            "phoneNumber": savedPhoneNumber,
+                                            "emailAddress": null,
+                                          },
+                                        );
+                                      } else {
+                                        buttonStatus =
+                                            PrimaryButtonStatus.loading;
+                                        if (isValidEmail(savedEmailAddress!)) {
+                                          _hasError = false;
+                                        } else {
+                                          navigateToEmailOTPPage(
+                                            {
+                                              "emailAddress": savedEmailAddress,
+                                              "phoneNumber": null,
+                                            },
+                                          );
+                                        }
+                                      }
                                     });
                                   },
                                 ),
@@ -199,11 +279,14 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                               ),
                               PrimaryTextButton(
                                 status: textStatus,
-                                text: "Use email address",
+                                text: showEmailField == false
+                                    ? 'Use email address'
+                                    : 'Use phone number',
                                 onPressed: () {
                                   setState(
                                     () {
-                                      textStatus = TextStatus.loading;
+                                      showEmailField =
+                                          !showEmailField; // Toggle the flag
                                     },
                                   );
                                 },

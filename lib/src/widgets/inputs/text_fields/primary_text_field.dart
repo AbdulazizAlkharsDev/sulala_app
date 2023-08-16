@@ -54,10 +54,9 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
 
   void _onChanged(String value) {
     widget.onChanged!(value);
-    final hasNumbers = value.contains(RegExp(r'[0-9]'));
-    if (widget.onErrorChanged != null) {
-      widget.onErrorChanged!(hasNumbers); // Report the error state
-    }
+    // if (widget.onErrorChanged != null) {
+    //   widget.onErrorChanged!(true); // Clear the error state
+    // }
   }
 
   @override
@@ -133,3 +132,24 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
     );
   }
 }
+
+// Example of use:
+
+// String _enteredText = '';
+// bool _hasError = false;
+
+// PrimaryTextField(
+//   hintText: 'Enter your username',
+//   errorMessage: _hasError ? 'Username should not contain numbers' : null,
+//   onChanged: (value) {
+//     setState(() {
+//       _enteredText = value;
+//       _hasError = value.contains(RegExp(r'[0-9]')); // Set the error state
+//     });
+//   },
+//   onErrorChanged: (hasError) {
+//     setState(() {
+//       _hasError = hasError; // Update the error state
+//     });
+//   },
+// );

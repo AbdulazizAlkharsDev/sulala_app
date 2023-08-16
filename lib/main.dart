@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/screens/search_page_animals.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar.dart';
-import 'package:sulala_app/src/screens/home_page_guest/search_page.dart';
-import 'package:sulala_app/src/screens/home_page_guest/search_page_animals.dart';
-import 'package:sulala_app/src/screens/home_page_guest/search_page_house_farm.dart';
-import 'package:sulala_app/src/screens/home_page_guest/join_now.dart';
+import 'package:sulala_app/src/screens/search_page.dart';
+import 'package:sulala_app/src/screens/search_page_house_farm.dart';
+import 'package:sulala_app/src/screens/join_now.dart';
 import 'package:sulala_app/test/sign_up.dart';
 
 void main() {

@@ -7,11 +7,13 @@ import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary
 import 'package:sulala_app/src/widgets/inputs/otp_fields/otp_field.dart';
 
 class OTPPage extends StatefulWidget {
-  final String phoneNumber;
+  final String? phoneNumber;
+  final String? emailAddress;
 
   const OTPPage({
     Key? key,
-    required this.phoneNumber,
+    this.phoneNumber,
+    this.emailAddress,
   }) : super(key: key);
 
   @override
@@ -129,12 +131,15 @@ class _OTPPageState extends State<OTPPage> {
             TextSpan(
               children: [
                 TextSpan(
-                  text:
-                      "We sent a verification code on the following\nPhone number: ",
+                  text: widget.phoneNumber != null
+                      ? "We sent a verification code on the following\nPhone number: "
+                      : "We sent a verification code on the following\nEmail address: ",
                   style: AppFonts.body2(color: AppColors.grayscale70),
                 ),
                 TextSpan(
-                  text: widget.phoneNumber,
+                  text: widget.phoneNumber != null
+                      ? widget.phoneNumber!
+                      : widget.emailAddress,
                   style: AppFonts.body2(color: AppColors.primary50),
                 ),
               ],

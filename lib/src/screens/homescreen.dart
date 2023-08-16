@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/screens/shimmer_homescreen.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
-import 'package:sulala_app/src/screens/home_page_guest/shimmer_homescreen.dart';
-import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
-import '../../widgets/pages/homepage_widgets/card.dart';
-import '../../widgets/pages/homepage_widgets/title_text.dart';
+
+import '../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../widgets/pages/homepage_widgets/card.dart';
+import '../widgets/pages/homepage_widgets/title_text.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
