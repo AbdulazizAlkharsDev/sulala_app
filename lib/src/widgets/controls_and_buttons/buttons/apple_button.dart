@@ -4,7 +4,7 @@ import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
 class AppleButton extends StatelessWidget {
-  final ButtonStatus status;
+  final AppleButtonStatus status;
   final VoidCallback? onPressed;
 
   const AppleButton({
@@ -16,7 +16,7 @@ class AppleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: status == ButtonStatus.disabled ? null : onPressed,
+      onPressed: status == AppleButtonStatus.disabled ? null : onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: _getButtonColor(status),
         elevation: 0,
@@ -29,7 +29,7 @@ class AppleButton extends StatelessWidget {
   }
 
   Widget _buildButtonContent() {
-    if (status == ButtonStatus.loading) {
+    if (status == AppleButtonStatus.loading) {
       return const Center(
         child: SpinKitFadingCircle(
           color: AppColors.grayscale90,
@@ -57,24 +57,24 @@ class AppleButton extends StatelessWidget {
     }
   }
 
-  Color _getButtonColor(ButtonStatus status) {
+  Color _getButtonColor(AppleButtonStatus status) {
     switch (status) {
-      case ButtonStatus.idle:
+      case AppleButtonStatus.idle:
         return AppColors.grayscale10;
-      case ButtonStatus.pressed:
+      case AppleButtonStatus.pressed:
         return AppColors.grayscale20;
-      case ButtonStatus.loading:
+      case AppleButtonStatus.loading:
         return AppColors.grayscale10;
-      case ButtonStatus.disabled:
+      case AppleButtonStatus.disabled:
         return AppColors.grayscale20;
       default:
         return AppColors.grayscale10;
     }
   }
 
-  Color _getTextColor(ButtonStatus status) {
+  Color _getTextColor(AppleButtonStatus status) {
     switch (status) {
-      case ButtonStatus.disabled:
+      case AppleButtonStatus.disabled:
         return AppColors.grayscale50;
       default:
         return AppColors.grayscale90;
@@ -82,7 +82,7 @@ class AppleButton extends StatelessWidget {
   }
 }
 
-enum ButtonStatus {
+enum AppleButtonStatus {
   idle,
   pressed,
   loading,

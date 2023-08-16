@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
+import 'package:sulala_app/src/screens/home_page_guest/shimmer_homescreen.dart';
 import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
 import '../../widgets/pages/homepage_widgets/card.dart';
 import '../../widgets/pages/homepage_widgets/title_text.dart';
-import 'package:shimmer/shimmer.dart'; // Import Shimmer package
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -98,7 +98,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       MediaQuery.of(context).size.width * 0.0426),
                   child: Column(
                     children: _isLoading
-                        ? _buildShimmerPlaceholders() // Shimmer placeholders
+                        ? [
+                            const ShimmerHomePageWidget()
+                          ] // Shimmer placeholders
                         : _buildActualContent(), // Actual content
                   ),
                 ),
@@ -108,186 +110,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
-  }
-
-  List<Widget> _buildShimmerPlaceholders() {
-    return [
-      Row(
-        children: [
-          Expanded(
-            child: Container(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.26,
-                decoration: BoxDecoration(
-                  color: AppColors.grayscale10,
-                  borderRadius: BorderRadius.circular(
-                      MediaQuery.of(context).size.width * 0.05),
-                ),
-                child: Padding(
-                  padding:
-                      EdgeInsets.all(MediaQuery.of(context).size.width * 0.032),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Shimmer.fromColors(
-                        baseColor: Colors.grey[300]!,
-                        highlightColor: Colors.grey[100]!,
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.128,
-                          height: MediaQuery.of(context).size.height * 0.06,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(
-                                MediaQuery.of(context).size.width / 2),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.017),
-                      Shimmer.fromColors(
-                        baseColor: Colors.grey[300]!,
-                        highlightColor: Colors.grey[100]!,
-                        child: Container(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.068,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(
-                                MediaQuery.of(context).size.width * 0.064),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.017),
-                      Shimmer.fromColors(
-                        baseColor: Colors.grey[300]!,
-                        highlightColor: Colors.grey[100]!,
-                        child: Container(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.05,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(
-                                MediaQuery.of(context).size.width * 0.064),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                )),
-          ),
-          SizedBox(width: MediaQuery.of(context).size.width * 0.035),
-          Expanded(
-            child: Container(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.26,
-                decoration: BoxDecoration(
-                  color: AppColors.grayscale10,
-                  borderRadius: BorderRadius.circular(
-                      MediaQuery.of(context).size.width * 0.05),
-                ),
-                child: Padding(
-                  padding:
-                      EdgeInsets.all(MediaQuery.of(context).size.width * 0.032),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Shimmer.fromColors(
-                        baseColor: Colors.grey[300]!,
-                        highlightColor: Colors.grey[100]!,
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.128,
-                          height: MediaQuery.of(context).size.height * 0.06,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(
-                                MediaQuery.of(context).size.width / 2),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.017),
-                      Shimmer.fromColors(
-                        baseColor: Colors.grey[300]!,
-                        highlightColor: Colors.grey[100]!,
-                        child: Container(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.068,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(
-                                MediaQuery.of(context).size.width * 0.064),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.017),
-                      Shimmer.fromColors(
-                        baseColor: Colors.grey[300]!,
-                        highlightColor: Colors.grey[100]!,
-                        child: Container(
-                          width: double.infinity,
-                          height: MediaQuery.of(context).size.height * 0.05,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(
-                                MediaQuery.of(context).size.width * 0.064),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                )),
-          ),
-        ],
-      ),
-      SizedBox(height: MediaQuery.of(context).size.height * 0.135),
-      SizedBox(
-        width: MediaQuery.of(context).size.width * 0.832,
-        child: Column(
-          children: [
-            Shimmer.fromColors(
-              baseColor: Colors.grey[300]!,
-              highlightColor: Colors.grey[100]!,
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.0788,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(
-                      MediaQuery.of(context).size.width * 0.053),
-                ),
-              ),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-            Shimmer.fromColors(
-              baseColor: Colors.grey[300]!,
-              highlightColor: Colors.grey[100]!,
-              child: Container(
-                  height: MediaQuery.of(context).size.height * 0.064,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.053),
-                  )),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.011),
-            Shimmer.fromColors(
-              baseColor: Colors.grey[300]!,
-              highlightColor: Colors.grey[100]!,
-              child: Container(
-                  height: MediaQuery.of(context).size.height * 0.064,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.053),
-                  )),
-            ),
-          ],
-        ),
-      ),
-    ];
   }
 
   List<Widget> _buildActualContent() {

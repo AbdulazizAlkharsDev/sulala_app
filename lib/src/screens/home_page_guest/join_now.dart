@@ -191,7 +191,8 @@ class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
                                           setState(() {
                                             controller
                                                 .clear(); // Clear the text
-                                            Navigator.pop(context);
+                                            Navigator.of(context)
+                                                .pushNamed('/sign_up');
                                           });
                                         },
                                       ),

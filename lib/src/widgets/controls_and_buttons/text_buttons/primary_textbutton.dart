@@ -27,12 +27,7 @@ class PrimaryTextButton extends StatelessWidget {
     return TextButton(
       onPressed: _getButtonEnabled(status) ? onPressed : null,
       style: ButtonStyle(
-        padding: MaterialStateProperty.all(
-          const EdgeInsets.symmetric(
-            vertical: 0,
-            horizontal: 0,
-          ),
-        ),
+        padding: MaterialStateProperty.all(EdgeInsets.zero),
         overlayColor: MaterialStateProperty.all(Colors.transparent),
         foregroundColor: MaterialStateProperty.resolveWith<Color>((states) {
           if (states.contains(MaterialState.disabled)) {

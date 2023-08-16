@@ -16,8 +16,7 @@ class TwoInformationBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.0837,
-      width: MediaQuery.of(context).size.width * 0.914,
+      
       decoration: BoxDecoration(
         color: const Color(0xFFF9F5EC),
         borderRadius: BorderRadius.circular(14),

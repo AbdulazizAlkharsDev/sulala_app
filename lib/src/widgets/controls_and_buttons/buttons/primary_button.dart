@@ -26,7 +26,7 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: status == PrimaryButtonStatus.disabled ? null : onPressed,
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: _getButtonColor(status),
         elevation: 0,
@@ -88,9 +88,7 @@ class PrimaryButton extends StatelessWidget {
   Color _getButtonColor(PrimaryButtonStatus status) {
     switch (status) {
       case PrimaryButtonStatus.idle:
-        return AppColors.primary40;
       case PrimaryButtonStatus.pressed:
-        return AppColors.primary50;
       case PrimaryButtonStatus.loading:
         return AppColors.primary40;
       case PrimaryButtonStatus.disabled:
@@ -120,7 +118,7 @@ class PrimaryButton extends StatelessWidget {
       case PrimaryButtonStatus.loading:
         return AppColors.grayscale0;
       case PrimaryButtonStatus.disabled:
-        return AppColors.grayscale0;
+        return AppColors.grayscale20;
       default:
         return AppColors.grayscale0;
     }

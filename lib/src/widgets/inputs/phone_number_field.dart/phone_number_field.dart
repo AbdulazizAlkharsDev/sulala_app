@@ -252,7 +252,7 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
 
 
 
-//Functions to be used in the example page:
+// Functions to be used in the example page:
   // String? savedPhoneNumber;
 
   // void savePhoneNumber(String phoneNumber) {

@@ -5,6 +5,7 @@ import 'package:sulala_app/src/screens/home_page_guest/search_page.dart';
 import 'package:sulala_app/src/screens/home_page_guest/search_page_animals.dart';
 import 'package:sulala_app/src/screens/home_page_guest/search_page_house_farm.dart';
 import 'package:sulala_app/src/screens/home_page_guest/join_now.dart';
+import 'package:sulala_app/test/sign_up.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/search_house_farm': (context) => const SearchPageHouseFarm(),
         '/search_animals': (context) => const SearchPageAnimals(),
         '/join_now': (context) => const JoinNow(),
+        '/sign_up': (context) => const SignUp(),
       },
       debugShowCheckedModeBanner: false,
     );
