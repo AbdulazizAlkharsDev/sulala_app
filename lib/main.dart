@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/screens/search_page_animals.dart';
+import 'package:sulala_app/src/screens/guest_mode/search_page_animals.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar.dart';
-import 'package:sulala_app/src/screens/search_page.dart';
-import 'package:sulala_app/src/screens/search_page_house_farm.dart';
-import 'package:sulala_app/src/screens/join_now.dart';
-import 'package:sulala_app/src/screens/sign_up.dart';
-import 'package:sulala_app/src/screens/create_password.dart';
+import 'package:sulala_app/src/screens/guest_mode/search_page.dart';
+import 'package:sulala_app/src/screens/guest_mode/search_page_house_farm.dart';
+import 'package:sulala_app/src/screens/sign_up/join_now.dart';
+import 'package:sulala_app/src/screens/sign_up/sign_up.dart';
+import 'package:sulala_app/src/screens/sign_up/create_password.dart';
 
 void main() {
   runApp(const MyApp());

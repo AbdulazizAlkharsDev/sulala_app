@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../test/testing_pages.dart';
-import '../../../screens/homescreen.dart';
+import '../../../screens/guest_mode/homescreen.dart';
 import '../../../theme/colors/colors.dart';
 import '../../../theme/fonts/fonts.dart';
 

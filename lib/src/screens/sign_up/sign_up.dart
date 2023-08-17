@@ -7,7 +7,7 @@ import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_butt
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 import 'package:sulala_app/src/widgets/inputs/phone_number_field.dart/phone_number_field.dart';
 import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
-import 'package:sulala_app/src/screens/otp_page.dart';
+import 'package:sulala_app/src/screens/sign_up/otp_page.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({

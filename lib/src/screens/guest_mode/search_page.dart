@@ -4,9 +4,9 @@ import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/inputs/search_bars/search_bar.dart';
 import 'package:sulala_app/src/widgets/lists/animal_list/animal_list_widget.dart';
 import 'package:sulala_app/src/widgets/lists/staff_text/staff_list_widget.dart';
-import 'package:sulala_app/src/screens/animal_details.dart';
-import 'package:sulala_app/src/screens/user_details.dart';
-import '../widgets/controls_and_buttons/icon_buttons/secondary_icon_button.dart';
+import 'package:sulala_app/src/screens/guest_mode/animal_details.dart';
+import 'package:sulala_app/src/screens/guest_mode/user_details.dart';
+import '../../widgets/controls_and_buttons/icon_buttons/secondary_icon_button.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
