@@ -3,8 +3,6 @@ import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/inputs/search_bars/button_search_bar.dart';
 import 'package:sulala_app/src/widgets/lists/animal_list/animal_list_widget.dart';
-
-import 'package:sulala_app/src/screens/owned_animal_detail.dart';
 import 'package:sulala_app/src/screens/user_details.dart';
 
 class SearchPageHouseFarm extends StatefulWidget {
