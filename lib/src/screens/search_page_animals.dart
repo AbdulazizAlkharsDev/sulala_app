@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/screens/animal_details.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/inputs/search_bars/button_search_bar.dart';
 import 'package:sulala_app/src/widgets/lists/animal_list/animal_list_widget.dart';
-
-import 'package:sulala_app/src/screens/owned_animal_detail.dart';
-import 'package:sulala_app/src/screens/user_details.dart';
 
 class SearchPageAnimals extends StatefulWidget {
   const SearchPageAnimals({super.key});
@@ -96,26 +94,11 @@ class _SearchPageAnimalsState extends State<SearchPageAnimals> {
     });
   }
 
-  void navigateToUserDetailsPage(Map<String, dynamic> option) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => UserDetails(
-          imagePath: option['imagePath'],
-          title: option['title'],
-          subtitle: option['subtitle'],
-          email: option['email'],
-          phoneNumber: option['phoneNumber'],
-        ),
-      ),
-    );
-  }
-
   void navigateToAnimalDetailsPage(Map<String, dynamic> option) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => OwnedAnimalDetails(
+        builder: (context) => AnimalDetails(
           imagePath: option['imagePath'],
           title: option['title'],
           geninfo: option['geninfo'],

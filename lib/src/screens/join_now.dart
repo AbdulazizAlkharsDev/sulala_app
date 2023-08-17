@@ -204,7 +204,7 @@ class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
                                         onPressed: () {
                                           if (whoOwnTheFarm != null) {
                                             setState(() {
-                                              whoOwnTheFarmController.clear();
+                                              // whoOwnTheFarmController.clear();
                                               hasError = false;
                                               Navigator.pushNamed(
                                                   context, '/sign_up');

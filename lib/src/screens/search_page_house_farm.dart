@@ -15,78 +15,59 @@ class SearchPageHouseFarm extends StatefulWidget {
 }
 
 class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
-  List<Map<String, dynamic>> animals = [
+  List<Map<String, dynamic>> farms = [
     {
-      'imagePath': 'assets/avatars/120px/Staff3.png',
-      'title': 'Horse',
-      'geninfo':
-          'The horse is a domesticated, one-toed, hoofed mammal. It belongs to the taxonomic family Equidae and is one of two extant subspecies of Equus ferus. The horse has evolved over the past 45 to 55 million years from a small multi-toed creature, close to Eohippus, into the large, single-toed animal of today. Humans began domesticating horses around 4000 BCE, and their domestication is believed to have been widespread by 3000 BC'
+      'imagePath': 'assets/avatars/120px/Staff1.png',
+      'title': 'Paul Rivera',
+      'subtitle': 'Viewer',
+      'email': 'paul@example.com',
+      'phoneNumber': '+1 234 567 890',
     },
     {
       'imagePath': 'assets/avatars/120px/Staff3.png',
-      'title': 'Cow',
-      'geninfo':
-          'The cow is a domesticated, one-toed, hoofed mammal. It belongs to the taxonomic family Equidae and is one of two extant subspecies of Equus ferus. The horse has evolved over the past 45 to 55 million years from a small multi-toed creature, close to Eohippus, into the large, single-toed animal of today. Humans began domesticating horses around 4000 BCE, and their domestication is believed to have been widespread by 3000 BC'
+      'title': 'Rebecca Wilson',
+      'subtitle': 'Helper',
+      'email': 'paul@example.com',
+      'phoneNumber': '+1 234 567 890',
+    },
+    {
+      'imagePath': 'assets/avatars/120px/Staff1.png',
+      'title': 'Patricia Williams',
+      'subtitle': 'Helper',
+      'email': 'paul@example.com',
+      'phoneNumber': '+1 234 567 890',
     },
     {
       'imagePath': 'assets/avatars/120px/Staff3.png',
-      'title': 'Ox',
-      'geninfo':
-          'The ox is a domesticated, one-toed, hoofed mammal. It belongs to the taxonomic family Equidae and is one of two extant subspecies of Equus ferus. The horse has evolved over the past 45 to 55 million years from a small multi-toed creature, close to Eohippus, into the large, single-toed animal of today. Humans began domesticating horses around 4000 BCE, and their domestication is believed to have been widespread by 3000 BC'
+      'title': 'Scott Simmons',
+      'subtitle': 'Worker',
+      'email': 'paul@example.com',
+      'phoneNumber': '+1 234 567 890',
     },
     {
-      'imagePath': 'assets/avatars/120px/Staff3.png',
-      'title': 'Sheep',
-      'geninfo':
-          'The sheep is a domesticated, one-toed, hoofed mammal. It belongs to the taxonomic family Equidae and is one of two extant subspecies of Equus ferus. The horse has evolved over the past 45 to 55 million years from a small multi-toed creature, close to Eohippus, into the large, single-toed animal of today. Humans began domesticating horses around 4000 BCE, and their domestication is believed to have been widespread by 3000 BC'
+      'imagePath': 'assets/avatars/120px/Staff1.png',
+      'title': 'Lee Hall',
+      'subtitle': 'Worker',
+      'email': 'paul@example.com',
+      'phoneNumber': '+1 234 567 890',
     },
-    {
-      'imagePath': 'assets/avatars/120px/Staff3.png',
-      'title': 'Bull',
-      'geninfo':
-          'The bull is a domesticated, one-toed, hoofed mammal. It belongs to the taxonomic family Equidae and is one of two extant subspecies of Equus ferus. The horse has evolved over the past 45 to 55 million years from a small multi-toed creature, close to Eohippus, into the large, single-toed animal of today. Humans began domesticating horses around 4000 BCE, and their domestication is believed to have been widespread by 3000 BC'
-    },
-    {
-      'imagePath': 'assets/avatars/120px/Staff3.png',
-      'title': 'Bull',
-      'geninfo':
-          'The bull is a domesticated, one-toed, hoofed mammal. It belongs to the taxonomic family Equidae and is one of two extant subspecies of Equus ferus. The horse has evolved over the past 45 to 55 million years from a small multi-toed creature, close to Eohippus, into the large, single-toed animal of today. Humans began domesticating horses around 4000 BCE, and their domestication is believed to have been widespread by 3000 BC'
-    },
-    {
-      'imagePath': 'assets/avatars/120px/Staff3.png',
-      'title': 'Bull',
-      'geninfo':
-          'The bull is a domesticated, one-toed, hoofed mammal. It belongs to the taxonomic family Equidae and is one of two extant subspecies of Equus ferus. The horse has evolved over the past 45 to 55 million years from a small multi-toed creature, close to Eohippus, into the large, single-toed animal of today. Humans began domesticating horses around 4000 BCE, and their domestication is believed to have been widespread by 3000 BC'
-    },
-    {
-      'imagePath': 'assets/avatars/120px/Staff3.png',
-      'title': 'Bull',
-      'geninfo':
-          'The bull is a domesticated, one-toed, hoofed mammal. It belongs to the taxonomic family Equidae and is one of two extant subspecies of Equus ferus. The horse has evolved over the past 45 to 55 million years from a small multi-toed creature, close to Eohippus, into the large, single-toed animal of today. Humans began domesticating horses around 4000 BCE, and their domestication is believed to have been widespread by 3000 BC'
-    },
-    {
-      'imagePath': 'assets/avatars/120px/Staff3.png',
-      'title': 'Bull',
-      'geninfo':
-          'The bull is a domesticated, one-toed, hoofed mammal. It belongs to the taxonomic family Equidae and is one of two extant subspecies of Equus ferus. The horse has evolved over the past 45 to 55 million years from a small multi-toed creature, close to Eohippus, into the large, single-toed animal of today. Humans began domesticating horses around 4000 BCE, and their domestication is believed to have been widespread by 3000 BC'
-    },
-    // Add more data here if needed
+    // Your data here
   ];
 
   List<Map<String, dynamic>> filteredOptions = [];
   final TextEditingController _searchController = TextEditingController();
-  List<Map<String, dynamic>> filteredAnimals = [];
+  List<Map<String, dynamic>> filteredFarms = [];
 
   @override
   void initState() {
     super.initState();
-    filteredAnimals = animals;
+    filteredFarms = farms;
     // Initialize filteredOptions with all options
   }
 
   void filterOptions(String searchText) {
     setState(() {
-      filteredAnimals = animals
+      filteredFarms = farms
           .where(
             (option) => option['title']
                 .toLowerCase()
@@ -106,19 +87,6 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
           subtitle: option['subtitle'],
           email: option['email'],
           phoneNumber: option['phoneNumber'],
-        ),
-      ),
-    );
-  }
-
-  void navigateToAnimalDetailsPage(Map<String, dynamic> option) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => OwnedAnimalDetails(
-          imagePath: option['imagePath'],
-          title: option['title'],
-          geninfo: option['geninfo'],
         ),
       ),
     );
@@ -169,13 +137,13 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-            if (filteredAnimals.isNotEmpty)
+            if (filteredFarms.isNotEmpty)
               Expanded(
                 child: ListView.builder(
                   shrinkWrap: true,
-                  itemCount: filteredAnimals.length, //change it later please
+                  itemCount: filteredFarms.length, //change it later please
                   itemBuilder: (context, index) {
-                    final option = filteredAnimals[index];
+                    final option = filteredFarms[index];
                     if (filteredOptions.isNotEmpty) {
                       Expanded(
                         child: Center(
@@ -190,7 +158,7 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
                                   height: MediaQuery.of(context).size.height *
                                       0.04),
                               Text(
-                                "No animals found",
+                                "No farms found",
                                 style: AppFonts.headline3(
                                     color: AppColors.grayscale90),
                               ),
@@ -215,9 +183,9 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
                               MediaQuery.of(context).size.width * 0.064,
                           imagePath: option['imagePath'],
                           textHead: option['title'],
-                          textBody: option['geninfo'],
+                          textBody: option['subtitle'],
                           onPressed: () {
-                            navigateToAnimalDetailsPage(option);
+                            navigateToUserDetailsPage(option);
                           },
                         ),
                       );
@@ -226,7 +194,7 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
                   },
                 ),
               ),
-            if (filteredAnimals.isEmpty)
+            if (filteredFarms.isEmpty)
               Expanded(
                 child: Center(
                   child: Column(
@@ -239,7 +207,7 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.04),
                       Text(
-                        "No animals found",
+                        "No farms found",
                         style: AppFonts.headline3(color: AppColors.grayscale90),
                       ),
                       SizedBox(
