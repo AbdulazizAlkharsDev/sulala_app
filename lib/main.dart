@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/screens/guest_mode/search_page_animals.dart';
+import 'package:sulala_app/src/screens/sign_in/sign_in.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar.dart';
 import 'package:sulala_app/src/screens/guest_mode/search_page.dart';
@@ -31,7 +32,9 @@ class MyApp extends StatelessWidget {
         '/search_animals': (context) => const SearchPageAnimals(),
         '/join_now': (context) => const JoinNow(),
         '/sign_up': (context) => const SignUp(),
+        '/sign_in': (context) => const SignIn(),
         '/create_password': (context) => const CreatePassword(),
+
       },
       debugShowCheckedModeBanner: false,
     );

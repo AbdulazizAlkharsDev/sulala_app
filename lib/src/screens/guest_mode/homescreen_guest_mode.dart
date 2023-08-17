@@ -161,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
         status: TextStatus.idle,
         text: 'Sign in',
         onPressed: () {
-          // print("Sign In");
+          Navigator.of(context).pushNamed('/sign_in');
         },
       ),
     ];
