@@ -16,15 +16,18 @@ class JoinNow extends StatefulWidget {
 class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
   String? whoOwnTheFarm;
   String? whatIsTheNameOfYourFarm;
-  final _hasError = false;
+  bool hasError = false;
 
-  TextEditingController controller = TextEditingController();
+  TextEditingController whoOwnTheFarmController = TextEditingController();
+  TextEditingController whatIsTheNameOfYourFarmController =
+      TextEditingController();
 
   int _contentState = 0;
 
   @override
   void dispose() {
-    controller.dispose();
+    whoOwnTheFarmController.dispose();
+    whatIsTheNameOfYourFarmController.dispose();
     super.dispose();
   }
 
@@ -116,15 +119,19 @@ class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
                                               0.05,
                                     ),
                                     PrimaryTextField(
-                                      controller: controller,
+                                      controller:
+                                          whatIsTheNameOfYourFarmController,
                                       hintText: 'Farm name',
-                                      errorMessage: _hasError
-                                          ? 'Username should not contain numbers'
+                                      errorMessage: hasError == true
+                                          ? 'Field cannot be empty'
                                           : null,
                                       onChanged: (value) {
                                         setState(() {
                                           whatIsTheNameOfYourFarm = value;
                                         });
+                                      },
+                                      onErrorChanged: (value) {
+                                        hasError = value;
                                       },
                                     ),
                                     SizedBox(
@@ -140,11 +147,18 @@ class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
                                       child: PrimaryButton(
                                         text: "Continue",
                                         onPressed: () {
-                                          setState(() {
-                                            controller
-                                                .clear(); // Clear the text
-                                            _contentState = 1;
-                                          });
+                                          if (whatIsTheNameOfYourFarm != null) {
+                                            setState(() {
+                                              whatIsTheNameOfYourFarmController
+                                                  .clear();
+                                              _contentState = 1;
+                                              hasError = false;
+                                            });
+                                          } else {
+                                            setState(() {
+                                              hasError = true;
+                                            });
+                                          }
                                         },
                                       ),
                                     ),
@@ -164,10 +178,10 @@ class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
                                               0.05,
                                     ),
                                     PrimaryTextField(
-                                      controller: controller,
+                                      controller: whoOwnTheFarmController,
                                       hintText: 'Owner name',
-                                      errorMessage: _hasError
-                                          ? 'Username should not contain numbers'
+                                      errorMessage: hasError == true
+                                          ? 'Field cannot be empty'
                                           : null,
                                       onChanged: (value) {
                                         setState(() {
@@ -188,12 +202,18 @@ class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
                                       child: PrimaryButton(
                                         text: "Continue",
                                         onPressed: () {
-                                          setState(() {
-                                            controller
-                                                .clear(); // Clear the text
-                                            Navigator.of(context)
-                                                .pushNamed('/sign_up');
-                                          });
+                                          if (whoOwnTheFarm != null) {
+                                            setState(() {
+                                              whoOwnTheFarmController.clear();
+                                              hasError = false;
+                                              Navigator.pushNamed(
+                                                  context, '/sign_up');
+                                            });
+                                          } else {
+                                            setState(() {
+                                              hasError = true;
+                                            });
+                                          }
                                         },
                                       ),
                                     ),

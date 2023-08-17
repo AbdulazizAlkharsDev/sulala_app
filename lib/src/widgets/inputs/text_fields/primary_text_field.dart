@@ -9,6 +9,7 @@ class PrimaryTextField extends StatefulWidget {
   final ValueChanged<bool>? onErrorChanged;
   final TextEditingController controller;
 
+
   const PrimaryTextField({
     Key? key,
     required this.hintText,
@@ -16,6 +17,7 @@ class PrimaryTextField extends StatefulWidget {
     this.onChanged,
     this.onErrorChanged,
     required this.controller,
+
   }) : super(key: key);
 
   @override
@@ -54,9 +56,9 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
 
   void _onChanged(String value) {
     widget.onChanged!(value);
-    // if (widget.onErrorChanged != null) {
-    //   widget.onErrorChanged!(true); // Clear the error state
-    // }
+    if (widget.onErrorChanged != null) {
+      widget.onErrorChanged!(false); // Clear the error state
+    }
   }
 
   @override

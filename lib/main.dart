@@ -5,7 +5,7 @@ import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar.dart';
 import 'package:sulala_app/src/screens/search_page.dart';
 import 'package:sulala_app/src/screens/search_page_house_farm.dart';
 import 'package:sulala_app/src/screens/join_now.dart';
-import 'package:sulala_app/test/sign_up.dart';
+import 'package:sulala_app/src/screens/sign_up.dart';
 
 void main() {
   runApp(const MyApp());

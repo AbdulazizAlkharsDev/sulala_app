@@ -7,7 +7,7 @@ import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_butt
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 import 'package:sulala_app/src/widgets/inputs/phone_number_field.dart/phone_number_field.dart';
 import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
-import 'package:sulala_app/test/otp_page.dart';
+import 'package:sulala_app/src/screens/otp_page.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({
@@ -26,7 +26,7 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
   GoogleButtonStatus googleButtonStatus = GoogleButtonStatus.idle;
   TextStatus textStatus = TextStatus.idle;
   bool showEmailField = false;
-  bool _hasError = false;
+  bool emailHasError = false;
 
   @override
   void dispose() {
@@ -174,20 +174,18 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                                 PrimaryTextField(
                                   controller: emailController,
                                   hintText: 'Enter your username',
-                                  errorMessage: _hasError == true
+                                  errorMessage: emailHasError == true
                                       ? 'Invalid email address'
                                       : null,
                                   onChanged: (value) {
                                     setState(() {
                                       savedEmailAddress = value;
-                                      _hasError !=
-                                          isValidEmail(
-                                              value); // Set the error state
+                                      emailHasError = false;
                                     });
                                   },
                                   onErrorChanged: (hasError) {
                                     setState(() {
-                                      _hasError =
+                                      emailHasError !=
                                           hasError; // Update the error state
                                     });
                                   },
@@ -212,27 +210,35 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                                   onPressed: () {
                                     setState(() {
                                       if (showEmailField == false) {
-                                        buttonStatus =
-                                            PrimaryButtonStatus.loading;
-
-                                        navigateToPhoneOTPPage(
-                                          {
-                                            "phoneNumber": savedPhoneNumber,
-                                            "emailAddress": null,
-                                          },
-                                        );
-                                      } else {
-                                        buttonStatus =
-                                            PrimaryButtonStatus.loading;
-                                        if (isValidEmail(savedEmailAddress!)) {
-                                          _hasError = false;
+                                        if (savedPhoneNumber == null) {
+                                          PrimaryButtonStatus.idle;
                                         } else {
+                                          buttonStatus =
+                                              PrimaryButtonStatus.loading;
+                                          navigateToPhoneOTPPage(
+                                            {
+                                              "phoneNumber": savedPhoneNumber,
+                                              "emailAddress": null,
+                                            },
+                                          );
+                                        }
+                                      } else {
+                                        if (isValidEmail(
+                                                savedEmailAddress.toString()) ==
+                                            true) {
+                                          emailHasError = false;
+                                          buttonStatus =
+                                              PrimaryButtonStatus.loading;
                                           navigateToEmailOTPPage(
                                             {
                                               "emailAddress": savedEmailAddress,
                                               "phoneNumber": null,
                                             },
                                           );
+                                        } else {
+                                          emailHasError = true;
+                                          buttonStatus =
+                                              PrimaryButtonStatus.idle;
                                         }
                                       }
                                     });
