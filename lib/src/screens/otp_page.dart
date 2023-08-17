@@ -38,6 +38,10 @@ class _OTPPageState extends State<OTPPage> {
 
   void onOTPFilled(String otp) {
     // Handle OTP filled logic
+    _timer.cancel(); // Stop the timer
+    setState(() {
+      buttonStatus = PrimaryButtonStatus.idle; // Set the button status
+    });
   }
 
   bool isOTPError(String otp) {
@@ -229,14 +233,15 @@ class _OTPPageState extends State<OTPPage> {
   }
 
   void _onConfirmButtonPressed() {
-    setState(() {
-      buttonStatus = PrimaryButtonStatus.loading;
-    });
-
     if (otpErrorState) {
       setState(() {
         buttonStatus = PrimaryButtonStatus.disabled;
         isResendButtonVisible = true;
+      });
+    } else {
+      setState(() {
+        buttonStatus = PrimaryButtonStatus.loading;
+        Navigator.of(context).pushNamed('/create_password');
       });
     }
   }

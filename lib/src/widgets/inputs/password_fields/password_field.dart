@@ -4,7 +4,7 @@ import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
 class PasswordField extends StatefulWidget {
   final String hintText;
-  final String labelText;
+  final String? labelText;
   final String? errorMessage;
   final ValueChanged<String>? onChanged;
   final ValueChanged<bool>? onErrorChanged; // Add this line
@@ -12,10 +12,10 @@ class PasswordField extends StatefulWidget {
   const PasswordField({
     Key? key,
     required this.hintText,
-    required this.labelText,
+    this.labelText,
     this.errorMessage,
     this.onChanged,
-    this.onErrorChanged, // Add this line
+    this.onErrorChanged,
   }) : super(key: key);
 
   @override
@@ -49,12 +49,9 @@ class _PasswordFieldState extends State<PasswordField> {
   }
 
   void _onChanged(String value) {
-    if (widget.onChanged != null) {
-      widget.onChanged!(value);
-      final hasNumbers = value.contains(RegExp(r'[0-9]'));
-      if (widget.onErrorChanged != null) {
-        widget.onErrorChanged!(hasNumbers); // Report the error state
-      }
+    widget.onChanged!(value);
+    if (widget.onErrorChanged != null) {
+      widget.onErrorChanged!(false); // Clear the error state
     }
   }
 
@@ -83,12 +80,13 @@ class _PasswordFieldState extends State<PasswordField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          widget.labelText,
-          style: AppFonts.caption2(
-            color: AppColors.grayscale90,
+        if (widget.labelText != null)
+          Text(
+            widget.labelText!,
+            style: AppFonts.caption2(
+              color: AppColors.grayscale90,
+            ),
           ),
-        ),
         const SizedBox(height: 8.0),
         Container(
           decoration: BoxDecoration(
@@ -153,22 +151,22 @@ class _PasswordFieldState extends State<PasswordField> {
 
 // Example of use:
 
-// String _enteredPassword = '';
-// bool _hasError = false;
+// bool passwordHasError = false;
+// String? enteredPassword;
 
-// PasswordField(
-//   hintText: 'Enter your password',
-//   labelText: 'Password',
-//   errorMessage: _hasError ? 'Password should not contain numbers' : null,
-//   onChanged: (value) {
-//     setState(() {
-//       _enteredPassword = value;
-//       _hasError = value.contains(RegExp(r'[0-9]')); // Set the error state
-//     });
-//   },
-//   onErrorChanged: (hasError) {
-//     setState(() {
-//       _hasError = hasError; // Update the error state
-//     });
-//   },
-// );
+//  PasswordField(
+//                 hintText: 'Confirm Password',
+//                 errorMessage: passwordHasError
+//                     ? 'Password should be at least 8 characters long and contain at least one number'
+//                     : null,
+//                 onChanged: (value) {
+//                   setState(() {
+//                     enteredPassword = value;
+//                   });
+//                 },
+//                 onErrorChanged: (hasError) {
+//                   setState(() {
+//                     passwordHasError = hasError; // Update the error state
+//                   });
+//                 },
+//               ),
