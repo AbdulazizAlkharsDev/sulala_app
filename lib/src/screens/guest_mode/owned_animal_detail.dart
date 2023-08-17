@@ -197,7 +197,7 @@ class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails>
                     ),
                     Center(
                       child: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.35,
+                        height: MediaQuery.of(context).size.height * 0.3,
                         width: MediaQuery.of(context).size.width * 0.91,
                         child: TabBarView(
                           controller: _tabController,

@@ -120,7 +120,8 @@ class _SearchDetails extends State<UserDetails> {
                           iconPath:
                               'assets/icons/frame/24px/Outlined_Cow_green_icon.png',
                           onPressed: () {
-                            Navigator.pushNamed(context, '/search_animals');
+                            Navigator.pushNamed(
+                                context, '/search_owner_animals');
                           },
                           text: "View animals",
                           status: SecondaryIconStatus.idle,
