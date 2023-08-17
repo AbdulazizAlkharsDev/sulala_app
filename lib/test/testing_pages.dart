@@ -27,11 +27,16 @@ class _ExamplePageState extends State<ExamplePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  PrimaryButton(
-                      text: "Test the page",
-                      onPressed: () {
-                        Navigator.of(context).pushNamed('/create_password');
-                      })
+                  SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: PrimaryButton(
+                        status: PrimaryButtonStatus.loading,
+                        text: "Test the page",
+                        onPressed: () {
+                          // Navigator.of(context).pushNamed('/create_password');
+                        }),
+                  ),
                 ],
               ),
             ),

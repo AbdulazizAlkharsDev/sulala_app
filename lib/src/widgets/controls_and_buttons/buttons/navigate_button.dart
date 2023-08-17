@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:nuts_activity_indicator/nuts_activity_indicator.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
@@ -40,9 +40,11 @@ class NavigateButton extends StatelessWidget {
 
   Widget _buildButtonContent() {
     if (status == NavigateButtonStatus.loading) {
-      return const SpinKitFadingCircle(
-        color: AppColors.error100,
-        size: 24,
+      return const NutsActivityIndicator(
+        radius: 12,
+        activeColor: AppColors.error100,
+        tickCount: 8,
+        inactiveColor: Colors.transparent,
       );
     } else {
       switch (position) {

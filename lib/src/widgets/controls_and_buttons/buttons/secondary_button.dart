@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:nuts_activity_indicator/nuts_activity_indicator.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
@@ -40,9 +40,11 @@ class SecondaryButton extends StatelessWidget {
 
   Widget _buildButtonContent() {
     if (status == SecondaryButtonStatus.loading) {
-      return const SpinKitFadingCircle(
-        color: AppColors.grayscale90,
-        size: 24,
+      return const NutsActivityIndicator(
+        radius: 12,
+        activeColor: AppColors.grayscale90,
+        tickCount: 8,
+        inactiveColor: Colors.transparent,
       );
     } else {
       switch (position) {

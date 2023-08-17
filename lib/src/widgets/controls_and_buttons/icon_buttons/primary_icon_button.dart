@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:nuts_activity_indicator/nuts_activity_indicator.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 
 class PrimaryIconButton extends StatelessWidget {
@@ -40,9 +40,11 @@ class PrimaryIconButton extends StatelessWidget {
       case PrimaryIconButtonStatus.loading:
         return const SizedBox(
           height: 39,
-          child: SpinKitFadingCircle(
-            color: AppColors.grayscale0,
-            size: 24,
+          child: NutsActivityIndicator(
+            radius: 12,
+            activeColor: AppColors.grayscale0,
+            tickCount: 8,
+            inactiveColor: Colors.transparent,
           ),
         );
       case PrimaryIconButtonStatus.disabled:
