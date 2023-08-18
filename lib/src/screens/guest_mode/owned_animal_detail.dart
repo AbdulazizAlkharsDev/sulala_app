@@ -113,90 +113,90 @@ class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails>
                 child: const SizedBox(), // Add your content here
               ),
             ),
-            FractionalTranslation(
-              translation:
-                  Offset(0, MediaQuery.of(context).size.height * 0.00022),
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.78,
-                child: Column(
-                  children: [
-                    CircleAvatar(
-                      radius: MediaQuery.of(context).size.width * 0.16,
-                      backgroundImage: AssetImage(widget.imagePath),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.019,
-                    ),
-                    Text(
-                      widget.title,
-                      style: AppFonts.title4(color: AppColors.grayscale90),
-                    ),
-                    Text(
-                      "ID #${widget.title}",
-                      style: AppFonts.body2(color: AppColors.grayscale70),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.019,
-                    ),
-                    IntrinsicWidth(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Tags(
-                            text: 'Mammal',
-                            icon: Icons.pets,
-                            onPress: () {
-                              // Handle tag click
-                            },
-                            status: TagStatus.active,
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.021,
-                          ),
-                          Tags(
-                            text: 'Herbivore',
-                            icon: Icons.pets,
-                            onPress: () {
-                              // Handle tag click
-                            },
-                            status: TagStatus.active,
-                          ),
-                        ],
+            Center(
+              child: FractionalTranslation(
+                translation:
+                    Offset(0, MediaQuery.of(context).size.height * 0.000185),
+                child: Expanded(
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        radius: MediaQuery.of(context).size.width * 0.16,
+                        backgroundImage: AssetImage(widget.imagePath),
                       ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.039,
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.91,
-                      height: MediaQuery.of(context).size.height * 0.05,
-                      decoration: BoxDecoration(
-                        color: AppColors.grayscale10,
-                        borderRadius: BorderRadius.circular(24),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.019,
                       ),
-                      child: TabBar(
-                        controller: _tabController,
-                        indicator: BoxDecoration(
-                          color: AppColors.primary50,
+                      Text(
+                        widget.title,
+                        style: AppFonts.title4(color: AppColors.grayscale90),
+                      ),
+                      Text(
+                        "ID #${widget.title}",
+                        style: AppFonts.body2(color: AppColors.grayscale70),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.019,
+                      ),
+                      IntrinsicWidth(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Tags(
+                              text: 'Mammal',
+                              icon: Icons.pets,
+                              onPress: () {
+                                // Handle tag click
+                              },
+                              status: TagStatus.active,
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.021,
+                            ),
+                            Tags(
+                              text: 'Herbivore',
+                              icon: Icons.pets,
+                              onPress: () {
+                                // Handle tag click
+                              },
+                              status: TagStatus.active,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.039,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.91,
+                        height: MediaQuery.of(context).size.height * 0.05,
+                        decoration: BoxDecoration(
+                          color: AppColors.grayscale10,
                           borderRadius: BorderRadius.circular(24),
                         ),
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        indicatorColor: Colors.transparent,
-                        labelColor: AppColors.grayscale0,
-                        unselectedLabelColor: AppColors.grayscale60,
-                        labelStyle: AppFonts.body2(color: AppColors.grayscale0),
-                        tabs: const [
-                          Tab(text: 'General'),
-                          Tab(text: 'Breeding'),
-                          Tab(text: 'Medical'),
-                        ],
+                        child: TabBar(
+                          controller: _tabController,
+                          indicator: BoxDecoration(
+                            color: AppColors.primary50,
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          indicatorColor: Colors.transparent,
+                          labelColor: AppColors.grayscale0,
+                          unselectedLabelColor: AppColors.grayscale60,
+                          labelStyle:
+                              AppFonts.body2(color: AppColors.grayscale0),
+                          tabs: const [
+                            Tab(text: 'General'),
+                            Tab(text: 'Breeding'),
+                            Tab(text: 'Medical'),
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.03,
-                    ),
-                    Center(
-                      child: SizedBox(
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.03,
+                      ),
+                      SizedBox(
                         height: MediaQuery.of(context).size.height * 0.3,
                         width: MediaQuery.of(context).size.width * 0.91,
                         child: TabBarView(
@@ -222,8 +222,8 @@ class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails>
                           ],
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
