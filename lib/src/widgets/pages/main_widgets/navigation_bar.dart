@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sulala_app/test/reg_home_page.dart';
 import '../../../../test/testing_pages.dart';
 import '../../../screens/guest_mode/homescreen_guest_mode.dart';
 import '../../../theme/colors/colors.dart';
@@ -16,7 +17,7 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
   final List<Widget> _pages = [
     const HomeScreen(),
     const ExamplePage(),
-    const HomeScreen(),
+    const RegHomePage(),
   ];
 
   @override

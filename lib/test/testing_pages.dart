@@ -31,10 +31,10 @@ class _ExamplePageState extends State<ExamplePage> {
                     width: double.infinity,
                     height: 50,
                     child: PrimaryButton(
-                        status: PrimaryButtonStatus.loading,
+                        status: PrimaryButtonStatus.idle,
                         text: "Test the page",
                         onPressed: () {
-                          // Navigator.of(context).pushNamed('/create_password');
+                          Navigator.of(context).pushNamed('/reg_home_page');
                         }),
                   ),
                 ],
