@@ -1,301 +1,214 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/theme/colors/colors.dart';
+import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/secondary_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/tags/tags.dart';
 
-class ShowFilterReg extends StatelessWidget {
+class ShowFilterReg extends StatefulWidget {
   const ShowFilterReg({super.key});
 
   @override
+  State<ShowFilterReg> createState() => _ShowFilterRegState();
+}
+
+TagStatus borrowed = TagStatus.active;
+
+class _ShowFilterRegState extends State<ShowFilterReg> {
+  @override
   Widget build(BuildContext context) {
-    return 
-
-     SizedBox(
-        width: double.infinity, // Stretch to screen width
-        child: FractionallySizedBox(
-          heightFactor: 0.62, // Set the height factor as you desire
-          child: Container(
-            padding: EdgeInsets.all(16),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(height: 16),
-
-                  Text(
-                    'Tags',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 40,
-                      color: Colors.black,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  Text(
-                    'Current State',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Tags(
-                          text: 'Borrowed',
-                          icon: Icons.ac_unit,
-                          onPress: () {
-                            // Handle tag click
-                          },
-                          status: TagStatus.active,
-                        ),
-                      ),
-                      SizedBox(width: 8),
-                      Expanded(
-                        child: Tags(
-                          text: 'Adopted',
-                          icon: Icons.ac_unit,
-                          onPress: () {
-                            // Handle tag click
-                          },
-                          status: TagStatus.notActive,
-                        ),
-                      ),
-                      SizedBox(width: 8),
-                      Expanded(
-                        child: Tags(
-                          text: 'Donated',
-                          icon: Icons.ac_unit,
-                          onPress: () {
-                            // Handle tag click
-                          },
-                          status: TagStatus.disabled,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Tags(
-                          text: 'Escaped',
-                          icon: Icons.ac_unit,
-                          onPress: () {
-                            // Handle tag click
-                          },
-                          status: TagStatus.active,
-                        ),
-                      ),
-                      SizedBox(width: 8),
-                      Expanded(
-                        child: Tags(
-                          text: 'Stolen',
-                          icon: Icons.ac_unit,
-                          onPress: () {
-                            // Handle tag click
-                          },
-                          status: TagStatus.notActive,
-                        ),
-                      ),
-                      SizedBox(width: 8),
-                      Expanded(
-                        child: Tags(
-                          text: 'Transferred',
-                          icon: Icons.ac_unit,
-                          onPress: () {
-                            // Handle tag click
-                          },
-                          status: TagStatus.disabled,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  Text(
-                    'Medical State',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Tags(
-                          text: 'Injured',
-                          icon: Icons.ac_unit,
-                          onPress: () {
-                            // Handle tag click
-                          },
-                          status: TagStatus.active,
-                        ),
-                      ),
-                      SizedBox(width: 8),
-                      Expanded(
-                        child: Tags(
-                          text: 'Sick',
-                          icon: Icons.ac_unit,
-                          onPress: () {
-                            // Handle tag click
-                          },
-                          status: TagStatus.notActive,
-                        ),
-                      ),
-                      SizedBox(width: 8),
-                      Expanded(
-                        child: Tags(
-                          text: 'Quarantined',
-                          icon: Icons.ac_unit,
-                          onPress: () {
-                            // Handle tag click
-                          },
-                          status: TagStatus.disabled,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 8),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Tags(
-                          text: 'Medication',
-                          icon: Icons.ac_unit,
-                          onPress: () {
-                            // Handle tag click
-                          },
-                          status: TagStatus.active,
-                        ),
-                      ),
-                      SizedBox(width: 8),
-                      Expanded(
-                        child: Tags(
-                          text: 'Testing',
-                          icon: Icons.ac_unit,
-                          onPress: () {
-                            // Handle tag click
-                          },
-                          status: TagStatus.notActive,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 25,
-                  ),
-                  Text(
-                    'Others',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: const Color.fromARGB(255, 42, 41, 41),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Tags(
-                          text: 'Sold',
-                          icon: Icons.ac_unit,
-                          onPress: () {
-                            // Handle tag click
-                          },
-                          status: TagStatus.active,
-                        ),
-                      ),
-                      SizedBox(width: 8),
-                      Expanded(
-                        child: Tags(
-                          text: 'Dead',
-                          icon: Icons.ac_unit,
-                          onPress: () {
-                            // Handle tag click
-                          },
-                          status: TagStatus.notActive,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 35,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            backgroundColor:
-                                const Color.fromARGB(255, 225, 225, 225),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                          ),
-                          onPressed: () {
-                            // Handle cancel button press
-                            Navigator.pop(context); // Close the modal sheet
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 16),
-                            child: Text('Clear All',
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 8),
-                      Expanded(
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            backgroundColor:
-                                const Color.fromARGB(255, 36, 86, 38),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                          ),
-                          onPressed: () {
-                            // Handle join farm button press
-                            Navigator.pop(context); // Close the modal sheet
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 16),
-                            child: Text(
-                              'Apply',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  // You can add more widgets as needed
-                ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.025,
+        ),
+        Text(
+          'Current State',
+          style: AppFonts.headline3(color: AppColors.grayscale90),
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.012,
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Tags(
+              text: 'Borrowed',
+              onPress: () {
+                setState(() {
+                  if (borrowed == TagStatus.active) {
+                    borrowed = TagStatus.notActive;
+                  } else {
+                    borrowed = TagStatus.active;
+                  }
+                });
+              },
+              status: borrowed,
+            ),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+            Tags(
+              text: 'Adopted',
+              onPress: () {
+                // Handle tag click
+              },
+              status: TagStatus.notActive,
+            ),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+            Tags(
+              text: 'Donated',
+              onPress: () {
+                // Handle tag click
+              },
+              status: TagStatus.disabled,
+            ),
+          ],
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Tags(
+              text: 'Escaped',
+              onPress: () {
+                // Handle tag click
+              },
+              status: TagStatus.active,
+            ),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+            Tags(
+              text: 'Stolen',
+              onPress: () {
+                // Handle tag click
+              },
+              status: TagStatus.notActive,
+            ),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+            Tags(
+              text: 'Transferred',
+              onPress: () {
+                // Handle tag click
+              },
+              status: TagStatus.disabled,
+            ),
+          ],
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.029,
+        ),
+        Text('Medical State',
+            style: AppFonts.headline3(color: AppColors.grayscale90)),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.012,
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Tags(
+              text: 'Injured',
+              onPress: () {
+                // Handle tag click
+              },
+              status: TagStatus.active,
+            ),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+            Tags(
+              text: 'Sick',
+              onPress: () {
+                // Handle tag click
+              },
+              status: TagStatus.notActive,
+            ),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+            Tags(
+              text: 'Quarantined',
+              onPress: () {
+                // Handle tag click
+              },
+              status: TagStatus.disabled,
+            ),
+          ],
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Tags(
+              text: 'Medication',
+              onPress: () {
+                // Handle tag click
+              },
+              status: TagStatus.active,
+            ),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+            Tags(
+              text: 'Testing',
+              onPress: () {
+                // Handle tag click
+              },
+              status: TagStatus.notActive,
+            ),
+          ],
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.029,
+        ),
+        Text(
+          'Others',
+          style: AppFonts.headline3(color: AppColors.grayscale90),
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.012,
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Tags(
+              text: 'Sold',
+              onPress: () {
+                // Handle tag click
+              },
+              status: TagStatus.active,
+            ),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+            Tags(
+              text: 'Dead',
+              onPress: () {
+                // Handle tag click
+              },
+              status: TagStatus.notActive,
+            ),
+          ],
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.039,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.064,
+              width: MediaQuery.of(context).size.width * 0.44,
+              child: SecondaryButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                text: 'Clear All',
+                status: SecondaryButtonStatus.idle,
               ),
             ),
-          ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.064,
+              width: MediaQuery.of(context).size.width * 0.44,
+              child: PrimaryButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                text: 'Apply',
+                status: PrimaryButtonStatus.idle,
+              ),
+            ),
+          ],
         ),
-      );
+      ],
+    );
   }
-  }
+}

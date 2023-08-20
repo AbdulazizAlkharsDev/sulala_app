@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
 import 'package:sulala_app/src/widgets/pages/homepage_widgets/card.dart';
 import 'package:sulala_app/test/show_filter_reg.dart';
 import 'package:sulala_app/test/small_card_widget.dart';
@@ -46,12 +47,21 @@ class _RegHomePage extends State<RegHomePage> {
     });
   }
 
-  void _showFilterModalSheet() {
+  void _showFilterModalSheet(BuildContext context) {
     showModalBottomSheet(
+      backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,
+      isDismissible: true,
       builder: (BuildContext context) {
-        return const ShowFilterReg();
+        return Container(
+          color: Colors.transparent,
+          child: const DrowupWidget(
+            heightFactor: 0.73,
+            heading: "Tags",
+            content: ShowFilterReg(),
+          ),
+        );
       },
     );
   }
@@ -139,7 +149,9 @@ class _RegHomePage extends State<RegHomePage> {
                         style: AppFonts.title4(color: AppColors.grayscale90)),
                     const Spacer(),
                     InkWell(
-                      onTap: _showFilterModalSheet,
+                      onTap: () {
+                        _showFilterModalSheet(context);
+                      },
                       child: const Image(
                         image:
                             AssetImage('assets/icons/frame/24px/filter1.png'),

@@ -37,10 +37,13 @@ class DrowupWidget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   if (heading != null)
-                    Text(
-                      heading!,
-                      style: AppFonts.title3(color: AppColors.grayscale90),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.025,
                     ),
+                  Text(
+                    heading!,
+                    style: AppFonts.title3(color: AppColors.grayscale90),
+                  ),
                   const SizedBox(height: 16),
                   content,
                 ],
