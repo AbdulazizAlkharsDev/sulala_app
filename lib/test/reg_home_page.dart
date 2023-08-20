@@ -93,6 +93,10 @@ class _RegHomePage extends State<RegHomePage> {
                     },
                     child: events.isNotEmpty
                         ? badges.Badge(
+                            badgeStyle: badges.BadgeStyle(
+                              padding: EdgeInsets.all(
+                                  MediaQuery.of(context).size.width * 0.02),
+                            ),
                             badgeContent: Text(
                               events.length.toString(),
                               style: const TextStyle(color: Colors.white),
