@@ -57,7 +57,9 @@ class _RegHomePage extends State<RegHomePage> {
   }
 
   void _removeEvent(int index) {
-    setState(() {});
+    setState(() {
+      events.removeAt(index);
+    });
   }
 
   @override
@@ -87,7 +89,7 @@ class _RegHomePage extends State<RegHomePage> {
                   SizedBox(width: MediaQuery.of(context).size.width * 0.0097),
                   GestureDetector(
                     onTap: () {
-                      _removeEvent(2);
+                      _removeEvent(1);
                     },
                     child: events.isNotEmpty
                         ? badges.Badge(
@@ -158,7 +160,9 @@ class _RegHomePage extends State<RegHomePage> {
                             'ALL', sumOfNextTwoCards, _chartData[0].color),
                         quan: sumOfNextTwoCards.toString(),
                         onPressed: () {
-                          _updateChartData(sumOfNextTwoCards, 'ALL');
+                          setState(() {
+                            _updateChartData(sumOfNextTwoCards, 'ALL');
+                          });
                         },
                         isSelected: _selectedIndex == -1,
                       ),
@@ -174,7 +178,9 @@ class _RegHomePage extends State<RegHomePage> {
                         quan: _chartData[0].quan.toString(),
                         animalData: _chartData[0],
                         onPressed: () {
-                          _updateChartData(_chartData[0].quan, 'Mammals');
+                          setState(() {
+                            _updateChartData(_chartData[0].quan, 'Mammals');
+                          });
                         },
                         isSelected: _selectedIndex == 0,
                       ),
@@ -190,7 +196,9 @@ class _RegHomePage extends State<RegHomePage> {
                         animalData: _chartData[1],
                         quan: _chartData[1].quan.toString(),
                         onPressed: () {
-                          _updateChartData(_chartData[1].quan, 'Oviparous');
+                          setState(() {
+                            _updateChartData(_chartData[1].quan, 'Oviparous');
+                          });
                         },
                         isSelected: _selectedIndex == 1,
                       ),
@@ -262,23 +270,27 @@ class _RegHomePage extends State<RegHomePage> {
                       ],
                     ),
                   ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: events.length,
-                  itemBuilder: (context, index) {
-                    EventData eventData = events[index];
-                    return ListTile(
-                      title: Text(eventData.title,
-                          style: AppFonts.body1(color: AppColors.grayscale90)),
-                      subtitle: Text(
-                        eventData.subtitle,
-                        style: AppFonts.body2(color: AppColors.grayscale60),
-                      ),
-                      trailing: Image.asset(
-                        'assets/icons/frame/24px/24_Chevron_right.png',
-                      ),
-                    );
-                  },
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.16,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: events.length,
+                    itemBuilder: (context, index) {
+                      EventData eventData = events[index];
+                      return ListTile(
+                        title: Text(eventData.title,
+                            style:
+                                AppFonts.body1(color: AppColors.grayscale90)),
+                        subtitle: Text(
+                          eventData.subtitle,
+                          style: AppFonts.body2(color: AppColors.grayscale60),
+                        ),
+                        trailing: Image.asset(
+                          'assets/icons/frame/24px/24_Chevron_right.png',
+                        ),
+                      );
+                    },
+                  ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.039),
                 Row(
