@@ -37,11 +37,9 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
               text: 'Borrowed',
               onPress: () {
                 setState(() {
-                  if (borrowed == TagStatus.active) {
-                    borrowed = TagStatus.notActive;
-                  } else {
-                    borrowed = TagStatus.active;
-                  }
+                  borrowed == TagStatus.active
+                      ? borrowed = TagStatus.notActive
+                      : borrowed = TagStatus.active;
                 });
               },
               status: borrowed,
