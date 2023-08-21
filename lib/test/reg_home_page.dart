@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/tags/tags.dart';
 import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
 import 'package:sulala_app/src/widgets/pages/homepage_widgets/card.dart';
 import 'package:sulala_app/test/show_filter_reg.dart';
@@ -26,6 +27,112 @@ class _RegHomePage extends State<RegHomePage> {
     EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
   ];
   int _selectedIndex = -1;
+
+  TagStatus savedBorrowedStatus = TagStatus.notActive;
+  TagStatus savedAdoptedStatus = TagStatus.notActive;
+  TagStatus savedDonatedStatus = TagStatus.notActive;
+  TagStatus savedEscapedStatus = TagStatus.notActive;
+  TagStatus savedStolenStatus = TagStatus.notActive;
+  TagStatus savedTransferredStatus = TagStatus.notActive;
+  TagStatus savedInjuredStatus = TagStatus.notActive;
+  TagStatus savedSickStatus = TagStatus.notActive;
+  TagStatus savedQuarantinedStatus = TagStatus.notActive;
+  TagStatus savedMedicationStatus = TagStatus.notActive;
+  TagStatus savedTestingStatus = TagStatus.notActive;
+  TagStatus savedSoldStatus = TagStatus.notActive;
+  TagStatus savedDeadStatus = TagStatus.notActive;
+
+  void handleBorrowedStatusChanged(TagStatus updatedStatus) {
+    setState(() {
+      savedBorrowedStatus = updatedStatus;
+    });
+    // print("Updated status: $updatedStatus");
+  }
+
+  void handleAdoptedStatusChanged(TagStatus updatedStatus) {
+    setState(() {
+      savedAdoptedStatus = updatedStatus;
+    });
+    // print("Updated status: $updatedStatus");
+  }
+
+  void handleDonatedStatusChanged(TagStatus updatedStatus) {
+    setState(() {
+      savedDonatedStatus = updatedStatus;
+    });
+    // print("Updated status: $updatedStatus");
+  }
+
+  void handleEscapedStatusChanged(TagStatus updatedStatus) {
+    setState(() {
+      savedEscapedStatus = updatedStatus;
+    });
+    // print("Updated status: $updatedStatus");
+  }
+
+  void handleStolenStatusChanged(TagStatus updatedStatus) {
+    setState(() {
+      savedStolenStatus = updatedStatus;
+    });
+    // print("Updated status: $updatedStatus");
+  }
+
+  void handleTransferredStatusChanged(TagStatus updatedStatus) {
+    setState(() {
+      savedTransferredStatus = updatedStatus;
+    });
+    // print("Updated status: $updatedStatus");
+  }
+
+  void handleInjuredStatusChanged(TagStatus updatedStatus) {
+    setState(() {
+      savedInjuredStatus = updatedStatus;
+    });
+    // print("Updated status: $updatedStatus");
+  }
+
+  void handleSickStatusChanged(TagStatus updatedStatus) {
+    setState(() {
+      savedSickStatus = updatedStatus;
+    });
+    // print("Updated status: $updatedStatus");
+  }
+
+  void handleQuarantinedStatusChanged(TagStatus updatedStatus) {
+    setState(() {
+      savedQuarantinedStatus = updatedStatus;
+    });
+    // print("Updated status: $updatedStatus");
+  }
+
+  void handleMedicationStatusChanged(TagStatus updatedStatus) {
+    setState(() {
+      savedMedicationStatus = updatedStatus;
+    });
+    // print("Updated status: $updatedStatus");
+  }
+
+  void handleTestingStatusChanged(TagStatus updatedStatus) {
+    setState(() {
+      savedTestingStatus = updatedStatus;
+    });
+    // print("Updated status: $updatedStatus");
+  }
+
+  void handleSoldStatusChanged(TagStatus updatedStatus) {
+    setState(() {
+      savedSoldStatus = updatedStatus;
+    });
+    // print("Updated status: $updatedStatus");
+  }
+
+  void handleDeadStatusChanged(TagStatus updatedStatus) {
+    setState(() {
+      savedDeadStatus = updatedStatus;
+    });
+    // print("Updated status: $updatedStatus");
+  }
+
   @override
   void initState() {
     _chartData = getChartData();
@@ -56,10 +163,37 @@ class _RegHomePage extends State<RegHomePage> {
       builder: (BuildContext context) {
         return Container(
           color: Colors.transparent,
-          child: const DrowupWidget(
+          child: DrowupWidget(
             heightFactor: 0.73,
             heading: "Tags",
-            content: ShowFilterReg(),
+            content: ShowFilterReg(
+              onBorrowesStatusChanged: handleBorrowedStatusChanged,
+              onAdoptedStatusChanged: handleAdoptedStatusChanged,
+              onDonatedStatusChanged: handleDonatedStatusChanged,
+              onEscapedStatusChanged: handleEscapedStatusChanged,
+              onStolenStatusChanged: handleStolenStatusChanged,
+              onTransferredStatusChanged: handleTransferredStatusChanged,
+              onInjuredStatusChanged: handleInjuredStatusChanged,
+              onSickStatusChanged: handleSickStatusChanged,
+              onQuarantinedStatusChanged: handleQuarantinedStatusChanged,
+              onMedicationStatusChanged: handleMedicationStatusChanged,
+              onTestingStatusChanged: handleTestingStatusChanged,
+              onSoldStatusChanged: handleSoldStatusChanged,
+              onDeadStatusChanged: handleDeadStatusChanged,
+              initialBorrowedStatus: savedBorrowedStatus,
+              initialAdoptedStatus: savedAdoptedStatus,
+              initialDonatedStatus: savedDonatedStatus,
+              initialEscapedStatus: savedEscapedStatus,
+              initialStolenStatus: savedStolenStatus,
+              initialTransferredStatus: savedTransferredStatus,
+              initialInjuredStatus: savedInjuredStatus,
+              initialSickStatus: savedSickStatus,
+              initialQuarantinedStatus: savedQuarantinedStatus,
+              initialMedicationStatus: savedMedicationStatus,
+              initialTestingStatus: savedTestingStatus,
+              initialSoldStatus: savedSoldStatus,
+              initialDeadStatus: savedDeadStatus,
+            ),
           ),
         );
       },
@@ -223,7 +357,7 @@ class _RegHomePage extends State<RegHomePage> {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.019),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.576,
@@ -241,7 +375,6 @@ class _RegHomePage extends State<RegHomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.064),
                     Expanded(
                       child: ListView(
                         shrinkWrap: true,

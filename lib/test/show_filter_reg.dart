@@ -5,45 +5,102 @@ import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_butt
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/secondary_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/tags/tags.dart';
 
+typedef TagStatusCallback = void Function(TagStatus status);
+
 class ShowFilterReg extends StatefulWidget {
+  final TagStatusCallback onBorrowesStatusChanged;
+  final TagStatusCallback onAdoptedStatusChanged;
+  final TagStatusCallback onDonatedStatusChanged;
+  final TagStatusCallback onEscapedStatusChanged;
+  final TagStatusCallback onStolenStatusChanged;
+  final TagStatusCallback onTransferredStatusChanged;
+  final TagStatusCallback onInjuredStatusChanged;
+  final TagStatusCallback onSickStatusChanged;
+  final TagStatusCallback onQuarantinedStatusChanged;
+  final TagStatusCallback onMedicationStatusChanged;
+  final TagStatusCallback onTestingStatusChanged;
+  final TagStatusCallback onSoldStatusChanged;
+  final TagStatusCallback onDeadStatusChanged;
+  final TagStatus initialBorrowedStatus;
+  final TagStatus initialAdoptedStatus;
+  final TagStatus initialDonatedStatus;
+  final TagStatus initialEscapedStatus;
+  final TagStatus initialStolenStatus;
+  final TagStatus initialTransferredStatus;
+  final TagStatus initialInjuredStatus;
+  final TagStatus initialSickStatus;
+  final TagStatus initialQuarantinedStatus;
+  final TagStatus initialMedicationStatus;
+  final TagStatus initialTestingStatus;
+  final TagStatus initialSoldStatus;
+  final TagStatus initialDeadStatus;
+
   const ShowFilterReg({
     super.key,
+    required this.onBorrowesStatusChanged,
+    required this.onAdoptedStatusChanged,
+    required this.onDonatedStatusChanged,
+    required this.onEscapedStatusChanged,
+    required this.onStolenStatusChanged,
+    required this.onTransferredStatusChanged,
+    required this.onInjuredStatusChanged,
+    required this.onSickStatusChanged,
+    required this.onQuarantinedStatusChanged,
+    required this.onMedicationStatusChanged,
+    required this.onTestingStatusChanged,
+    required this.onSoldStatusChanged,
+    required this.onDeadStatusChanged,
+    required this.initialBorrowedStatus,
+    required this.initialAdoptedStatus,
+    required this.initialDonatedStatus,
+    required this.initialEscapedStatus,
+    required this.initialStolenStatus,
+    required this.initialTransferredStatus,
+    required this.initialInjuredStatus,
+    required this.initialSickStatus,
+    required this.initialQuarantinedStatus,
+    required this.initialMedicationStatus,
+    required this.initialTestingStatus,
+    required this.initialSoldStatus,
+    required this.initialDeadStatus,
   });
 
   @override
   State<ShowFilterReg> createState() => _ShowFilterRegState();
 }
 
-TagStatus borrowed = TagStatus.active;
-
 class _ShowFilterRegState extends State<ShowFilterReg> {
-  TagStatus borrowed = TagStatus.notActive;
-  TagStatus adopted = TagStatus.notActive;
-  TagStatus donated = TagStatus.notActive;
-  TagStatus escaped = TagStatus.notActive;
-  TagStatus stolen = TagStatus.notActive;
-  TagStatus transferred = TagStatus.notActive;
-  TagStatus injured = TagStatus.notActive;
-  TagStatus sick = TagStatus.notActive;
-  TagStatus quarantined = TagStatus.notActive;
-  TagStatus medication = TagStatus.notActive;
-  TagStatus testing = TagStatus.notActive;
-  TagStatus sold = TagStatus.notActive;
-  TagStatus dead = TagStatus.notActive;
+  late TagStatus borrowed;
+  late TagStatus adopted;
+  late TagStatus donated;
+  late TagStatus escaped;
+  late TagStatus stolen;
+  late TagStatus transferred;
+  late TagStatus injured;
+  late TagStatus sick;
+  late TagStatus quarantined;
+  late TagStatus medication;
+  late TagStatus testing;
+  late TagStatus sold;
+  late TagStatus dead;
 
-  TagStatus? newBorrowed;
-  TagStatus? newAdopted;
-  TagStatus? newDonated;
-  TagStatus? newEscaped;
-  TagStatus? newStolen;
-  TagStatus? newTransferred;
-  TagStatus? newInjured;
-  TagStatus? newSick;
-  TagStatus? newQuarantined;
-  TagStatus? newMedication;
-  TagStatus? newTesting;
-  TagStatus? newSold;
-  TagStatus? newDead;
+  @override
+  void initState() {
+    super.initState();
+    borrowed = widget.initialBorrowedStatus;
+    adopted = widget.initialAdoptedStatus;
+    donated = widget.initialDonatedStatus;
+    escaped = widget.initialEscapedStatus;
+    stolen = widget.initialStolenStatus;
+    transferred = widget.initialTransferredStatus;
+    injured = widget.initialInjuredStatus;
+    sick = widget.initialSickStatus;
+    quarantined = widget.initialQuarantinedStatus;
+    medication = widget.initialMedicationStatus;
+    testing = widget.initialTestingStatus;
+    sold = widget.initialSoldStatus;
+    dead = widget.initialDeadStatus;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,25 +123,31 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
             Tags(
               text: "Borrowed",
               onPress: () {
-                setState(() {
-                  borrowed == TagStatus.active
-                      ? borrowed = TagStatus.notActive
-                      : borrowed = TagStatus.active;
+                final newStatus = borrowed == TagStatus.active
+                    ? TagStatus.notActive
+                    : TagStatus.active;
 
-                  borrowed = newBorrowed!;
+                setState(() {
+                  borrowed = newStatus;
                 });
+
+                widget.onBorrowesStatusChanged(newStatus);
               },
-              status: newBorrowed == null ? borrowed : newBorrowed!,
+              status: borrowed, // Use the current borrowed status
             ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.021),
             Tags(
               text: 'Adopted',
               onPress: () {
+                final newStatus = adopted == TagStatus.active
+                    ? adopted = TagStatus.notActive
+                    : adopted = TagStatus.active;
+
                 setState(() {
-                  adopted == TagStatus.active
-                      ? adopted = TagStatus.notActive
-                      : adopted = TagStatus.active;
+                  adopted = newStatus;
                 });
+
+                widget.onAdoptedStatusChanged(newStatus);
               },
               status: adopted,
             ),
@@ -92,11 +155,13 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
             Tags(
               text: 'Donated',
               onPress: () {
+                final newStatus = donated == TagStatus.active
+                    ? donated = TagStatus.notActive
+                    : donated = TagStatus.active;
                 setState(() {
-                  donated == TagStatus.active
-                      ? donated = TagStatus.notActive
-                      : donated = TagStatus.active;
+                  donated = newStatus;
                 });
+                widget.onDonatedStatusChanged(newStatus);
               },
               status: donated,
             ),
@@ -108,11 +173,13 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
             Tags(
               text: 'Escaped',
               onPress: () {
+                final newStatus = escaped == TagStatus.active
+                    ? escaped = TagStatus.notActive
+                    : escaped = TagStatus.active;
                 setState(() {
-                  escaped == TagStatus.active
-                      ? escaped = TagStatus.notActive
-                      : escaped = TagStatus.active;
+                  escaped = newStatus;
                 });
+                widget.onEscapedStatusChanged(newStatus);
               },
               status: escaped,
             ),
@@ -120,11 +187,13 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
             Tags(
               text: 'Stolen',
               onPress: () {
+                final newStatus = stolen == TagStatus.active
+                    ? stolen = TagStatus.notActive
+                    : stolen = TagStatus.active;
                 setState(() {
-                  stolen == TagStatus.active
-                      ? stolen = TagStatus.notActive
-                      : stolen = TagStatus.active;
+                  stolen = newStatus;
                 });
+                widget.onStolenStatusChanged(newStatus);
               },
               status: stolen,
             ),
@@ -132,11 +201,15 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
             Tags(
               text: 'Transferred',
               onPress: () {
+                final newStatus = transferred == TagStatus.active
+                    ? transferred = TagStatus.notActive
+                    : transferred = TagStatus.active;
+
                 setState(() {
-                  transferred == TagStatus.active
-                      ? transferred = TagStatus.notActive
-                      : transferred = TagStatus.active;
+                  transferred = newStatus;
                 });
+
+                widget.onTransferredStatusChanged(newStatus);
               },
               status: transferred,
             ),
@@ -156,11 +229,14 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
             Tags(
               text: 'Injured',
               onPress: () {
+                final newStatus = injured == TagStatus.active
+                    ? injured = TagStatus.notActive
+                    : injured = TagStatus.active;
                 setState(() {
-                  injured == TagStatus.active
-                      ? injured = TagStatus.notActive
-                      : injured = TagStatus.active;
+                  injured = newStatus;
                 });
+
+                widget.onInjuredStatusChanged(newStatus);
               },
               status: injured,
             ),
@@ -168,11 +244,15 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
             Tags(
               text: 'Sick',
               onPress: () {
+                final newStatus = sick == TagStatus.active
+                    ? sick = TagStatus.notActive
+                    : sick = TagStatus.active;
+
                 setState(() {
-                  sick == TagStatus.active
-                      ? sick = TagStatus.notActive
-                      : sick = TagStatus.active;
+                  sick = newStatus;
                 });
+
+                widget.onSickStatusChanged(newStatus);
               },
               status: sick,
             ),
@@ -180,11 +260,15 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
             Tags(
               text: 'Quarantined',
               onPress: () {
+                final newStatus = quarantined == TagStatus.active
+                    ? quarantined = TagStatus.notActive
+                    : quarantined = TagStatus.active;
+
                 setState(() {
-                  quarantined == TagStatus.active
-                      ? quarantined = TagStatus.notActive
-                      : quarantined = TagStatus.active;
+                  quarantined = newStatus;
                 });
+
+                widget.onQuarantinedStatusChanged(newStatus);
               },
               status: quarantined,
             ),
@@ -196,11 +280,14 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
             Tags(
               text: 'Medication',
               onPress: () {
+                final newStatus = medication == TagStatus.active
+                    ? medication = TagStatus.notActive
+                    : medication = TagStatus.active;
                 setState(() {
-                  medication == TagStatus.active
-                      ? medication = TagStatus.notActive
-                      : medication = TagStatus.active;
+                  medication = newStatus;
                 });
+
+                widget.onMedicationStatusChanged(newStatus);
               },
               status: medication,
             ),
@@ -208,11 +295,15 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
             Tags(
               text: 'Testing',
               onPress: () {
+                final newStatus = testing == TagStatus.active
+                    ? testing = TagStatus.notActive
+                    : testing = TagStatus.active;
+
                 setState(() {
-                  testing == TagStatus.active
-                      ? testing = TagStatus.notActive
-                      : testing = TagStatus.active;
+                  testing = newStatus;
                 });
+
+                widget.onTestingStatusChanged(newStatus);
               },
               status: testing,
             ),
@@ -234,11 +325,15 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
             Tags(
               text: 'Sold',
               onPress: () {
+                final newStatus = sold == TagStatus.active
+                    ? sold = TagStatus.notActive
+                    : sold = TagStatus.active;
+
                 setState(() {
-                  sold == TagStatus.active
-                      ? sold = TagStatus.notActive
-                      : sold = TagStatus.active;
+                  sold = newStatus;
                 });
+
+                widget.onSoldStatusChanged(newStatus);
               },
               status: sold,
             ),
@@ -246,11 +341,15 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
             Tags(
               text: 'Dead',
               onPress: () {
+                final newStatus = dead == TagStatus.active
+                    ? dead = TagStatus.notActive
+                    : dead = TagStatus.active;
+
                 setState(() {
-                  dead == TagStatus.active
-                      ? dead = TagStatus.notActive
-                      : dead = TagStatus.active;
+                  dead = newStatus;
                 });
+
+                widget.onDeadStatusChanged(newStatus);
               },
               status: dead,
             ),
@@ -268,19 +367,29 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
               child: SecondaryButton(
                 onPressed: () {
                   setState(() {
-                    borrowed = TagStatus.notActive;
-                    adopted = TagStatus.notActive;
-                    donated = TagStatus.notActive;
-                    escaped = TagStatus.notActive;
-                    stolen = TagStatus.notActive;
-                    transferred = TagStatus.notActive;
-                    injured = TagStatus.notActive;
-                    sick = TagStatus.notActive;
-                    quarantined = TagStatus.notActive;
-                    medication = TagStatus.notActive;
-                    testing = TagStatus.notActive;
-                    sold = TagStatus.notActive;
-                    dead = TagStatus.notActive;
+                    widget.onBorrowesStatusChanged(
+                        borrowed = TagStatus.notActive);
+                    widget
+                        .onAdoptedStatusChanged(adopted = TagStatus.notActive);
+                    widget
+                        .onDonatedStatusChanged(donated = TagStatus.notActive);
+                    widget
+                        .onEscapedStatusChanged(escaped = TagStatus.notActive);
+                    widget.onStolenStatusChanged(stolen = TagStatus.notActive);
+                    widget.onTransferredStatusChanged(
+                        transferred = TagStatus.notActive);
+                    widget
+                        .onInjuredStatusChanged(injured = TagStatus.notActive);
+
+                    widget.onSickStatusChanged(sick = TagStatus.notActive);
+                    widget.onQuarantinedStatusChanged(
+                        quarantined = TagStatus.notActive);
+                    widget.onMedicationStatusChanged(
+                        medication = TagStatus.notActive);
+                    widget
+                        .onTestingStatusChanged(testing = TagStatus.notActive);
+                    widget.onSoldStatusChanged(sold = TagStatus.notActive);
+                    widget.onDeadStatusChanged(dead = TagStatus.notActive);
                   });
                   Navigator.pop(context);
                 },
