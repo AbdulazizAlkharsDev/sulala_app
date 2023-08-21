@@ -17,6 +17,25 @@ class RegHomePage extends StatefulWidget {
 }
 
 class _RegHomePage extends State<RegHomePage> {
+  Future<void> _refreshData() async {
+    // Implement your data fetching or refreshing logic here
+    // For example, you can fetch new data and update the chart, events, etc.
+    setState(() {
+      _chartData = getChartData();
+      sumOfNextTwoCards = _chartData[0].quan + _chartData[1].quan;
+      // Update other data and state variables
+    });
+
+    // // Wait for a short duration to simulate a refresh
+    // await Future.delayed(const Duration(seconds: 1));
+
+    // // Navigate back to the same page to simulate a page reload
+    // Navigator.pushReplacement(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => const RegHomePage()),
+    // );
+  }
+
   late List<AnimalData> _chartData;
   int sumOfNextTwoCards = 0;
   List<EventData> events = [
@@ -268,210 +287,219 @@ class _RegHomePage extends State<RegHomePage> {
               .transparent, // Set the appbar background color to transparent
           elevation: 0, // Remove the appbar shadow
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.only(
-                left: MediaQuery.of(context).size.width * 0.042,
-                right: MediaQuery.of(context).size.width * 0.042,
-                top: MediaQuery.of(context).size.height * 0.02),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text('Animals',
-                        style: AppFonts.title4(color: AppColors.grayscale90)),
-                    const Spacer(),
-                    InkWell(
-                      onTap: () {
-                        _showFilterModalSheet(context);
-                      },
-                      child: const Image(
-                        image:
-                            AssetImage('assets/icons/frame/24px/filter1.png'),
-                      ),
-                    ),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.058),
-                  ],
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.014),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.182,
-                      width: MediaQuery.of(context).size.width * 0.282,
-                      child: SmallCardWidget(
-                        icon: Image.asset(
-                          "assets/icons/frame/24px/cow_chicken.png",
-                          width: MediaQuery.of(context).size.width * 0.128,
-                        ),
-                        animalData: AnimalData(
-                            'ALL', sumOfNextTwoCards, _chartData[0].color),
-                        quan: sumOfNextTwoCards.toString(),
-                        onPressed: () {
-                          setState(() {
-                            _updateChartData(sumOfNextTwoCards, 'ALL');
-                          });
+        body: RefreshIndicator(
+          color: AppColors.primary40,
+          onRefresh: _refreshData,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.042,
+                  right: MediaQuery.of(context).size.width * 0.042,
+                  top: MediaQuery.of(context).size.height * 0.02),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text('Animals',
+                          style: AppFonts.title4(color: AppColors.grayscale90)),
+                      const Spacer(),
+                      InkWell(
+                        onTap: () {
+                          _showFilterModalSheet(context);
                         },
-                        isSelected: _selectedIndex == -1,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.182,
-                      width: MediaQuery.of(context).size.width * 0.282,
-                      child: SmallCardWidget(
-                        icon: Image.asset(
-                          "assets/icons/frame/24px/cow_framed.png",
-                          width: MediaQuery.of(context).size.width * 0.128,
+                        child: const Image(
+                          image:
+                              AssetImage('assets/icons/frame/24px/filter1.png'),
                         ),
-                        quan: _chartData[0].quan.toString(),
-                        animalData: _chartData[0],
-                        onPressed: () {
-                          setState(() {
-                            _updateChartData(_chartData[0].quan, 'Mammals');
-                          });
-                        },
-                        isSelected: _selectedIndex == 0,
                       ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.182,
-                      width: MediaQuery.of(context).size.width * 0.282,
-                      child: SmallCardWidget(
-                        icon: Image.asset(
-                          "assets/icons/frame/24px/chicken_framed.png",
-                          width: MediaQuery.of(context).size.width * 0.128,
+                      SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.058),
+                    ],
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.014),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.182,
+                        width: MediaQuery.of(context).size.width * 0.282,
+                        child: SmallCardWidget(
+                          icon: Image.asset(
+                            "assets/icons/frame/24px/cow_chicken.png",
+                            width: MediaQuery.of(context).size.width * 0.128,
+                          ),
+                          animalData: AnimalData(
+                              'ALL', sumOfNextTwoCards, _chartData[0].color),
+                          quan: sumOfNextTwoCards.toString(),
+                          onPressed: () {
+                            setState(() {
+                              _updateChartData(sumOfNextTwoCards, 'ALL');
+                            });
+                          },
+                          isSelected: _selectedIndex == -1,
                         ),
-                        animalData: _chartData[1],
-                        quan: _chartData[1].quan.toString(),
-                        onPressed: () {
-                          setState(() {
-                            _updateChartData(_chartData[1].quan, 'Oviparous');
-                          });
-                        },
-                        isSelected: _selectedIndex == 1,
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.019),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.576,
-                      height: MediaQuery.of(context).size.height * 0.27,
-                      child: SfCircularChart(
-                        margin: const EdgeInsets.all(0),
-                        series: <CircularSeries>[
-                          DoughnutSeries<AnimalData, String>(
-                            dataSource: _chartData,
-                            xValueMapper: (AnimalData data, _) => data.animal,
-                            yValueMapper: (AnimalData data, _) => data.quan,
-                            pointColorMapper: (AnimalData data, _) =>
-                                data.color,
-                          )
-                        ],
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.182,
+                        width: MediaQuery.of(context).size.width * 0.282,
+                        child: SmallCardWidget(
+                          icon: Image.asset(
+                            "assets/icons/frame/24px/cow_framed.png",
+                            width: MediaQuery.of(context).size.width * 0.128,
+                          ),
+                          quan: _chartData[0].quan.toString(),
+                          animalData: _chartData[0],
+                          onPressed: () {
+                            setState(() {
+                              _updateChartData(_chartData[0].quan, 'Mammals');
+                            });
+                          },
+                          isSelected: _selectedIndex == 0,
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: ListView(
-                        shrinkWrap: true,
-                        children: _buildLegendItems(),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.182,
+                        width: MediaQuery.of(context).size.width * 0.282,
+                        child: SmallCardWidget(
+                          icon: Image.asset(
+                            "assets/icons/frame/24px/chicken_framed.png",
+                            width: MediaQuery.of(context).size.width * 0.128,
+                          ),
+                          animalData: _chartData[1],
+                          quan: _chartData[1].quan.toString(),
+                          onPressed: () {
+                            setState(() {
+                              _updateChartData(_chartData[1].quan, 'Oviparous');
+                            });
+                          },
+                          isSelected: _selectedIndex == 1,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    if (events.isNotEmpty)
-                      Row(
+                    ],
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.576,
+                        height: MediaQuery.of(context).size.height * 0.27,
+                        child: SfCircularChart(
+                          margin: const EdgeInsets.all(0),
+                          series: <CircularSeries>[
+                            DoughnutSeries<AnimalData, String>(
+                              dataSource: _chartData,
+                              xValueMapper: (AnimalData data, _) => data.animal,
+                              yValueMapper: (AnimalData data, _) => data.quan,
+                              pointColorMapper: (AnimalData data, _) =>
+                                  data.color,
+                            )
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: ListView(
+                          shrinkWrap: true,
+                          children: _buildLegendItems(),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      if (events.isNotEmpty)
+                        Row(
+                          children: [
+                            Image.asset(
+                              'assets/icons/frame/24px/24_Warning-circled.png',
+                              width: MediaQuery.of(context).size.width * 0.058,
+                            ),
+                            SizedBox(
+                                width:
+                                    MediaQuery.of(context).size.width * 0.032),
+                          ],
+                        ),
+                      Text(
+                        'Upcoming Events',
+                        style: AppFonts.title4(color: AppColors.grayscale90),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.014),
+                  if (events.isEmpty)
+                    Center(
+                      child: Column(
                         children: [
                           Image.asset(
-                            'assets/icons/frame/24px/24_Warning-circled.png',
-                            width: MediaQuery.of(context).size.width * 0.058,
+                            'assets/illustrations/calendar_x.png',
                           ),
                           SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.032),
+                              height:
+                                  MediaQuery.of(context).size.height * 0.014),
+                          Text(
+                            'You have no upcoming events so far',
+                            style: AppFonts.body2(color: AppColors.grayscale70),
+                          ),
                         ],
                       ),
-                    Text(
-                      'Upcoming Events',
-                      style: AppFonts.title4(color: AppColors.grayscale90),
                     ),
-                  ],
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.014),
-                if (events.isEmpty)
-                  Center(
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          'assets/illustrations/calendar_x.png',
-                        ),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.014),
-                        Text(
-                          'You have no upcoming events so far',
-                          style: AppFonts.body2(color: AppColors.grayscale70),
-                        ),
-                      ],
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.16,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: events.length,
+                      itemBuilder: (context, index) {
+                        EventData eventData = events[index];
+                        return ListTile(
+                          title: Text(eventData.title,
+                              style:
+                                  AppFonts.body1(color: AppColors.grayscale90)),
+                          subtitle: Text(
+                            eventData.subtitle,
+                            style: AppFonts.body2(color: AppColors.grayscale60),
+                          ),
+                          trailing: Image.asset(
+                            'assets/icons/frame/24px/24_Chevron_right.png',
+                          ),
+                        );
+                      },
                     ),
                   ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.16,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: events.length,
-                    itemBuilder: (context, index) {
-                      EventData eventData = events[index];
-                      return ListTile(
-                        title: Text(eventData.title,
-                            style:
-                                AppFonts.body1(color: AppColors.grayscale90)),
-                        subtitle: Text(
-                          eventData.subtitle,
-                          style: AppFonts.body2(color: AppColors.grayscale60),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.039),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: CardWidget(
+                          color: const Color.fromRGBO(225, 236, 185, 1),
+                          iconPath: 'assets/icons/frame/24px/Cow_Icon.png',
+                          title: 'Searching\nfor animals?',
+                          buttonText: 'Find animals',
+                          onPressed: () {
+                            Navigator.of(context).pushNamed('/search_animals');
+                          },
                         ),
-                        trailing: Image.asset(
-                          'assets/icons/frame/24px/24_Chevron_right.png',
+                      ),
+                      SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.015),
+                      Expanded(
+                        child: CardWidget(
+                          color: const Color.fromRGBO(246, 239, 205, 1),
+                          iconPath: 'assets/icons/frame/24px/Farm_house.png',
+                          title: 'Searching \nfor farm?',
+                          buttonText: 'Find farms',
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushNamed('/search_house_farm');
+                          },
                         ),
-                      );
-                    },
+                      ),
+                    ],
                   ),
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.039),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: CardWidget(
-                        color: const Color.fromRGBO(225, 236, 185, 1),
-                        iconPath: 'assets/icons/frame/24px/Cow_Icon.png',
-                        title: 'Searching\nfor animals?',
-                        buttonText: 'Find animals',
-                        onPressed: () {
-                          Navigator.of(context).pushNamed('/search_animals');
-                        },
-                      ),
-                    ),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.015),
-                    Expanded(
-                      child: CardWidget(
-                        color: const Color.fromRGBO(246, 239, 205, 1),
-                        iconPath: 'assets/icons/frame/24px/Farm_house.png',
-                        title: 'Searching \nfor farm?',
-                        buttonText: 'Find farms',
-                        onPressed: () {
-                          Navigator.of(context).pushNamed('/search_house_farm');
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.029),
-              ],
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.029),
+                ],
+              ),
             ),
           ),
         ),
@@ -483,12 +511,12 @@ class _RegHomePage extends State<RegHomePage> {
     final List<AnimalData> chartData = [
       AnimalData(
         'Mammals',
-        23,
+        5,
         const Color.fromRGBO(175, 197, 86, 1),
       ),
       AnimalData(
         'Oviparous',
-        25,
+        20,
         const Color.fromRGBO(244, 233, 174, 1),
       ),
     ];
