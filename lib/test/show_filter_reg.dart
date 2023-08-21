@@ -6,7 +6,9 @@ import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/secondary_bu
 import 'package:sulala_app/src/widgets/controls_and_buttons/tags/tags.dart';
 
 class ShowFilterReg extends StatefulWidget {
-  const ShowFilterReg({super.key});
+  const ShowFilterReg({
+    super.key,
+  });
 
   @override
   State<ShowFilterReg> createState() => _ShowFilterRegState();
@@ -15,6 +17,34 @@ class ShowFilterReg extends StatefulWidget {
 TagStatus borrowed = TagStatus.active;
 
 class _ShowFilterRegState extends State<ShowFilterReg> {
+  TagStatus borrowed = TagStatus.notActive;
+  TagStatus adopted = TagStatus.notActive;
+  TagStatus donated = TagStatus.notActive;
+  TagStatus escaped = TagStatus.notActive;
+  TagStatus stolen = TagStatus.notActive;
+  TagStatus transferred = TagStatus.notActive;
+  TagStatus injured = TagStatus.notActive;
+  TagStatus sick = TagStatus.notActive;
+  TagStatus quarantined = TagStatus.notActive;
+  TagStatus medication = TagStatus.notActive;
+  TagStatus testing = TagStatus.notActive;
+  TagStatus sold = TagStatus.notActive;
+  TagStatus dead = TagStatus.notActive;
+
+  TagStatus? newBorrowed;
+  TagStatus? newAdopted;
+  TagStatus? newDonated;
+  TagStatus? newEscaped;
+  TagStatus? newStolen;
+  TagStatus? newTransferred;
+  TagStatus? newInjured;
+  TagStatus? newSick;
+  TagStatus? newQuarantined;
+  TagStatus? newMedication;
+  TagStatus? newTesting;
+  TagStatus? newSold;
+  TagStatus? newDead;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,31 +64,41 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Tags(
-              text: 'Borrowed',
+              text: "Borrowed",
               onPress: () {
                 setState(() {
                   borrowed == TagStatus.active
                       ? borrowed = TagStatus.notActive
                       : borrowed = TagStatus.active;
+
+                  borrowed = newBorrowed!;
                 });
               },
-              status: borrowed,
+              status: newBorrowed == null ? borrowed : newBorrowed!,
             ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.021),
             Tags(
               text: 'Adopted',
               onPress: () {
-                // Handle tag click
+                setState(() {
+                  adopted == TagStatus.active
+                      ? adopted = TagStatus.notActive
+                      : adopted = TagStatus.active;
+                });
               },
-              status: TagStatus.notActive,
+              status: adopted,
             ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.021),
             Tags(
               text: 'Donated',
               onPress: () {
-                // Handle tag click
+                setState(() {
+                  donated == TagStatus.active
+                      ? donated = TagStatus.notActive
+                      : donated = TagStatus.active;
+                });
               },
-              status: TagStatus.disabled,
+              status: donated,
             ),
           ],
         ),
@@ -68,25 +108,37 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
             Tags(
               text: 'Escaped',
               onPress: () {
-                // Handle tag click
+                setState(() {
+                  escaped == TagStatus.active
+                      ? escaped = TagStatus.notActive
+                      : escaped = TagStatus.active;
+                });
               },
-              status: TagStatus.active,
+              status: escaped,
             ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.021),
             Tags(
               text: 'Stolen',
               onPress: () {
-                // Handle tag click
+                setState(() {
+                  stolen == TagStatus.active
+                      ? stolen = TagStatus.notActive
+                      : stolen = TagStatus.active;
+                });
               },
-              status: TagStatus.notActive,
+              status: stolen,
             ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.021),
             Tags(
               text: 'Transferred',
               onPress: () {
-                // Handle tag click
+                setState(() {
+                  transferred == TagStatus.active
+                      ? transferred = TagStatus.notActive
+                      : transferred = TagStatus.active;
+                });
               },
-              status: TagStatus.disabled,
+              status: transferred,
             ),
           ],
         ),
@@ -104,25 +156,37 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
             Tags(
               text: 'Injured',
               onPress: () {
-                // Handle tag click
+                setState(() {
+                  injured == TagStatus.active
+                      ? injured = TagStatus.notActive
+                      : injured = TagStatus.active;
+                });
               },
-              status: TagStatus.active,
+              status: injured,
             ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.021),
             Tags(
               text: 'Sick',
               onPress: () {
-                // Handle tag click
+                setState(() {
+                  sick == TagStatus.active
+                      ? sick = TagStatus.notActive
+                      : sick = TagStatus.active;
+                });
               },
-              status: TagStatus.notActive,
+              status: sick,
             ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.021),
             Tags(
               text: 'Quarantined',
               onPress: () {
-                // Handle tag click
+                setState(() {
+                  quarantined == TagStatus.active
+                      ? quarantined = TagStatus.notActive
+                      : quarantined = TagStatus.active;
+                });
               },
-              status: TagStatus.disabled,
+              status: quarantined,
             ),
           ],
         ),
@@ -132,17 +196,25 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
             Tags(
               text: 'Medication',
               onPress: () {
-                // Handle tag click
+                setState(() {
+                  medication == TagStatus.active
+                      ? medication = TagStatus.notActive
+                      : medication = TagStatus.active;
+                });
               },
-              status: TagStatus.active,
+              status: medication,
             ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.021),
             Tags(
               text: 'Testing',
               onPress: () {
-                // Handle tag click
+                setState(() {
+                  testing == TagStatus.active
+                      ? testing = TagStatus.notActive
+                      : testing = TagStatus.active;
+                });
               },
-              status: TagStatus.notActive,
+              status: testing,
             ),
           ],
         ),
@@ -162,17 +234,25 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
             Tags(
               text: 'Sold',
               onPress: () {
-                // Handle tag click
+                setState(() {
+                  sold == TagStatus.active
+                      ? sold = TagStatus.notActive
+                      : sold = TagStatus.active;
+                });
               },
-              status: TagStatus.active,
+              status: sold,
             ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.021),
             Tags(
               text: 'Dead',
               onPress: () {
-                // Handle tag click
+                setState(() {
+                  dead == TagStatus.active
+                      ? dead = TagStatus.notActive
+                      : dead = TagStatus.active;
+                });
               },
-              status: TagStatus.notActive,
+              status: dead,
             ),
           ],
         ),
@@ -187,6 +267,21 @@ class _ShowFilterRegState extends State<ShowFilterReg> {
               width: MediaQuery.of(context).size.width * 0.44,
               child: SecondaryButton(
                 onPressed: () {
+                  setState(() {
+                    borrowed = TagStatus.notActive;
+                    adopted = TagStatus.notActive;
+                    donated = TagStatus.notActive;
+                    escaped = TagStatus.notActive;
+                    stolen = TagStatus.notActive;
+                    transferred = TagStatus.notActive;
+                    injured = TagStatus.notActive;
+                    sick = TagStatus.notActive;
+                    quarantined = TagStatus.notActive;
+                    medication = TagStatus.notActive;
+                    testing = TagStatus.notActive;
+                    sold = TagStatus.notActive;
+                    dead = TagStatus.notActive;
+                  });
                   Navigator.pop(context);
                 },
                 text: 'Clear All',
