@@ -204,7 +204,7 @@ class _AddPersonalInfoPageState extends State<AddPersonalInfoPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => AddSomeDetailsPage()),
+                                  builder: (context) => const AddSomeDetailsPage()),
                             );
                           } else {
                             emailHasError = true;

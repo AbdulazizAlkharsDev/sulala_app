@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/test/Add_Some_Details.dart';
+import 'package:sulala_app/test/add_personal_information.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -38,7 +38,7 @@ class _ExamplePageState extends State<ExamplePage> {
                           onPressed: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return AddSomeDetailsPage();
+                              return const AddPersonalInfoPage();
                             }));
                           }),
                     ),
