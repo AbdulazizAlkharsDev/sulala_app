@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
@@ -112,7 +111,6 @@ class _AddSomeDetailsPageState extends State<AddSomeDetailsPage> {
     //   );
     // }
   }
-
 
   @override
   Widget build(BuildContext context) {

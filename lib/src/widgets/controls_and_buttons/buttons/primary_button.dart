@@ -31,7 +31,8 @@ class PrimaryButton extends StatelessWidget {
         backgroundColor: _getButtonColor(status),
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius:
+              BorderRadius.circular(MediaQuery.of(context).size.width * 0.08),
         ),
       ),
       child: _buildButtonContent(),

@@ -5,7 +5,7 @@ import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_butt
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 import 'package:sulala_app/src/widgets/inputs/phone_number_field.dart/phone_number_field.dart';
 import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
-import 'package:sulala_app/test/add_some_details.dart';
+import 'package:sulala_app/src/screens/account_set_up/add_some_details.dart';
 
 class AddPersonalInfoPage extends StatefulWidget {
   const AddPersonalInfoPage({super.key});
@@ -65,6 +65,7 @@ class _AddPersonalInfoPageState extends State<AddPersonalInfoPage> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           leading: IconButton(
+            padding: EdgeInsets.zero,
             icon: Container(
               padding:
                   EdgeInsets.all(MediaQuery.of(context).size.width * 0.016),
@@ -204,7 +205,8 @@ class _AddPersonalInfoPageState extends State<AddPersonalInfoPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const AddSomeDetailsPage()),
+                                  builder: (context) =>
+                                      const AddSomeDetailsPage()),
                             );
                           } else {
                             emailHasError = true;

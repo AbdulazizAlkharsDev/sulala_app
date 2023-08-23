@@ -83,21 +83,29 @@ class PrimaryTextButton extends StatelessWidget {
     bool showLeftArrow,
   ) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         if (showLeftArrow)
-          Image.asset(
-            'assets/icons/frame/24px/20_Chevron_left.png',
+          Row(
+            children: [
+              Image.asset(
+                'assets/icons/frame/24px/20_Chevron_left.png',
+              ),
+              const SizedBox(width: 8), //Don't use MediaQuery Here
+            ],
           ),
-        const SizedBox(width: 8), //Don't use MediaQuery Here
         Text(
           text,
           style: TextStyle(color: textColor),
         ),
-        const SizedBox(width: 8), //Don't use MediaQuery Here
         if (showRightArrow)
-          Image.asset(
-            'assets/icons/frame/24px/20_Chevron_right.png',
+          Row(
+            children: [
+              const SizedBox(width: 8), //Don't use MediaQuery Here
+              Image.asset(
+                'assets/icons/frame/24px/20_Chevron_right.png',
+              ),
+            ],
           ),
       ],
     );
