@@ -9,6 +9,7 @@ import 'package:sulala_app/src/screens/guest_mode/search_page_house_farm.dart';
 import 'package:sulala_app/src/screens/sign_up/join_now.dart';
 import 'package:sulala_app/src/screens/sign_up/sign_up.dart';
 import 'package:sulala_app/src/screens/sign_up/create_password.dart';
+import 'package:sulala_app/test/notifications_list.dart';
 import 'package:sulala_app/test/reg_home_page.dart';
 
 void main() {
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         '/sign_in': (context) => const SignIn(),
         '/create_password': (context) => const CreatePassword(),
         '/reg_home_page': (context) => const RegHomePage(),
+        '/notifications': (context) => NotificationList(),
       },
       debugShowCheckedModeBanner: false,
     );

@@ -253,6 +253,7 @@ class _RegHomePage extends State<RegHomePage> {
                   GestureDetector(
                     onTap: () {
                       _removeEvent(1);
+                      Navigator.of(context).pushNamed('/notifications');
                     },
                     child: events.isNotEmpty
                         ? badges.Badge(
