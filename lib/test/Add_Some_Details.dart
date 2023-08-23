@@ -30,130 +30,89 @@ class _AddSomeDetailsPageState extends State<AddSomeDetailsPage> {
 // PrimaryButtonStatus buttonStatus = PrimaryButtonStatus.idle;
 
   void _showFilterModalSheet(BuildContext context) async {
-    PermissionStatus cameraStatus = await Permission.camera.request();
-    PermissionStatus photosStatus = await Permission.photos.request();
+    // PermissionStatus cameraStatus = await Permission.camera.request();
+    // PermissionStatus photosStatus = await Permission.photos.request();
 
-    if (cameraStatus.isGranted && photosStatus.isGranted) {
-      showModalBottomSheet(
-        backgroundColor: Colors.transparent,
-        context: context,
-        isScrollControlled: true,
-        isDismissible: true,
-        builder: (BuildContext context) {
-          return Container(
-            color: Colors.transparent,
-            child: DrowupWidget(
-              heightFactor: 0.22,
-              content: Column(
-                children: [
-                  ListTile(
-                    trailing: const Icon(
-                      Icons.chevron_right_sharp,
-                      color: AppColors.grayscale50,
-                    ),
-                    title: const Text('Gallery'),
-                    onTap: () async {
-                      Navigator.pop(context);
-                      final pickedImage =
-                          await _picker.pickImage(source: ImageSource.gallery);
-                      if (pickedImage != null) {
-                        setState(() {
-                          _selectedImage = File(pickedImage.path);
-                        });
-                      }
-                    },
+    // if (cameraStatus.isGranted && photosStatus.isGranted) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      isScrollControlled: true,
+      isDismissible: true,
+      builder: (BuildContext context) {
+        return Container(
+          color: Colors.transparent,
+          child: DrowupWidget(
+            heightFactor: 0.22,
+            content: Column(
+              children: [
+                ListTile(
+                  trailing: const Icon(
+                    Icons.chevron_right_sharp,
+                    color: AppColors.grayscale50,
                   ),
-                  Container(
-                    height: 1,
-                    width: MediaQuery.of(context).size.width * 0.914,
-                    color: AppColors.grayscale20,
+                  title: const Text('Gallery'),
+                  onTap: () async {
+                    Navigator.pop(context);
+                    final pickedImage =
+                        await _picker.pickImage(source: ImageSource.gallery);
+                    if (pickedImage != null) {
+                      setState(() {
+                        _selectedImage = File(pickedImage.path);
+                      });
+                    }
+                  },
+                ),
+                Container(
+                  height: 1,
+                  width: MediaQuery.of(context).size.width * 0.914,
+                  color: AppColors.grayscale20,
+                ),
+                ListTile(
+                  trailing: const Icon(
+                    Icons.chevron_right_sharp,
+                    color: AppColors.grayscale50,
                   ),
-                  ListTile(
-                    trailing: const Icon(
-                      Icons.chevron_right_sharp,
-                      color: AppColors.grayscale50,
-                    ),
-                    title: const Text('Camera'),
-                    onTap: () async {
-                      Navigator.pop(context);
-                      final pickedImage =
-                          await _picker.pickImage(source: ImageSource.camera);
-                      if (pickedImage != null) {
-                        setState(() {
-                          _selectedImage = File(pickedImage.path);
-                        });
-                      }
-                    },
-                  ),
-                ],
-              ),
+                  title: const Text('Camera'),
+                  onTap: () async {
+                    Navigator.pop(context);
+                    final pickedImage =
+                        await _picker.pickImage(source: ImageSource.camera);
+                    if (pickedImage != null) {
+                      setState(() {
+                        _selectedImage = File(pickedImage.path);
+                      });
+                    }
+                  },
+                ),
+              ],
             ),
-          );
-        },
-      );
-    } else {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Permission Required'),
-            content: const Text(
-                'This app requires camera and photos access to continue.'),
-            actions: <Widget>[
-              TextButton(
-                child: const Text('OK'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        },
-      );
-    }
+          ),
+        );
+      },
+    );
+    // } else {
+    //   showDialog(
+    //     context: context,
+    //     builder: (BuildContext context) {
+    //       return AlertDialog(
+    //         title: const Text('Permission Required'),
+    //         content: const Text(
+    //             'This app requires camera and photos access to continue.'),
+    //         actions: <Widget>[
+    //           TextButton(
+    //             child: const Text('OK'),
+    //             onPressed: () {
+    //               Navigator.of(context).pop();
+    //             },
+    //           ),
+    //         ],
+    //       );
+    //     },
+    //   );
+    // }
   }
-  // void _showImagePicker(BuildContext context) {
-  //   showModalBottomSheet(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return SizedBox(
-  //         height: 150,
-  //         child: Column(
-  //           children: [
-  //             ListTile(
-  //               leading: const Icon(Icons.camera),
-  //               title: const Text('Camera'),
-  //               onTap: () async {
-  //                 Navigator.pop(context);
-  //                 final pickedImage =
-  //                     await _picker.pickImage(source: ImageSource.camera);
-  //                 if (pickedImage != null) {
-  //                   setState(() {
-  //                     _selectedImage = File(pickedImage.path);
-  //                   });
-  //                 }
-  //               },
-  //             ),
-  //             ListTile(
-  //               leading: const Icon(Icons.photo_library),
-  //               title: const Text('Gallery'),
-  //               onTap: () async {
-  //                 Navigator.pop(context);
-  //                 final pickedImage =
-  //                     await _picker.pickImage(source: ImageSource.gallery);
-  //                 if (pickedImage != null) {
-  //                   setState(() {
-  //                     _selectedImage = File(pickedImage.path);
-  //                   });
-  //                 }
-  //               },
-  //             ),
-  //           ],
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
+
 
   @override
   Widget build(BuildContext context) {
