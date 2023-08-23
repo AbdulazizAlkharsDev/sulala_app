@@ -4,8 +4,8 @@ import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/tags/tags.dart';
 import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
 import 'package:sulala_app/src/widgets/pages/homepage_widgets/card.dart';
-import 'package:sulala_app/test/show_filter_reg.dart';
-import 'package:sulala_app/test/small_card_widget.dart';
+import 'package:sulala_app/src/screens/reg_mode/show_filter_reg.dart';
+import 'package:sulala_app/src/screens/reg_mode/small_card_widget.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:badges/badges.dart' as badges;
 
