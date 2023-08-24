@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 
 class DrowupWidget extends StatelessWidget {
   final Widget content;
   final String? heading;
   final double? heightFactor;
+  final PrimaryTextButton? primaryTextButton;
 
   const DrowupWidget(
-      {Key? key, required this.content, this.heading, this.heightFactor})
+      {Key? key,
+      required this.content,
+      this.heading,
+      this.heightFactor,
+      this.primaryTextButton})
       : super(key: key);
 
   @override
@@ -41,10 +47,23 @@ class DrowupWidget extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * 0.025,
                     ),
                   heading != null
-                      ? Text(
-                          heading!,
-                          style: AppFonts.title3(color: AppColors.grayscale90),
-                        )
+                      ? primaryTextButton != null
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  heading!,
+                                  style: AppFonts.title3(
+                                      color: AppColors.grayscale90),
+                                ),
+                                primaryTextButton!,
+                              ],
+                            )
+                          : Text(
+                              heading!,
+                              style:
+                                  AppFonts.title3(color: AppColors.grayscale90),
+                            )
                       : const SizedBox(
                           height: 0,
                         ),

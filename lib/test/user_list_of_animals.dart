@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/src/widgets/inputs/search_bars/button_search_bar.dart';
 import 'package:sulala_app/test/animal_filters.dart';
 import 'package:sulala_app/test/create_animal.dart';
@@ -45,6 +46,156 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
     {
       'name': 'Joyce',
       'image': 'assets/avatars/120px/Cat.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
+      'subtitle': 'Mammal',
+    },
+    {
+      'name': 'Billy',
+      'image': 'assets/avatars/120px/Sheep.png',
       'subtitle': 'Mammal',
     },
     {
@@ -137,75 +288,161 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
             ],
           ),
         ),
-        body: Padding(
-          padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.042,
-              right: MediaQuery.of(context).size.width * 0.042),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ButtonSearchBar(
-                onChange: _filterMammals,
-                hintText: "Search by name or ID",
-                icon: Icons.filter_alt_outlined,
-                // controller: _searchController,
-                onIconPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AnimalFilters()),
-                  );
-                },
-              ),
-              Visibility(
-                visible: widget.selectedFilters
-                    .isNotEmpty, // Show space if there are selected filters
-                child: Wrap(
-                  spacing: MediaQuery.of(context).size.width * 0.02,
-                  children: widget.selectedFilters.map((filter) {
-                    return Chip(
-                      deleteIcon: Icon(
-                        Icons.close,
-                        color: AppColors.grayscale90,
-                        size: MediaQuery.of(context).size.width * 0.05,
-                      ),
-                      labelStyle: AppFonts.body2(color: AppColors.grayscale90),
-                      label: Text(filter),
-                      backgroundColor:
-                          AppColors.grayscale10, // Set the background color
-
-                      onDeleted: () {
-                        _removeSelectedFilter(filter);
-                      },
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            50), // Adjust the radius as needed
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: _filteredMammals.length,
-                  itemBuilder: (context, index) {
-                    final mammal = _filteredMammals[index];
-                    return ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        radius: MediaQuery.of(context).size.width * 0.064,
-                        backgroundImage: AssetImage(mammal['image']),
-                      ),
-                      title: Text(mammal['name']),
-                      subtitle: Text(mammal['subtitle']),
-                      onTap: () {
-                        navigateToAnimalInfo(mammal);
-                      },
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(
+                left: MediaQuery.of(context).size.width * 0.042,
+                right: MediaQuery.of(context).size.width * 0.042),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ButtonSearchBar(
+                  onChange: _filterMammals,
+                  hintText: "Search by name or ID",
+                  icon: Icons.filter_alt_outlined,
+                  // controller: _searchController,
+                  onIconPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AnimalFilters()),
                     );
                   },
                 ),
-              ),
-            ],
+                mammals.isNotEmpty
+                    ? Visibility(
+                        visible: widget.selectedFilters
+                            .isNotEmpty, // Show space if there are selected filters
+                        child: Wrap(
+                          spacing: MediaQuery.of(context).size.width * 0.02,
+                          children: widget.selectedFilters.map((filter) {
+                            return Chip(
+                              deleteIcon: Icon(
+                                Icons.close,
+                                color: AppColors.grayscale90,
+                                size: MediaQuery.of(context).size.width * 0.05,
+                              ),
+                              labelStyle:
+                                  AppFonts.body2(color: AppColors.grayscale90),
+                              label: Text(filter),
+                              backgroundColor: AppColors
+                                  .grayscale10, // Set the background color
+
+                              onDeleted: () {
+                                _removeSelectedFilter(filter);
+                              },
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    50), // Adjust the radius as needed
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      )
+                    : const SizedBox(
+                        height: 0,
+                      ),
+                mammals.isNotEmpty
+                    ? _filteredMammals.isNotEmpty
+                        ? SizedBox(
+                            height: MediaQuery.of(context).size.height,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: _filteredMammals.length,
+                              itemBuilder: (context, index) {
+                                final mammal = _filteredMammals[index];
+                                return ListTile(
+                                  contentPadding: EdgeInsets.zero,
+                                  leading: CircleAvatar(
+                                    backgroundColor: Colors.transparent,
+                                    radius: MediaQuery.of(context).size.width *
+                                        0.064,
+                                    backgroundImage:
+                                        AssetImage(mammal['image']),
+                                  ),
+                                  title: Text(mammal['name']),
+                                  subtitle: Text(mammal['subtitle']),
+                                  onTap: () {
+                                    navigateToAnimalInfo(mammal);
+                                  },
+                                );
+                              },
+                            ),
+                          )
+                        : SingleChildScrollView(
+                            child: Center(
+                              heightFactor: 2,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    'assets/illustrations/cow_search.png',
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.04,
+                                  ),
+                                  Text(
+                                    'No Animals Found',
+                                    style: AppFonts.headline3(
+                                        color: AppColors.grayscale90),
+                                  ),
+                                  Text(
+                                    'Try adjusting the filters',
+                                    style: AppFonts.body2(
+                                        color: AppColors.grayscale70),
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.03,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                    : Center(
+                        heightFactor: 2,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/illustrations/cow_search.png',
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.04,
+                            ),
+                            Text(
+                              'No Animals Added',
+                              style: AppFonts.headline3(
+                                  color: AppColors.grayscale90),
+                            ),
+                            Text(
+                              'Add an animal to get started',
+                              style:
+                                  AppFonts.body2(color: AppColors.grayscale70),
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.03,
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.45,
+                              height: MediaQuery.of(context).size.height * 0.05,
+                              child: PrimaryButton(
+                                  text: 'Add',
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const CreateAnimalPage()),
+                                    );
+                                  }),
+                            )
+                          ],
+                        ),
+                      ),
+              ],
+            ),
           ),
         ),
       ),
