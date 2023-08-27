@@ -25,7 +25,7 @@ class _SelectedOptionsPageState extends State<SelectedOptionsPage> {
         title: const Text('Create Animal'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.close),
+            icon: const Icon(Icons.close_rounded),
             onPressed: () {
               // Handle close button press
               Navigator.pop(context);

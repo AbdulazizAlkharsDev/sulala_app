@@ -284,7 +284,7 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
                         builder: (context) => const CreateAnimalPage()),
                   );
                 },
-              )
+              ),
             ],
           ),
         ),
@@ -318,7 +318,7 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
                           children: widget.selectedFilters.map((filter) {
                             return Chip(
                               deleteIcon: Icon(
-                                Icons.close,
+                                Icons.close_rounded,
                                 color: AppColors.grayscale90,
                                 size: MediaQuery.of(context).size.width * 0.05,
                               ),

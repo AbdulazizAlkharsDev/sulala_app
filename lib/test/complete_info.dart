@@ -72,7 +72,7 @@ class _CompleteInfo extends State<CompleteInfo> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
-              icon: const Icon(Icons.close),
+              icon: const Icon(Icons.close_rounded),
               onPressed: () {
                 Navigator.pop(context);
                 // Handle back button press

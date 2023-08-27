@@ -147,7 +147,7 @@ class NotificationList extends StatelessWidget {
                                         MediaQuery.of(context).size.width *
                                             0.032),
                                   ),
-                                  child: const Icon(Icons.close,
+                                  child: const Icon(Icons.close_rounded,
                                       color: AppColors.grayscale90),
                                 ),
                               ],
