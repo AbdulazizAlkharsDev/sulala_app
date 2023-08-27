@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 
-class DrowupWidget extends StatelessWidget {
+class DrowupWidget extends StatefulWidget {
   final Widget content;
   final String? heading;
   final double? heightFactor;
   final PrimaryTextButton? primaryTextButton;
+  final PrimaryButton? primaryButton;
 
   const DrowupWidget(
       {Key? key,
       required this.content,
       this.heading,
       this.heightFactor,
-      this.primaryTextButton})
+      this.primaryTextButton,
+      this.primaryButton})
       : super(key: key);
 
+  @override
+  State<DrowupWidget> createState() => _DrowupWidgetState();
+}
+
+class _DrowupWidgetState extends State<DrowupWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +33,8 @@ class DrowupWidget extends StatelessWidget {
       body: Align(
         alignment: Alignment.bottomCenter, // Align to the bottom of the screen
         child: FractionallySizedBox(
-          heightFactor: heightFactor ?? 0.6, // Take 70% of the screen height
+          heightFactor:
+              widget.heightFactor ?? 0.6, // Take 70% of the screen height
           child: Container(
             width: double.infinity,
             decoration: const BoxDecoration(
@@ -42,39 +51,41 @@ class DrowupWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  if (heading != null)
+                  if (widget.heading != null)
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.025,
                     ),
-                  heading != null
-                      ? primaryTextButton != null
+                  widget.heading != null
+                      ? widget.primaryTextButton != null
                           ? Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  heading!,
+                                  widget.heading!,
                                   style: AppFonts.title3(
                                       color: AppColors.grayscale90),
                                 ),
-                                primaryTextButton!,
+                                widget.primaryTextButton!,
                               ],
                             )
                           : Text(
-                              heading!,
+                              widget.heading!,
                               style:
                                   AppFonts.title3(color: AppColors.grayscale90),
                             )
-                      : const SizedBox(
-                          height: 0,
-                        ),
+                      : const SizedBox.shrink(),
                   const SizedBox(height: 16),
-                  content,
+                  widget.content,
                 ],
               ),
             ),
           ),
         ),
       ),
+      floatingActionButton: SizedBox(
+          height: MediaQuery.of(context).size.height * 0.064,
+          width: MediaQuery.of(context).size.width * 0.914,
+          child: widget.primaryButton),
     );
   }
 }

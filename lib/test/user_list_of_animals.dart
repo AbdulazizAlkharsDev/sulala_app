@@ -339,9 +339,7 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
                           }).toList(),
                         ),
                       )
-                    : const SizedBox(
-                        height: 0,
-                      ),
+                    : const SizedBox.shrink(),
                 mammals.isNotEmpty
                     ? _filteredMammals.isNotEmpty
                         ? SizedBox(

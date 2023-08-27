@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
 import 'package:sulala_app/src/widgets/inputs/search_bars/search_bar.dart';
@@ -10,8 +11,7 @@ class CreateAnimalPage extends StatefulWidget {
   const CreateAnimalPage({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
-  _CreateAnimalPageState createState() => _CreateAnimalPageState();
+  State<CreateAnimalPage> createState() => _CreateAnimalPageState();
 }
 
 class _CreateAnimalPageState extends State<CreateAnimalPage> {
@@ -27,15 +27,33 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
   }
 
   List<String> animalSpeciesList = ['Sheep', 'Cow', 'Horse'];
-  List<String> modalAnimalSpeciesList = ['Tiger', 'Elephant', 'Giraffe'];
+  List<String> modalAnimalSpeciesList = [
+    'Tiger',
+    'Elephant',
+    'Elephant',
+    'Elephant',
+    'Elephant',
+    'Elephant',
+    'Elephant',
+    'Elephant',
+    'Elephant',
+    'Elephant',
+    'Elephant',
+    'Elephant',
+    'Elephant',
+    'Elephant',
+    'Elephant',
+    'Elephant',
+    'Elephant',
+    'Elephant',
+    'Giraffe'
+  ];
   List<String> animalBreedsList = ['Bengal', 'African', 'Reticulated'];
   List<String> modalAnimalBreedsList = ['Bengali', 'Africani', 'Reticulatedii'];
 
-  // Define a map to associate animal types with their image asset paths
   final Map<String, String> animalImages = {
     'Mammal': 'assets/avatars/120px/Horse_avatar.png',
     'Oviparous': 'assets/avatars/120px/Duck.png',
-    // Add more entries for other animal types and their images
   };
 
   @override
@@ -66,7 +84,6 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
                     color: AppColors.grayscale90,
                   )),
               onPressed: () {
-                // Handle close button press
                 Navigator.pop(context);
               },
             ),
@@ -88,14 +105,12 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
                   children: [
                     _buildAnimalTypeOption('Mammal'),
                     _buildAnimalTypeOption('Oviparous'),
-                    // Add more animal type options here
                   ],
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-
-                if (showAnimalSpeciesSection) // Conditionally show if selected
+                if (showAnimalSpeciesSection)
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -115,7 +130,6 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
                       ),
                       for (String species in animalSpeciesList)
                         _buildAnimalSpeciesOption(species),
-
                       PrimaryTextButton(
                         status: TextStatus.idle,
                         position: TextButtonPosition.right,
@@ -124,10 +138,9 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
                         },
                         text: 'Show More',
                       ),
-                      // Divider between species and breeds
                     ],
                   ),
-                if (showAnimalBreedsSection) // Conditionally show if selected
+                if (showAnimalBreedsSection)
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -153,19 +166,14 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
                           _buildAnimalBreedOption(breed),
                         PrimaryTextButton(
                           onPressed: () {
-                            _showAnimalSpecies('breeds',
-                                context); // Show modal sheet on button press
+                            _showAnimalSpecies('breeds', context);
                           },
                           text: 'Show More',
                           status: TextStatus.idle,
                           position: TextButtonPosition.right,
                         ),
                       ]),
-                // Add more customization options here
                 const SizedBox(height: 20),
-
-                // Add more customization options here
-                // Add more sections as needed
               ],
             ),
           ),
@@ -190,7 +198,6 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
                   ),
                 );
               }
-              // Handle "Continue" button press
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 36, 86, 38),
@@ -292,16 +299,8 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
   }
 
   void _showAnimalSpecies(String section, BuildContext context) async {
-    String searchText = ''; // Store the search text
-    List<String> modalList;
-
-    if (section == 'species') {
-      modalList = modalAnimalSpeciesList;
-    } else if (section == 'breeds') {
-      modalList = modalAnimalBreedsList;
-    } else {
-      return;
-    }
+    List<String> filteredModalList = List.from(modalAnimalSpeciesList);
+    TextEditingController searchValue = TextEditingController();
 
     final selectedValue = await showModalBottomSheet<String>(
       backgroundColor: Colors.transparent,
@@ -313,34 +312,57 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
           heading: 'Animal Species',
           heightFactor: 0.9,
           content: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.5,
+            height: MediaQuery.of(context).size.height * 0.68,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 PrimarySearchBar(
+                    controller: searchValue,
                     onChange: (value) {
                       setState(() {
-                        searchText = value;
+                        value = searchValue.text;
+                        filteredModalList = modalAnimalSpeciesList
+                            .where((element) => element
+                                .toLowerCase()
+                                .contains(value.toLowerCase()))
+                            .toList();
                       });
                     },
                     hintText: 'Search by species'),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.029,
+                ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: modalList.length,
+                    itemCount: filteredModalList.length,
                     itemBuilder: (context, index) {
-                      final item = modalList[index];
-                      if (searchText.isNotEmpty &&
-                          !item.toLowerCase().contains(
-                                searchText.toLowerCase(),
-                              )) {
-                        return const SizedBox.shrink();
-                      }
-                      return _buildAdditionalOption(item, section);
+                      return ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        leading: const CircleAvatar(
+                          radius: 24,
+                          backgroundImage: AssetImage(
+                              'assets/avatars/120px/Horse_avatar.png'),
+                          backgroundColor: Colors.transparent,
+                        ),
+                        title: Text(filteredModalList[index],
+                            style:
+                                AppFonts.body2(color: AppColors.grayscale90)),
+                        onTap: () {
+                          Navigator.pop(context, filteredModalList[index]);
+                        },
+                      );
                     },
                   ),
                 ),
               ],
             ),
+          ),
+          primaryButton: PrimaryButton(
+            status: PrimaryButtonStatus.idle,
+            text: 'Confirm',
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
         );
       },
@@ -348,32 +370,10 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
 
     if (selectedValue != null) {
       setState(() {
-        if (section == 'species') {
-          animalSpeciesList.remove(selectedValue);
-          animalSpeciesList.insert(0, selectedValue);
-          selectedAnimalSpecies = selectedValue;
-        } else if (section == 'breeds') {
-          animalBreedsList.remove(selectedValue);
-          animalBreedsList.insert(0, selectedValue);
-          selectedAnimalBreed = selectedValue;
-        }
+        animalSpeciesList.remove(selectedValue);
+        animalSpeciesList.insert(0, selectedValue);
+        selectedAnimalSpecies = selectedValue;
       });
     }
-  }
-
-  Widget _buildAdditionalOption(String optionText, String section) {
-    return ListTile(
-      contentPadding: EdgeInsets.zero,
-      leading: const CircleAvatar(
-        radius: 24,
-        backgroundImage: AssetImage('assets/avatars/120px/Horse_avatar.png'),
-        backgroundColor: Colors.transparent,
-      ),
-      title:
-          Text(optionText, style: AppFonts.body2(color: AppColors.grayscale90)),
-      onTap: () {
-        Navigator.pop(context, optionText);
-      },
-    );
   }
 }
