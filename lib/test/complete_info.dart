@@ -1,62 +1,91 @@
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:sulala_app/src/theme/colors/colors.dart';
+import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/toggles/toggle_active.dart';
+import 'package:sulala_app/src/widgets/inputs/date_fields/primary_date_field.dart';
+import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
+import 'package:sulala_app/src/widgets/inputs/file_uploader_fields/file_uploader_field.dart';
+import 'package:sulala_app/src/widgets/inputs/paragraph_text_fields/paragraph_text_field.dart';
+import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
 
 class CompleteInfo extends StatefulWidget {
   const CompleteInfo({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _CompleteInfo createState() => _CompleteInfo();
+  State<CompleteInfo> createState() => _CompleteInfo();
 }
 
 class _CompleteInfo extends State<CompleteInfo> {
   final TextEditingController _notesController = TextEditingController();
-  String selectedName = 'Add'; // Initial text for the button
+  String selectedName = 'Add';
   String selectedGender = '';
   bool _addParents = false;
-  bool _addChildren = false;
+  bool addChildren = false;
   final ImagePicker _picker = ImagePicker();
   File? _selectedImage;
 
-  void _showImagePicker(BuildContext context) {
+  void _showFilterModalSheet(BuildContext context) async {
+    // PermissionStatus cameraStatus = await Permission.camera.request();
+    // PermissionStatus photosStatus = await Permission.photos.request();
+
+    // if (cameraStatus.isGranted && photosStatus.isGranted) {
     showModalBottomSheet(
+      backgroundColor: Colors.transparent,
       context: context,
+      isScrollControlled: true,
+      isDismissible: true,
       builder: (BuildContext context) {
-        return SizedBox(
-          height: 150,
-          child: Column(
-            children: [
-              ListTile(
-                leading: const Icon(Icons.camera),
-                title: const Text('Camera'),
-                onTap: () async {
-                  Navigator.pop(context);
-                  final pickedImage =
-                      await _picker.pickImage(source: ImageSource.camera);
-                  if (pickedImage != null) {
-                    setState(() {
-                      _selectedImage = File(pickedImage.path);
-                    });
-                  }
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.photo_library),
-                title: const Text('Gallery'),
-                onTap: () async {
-                  Navigator.pop(context);
-                  final pickedImage =
-                      await _picker.pickImage(source: ImageSource.gallery);
-                  if (pickedImage != null) {
-                    setState(() {
-                      _selectedImage = File(pickedImage.path);
-                    });
-                  }
-                },
-              ),
-            ],
+        return Container(
+          color: Colors.transparent,
+          child: DrowupWidget(
+            heightFactor: 0.22,
+            content: Column(
+              children: [
+                ListTile(
+                  trailing: const Icon(
+                    Icons.chevron_right_rounded,
+                    color: AppColors.grayscale50,
+                  ),
+                  title: const Text('Gallery'),
+                  onTap: () async {
+                    Navigator.pop(context);
+                    final pickedImage =
+                        await _picker.pickImage(source: ImageSource.gallery);
+                    if (pickedImage != null) {
+                      setState(() {
+                        _selectedImage = File(pickedImage.path);
+                      });
+                    }
+                  },
+                ),
+                Container(
+                  height: 1,
+                  width: MediaQuery.of(context).size.width * 0.914,
+                  color: AppColors.grayscale20,
+                ),
+                ListTile(
+                  trailing: const Icon(
+                    Icons.chevron_right_rounded,
+                    color: AppColors.grayscale50,
+                  ),
+                  title: const Text('Camera'),
+                  onTap: () async {
+                    Navigator.pop(context);
+                    final pickedImage =
+                        await _picker.pickImage(source: ImageSource.camera);
+                    if (pickedImage != null) {
+                      setState(() {
+                        _selectedImage = File(pickedImage.path);
+                      });
+                    }
+                  },
+                ),
+              ],
+            ),
           ),
         );
       },
@@ -65,471 +94,440 @@ class _CompleteInfo extends State<CompleteInfo> {
 
   @override
   Widget build(BuildContext context) {
+    var nameController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Animal'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          'Create Animal',
+          style: AppFonts.headline3(color: AppColors.grayscale90),
+        ),
+        automaticallyImplyLeading: false,
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: IconButton(
-              icon: const Icon(Icons.close_rounded),
-              onPressed: () {
-                Navigator.pop(context);
-                // Handle back button press
-                // Add your code here
-              },
+          IconButton(
+            padding: EdgeInsets.zero,
+            icon: Container(
+              width: MediaQuery.of(context).size.width * 0.1,
+              height: MediaQuery.of(context).size.width * 0.1,
+              decoration: BoxDecoration(
+                color: AppColors.grayscale10,
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: const Icon(Icons.close_rounded, color: Colors.black),
             ),
+            onPressed: () {
+              // Handle close button press
+              Navigator.pop(context);
+            },
           ),
         ],
       ),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(16.0),
+        child: Padding(
+          padding: EdgeInsets.only(
+              left: MediaQuery.of(context).size.width * 0.042,
+              right: MediaQuery.of(context).size.width * 0.042),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 25),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
               Center(
                 child: GestureDetector(
                   child: CircleAvatar(
-                    radius: 70,
-                    backgroundColor: Colors.grey[100],
+                    radius: MediaQuery.of(context).size.width * 0.16,
+                    backgroundColor: AppColors.grayscale10,
                     backgroundImage: _selectedImage != null
                         ? FileImage(_selectedImage!)
                         : null,
                     child: _selectedImage == null
                         ? const Icon(
                             Icons.camera_alt_outlined,
-                            size: 50,
-                            color: Colors.grey,
+                            size: 30,
+                            color: AppColors.grayscale90,
                           )
                         : null,
                   ),
                 ),
               ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
               Center(
-                child: TextButton(
+                child: PrimaryTextButton(
+                  status: TextStatus.idle,
                   onPressed: () {
-                    _showImagePicker(context);
+                    _showFilterModalSheet(context);
                   },
-                  child: const Text(
-                    'Add Photo',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Color.fromARGB(255, 36, 86, 38),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  text: 'Add Photo',
                 ),
               ),
-              const SizedBox(height: 45),
-              const Text(
-                "Name",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 10),
-              // const CustomTextFormField(
-              //   keyboardType: TextInputType.emailAddress,
-              //   labelText: 'Enter Name',
-              // ),
-              const SizedBox(height: 20),
-              const Text(
+              SizedBox(height: MediaQuery.of(context).size.height * 0.029),
+              PrimaryTextField(
+                  labelText: 'Name',
+                  hintText: 'Enter Name',
+                  controller: nameController),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.039),
+              Text(
                 "Family Tree",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppFonts.headline2(color: AppColors.grayscale90),
               ),
-              const SizedBox(height: 10),
-              const Text(
+              SizedBox(height: MediaQuery.of(context).size.height * 0.009),
+              Text(
                 "Add Parents If They're In The System",
-                style: TextStyle(fontSize: 16, color: Colors.grey),
+                style: AppFonts.body2(color: AppColors.grayscale60),
               ),
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  const Expanded(
-                    child: Text(
-                      'Add Parents',
-                      style: TextStyle(
-                        fontSize: 16,
+              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              Padding(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.01,
+                    bottom: MediaQuery.of(context).size.height * 0.01),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Add Parents',
+                        style: AppFonts.body2(color: AppColors.grayscale90),
                       ),
                     ),
-                  ),
-                  Switch(
-                    value: _addParents,
-                    onChanged: (value) {
-                      setState(() {
-                        _addParents = value;
-                      });
-                    },
-                  ),
-                ],
+                    ToggleActive(
+                      value: false,
+                      onChanged: (value) {
+                        setState(() {
+                          _addParents = value;
+                        });
+                      },
+                    ),
+                  ],
+                ),
               ),
               Visibility(
                 visible: _addParents,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: [
-                        const Expanded(
-                          flex: 4,
-                          child: Text(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.019),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
                             'Sire (Father)',
-                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                            style: AppFonts.body2(color: AppColors.grayscale70),
                           ),
-                        ),
-                        Expanded(
-                          flex: 0,
-                          child: TextButton(
+                          const Spacer(),
+                          PrimaryTextButton(
                             onPressed: () {},
-                            child: const Text(
-                              'Add',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 36, 86, 38),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const Expanded(
-                          flex: 0,
-                          child: Text(
-                            ' >',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 36, 86, 38),
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    Row(
-                      children: [
-                        const Expanded(
-                          flex: 4,
-                          child: Text(
+                            status: TextStatus.idle,
+                            text: 'Add',
+                            position: TextButtonPosition.right,
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.019),
+                      Row(
+                        children: [
+                          Text(
                             'Dam (Mother)',
-                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                            style: AppFonts.body2(color: AppColors.grayscale70),
                           ),
-                        ),
-                        Expanded(
-                          flex: 0,
-                          child: TextButton(
+                          const Spacer(),
+                          PrimaryTextButton(
                             onPressed: () {},
-                            child: Text(
-                              selectedName,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 36, 86, 38),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const Expanded(
-                          flex: 0,
-                          child: Text(
-                            ' >',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 36, 86, 38),
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
+                            status: TextStatus.idle,
+                            text: 'Add',
+                            position: TextButtonPosition.right,
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.009),
+              Padding(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.01,
+                    bottom: MediaQuery.of(context).size.height * 0.01),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Add Children',
+                        style: AppFonts.body2(color: AppColors.grayscale90),
+                      ),
+                    ),
+                    ToggleActive(
+                      value: false,
+                      onChanged: (value) {
+                        setState(() {
+                          addChildren = value;
+                        });
+                      },
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 10),
+              Visibility(
+                visible: addChildren,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.019),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Sire (Father)',
+                            style: AppFonts.body2(color: AppColors.grayscale70),
+                          ),
+                          const Spacer(),
+                          PrimaryTextButton(
+                            onPressed: () {},
+                            status: TextStatus.idle,
+                            text: 'Add',
+                            position: TextButtonPosition.right,
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.019),
+                      Row(
+                        children: [
+                          Text(
+                            'Dam (Mother)',
+                            style: AppFonts.body2(color: AppColors.grayscale70),
+                          ),
+                          const Spacer(),
+                          PrimaryTextButton(
+                            onPressed: () {},
+                            status: TextStatus.idle,
+                            text: 'Add',
+                            position: TextButtonPosition.right,
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              const Divider(),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              Text(
+                "Animal Sex",
+                style: AppFonts.headline2(color: AppColors.grayscale90),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              Padding(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.014,
+                    bottom: MediaQuery.of(context).size.height * 0.014),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedGender = 'Unknown';
+                    });
+                  },
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Unknown',
+                          style: AppFonts.body2(color: AppColors.grayscale90),
+                        ),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.064,
+                        height: MediaQuery.of(context).size.width * 0.064,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: selectedGender == 'Unknown'
+                                ? AppColors.primary20
+                                : AppColors.grayscale30,
+                            width: selectedGender == 'Unknown' ? 6.0 : 1.0,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.014,
+                    bottom: MediaQuery.of(context).size.height * 0.014),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedGender = 'Male';
+                    });
+                  },
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Male',
+                          style: AppFonts.body2(color: AppColors.grayscale90),
+                        ),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.064,
+                        height: MediaQuery.of(context).size.width * 0.064,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: selectedGender == 'Male'
+                                ? AppColors.primary20
+                                : AppColors.grayscale30,
+                            width: selectedGender == 'Male' ? 6.0 : 1.0,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.014,
+                    bottom: MediaQuery.of(context).size.height * 0.014),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedGender = 'Female';
+                    });
+                  },
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Female',
+                          style: AppFonts.body2(color: AppColors.grayscale90),
+                        ),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.064,
+                        height: MediaQuery.of(context).size.width * 0.064,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: selectedGender == 'Female'
+                                ? AppColors.primary20
+                                : AppColors.grayscale30,
+                            width: selectedGender == 'Female' ? 6.0 : 1.0,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              const Divider(),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              Text(
+                "Dates",
+                style: AppFonts.headline2(color: AppColors.grayscale90),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.029),
+              const PrimaryDateField(
+                hintText: 'DD.MM.YYYY',
+                labelText: 'Date of Birth',
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.029),
               Row(
                 children: [
-                  const Expanded(
-                    child: Text(
-                      'Add Children',
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
+                  PrimaryTextButton(
+                    onPressed: () {},
+                    status: TextStatus.idle,
+                    text: 'Add Date',
                   ),
-                  Switch(
-                    value: _addChildren,
-                    onChanged: (value) {
-                      setState(() {
-                        _addChildren = value;
-                      });
-                    },
-                  ),
+                  const Icon(Icons.add_rounded,
+                      color: AppColors.primary40, size: 20),
                 ],
               ),
-              const SizedBox(height: 10),
               const Divider(),
-              const SizedBox(height: 10),
-              const Text(
-                "Animal Sex",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 10),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedGender = 'Unknown';
-                  });
-                },
-                child: Row(
-                  children: [
-                    const Expanded(
-                      child: Text(
-                        'Unknown',
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: selectedGender == 'Unknown'
-                              ? Colors.green
-                              : Colors.grey,
-                          width: selectedGender == 'Unknown' ? 6.0 : 2.0,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedGender = 'Male';
-                  });
-                },
-                child: Row(
-                  children: [
-                    const Expanded(
-                      child: Text(
-                        'Male',
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: selectedGender == 'Male'
-                              ? Colors.green
-                              : Colors.grey,
-                          width: selectedGender == 'Male' ? 6.0 : 2.0,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedGender = 'Female';
-                  });
-                },
-                child: Row(
-                  children: [
-                    const Expanded(
-                      child: Text(
-                        'Female',
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: selectedGender == 'Female'
-                              ? Colors.green
-                              : Colors.grey,
-                          width: selectedGender == 'Female' ? 6.0 : 2.0,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10),
-              const Divider(),
-              const SizedBox(height: 10),
-              const Text(
-                "Dates",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 20),
-              const Text(
-                "Date Of Birth",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 10),
-              // const DateTextField(),
-              TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'Add Date +',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 36, 86, 38),
-                  ),
-                ),
-              ),
-              const Divider(),
-              const SizedBox(height: 10),
-              const Text(
+              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              Text(
                 "Add Tag",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppFonts.headline2(color: AppColors.grayscale90),
               ),
-              TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'Add Tags +',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 36, 86, 38),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              Row(
+                children: [
+                  PrimaryTextButton(
+                    onPressed: () {},
+                    status: TextStatus.idle,
+                    text: 'Add Tags',
                   ),
-                ),
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.02),
+                  const Icon(Icons.add_rounded,
+                      color: AppColors.primary40, size: 20),
+                ],
               ),
               const Divider(),
-              const SizedBox(height: 10),
-              const Text(
-                "Add Custom Fields",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              Text(
+                "Custom Fields",
+                style: AppFonts.headline2(color: AppColors.grayscale90),
               ),
-              TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'Add Custom Field +',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 36, 86, 38),
+              Text(
+                "Add Custom Fields If Needed",
+                style: AppFonts.body2(color: AppColors.grayscale60),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              Row(
+                children: [
+                  PrimaryTextButton(
+                    onPressed: () {},
+                    status: TextStatus.idle,
+                    text: 'Add Custom Fields',
                   ),
-                ),
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.02),
+                  const Icon(Icons.add_rounded,
+                      color: AppColors.primary40, size: 20),
+                ],
               ),
               const Divider(),
-              const SizedBox(height: 10),
-              const Text(
+              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              Text(
                 "Additional Notes",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppFonts.headline2(color: AppColors.grayscale90),
               ),
-              const SizedBox(height: 10),
-              TextFormField(
-                maxLines: 6, // Set the maximum number of lines
-                controller: _notesController,
-                decoration: InputDecoration(
-                  hintText:
-                      'Add Additional Information If Needed', // Add your hint text here
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                      vertical: 12.0, horizontal: 16.0),
-                ),
-                textInputAction:
-                    TextInputAction.done, // Change the keyboard action
-              ),
-              const SizedBox(height: 30),
-              GestureDetector(
-                onTap: () {
-                  // Add your logic to open the file manager and select files here
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              ParagraphTextField(
+                hintText: 'Add Any Additional Notes if Needed',
+                maxLines: 8,
+                onChanged: (value) {
+                  setState(() {
+                    _notesController.text = value;
+                  });
                 },
-                child: DottedBorder(
-                  borderType: BorderType.RRect,
-                  radius: const Radius.circular(20),
-                  dashPattern: const [7, 7],
-                  strokeWidth: 1,
-                  color: Colors.grey,
-                  child: SizedBox(
-                    width: double.infinity, // Set the width of the container
-                    height: 150, // Set the height of the container
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          icon: const Icon(
-                            Icons.file_open_outlined,
-                            size: 35,
-                          ),
-                          onPressed: () {
-                            // Handle back button press
-                            // Add your code here
-                          },
-                        ),
-                        const Text(
-                          'Upload File, PDF, Jpeg, PNG',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    ),
-                  ),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              SizedBox(
+                height: 250,
+                width: double.infinity,
+                child: Focus(
+                  onFocusChange: (hasFocus) {}, // Dummy onFocusChange callback
+                  child: const FileUploaderField(),
                 ),
               ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.09),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16),
-        child: ElevatedButton(
-          onPressed: () {
-            // Handle "Continue" button press
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color.fromARGB(255, 36, 86, 38),
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
-            ),
-          ),
-          child: const Text(
-            'Save',
-            style: TextStyle(color: Colors.white),
-          ),
+      floatingActionButton: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.064,
+        width: MediaQuery.of(context).size.width * 0.914,
+        child: PrimaryButton(
+          onPressed: () {},
+          status: PrimaryButtonStatus.idle,
+          text: 'Save',
         ),
       ),
     );

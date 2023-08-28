@@ -85,9 +85,9 @@ class PrimaryTextButton extends StatelessWidget {
     if (showLeftArrow) {
       return Row(
         children: [
-          Image.asset(
-            'assets/icons/frame/24px/20_Chevron_left.png',
-          ),
+          const Icon(Icons.arrow_back_ios_rounded,
+                    color: AppColors.primary40,
+                    size: 14),
           const SizedBox(width: 8),
           Text(
             text,
@@ -103,9 +103,9 @@ class PrimaryTextButton extends StatelessWidget {
             style: TextStyle(color: textColor),
           ),
           const SizedBox(width: 8), //Don't use MediaQuery Here
-          Image.asset(
-            'assets/icons/frame/24px/20_Chevron_right.png',
-          ),
+          const Icon(Icons.arrow_forward_ios_rounded,
+                    color: AppColors.primary40,
+                    size: 14),
         ],
       );
     }

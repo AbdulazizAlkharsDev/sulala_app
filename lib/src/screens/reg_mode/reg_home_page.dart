@@ -460,9 +460,9 @@ class _RegHomePage extends State<RegHomePage> {
                             eventData.subtitle,
                             style: AppFonts.body2(color: AppColors.grayscale60),
                           ),
-                          trailing: Image.asset(
-                            'assets/icons/frame/24px/24_Chevron_right.png',
-                          ),
+                          trailing: Icon(Icons.arrow_forward_ios_rounded,
+                    color: AppColors.primary40,
+                    size: MediaQuery.of(context).size.width * 0.034),
                         );
                       },
                     ),

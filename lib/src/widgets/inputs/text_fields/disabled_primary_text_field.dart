@@ -4,10 +4,12 @@ import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
 class DisabledPrimaryTextField extends StatelessWidget {
   final String hintText;
+  final String? labelText;
 
   const DisabledPrimaryTextField({
     Key? key,
     required this.hintText,
+    this.labelText,
   }) : super(key: key);
 
   @override
@@ -15,7 +17,18 @@ class DisabledPrimaryTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 8.0),
+        if (labelText != null)
+          Column(
+            children: [
+              Text(
+                labelText!,
+                style: AppFonts.caption2(
+                  color: AppColors.grayscale90,
+                ),
+              ),
+              const SizedBox(height: 8.0),
+            ],
+          ),
         Container(
           decoration: BoxDecoration(
             color: AppColors.grayscale10,

@@ -47,7 +47,7 @@ class _AddSomeDetailsPageState extends State<AddSomeDetailsPage> {
               children: [
                 ListTile(
                   trailing: const Icon(
-                    Icons.chevron_right_sharp,
+                    Icons.chevron_right_rounded,
                     color: AppColors.grayscale50,
                   ),
                   title: const Text('Gallery'),
@@ -69,7 +69,7 @@ class _AddSomeDetailsPageState extends State<AddSomeDetailsPage> {
                 ),
                 ListTile(
                   trailing: const Icon(
-                    Icons.chevron_right_sharp,
+                    Icons.chevron_right_rounded,
                     color: AppColors.grayscale50,
                   ),
                   title: const Text('Camera'),

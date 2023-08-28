@@ -141,7 +141,7 @@ class _FileUploaderFieldState extends State<FileUploaderField> {
                           ),
                           const SizedBox(height: 16),
                           Text(
-                            "Upload file",
+                            "Upload File. PDF, Jpeg, PNG",
                             style: AppFonts.body1(color: AppColors.primary20),
                           ),
                         ],
@@ -156,7 +156,7 @@ class _FileUploaderFieldState extends State<FileUploaderField> {
                           ),
                           const SizedBox(height: 16),
                           Text(
-                            "Upload file",
+                            "Upload File. PDF, Jpeg, PNG",
                             style: AppFonts.body1(color: AppColors.grayscale50),
                           ),
                         ],

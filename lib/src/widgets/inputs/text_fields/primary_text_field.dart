@@ -4,11 +4,11 @@ import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
 class PrimaryTextField extends StatefulWidget {
   final String hintText;
+  final String? labelText;
   final String? errorMessage;
   final ValueChanged<String>? onChanged;
   final ValueChanged<bool>? onErrorChanged;
   final TextEditingController controller;
-
 
   const PrimaryTextField({
     Key? key,
@@ -17,7 +17,7 @@ class PrimaryTextField extends StatefulWidget {
     this.onChanged,
     this.onErrorChanged,
     required this.controller,
-
+    this.labelText,
   }) : super(key: key);
 
   @override
@@ -79,6 +79,18 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        if (widget.labelText != null)
+          Column(
+            children: [
+              Text(
+                widget.labelText!,
+                style: AppFonts.caption2(
+                  color: AppColors.grayscale90,
+                ),
+              ),
+              const SizedBox(height: 8.0),
+            ],
+          ),
         Container(
           decoration: BoxDecoration(
             color: backgroundColor,

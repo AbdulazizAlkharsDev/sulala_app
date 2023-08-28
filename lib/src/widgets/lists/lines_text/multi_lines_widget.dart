@@ -57,9 +57,9 @@ class MultiLinesWidget extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-              Image.asset(
-                'assets/icons/frame/24px/24_Chevron_right.png',
-              ),
+              Icon(Icons.arrow_forward_ios_rounded,
+                    color: AppColors.primary40,
+                    size: MediaQuery.of(context).size.width * 0.034),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.0389,
               ),

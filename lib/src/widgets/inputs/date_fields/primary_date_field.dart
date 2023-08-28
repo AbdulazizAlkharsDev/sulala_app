@@ -4,6 +4,7 @@ import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
 class PrimaryDateField extends StatefulWidget {
   final String hintText;
+  final String? labelText;
   final String? errorMessage;
   final ValueChanged<DateTime>? onChanged;
   final ValueChanged<bool>? onErrorChanged;
@@ -11,6 +12,7 @@ class PrimaryDateField extends StatefulWidget {
   const PrimaryDateField({
     Key? key,
     required this.hintText,
+    this.labelText,
     this.errorMessage,
     this.onChanged,
     this.onErrorChanged,
@@ -145,7 +147,18 @@ class _PrimaryDateFieldState extends State<PrimaryDateField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 8.0),
+        if (widget.labelText != null)
+          Column(
+            children: [
+              Text(
+                widget.labelText!,
+                style: AppFonts.caption2(
+                  color: AppColors.grayscale90,
+                ),
+              ),
+              const SizedBox(height: 8.0),
+            ],
+          ),
         GestureDetector(
           onTap: () {
             _selectDate(context);

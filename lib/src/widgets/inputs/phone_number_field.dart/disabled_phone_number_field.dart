@@ -78,9 +78,9 @@ class DisabledPhoneNumberField extends StatelessWidget {
                       countryCode,
                       style: AppFonts.body2(color: AppColors.grayscale90),
                     ),
-                    Image.asset(
-                      "assets/icons/frame/24px/16_Chevron_down.png",
-                    ),
+                    Icon(Icons.arrow_downward_rounded,
+                        color: AppColors.primary40,
+                        size: MediaQuery.of(context).size.width * 0.034),
                     SizedBox(width: MediaQuery.of(context).size.width * 0.005),
                   ],
                 ),

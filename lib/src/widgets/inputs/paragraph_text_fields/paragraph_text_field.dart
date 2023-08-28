@@ -4,7 +4,7 @@ import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
 class ParagraphTextField extends StatefulWidget {
   final String hintText;
-  final String labelText;
+  final String? labelText;
   final String? errorMessage;
   final ValueChanged<String>? onChanged;
   final ValueChanged<bool>? onErrorChanged;
@@ -13,7 +13,7 @@ class ParagraphTextField extends StatefulWidget {
   const ParagraphTextField({
     Key? key,
     required this.hintText,
-    required this.labelText,
+    this.labelText,
     this.errorMessage,
     this.onChanged,
     this.onErrorChanged,
@@ -85,13 +85,18 @@ class _ParagraphTextFieldState extends State<ParagraphTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          widget.labelText,
-          style: AppFonts.caption2(
-            color: AppColors.grayscale90,
+        if (widget.labelText != null)
+          Column(
+            children: [
+              Text(
+                widget.labelText!,
+                style: AppFonts.caption2(
+                  color: AppColors.grayscale90,
+                ),
+              ),
+              const SizedBox(height: 8.0),
+            ],
           ),
-        ),
-        const SizedBox(height: 8.0),
         Container(
           decoration: BoxDecoration(
             color: backgroundColor,
