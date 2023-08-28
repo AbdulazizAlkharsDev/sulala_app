@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
-import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
-import 'package:sulala_app/src/widgets/inputs/search_bars/search_bar.dart';
+import 'package:sulala_app/test/drop_up_animal_breed.dart';
+import 'package:sulala_app/test/drop_up_animal_species.dart';
 import 'package:sulala_app/test/select_options.dart';
 
 class CreateAnimalPage extends StatefulWidget {
@@ -166,7 +165,7 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
                           _buildAnimalBreedOption(breed),
                         PrimaryTextButton(
                           onPressed: () {
-                            _showAnimalSpecies('breeds', context);
+                            _showAnimalBreed('breeds', context);
                           },
                           text: 'Show More',
                           status: TextStatus.idle,
@@ -247,7 +246,7 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
   }
 
   Widget _buildAnimalSpeciesOption(String optionText) {
-    final isSelected = selectedAnimalSpecies == optionText;
+    final isSelectedSpecies = selectedAnimalSpecies == optionText;
 
     return ListTile(
       contentPadding: EdgeInsets.zero,
@@ -258,21 +257,22 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
-            color: isSelected ? AppColors.primary20 : AppColors.grayscale30,
-            width: isSelected ? 6.0 : 1.0,
+            color:
+                isSelectedSpecies ? AppColors.primary20 : AppColors.grayscale30,
+            width: isSelectedSpecies ? 6.0 : 1.0,
           ),
         ),
       ),
       onTap: () {
         setState(() {
-          selectedAnimalSpecies = isSelected ? '' : optionText;
+          selectedAnimalSpecies = isSelectedSpecies ? '' : optionText;
         });
       },
     );
   }
 
   Widget _buildAnimalBreedOption(String optionText) {
-    final isSelected = selectedAnimalBreed == optionText;
+    final isSelectedBreed = selectedAnimalBreed == optionText;
 
     return ListTile(
       contentPadding: EdgeInsets.zero,
@@ -285,14 +285,15 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
-            color: isSelected ? AppColors.primary20 : AppColors.grayscale30,
-            width: isSelected ? 6.0 : 1.0,
+            color:
+                isSelectedBreed ? AppColors.primary20 : AppColors.grayscale30,
+            width: isSelectedBreed ? 6.0 : 1.0,
           ),
         ),
       ),
       onTap: () {
         setState(() {
-          selectedAnimalBreed = isSelected ? '' : optionText;
+          selectedAnimalBreed = isSelectedBreed ? '' : optionText;
         });
       },
     );
@@ -302,77 +303,62 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
     List<String> filteredModalList = List.from(modalAnimalSpeciesList);
     TextEditingController searchValue = TextEditingController();
 
-    final selectedValue = await showModalBottomSheet<String>(
+    DrowupAnimalSpecies drowupAnimalSpecies = DrowupAnimalSpecies(
+      searchValue: searchValue,
+      filteredModalList: filteredModalList,
+      modalAnimalSpeciesList: modalAnimalSpeciesList,
+      setState: setState,
+    );
+
+    drowupAnimalSpecies.resetSelection();
+
+    final selectedSpeciesValue = await showModalBottomSheet<String>(
       backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,
       isDismissible: true,
       builder: (BuildContext context) {
-        return DrowupWidget(
-          heading: 'Animal Species',
-          heightFactor: 0.9,
-          content: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.68,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                PrimarySearchBar(
-                    controller: searchValue,
-                    onChange: (value) {
-                      setState(() {
-                        value = searchValue.text;
-                        filteredModalList = modalAnimalSpeciesList
-                            .where((element) => element
-                                .toLowerCase()
-                                .contains(value.toLowerCase()))
-                            .toList();
-                      });
-                    },
-                    hintText: 'Search by species'),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.029,
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: filteredModalList.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        leading: const CircleAvatar(
-                          radius: 24,
-                          backgroundImage: AssetImage(
-                              'assets/avatars/120px/Horse_avatar.png'),
-                          backgroundColor: Colors.transparent,
-                        ),
-                        title: Text(filteredModalList[index],
-                            style:
-                                AppFonts.body2(color: AppColors.grayscale90)),
-                        onTap: () {
-                          Navigator.pop(context, filteredModalList[index]);
-                        },
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-          primaryButton: PrimaryButton(
-            status: PrimaryButtonStatus.idle,
-            text: 'Confirm',
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        );
+        return drowupAnimalSpecies;
       },
     );
 
-    if (selectedValue != null) {
+    if (selectedSpeciesValue != null) {
       setState(() {
-        animalSpeciesList.remove(selectedValue);
-        animalSpeciesList.insert(0, selectedValue);
-        selectedAnimalSpecies = selectedValue;
+        animalSpeciesList.remove(selectedSpeciesValue);
+        animalSpeciesList.insert(0, selectedSpeciesValue);
+        selectedAnimalSpecies = selectedSpeciesValue;
+      });
+    }
+  }
+
+  void _showAnimalBreed(String section, BuildContext context) async {
+    List<String> filteredBreedList = List.from(modalAnimalBreedsList);
+    TextEditingController searchValue = TextEditingController();
+
+    DrowupAnimalBreed drowupAnimalBreed = DrowupAnimalBreed(
+      searchValue: searchValue,
+      filteredBreedList: filteredBreedList,
+      modalAnimalBreedList: modalAnimalBreedsList,
+      setState: setState,
+    );
+
+    drowupAnimalBreed.resetSelection();
+
+    final selectedBreedValue = await showModalBottomSheet<String>(
+      backgroundColor: Colors.transparent,
+      context: context,
+      isScrollControlled: true,
+      isDismissible: true,
+      builder: (BuildContext context) {
+        return drowupAnimalBreed;
+      },
+    );
+
+    if (selectedBreedValue != null) {
+      setState(() {
+        animalBreedsList.remove(selectedBreedValue);
+        animalBreedsList.insert(0, selectedBreedValue);
+        selectedAnimalBreed = selectedBreedValue;
       });
     }
   }
