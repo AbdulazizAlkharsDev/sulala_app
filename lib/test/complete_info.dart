@@ -11,6 +11,7 @@ import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
 import 'package:sulala_app/src/widgets/inputs/file_uploader_fields/file_uploader_field.dart';
 import 'package:sulala_app/src/widgets/inputs/paragraph_text_fields/paragraph_text_field.dart';
 import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
+import 'package:sulala_app/test/drop_up_add_parents.dart';
 
 class CompleteInfo extends StatefulWidget {
   const CompleteInfo({super.key});
@@ -87,6 +88,25 @@ class _CompleteInfo extends State<CompleteInfo> {
               ],
             ),
           ),
+        );
+      },
+    );
+  }
+
+  void _showAddMotherSheet(BuildContext context) async {
+    // PermissionStatus cameraStatus = await Permission.camera.request();
+    // PermissionStatus photosStatus = await Permission.photos.request();
+
+    // if (cameraStatus.isGranted && photosStatus.isGranted) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      isScrollControlled: true,
+      isDismissible: true,
+      builder: (BuildContext context) {
+        return Container(
+          color: Colors.transparent,
+          child: AddParentsDropup(setState: setState),
         );
       },
     );
@@ -233,7 +253,9 @@ class _CompleteInfo extends State<CompleteInfo> {
                           ),
                           const Spacer(),
                           PrimaryTextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              _showAddMotherSheet(context);
+                            },
                             status: TextStatus.idle,
                             text: 'Add',
                             position: TextButtonPosition.right,
