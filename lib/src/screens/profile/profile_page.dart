@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/navigate_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/secondary_button.dart';
+import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
 import 'package:sulala_app/src/widgets/other/three_information_block.dart';
 import 'package:sulala_app/test/about_app.dart';
 import 'package:sulala_app/test/app_setting.dart';
 import 'package:sulala_app/test/customer_support.dart';
 import 'package:sulala_app/src/screens/profile/edit_profile_information.dart';
-import 'package:sulala_app/test/list_of_staff.dart';
+import 'package:sulala_app/src/screens/profile/list_of_staff.dart';
 import 'package:sulala_app/test/notifications_pause.dart';
 import 'package:sulala_app/test/privacy_security.dart';
 
@@ -21,6 +24,8 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
+    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
+    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -61,21 +66,18 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             Padding(
               padding: EdgeInsets.only(
-                  left: (16 * MediaQuery.of(context).size.width) / 375,
-                  right: (16 * MediaQuery.of(context).size.width) / 375),
+                  left: 16 * widthMediaQuery, right: 16 * widthMediaQuery),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: (40 * MediaQuery.of(context).size.height) / 812,
-                  ),
+                  SizedBox(height: 40 * heightMediaQuery),
                   CircleAvatar(
                     backgroundColor: Colors.transparent,
-                    radius: (60 * MediaQuery.of(context).size.width) / 375,
+                    radius: 60 * widthMediaQuery,
                     backgroundImage:
                         const AssetImage('assets/avatars/120px/Staff1.png'),
                   ),
                   SizedBox(
-                    height: (16 * MediaQuery.of(context).size.height) / 812,
+                    height: 16 * heightMediaQuery,
                   ),
                   Text(
                     'John Smith',
@@ -85,16 +87,14 @@ class _ProfilePageState extends State<ProfilePage> {
                     '123-456-7890',
                     style: AppFonts.body2(color: AppColors.grayscale70),
                   ),
-                  SizedBox(
-                      height: (16 * MediaQuery.of(context).size.height) / 812),
+                  SizedBox(height: 16 * heightMediaQuery),
                   Text(
                     'Head of Farm',
                     style: AppFonts.body2(color: AppColors.grayscale70),
                   ),
+                  SizedBox(height: 32 * heightMediaQuery),
                   SizedBox(
-                      height: (32 * MediaQuery.of(context).size.height) / 812),
-                  SizedBox(
-                    height: (40 * MediaQuery.of(context).size.height) / 812,
+                    height: 40 * heightMediaQuery,
                     child: PrimaryButton(
                       onPressed: () {
                         Navigator.push(
@@ -108,15 +108,13 @@ class _ProfilePageState extends State<ProfilePage> {
                       position: PrimaryButtonPosition.right,
                     ),
                   ),
-                  SizedBox(
-                      height: (24 * MediaQuery.of(context).size.height) / 812),
+                  SizedBox(height: 24 * heightMediaQuery),
                   const ThreeInformationBlock(
                     head1: '24',
                     head2: '1',
                     head3: '4',
                   ),
-                  SizedBox(
-                      height: (24 * MediaQuery.of(context).size.height) / 812),
+                  SizedBox(height: 24 * heightMediaQuery),
                 ],
               ),
             ),
@@ -127,15 +125,13 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Padding(
               padding: EdgeInsets.only(
-                  left: (16 * MediaQuery.of(context).size.width) / 375,
-                  right: (16 * MediaQuery.of(context).size.width) / 375),
+                  left: 16 * widthMediaQuery, right: 16 * widthMediaQuery),
               child: Column(
                 children: [
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        padding: EdgeInsets.all(
-                            (6 * MediaQuery.of(context).size.width) / 375),
+                        padding: EdgeInsets.all(6 * widthMediaQuery),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.grayscale0,
@@ -160,8 +156,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        padding: EdgeInsets.all(
-                            (6 * MediaQuery.of(context).size.width) / 375),
+                        padding: EdgeInsets.all(6 * widthMediaQuery),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.grayscale0,
@@ -185,8 +180,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        padding: EdgeInsets.all(
-                            (6 * MediaQuery.of(context).size.width) / 375),
+                        padding: EdgeInsets.all(6 * widthMediaQuery),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.grayscale0,
@@ -217,15 +211,13 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Padding(
               padding: EdgeInsets.only(
-                  left: (16 * MediaQuery.of(context).size.width) / 375,
-                  right: (16 * MediaQuery.of(context).size.width) / 375),
+                  left: 16 * widthMediaQuery, right: 16 * widthMediaQuery),
               child: Column(
                 children: [
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        padding: EdgeInsets.all(
-                            (6 * MediaQuery.of(context).size.width) / 375),
+                        padding: EdgeInsets.all(6 * widthMediaQuery),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.grayscale0,
@@ -250,8 +242,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        padding: EdgeInsets.all(
-                            (6 * MediaQuery.of(context).size.width) / 375),
+                        padding: EdgeInsets.all(6 * widthMediaQuery),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.grayscale0,
@@ -283,15 +274,13 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Padding(
               padding: EdgeInsets.only(
-                  left: (16 * MediaQuery.of(context).size.width) / 375,
-                  right: (16 * MediaQuery.of(context).size.width) / 375),
+                  left: 16 * widthMediaQuery, right: 16 * widthMediaQuery),
               child: Column(
                 children: [
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        padding: EdgeInsets.all(
-                            (6 * MediaQuery.of(context).size.width) / 375),
+                        padding: EdgeInsets.all(6 * widthMediaQuery),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.grayscale0,
@@ -315,8 +304,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        padding: EdgeInsets.all(
-                            (6 * MediaQuery.of(context).size.width) / 375),
+                        padding: EdgeInsets.all(6 * widthMediaQuery),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.grayscale0,
@@ -339,8 +327,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                          padding: EdgeInsets.all(
-                              (6 * MediaQuery.of(context).size.width) / 375),
+                          padding: EdgeInsets.all(6 * widthMediaQuery),
                           decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: AppColors.grayscale0,
@@ -368,15 +355,13 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Padding(
               padding: EdgeInsets.only(
-                  left: (16 * MediaQuery.of(context).size.width) / 375,
-                  right: (16 * MediaQuery.of(context).size.width) / 375),
+                  left: 16 * widthMediaQuery, right: 16 * widthMediaQuery),
               child: Column(
                 children: [
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     leading: Container(
-                      padding: EdgeInsets.all(
-                          (6 * MediaQuery.of(context).size.width) / 375),
+                      padding: EdgeInsets.all(6 * widthMediaQuery),
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: AppColors.grayscale0,
@@ -389,70 +374,36 @@ class _ProfilePageState extends State<ProfilePage> {
                       style: AppFonts.body2(color: AppColors.error100),
                     ),
                     onTap: () {
-                      showModalBottomSheet<void>(
+                      showModalBottomSheet(
+                        backgroundColor: Colors.transparent,
                         context: context,
+                        isScrollControlled: true,
+                        isDismissible: true,
                         builder: (BuildContext context) {
-                          return Container(
-                            padding: const EdgeInsets.all(30),
-                            child: Column(
+                          return DrowupWidget(
+                            heightFactor: 0.33,
+                            content: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                const Text(
+                                Text(
                                   'Sign Out?',
-                                  style: TextStyle(
-                                    fontSize: 35,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: AppFonts.title3(
+                                      color: AppColors.grayscale90),
                                 ),
-                                const SizedBox(height: 25),
+                                SizedBox(height: 32 * heightMediaQuery),
                                 SizedBox(
+                                  height: 52 * heightMediaQuery,
                                   width: double.infinity,
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      elevation: 0,
-                                      backgroundColor: const Color.fromARGB(
-                                          255, 232, 232, 232),
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 16),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                    ),
-                                    child: const Text(
-                                      'Yes',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.red,
-                                      ),
-                                    ),
-                                  ),
+                                  child: NavigateButton(
+                                      onPressed: () {}, text: 'Yes'),
                                 ),
-                                const SizedBox(height: 16),
+                                SizedBox(height: 8 * heightMediaQuery),
                                 SizedBox(
+                                  height: 52 * heightMediaQuery,
                                   width: double.infinity,
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      elevation: 0,
-                                      backgroundColor: const Color.fromARGB(
-                                          255, 232, 232, 232),
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 16),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                    ),
-                                    child: const Text(
-                                      'Cancel',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
+                                  child: SecondaryButton(
+                                      onPressed: () {}, text: 'Cancel'),
                                 ),
-                                const SizedBox(height: 30),
                               ],
                             ),
                           );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/test/Button.dart';
-import 'package:sulala_app/test/list_of_staff.dart';
+import 'package:sulala_app/src/screens/profile/list_of_staff.dart';
 
 class StaffDetailsPage extends StatefulWidget {
   final String imagePath;
