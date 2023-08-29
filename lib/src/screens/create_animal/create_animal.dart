@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
-import 'package:sulala_app/test/drop_up_animal_breed.dart';
-import 'package:sulala_app/test/drop_up_animal_species.dart';
-import 'package:sulala_app/test/select_options.dart';
+import 'package:sulala_app/src/screens/create_animal/drop_up_animal_breed.dart';
+import 'package:sulala_app/src/screens/create_animal/drop_up_animal_species.dart';
+import 'package:sulala_app/src/screens/create_animal/select_options.dart';
 
 class CreateAnimalPage extends StatefulWidget {
   const CreateAnimalPage({Key? key}) : super(key: key);

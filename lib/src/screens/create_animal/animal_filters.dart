@@ -7,8 +7,8 @@ import 'package:sulala_app/src/widgets/controls_and_buttons/checkbox/checkbox_de
 import 'package:sulala_app/src/widgets/controls_and_buttons/tags/tags.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
-import 'package:sulala_app/test/showdialogdraf.dart';
-import 'package:sulala_app/test/user_list_of_animals.dart';
+import 'package:sulala_app/src/screens/create_animal/showdialogdraf.dart';
+import 'package:sulala_app/src/screens/create_animal/user_list_of_animals.dart';
 
 class AnimalFilters extends StatefulWidget {
   const AnimalFilters({super.key});

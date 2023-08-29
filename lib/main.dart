@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sulala_app/src/screens/guest_mode/search_page_animals.dart';
 import 'package:sulala_app/src/screens/guest_mode/search_page_owner_animals.dart';
 import 'package:sulala_app/src/screens/sign_in/sign_in.dart';
+import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar.dart';
 import 'package:sulala_app/src/screens/guest_mode/search_page.dart';
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        scaffoldBackgroundColor: AppColors.grayscale00,
+      ),
       title: 'Sulala App',
       home: Builder(
         builder: (context) {

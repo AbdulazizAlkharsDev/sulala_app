@@ -11,7 +11,7 @@ import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
 import 'package:sulala_app/src/widgets/inputs/file_uploader_fields/file_uploader_field.dart';
 import 'package:sulala_app/src/widgets/inputs/paragraph_text_fields/paragraph_text_field.dart';
 import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
-import 'package:sulala_app/test/drop_up_add_parents.dart';
+import 'package:sulala_app/src/screens/create_animal/drop_up_add_parents.dart';
 
 class CompleteInfo extends StatefulWidget {
   const CompleteInfo({super.key});

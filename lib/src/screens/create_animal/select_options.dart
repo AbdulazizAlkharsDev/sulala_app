@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/test/complete_info.dart';
+import 'package:sulala_app/src/screens/create_animal/complete_info.dart';
 
 class SelectedOptionsPage extends StatefulWidget {
   final String selectedAnimalType;

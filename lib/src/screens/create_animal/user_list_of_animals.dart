@@ -3,9 +3,9 @@ import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/src/widgets/inputs/search_bars/button_search_bar.dart';
-import 'package:sulala_app/test/animal_filters.dart';
-import 'package:sulala_app/test/create_animal.dart';
-import 'package:sulala_app/test/test_animal_info.dart';
+import 'package:sulala_app/src/screens/create_animal/animal_filters.dart';
+import 'package:sulala_app/src/screens/create_animal/create_animal.dart';
+import 'package:sulala_app/src/screens/create_animal/test_animal_info.dart';
 
 class UserListOfAnimals extends StatefulWidget {
   final List<String> selectedFilters;
@@ -46,151 +46,6 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
     {
       'name': 'Joyce',
       'image': 'assets/avatars/120px/Cat.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
-      'subtitle': 'Mammal',
-    },
-    {
-      'name': 'Billy',
-      'image': 'assets/avatars/120px/Sheep.png',
       'subtitle': 'Mammal',
     },
     {
