@@ -154,6 +154,7 @@ class _StaffDetailsPageState extends State<StaffDetailsPage> {
                                     context,
                                     'Member was Deleted',
                                     Icons.check_circle_rounded,
+                                    24 * heightMediaQuery,
                                     color: AppColors.primary10,
                                   );
                                 },

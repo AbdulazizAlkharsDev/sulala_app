@@ -63,6 +63,7 @@ class _EditProfileInformation extends State<EditProfileInformation> {
 
   @override
   Widget build(BuildContext context) {
+    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -229,6 +230,7 @@ class _EditProfileInformation extends State<EditProfileInformation> {
                 context,
                 'Information Updated',
                 Icons.check_circle_rounded,
+                80 * heightMediaQuery,
                 color: AppColors.primary10,
               );
             },

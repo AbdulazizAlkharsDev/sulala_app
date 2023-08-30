@@ -4,6 +4,7 @@ import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
 class CustomSnackBar {
   static void show(BuildContext context, String message, IconData icon,
+      double heightFromBottom,
       {Color? color}) {
     final overlay =
         Overlay.of(context).context.findRenderObject() as RenderBox?;
@@ -14,11 +15,10 @@ class CustomSnackBar {
 
       OverlayEntry entry = OverlayEntry(
         builder: (BuildContext context) {
-          double heightMediaQuery = MediaQuery.of(context).size.height / 812;
+          // double heightMediaQuery = MediaQuery.of(context).size.height / 812;
           double widthMediaQuery = MediaQuery.of(context).size.width / 375;
           return Positioned(
-            bottom:
-                80 * heightMediaQuery, // Adjust the bottom margin as desired
+            bottom: heightFromBottom, // Adjust the bottom margin as desired
             left: (box.size.width - snackBarWidth) / 2.0,
             width: snackBarWidth,
             child: Material(
@@ -65,5 +65,6 @@ class CustomSnackBar {
 //                                   context,
 //                                   'Member was Deleted',
 //                                   Icons.check_circle_rounded,
+//                                   24 * heightMediaQuery,
 //                                   color: AppColors.primary10,
 //                                 );
