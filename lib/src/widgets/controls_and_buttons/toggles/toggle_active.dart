@@ -3,7 +3,7 @@ import '../../../theme/colors/colors.dart';
 
 class ToggleActive extends StatefulWidget {
   final bool value;
-  final Function(bool) onChanged;
+  final Function(bool)? onChanged;
 
   const ToggleActive({
     Key? key,
@@ -65,7 +65,7 @@ class _ToggleActiveState extends State<ToggleActive> {
   void _toggleValue() {
     setState(() {
       _value = !_value;
-      widget.onChanged(_value);
+      widget.onChanged!(_value);
     });
   }
 }

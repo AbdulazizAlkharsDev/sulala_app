@@ -11,7 +11,7 @@ import 'package:sulala_app/test/app_setting.dart';
 import 'package:sulala_app/test/customer_support.dart';
 import 'package:sulala_app/src/screens/profile/edit_profile_information.dart';
 import 'package:sulala_app/src/screens/profile/list_of_staff.dart';
-import 'package:sulala_app/test/notifications_pause.dart';
+import 'package:sulala_app/src/screens/profile/notifications_pause.dart';
 import 'package:sulala_app/test/privacy_security.dart';
 import 'package:sulala_app/src/screens/profile/shimmer_profile_page.dart';
 
@@ -33,7 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Future<void> fetchDataFromBackend() async {
     // Simulate fetching data from the backend
-    await Future.delayed(const Duration(seconds: 20));
+    await Future.delayed(const Duration(seconds: 3));
 
     setState(() {
       isLoading = false;
