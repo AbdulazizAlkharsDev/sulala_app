@@ -6,13 +6,13 @@ import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_butt
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/secondary_button.dart';
 import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
 import 'package:sulala_app/src/widgets/other/three_information_block.dart';
-import 'package:sulala_app/test/about_app.dart';
-import 'package:sulala_app/test/app_setting.dart';
+import 'package:sulala_app/src/screens/profile/about_app.dart';
+import 'package:sulala_app/src/screens/profile/app_setting.dart';
 import 'package:sulala_app/test/customer_support.dart';
 import 'package:sulala_app/src/screens/profile/edit_profile_information.dart';
 import 'package:sulala_app/src/screens/profile/list_of_staff.dart';
 import 'package:sulala_app/src/screens/profile/notifications_pause.dart';
-import 'package:sulala_app/test/privacy_security.dart';
+import 'package:sulala_app/src/screens/profile/privacy_security.dart';
 import 'package:sulala_app/src/screens/profile/shimmer_profile_page.dart';
 
 class ProfilePage extends StatefulWidget {

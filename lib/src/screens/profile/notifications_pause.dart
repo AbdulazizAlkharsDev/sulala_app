@@ -92,13 +92,11 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
                         checked: false,
                       )
                     : ToggleActive(
-                        onChanged: (_pauseAll)
-                            ? null // Disable the switch when "Pause All" is turned on
-                            : (value) {
-                                setState(() {
-                                  _sysNotifications = value;
-                                });
-                              },
+                        onChanged: (value) {
+                          setState(() {
+                            _sysNotifications = value;
+                          });
+                        },
                         value: _sysNotifications,
                       ),
               ),
@@ -114,13 +112,11 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
                       )
                     : ToggleActive(
                         value: _animalNotifications,
-                        onChanged: (_pauseAll)
-                            ? null // Disable the switch when "Pause All" is turned on
-                            : (value) {
-                                setState(() {
-                                  _animalNotifications = value;
-                                });
-                              },
+                        onChanged: (value) {
+                          setState(() {
+                            _animalNotifications = value;
+                          });
+                        },
                       ),
               ),
               ListTile(
@@ -135,13 +131,11 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
                       )
                     : ToggleActive(
                         value: _collaboration,
-                        onChanged: (_pauseAll)
-                            ? null // Disable the switch when "Pause All" is turned on
-                            : (value) {
-                                setState(() {
-                                  _collaboration = value;
-                                });
-                              },
+                        onChanged: (value) {
+                          setState(() {
+                            _collaboration = value;
+                          });
+                        },
                       ),
               ),
             ],
