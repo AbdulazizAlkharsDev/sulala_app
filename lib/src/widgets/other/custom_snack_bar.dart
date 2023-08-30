@@ -18,7 +18,7 @@ class CustomSnackBar {
           double widthMediaQuery = MediaQuery.of(context).size.width / 375;
           return Positioned(
             bottom:
-                24 * heightMediaQuery, // Adjust the bottom margin as desired
+                80 * heightMediaQuery, // Adjust the bottom margin as desired
             left: (box.size.width - snackBarWidth) / 2.0,
             width: snackBarWidth,
             child: Material(

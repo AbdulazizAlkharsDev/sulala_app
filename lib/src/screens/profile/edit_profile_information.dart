@@ -7,6 +7,7 @@ import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_butt
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
 import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
+import 'package:sulala_app/src/widgets/other/custom_snack_bar.dart';
 
 class EditProfileInformation extends StatefulWidget {
   const EditProfileInformation({super.key});
@@ -223,6 +224,13 @@ class _EditProfileInformation extends State<EditProfileInformation> {
             onPressed: () {
               //Save informations
               Navigator.pop(context);
+
+              CustomSnackBar.show(
+                context,
+                'Information Updated',
+                Icons.check_circle_rounded,
+                color: AppColors.primary10,
+              );
             },
             text: 'Save Changes',
           ),

@@ -13,6 +13,7 @@ import 'package:sulala_app/src/screens/profile/edit_profile_information.dart';
 import 'package:sulala_app/src/screens/profile/list_of_staff.dart';
 import 'package:sulala_app/test/notifications_pause.dart';
 import 'package:sulala_app/test/privacy_security.dart';
+import 'package:sulala_app/src/screens/profile/shimmer_profile_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -24,9 +25,15 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   bool isLoading = true;
 
+  @override
+  void initState() {
+    super.initState();
+    fetchDataFromBackend();
+  }
+
   Future<void> fetchDataFromBackend() async {
     // Simulate fetching data from the backend
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 20));
 
     setState(() {
       isLoading = false;
@@ -78,56 +85,58 @@ class _ProfilePageState extends State<ProfilePage> {
             Padding(
               padding: EdgeInsets.only(
                   left: 16 * widthMediaQuery, right: 16 * widthMediaQuery),
-              child: Column(
-                children: [
-                  SizedBox(height: 40 * heightMediaQuery),
-                  CircleAvatar(
-                    backgroundColor: Colors.transparent,
-                    radius: 60 * widthMediaQuery,
-                    backgroundImage:
-                        const AssetImage('assets/avatars/120px/Staff1.png'),
-                  ),
-                  SizedBox(
-                    height: 16 * heightMediaQuery,
-                  ),
-                  Text(
-                    'John Smith',
-                    style: AppFonts.title4(color: AppColors.grayscale90),
-                  ),
-                  Text(
-                    '123-456-7890',
-                    style: AppFonts.body2(color: AppColors.grayscale70),
-                  ),
-                  SizedBox(height: 16 * heightMediaQuery),
-                  Text(
-                    'Head of Farm',
-                    style: AppFonts.body2(color: AppColors.grayscale70),
-                  ),
-                  SizedBox(height: 32 * heightMediaQuery),
-                  SizedBox(
-                    height: 40 * heightMediaQuery,
-                    child: PrimaryButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ListOfStaff()),
-                        );
-                        // Add function of the button below
-                      },
-                      text: 'Collaboration',
-                      position: PrimaryButtonPosition.right,
+              child: isLoading
+                  ? const ShimmerProfilePage()
+                  : Column(
+                      children: [
+                        SizedBox(height: 40 * heightMediaQuery),
+                        CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          radius: 60 * widthMediaQuery,
+                          backgroundImage: const AssetImage(
+                              'assets/avatars/120px/Staff1.png'),
+                        ),
+                        SizedBox(
+                          height: 16 * heightMediaQuery,
+                        ),
+                        Text(
+                          'John Smith',
+                          style: AppFonts.title4(color: AppColors.grayscale90),
+                        ),
+                        Text(
+                          '123-456-7890',
+                          style: AppFonts.body2(color: AppColors.grayscale70),
+                        ),
+                        SizedBox(height: 16 * heightMediaQuery),
+                        Text(
+                          'Head of Farm',
+                          style: AppFonts.body2(color: AppColors.grayscale70),
+                        ),
+                        SizedBox(height: 32 * heightMediaQuery),
+                        SizedBox(
+                          height: 40 * heightMediaQuery,
+                          child: PrimaryButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const ListOfStaff()),
+                              );
+                              // Add function of the button below
+                            },
+                            text: 'Collaboration',
+                            position: PrimaryButtonPosition.right,
+                          ),
+                        ),
+                        SizedBox(height: 24 * heightMediaQuery),
+                        const ThreeInformationBlock(
+                          head1: '24',
+                          head2: '1',
+                          head3: '4',
+                        ),
+                        SizedBox(height: 24 * heightMediaQuery),
+                      ],
                     ),
-                  ),
-                  SizedBox(height: 24 * heightMediaQuery),
-                  const ThreeInformationBlock(
-                    head1: '24',
-                    head2: '1',
-                    head3: '4',
-                  ),
-                  SizedBox(height: 24 * heightMediaQuery),
-                ],
-              ),
             ),
             Container(
               height: 12,
