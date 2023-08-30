@@ -8,7 +8,7 @@ import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
 import 'package:sulala_app/src/widgets/other/three_information_block.dart';
 import 'package:sulala_app/src/screens/profile/about_app.dart';
 import 'package:sulala_app/src/screens/profile/app_setting.dart';
-import 'package:sulala_app/test/customer_support.dart';
+import 'package:sulala_app/src/screens/profile/customer_support.dart';
 import 'package:sulala_app/src/screens/profile/edit_profile_information.dart';
 import 'package:sulala_app/src/screens/profile/list_of_staff.dart';
 import 'package:sulala_app/src/screens/profile/notifications_pause.dart';
