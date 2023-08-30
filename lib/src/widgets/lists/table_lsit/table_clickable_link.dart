@@ -44,9 +44,6 @@ class _TableClickableTextState extends State<TableClickableText> {
       children: [
         Row(
           children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.0389,
-            ),
             Text(
               truncateTextWithEllipsis(widget.text1, 25),
               style: AppFonts.body2(
@@ -73,9 +70,6 @@ class _TableClickableTextState extends State<TableClickableText> {
                   ),
                 ),
               ],
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.0389,
             ),
           ],
         ),

@@ -35,9 +35,6 @@ class _TableTextButtonState extends State<TableTextButton> {
       children: [
         Row(
           children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.0389,
-            ),
             Text(
               truncateTextWithEllipsis(widget.textHead, 25),
               style: AppFonts.body2(
@@ -50,9 +47,6 @@ class _TableTextButtonState extends State<TableTextButton> {
               position: TextButtonPosition.right,
               onPressed: widget.onPressed,
               text: widget.textButton,
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.0389,
             ),
           ],
         ),
