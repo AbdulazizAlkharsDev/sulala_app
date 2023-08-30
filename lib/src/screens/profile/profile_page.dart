@@ -22,6 +22,17 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  bool isLoading = true;
+
+  Future<void> fetchDataFromBackend() async {
+    // Simulate fetching data from the backend
+    await Future.delayed(const Duration(seconds: 2));
+
+    setState(() {
+      isLoading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double heightMediaQuery = MediaQuery.of(context).size.height / 812;

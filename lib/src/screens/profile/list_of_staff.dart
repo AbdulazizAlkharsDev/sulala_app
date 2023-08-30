@@ -34,45 +34,45 @@ class _ListOfStaffState extends State<ListOfStaff> {
 
   Future<void> fetchDataFromBackend() async {
     // Simulate fetching data from the backend
-    await Future.delayed(const Duration(seconds: 15));
+    await Future.delayed(const Duration(seconds: 2));
 
     // Update the options list with the fetched data
     List<Map<String, dynamic>> newData = [
-      // {
-      //   'imagePath': 'assets/avatars/120px/Staff1.png',
-      //   'title': 'Paul Rivera',
-      //   'subtitle': 'Viewer',
-      //   'email': 'paul@example.com',
-      //   'phoneNumber': '+1 234 567 890',
-      // },
-      // {
-      //   'imagePath': 'assets/avatars/120px/Staff2.png',
-      //   'title': 'Rebecca Wilson',
-      //   'subtitle': 'Helper',
-      //   'email': 'paul@example.com',
-      //   'phoneNumber': '+1 234 567 890',
-      // },
-      // {
-      //   'imagePath': 'assets/avatars/120px/Staff3.png',
-      //   'title': 'Patricia Williams',
-      //   'subtitle': 'Helper',
-      //   'email': 'paul@example.com',
-      //   'phoneNumber': '+1 234 567 890',
-      // },
-      // {
-      //   'imagePath': 'assets/avatars/120px/Staff1.png',
-      //   'title': 'Scott Simmons',
-      //   'subtitle': 'Worker',
-      //   'email': 'paul@example.com',
-      //   'phoneNumber': '+1 234 567 890',
-      // },
-      // {
-      //   'imagePath': 'assets/avatars/120px/Staff2.png',
-      //   'title': 'Lee Hall',
-      //   'subtitle': 'Worker',
-      //   'email': 'paul@example.com',
-      //   'phoneNumber': '+1 234 567 890',
-      // },
+      {
+        'imagePath': 'assets/avatars/120px/Staff1.png',
+        'title': 'Paul Rivera',
+        'subtitle': 'Viewer',
+        'email': 'paul@example.com',
+        'phoneNumber': '+1 234 567 890',
+      },
+      {
+        'imagePath': 'assets/avatars/120px/Staff2.png',
+        'title': 'Rebecca Wilson',
+        'subtitle': 'Helper',
+        'email': 'paul@example.com',
+        'phoneNumber': '+1 234 567 890',
+      },
+      {
+        'imagePath': 'assets/avatars/120px/Staff3.png',
+        'title': 'Patricia Williams',
+        'subtitle': 'Helper',
+        'email': 'paul@example.com',
+        'phoneNumber': '+1 234 567 890',
+      },
+      {
+        'imagePath': 'assets/avatars/120px/Staff1.png',
+        'title': 'Scott Simmons',
+        'subtitle': 'Worker',
+        'email': 'paul@example.com',
+        'phoneNumber': '+1 234 567 890',
+      },
+      {
+        'imagePath': 'assets/avatars/120px/Staff2.png',
+        'title': 'Lee Hall',
+        'subtitle': 'Worker',
+        'email': 'paul@example.com',
+        'phoneNumber': '+1 234 567 890',
+      },
       // Add more data as needed
     ];
 
@@ -86,211 +86,213 @@ class _ListOfStaffState extends State<ListOfStaff> {
   Widget build(BuildContext context) {
     double heightMediaQuery = MediaQuery.of(context).size.height / 812;
     double widthMediaQuery = MediaQuery.of(context).size.width / 375;
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          padding: EdgeInsets.zero,
-          icon: Container(
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.grayscale10,
-              ),
-              padding: const EdgeInsets.all(8.0),
-              child: const Icon(
-                Icons.arrow_back,
-                color: AppColors.grayscale90,
-              )),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        actions: [
-          IconButton(
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: IconButton(
             padding: EdgeInsets.zero,
             icon: Container(
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.grayscale10,
-              ),
-              padding: const EdgeInsets.all(8.0),
-              child: const Icon(
-                Icons.add,
-                color: Colors.black,
-              ),
-            ),
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.grayscale10,
+                ),
+                padding: const EdgeInsets.all(8.0),
+                child: const Icon(
+                  Icons.arrow_back,
+                  color: AppColors.grayscale90,
+                )),
             onPressed: () {
-              inviteMembarDrowup(context, heightMediaQuery, widthMediaQuery);
+              Navigator.pop(context);
             },
           ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(
-            left: 16 * heightMediaQuery,
-            right: 16 * heightMediaQuery,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Your Staff',
-                style: AppFonts.title3(color: AppColors.grayscale90),
+          actions: [
+            IconButton(
+              padding: EdgeInsets.zero,
+              icon: Container(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.grayscale10,
+                ),
+                padding: const EdgeInsets.all(8.0),
+                child: const Icon(
+                  Icons.add,
+                  color: Colors.black,
+                ),
               ),
-              SizedBox(
-                height: 24 * heightMediaQuery,
-              ),
-              isLoading
-                  ? const Center(child: ShimmerListOfStaff())
-                  : options.isEmpty
-                      ? Center(
-                          child: Column(
-                          children: [
-                            SizedBox(height: 120 * heightMediaQuery),
-                            Image.asset(
-                              'assets/illustrations/farmer.png',
-                              fit: BoxFit.cover,
-                            ),
-                            SizedBox(height: 44 * heightMediaQuery),
-                            Text(
-                              'You have no staff',
-                              style: AppFonts.headline3(
-                                  color: AppColors.grayscale90),
-                            ),
-                            SizedBox(height: 90 * heightMediaQuery),
-                            SizedBox(
-                                width: 154 * widthMediaQuery,
-                                height: 52 * heightMediaQuery,
-                                child: PrimaryButton(
-                                    text: 'Invite a Member',
-                                    onPressed: () {
-                                      inviteMembarDrowup(context,
-                                          heightMediaQuery, widthMediaQuery);
-                                    }))
-                          ],
-                        ))
-                      : ListView.builder(
-                          shrinkWrap: true,
-                          // physics: const NeverScrollableScrollPhysics(),
-                          itemCount: options.length,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              contentPadding: EdgeInsets.zero,
-                              leading: CircleAvatar(
-                                backgroundColor: Colors.transparent,
-                                radius: 24 * widthMediaQuery,
-                                backgroundImage:
-                                    AssetImage(options[index]['imagePath']),
+              onPressed: () {
+                inviteMembarDrowup(context, heightMediaQuery, widthMediaQuery);
+              },
+            ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: 16 * heightMediaQuery,
+              right: 16 * heightMediaQuery,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Your Staff',
+                  style: AppFonts.title3(color: AppColors.grayscale90),
+                ),
+                SizedBox(
+                  height: 24 * heightMediaQuery,
+                ),
+                isLoading
+                    ? const Center(child: ShimmerListOfStaff())
+                    : options.isEmpty
+                        ? Center(
+                            child: Column(
+                            children: [
+                              SizedBox(height: 120 * heightMediaQuery),
+                              Image.asset(
+                                'assets/illustrations/farmer.png',
+                                fit: BoxFit.cover,
                               ),
-                              title: Text(
-                                options[index]['title'],
+                              SizedBox(height: 44 * heightMediaQuery),
+                              Text(
+                                'You have no staff',
                                 style: AppFonts.headline3(
                                     color: AppColors.grayscale90),
                               ),
-                              subtitle: Text(options[index]['subtitle'],
-                                  style: AppFonts.body2(
-                                      color: AppColors.grayscale70)),
-                              trailing: const Icon(
-                                Icons.chevron_right_rounded,
-                                color: AppColors.grayscale50,
-                                size: 30,
-                              ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => StaffDetailsPage(
-                                      imagePath: options[index]['imagePath'],
-                                      title: options[index]['title'],
-                                      subtitle: options[index]['subtitle'],
-                                      email: options[index]['email'],
-                                      phoneNumber: options[index]
-                                          ['phoneNumber'],
+                              SizedBox(height: 90 * heightMediaQuery),
+                              SizedBox(
+                                  width: 154 * widthMediaQuery,
+                                  height: 52 * heightMediaQuery,
+                                  child: PrimaryButton(
+                                      text: 'Invite a Member',
+                                      onPressed: () {
+                                        inviteMembarDrowup(context,
+                                            heightMediaQuery, widthMediaQuery);
+                                      }))
+                            ],
+                          ))
+                        : ListView.builder(
+                            shrinkWrap: true,
+                            // physics: const NeverScrollableScrollPhysics(),
+                            itemCount: options.length,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                contentPadding: EdgeInsets.zero,
+                                leading: CircleAvatar(
+                                  backgroundColor: Colors.transparent,
+                                  radius: 24 * widthMediaQuery,
+                                  backgroundImage:
+                                      AssetImage(options[index]['imagePath']),
+                                ),
+                                title: Text(
+                                  options[index]['title'],
+                                  style: AppFonts.headline3(
+                                      color: AppColors.grayscale90),
+                                ),
+                                subtitle: Text(options[index]['subtitle'],
+                                    style: AppFonts.body2(
+                                        color: AppColors.grayscale70)),
+                                trailing: const Icon(
+                                  Icons.chevron_right_rounded,
+                                  color: AppColors.grayscale50,
+                                  size: 30,
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => StaffDetailsPage(
+                                        imagePath: options[index]['imagePath'],
+                                        title: options[index]['title'],
+                                        subtitle: options[index]['subtitle'],
+                                        email: options[index]['email'],
+                                        phoneNumber: options[index]
+                                            ['phoneNumber'],
+                                      ),
                                     ),
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                        ),
-              options.isEmpty
-                  ? const SizedBox.shrink()
-                  : Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 24 * heightMediaQuery),
-                        Text(
-                          'Requests',
-                          style:
-                              AppFonts.headline3(color: AppColors.grayscale80),
-                        ),
-                        SizedBox(height: 8 * heightMediaQuery),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          // physics: const NeverScrollableScrollPhysics(),
-                          itemCount: options.length,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              minVerticalPadding: 8 * heightMediaQuery,
-                              contentPadding: EdgeInsets.zero,
-                              leading: CircleAvatar(
-                                backgroundColor: Colors.transparent,
-                                radius: 24 * widthMediaQuery,
-                                backgroundImage:
-                                    AssetImage(options[index]['imagePath']),
-                              ),
-                              title: Text(
-                                options[index]['title'],
-                                style: AppFonts.headline3(
-                                    color: AppColors.grayscale90),
-                              ),
-                              trailing: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      // Handle 'Yes' button click
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      elevation: 0,
-                                      backgroundColor: AppColors.primary50,
-                                      shape: const CircleBorder(),
-                                      padding:
-                                          EdgeInsets.all(12 * widthMediaQuery),
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                options.isEmpty
+                    ? const SizedBox.shrink()
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 24 * heightMediaQuery),
+                          Text(
+                            'Requests',
+                            style: AppFonts.headline3(
+                                color: AppColors.grayscale80),
+                          ),
+                          SizedBox(height: 8 * heightMediaQuery),
+                          ListView.builder(
+                            shrinkWrap: true,
+                            // physics: const NeverScrollableScrollPhysics(),
+                            itemCount: options.length,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                minVerticalPadding: 8 * heightMediaQuery,
+                                contentPadding: EdgeInsets.zero,
+                                leading: CircleAvatar(
+                                  backgroundColor: Colors.transparent,
+                                  radius: 24 * widthMediaQuery,
+                                  backgroundImage:
+                                      AssetImage(options[index]['imagePath']),
+                                ),
+                                title: Text(
+                                  options[index]['title'],
+                                  style: AppFonts.headline3(
+                                      color: AppColors.grayscale90),
+                                ),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        // Handle 'Yes' button click
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        elevation: 0,
+                                        backgroundColor: AppColors.primary50,
+                                        shape: const CircleBorder(),
+                                        padding: EdgeInsets.all(
+                                            12 * widthMediaQuery),
+                                      ),
+                                      child: const Icon(
+                                        Icons.check,
+                                        color: Colors.white,
+                                      ),
                                     ),
-                                    child: const Icon(
-                                      Icons.check,
-                                      color: Colors.white,
+                                    // SizedBox(width: 8),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        // Handle 'No' button click
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: AppColors.grayscale10,
+                                        elevation: 0,
+                                        shape: const CircleBorder(),
+                                        padding: EdgeInsets.all(
+                                            MediaQuery.of(context).size.width *
+                                                0.032),
+                                      ),
+                                      child: const Icon(Icons.close_rounded,
+                                          color: AppColors.grayscale90),
                                     ),
-                                  ),
-                                  // SizedBox(width: 8),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      // Handle 'No' button click
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: AppColors.grayscale10,
-                                      elevation: 0,
-                                      shape: const CircleBorder(),
-                                      padding: EdgeInsets.all(
-                                          MediaQuery.of(context).size.width *
-                                              0.032),
-                                    ),
-                                    child: const Icon(Icons.close_rounded,
-                                        color: AppColors.grayscale90),
-                                  ),
-                                  const Icon(Icons.chevron_right_rounded,
-                                      color: AppColors.grayscale50, size: 30),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-            ],
+                                    const Icon(Icons.chevron_right_rounded,
+                                        color: AppColors.grayscale50, size: 30),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+              ],
+            ),
           ),
         ),
       ),

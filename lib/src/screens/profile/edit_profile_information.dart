@@ -62,152 +62,170 @@ class _EditProfileInformation extends State<EditProfileInformation> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        centerTitle: true,
-        leading: IconButton(
-          padding: EdgeInsets.zero,
-          icon: Container(
-            padding:
-                EdgeInsets.all((6 * MediaQuery.of(context).size.width) / 375),
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.grayscale10,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          centerTitle: true,
+          leading: IconButton(
+            padding: EdgeInsets.zero,
+            icon: Container(
+              padding:
+                  EdgeInsets.all((6 * MediaQuery.of(context).size.width) / 375),
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.grayscale10,
+              ),
+              child: const Icon(Icons.arrow_back_rounded,
+                  color: AppColors.grayscale90),
             ),
-            child: const Icon(Icons.arrow_back_rounded,
-                color: AppColors.grayscale90),
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          title: Text(
+            'Edit Personal Information',
+            style: AppFonts.headline3(color: AppColors.grayscale90),
+          ),
         ),
-        title: Text(
-          'Edit Personal Information',
-          style: AppFonts.headline3(color: AppColors.grayscale90),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(
-              left: (16 * MediaQuery.of(context).size.width) / 375,
-              right: (16 * MediaQuery.of(context).size.width) / 375),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: (40 * MediaQuery.of(context).size.height) / 812),
-              GestureDetector(
-                child: Center(
-                  child: CircleAvatar(
-                    radius: MediaQuery.of(context).size.width * 0.16,
-                    backgroundColor: AppColors.grayscale10,
-                    backgroundImage: _selectedImage != null
-                        ? FileImage(_selectedImage!)
-                        : null,
-                    child: _selectedImage == null
-                        ? const Icon(
-                            Icons.camera_alt_outlined,
-                            size: 30,
-                            color: AppColors.grayscale90,
-                          )
-                        : null,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(
+                left: (16 * MediaQuery.of(context).size.width) / 375,
+                right: (16 * MediaQuery.of(context).size.width) / 375),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                    height: (40 * MediaQuery.of(context).size.height) / 812),
+                GestureDetector(
+                  child: Center(
+                    child: CircleAvatar(
+                      radius: MediaQuery.of(context).size.width * 0.16,
+                      backgroundColor: AppColors.grayscale10,
+                      backgroundImage: _selectedImage != null
+                          ? FileImage(_selectedImage!)
+                          : null,
+                      child: _selectedImage == null
+                          ? const Icon(
+                              Icons.camera_alt_outlined,
+                              size: 30,
+                              color: AppColors.grayscale90,
+                            )
+                          : null,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: (16 * MediaQuery.of(context).size.height) / 812),
-              Center(
-                child: PrimaryTextButton(
-                  onPressed: () {
-                    _showImagePicker(context);
-                  },
-                  text: 'Change Photo',
-                  status: TextStatus.idle,
+                SizedBox(
+                    height: (16 * MediaQuery.of(context).size.height) / 812),
+                Center(
+                  child: PrimaryTextButton(
+                    onPressed: () {
+                      _showImagePicker(context);
+                    },
+                    text: 'Change Photo',
+                    status: TextStatus.idle,
+                  ),
                 ),
-              ),
-              SizedBox(height: (32 * MediaQuery.of(context).size.height) / 812),
-              Text(
-                "General Info",
-                style: AppFonts.headline3(color: AppColors.grayscale90),
-              ),
-              SizedBox(height: (24 * MediaQuery.of(context).size.height) / 812),
-              PrimaryTextField(
+                SizedBox(
+                    height: (32 * MediaQuery.of(context).size.height) / 812),
+                Text(
+                  "General Info",
+                  style: AppFonts.headline3(color: AppColors.grayscale90),
+                ),
+                SizedBox(
+                    height: (24 * MediaQuery.of(context).size.height) / 812),
+                PrimaryTextField(
+                    hintText: 'Enter your first name',
+                    controller: _firstnameController,
+                    labelText: 'First Name'),
+                SizedBox(
+                    height: (16 * MediaQuery.of(context).size.height) / 812),
+                PrimaryTextField(
+                    hintText: 'Enter your first name',
+                    controller: _secondnameController,
+                    labelText: 'Second Name'),
+                SizedBox(
+                    height: (24 * MediaQuery.of(context).size.height) / 812),
+                Text(
+                  "Farm Name",
+                  style: AppFonts.headline3(color: AppColors.grayscale90),
+                ),
+                SizedBox(
+                    height: (24 * MediaQuery.of(context).size.height) / 812),
+                PrimaryTextField(
                   hintText: 'Enter your first name',
                   controller: _firstnameController,
-                  labelText: 'First Name'),
-              SizedBox(height: (16 * MediaQuery.of(context).size.height) / 812),
-              PrimaryTextField(
+                ),
+                SizedBox(
+                    height: (24 * MediaQuery.of(context).size.height) / 812),
+                Text(
+                  "Farm Owner",
+                  style: AppFonts.headline3(color: AppColors.grayscale90),
+                ),
+                SizedBox(
+                    height: (24 * MediaQuery.of(context).size.height) / 812),
+                PrimaryTextField(
                   hintText: 'Enter your first name',
-                  controller: _secondnameController,
-                  labelText: 'Second Name'),
-              SizedBox(height: (24 * MediaQuery.of(context).size.height) / 812),
-              Text(
-                "Farm Name",
-                style: AppFonts.headline3(color: AppColors.grayscale90),
-              ),
-              SizedBox(height: (24 * MediaQuery.of(context).size.height) / 812),
-              PrimaryTextField(
-                hintText: 'Enter your first name',
-                controller: _firstnameController,
-              ),
-              SizedBox(height: (24 * MediaQuery.of(context).size.height) / 812),
-              Text(
-                "Farm Owner",
-                style: AppFonts.headline3(color: AppColors.grayscale90),
-              ),
-              SizedBox(height: (24 * MediaQuery.of(context).size.height) / 812),
-              PrimaryTextField(
-                hintText: 'Enter your first name',
-                controller: _firstnameController,
-              ),
-              SizedBox(height: (32 * MediaQuery.of(context).size.height) / 812),
-              Text("Contact Details",
-                  style: AppFonts.headline3(color: AppColors.grayscale90)),
-              SizedBox(height: (24 * MediaQuery.of(context).size.height) / 812),
-              PrimaryTextField(
-                hintText: 'Enter your first name',
-                controller: _phonenumController,
-                labelText: 'Phone Number',
-              ),
-              SizedBox(height: (16 * MediaQuery.of(context).size.height) / 812),
-              PrimaryTextField(
-                hintText: 'Enter your first name',
-                controller: _emailController,
-                labelText: 'Email Address',
-              ),
-              SizedBox(height: (32 * MediaQuery.of(context).size.height) / 812),
-              Text("Farm Address",
-                  style: AppFonts.headline3(color: AppColors.grayscale90)),
-              SizedBox(height: (24 * MediaQuery.of(context).size.height) / 812),
-              PrimaryTextField(
-                hintText: 'Enter Address',
-                controller: _addressController,
-              ),
-              SizedBox(height: (16 * MediaQuery.of(context).size.height) / 812),
-              PrimaryTextField(
-                hintText: 'Enter your first name',
-                controller: _cityController,
-              ),
-              SizedBox(height: (16 * MediaQuery.of(context).size.height) / 812),
-              PrimaryTextField(
-                hintText: 'Enter your first name',
-                controller: _countryController,
-              ),
-              SizedBox(
-                  height: (100 * MediaQuery.of(context).size.height) / 812),
-            ],
+                  controller: _firstnameController,
+                ),
+                SizedBox(
+                    height: (32 * MediaQuery.of(context).size.height) / 812),
+                Text("Contact Details",
+                    style: AppFonts.headline3(color: AppColors.grayscale90)),
+                SizedBox(
+                    height: (24 * MediaQuery.of(context).size.height) / 812),
+                PrimaryTextField(
+                  hintText: 'Enter your first name',
+                  controller: _phonenumController,
+                  labelText: 'Phone Number',
+                ),
+                SizedBox(
+                    height: (16 * MediaQuery.of(context).size.height) / 812),
+                PrimaryTextField(
+                  hintText: 'Enter your first name',
+                  controller: _emailController,
+                  labelText: 'Email Address',
+                ),
+                SizedBox(
+                    height: (32 * MediaQuery.of(context).size.height) / 812),
+                Text("Farm Address",
+                    style: AppFonts.headline3(color: AppColors.grayscale90)),
+                SizedBox(
+                    height: (24 * MediaQuery.of(context).size.height) / 812),
+                PrimaryTextField(
+                  hintText: 'Enter Address',
+                  controller: _addressController,
+                ),
+                SizedBox(
+                    height: (16 * MediaQuery.of(context).size.height) / 812),
+                PrimaryTextField(
+                  hintText: 'Enter your first name',
+                  controller: _cityController,
+                ),
+                SizedBox(
+                    height: (16 * MediaQuery.of(context).size.height) / 812),
+                PrimaryTextField(
+                  hintText: 'Enter your first name',
+                  controller: _countryController,
+                ),
+                SizedBox(
+                    height: (100 * MediaQuery.of(context).size.height) / 812),
+              ],
+            ),
           ),
         ),
-      ),
-      floatingActionButton: SizedBox(
-        height: (52 * MediaQuery.of(context).size.height) / 812,
-        width: (343 * MediaQuery.of(context).size.width) / 375,
-        child: PrimaryButton(
-          onPressed: () {
-            //Save informations
-            Navigator.pop(context);
-          },
-          text: 'Save Changes',
+        floatingActionButton: SizedBox(
+          height: (52 * MediaQuery.of(context).size.height) / 812,
+          width: (343 * MediaQuery.of(context).size.width) / 375,
+          child: PrimaryButton(
+            onPressed: () {
+              //Save informations
+              Navigator.pop(context);
+            },
+            text: 'Save Changes',
+          ),
         ),
       ),
     );
