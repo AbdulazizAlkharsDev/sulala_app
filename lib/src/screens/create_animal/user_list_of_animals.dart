@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/screens/guest_mode/owned_animal_detail.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/src/widgets/inputs/search_bars/button_search_bar.dart';
 import 'package:sulala_app/src/screens/create_animal/animal_filters.dart';
 import 'package:sulala_app/src/screens/create_animal/create_animal.dart';
-import 'package:sulala_app/src/screens/create_animal/test_animal_info.dart';
 
 class UserListOfAnimals extends StatefulWidget {
   final List<String> selectedFilters;
@@ -98,10 +98,10 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => AnimalInfo(
-          image: mammal['image'],
-          name: mammal['name'],
-          subtitle: mammal['subtitle'],
+        builder: (context) => OwnedAnimalDetails(
+          imagePath: mammal['image'],
+          title: mammal['name'],
+          geninfo: mammal['subtitle'],
         ),
       ),
     );

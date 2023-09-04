@@ -121,6 +121,7 @@ class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails>
                   child: Column(
                     children: [
                       CircleAvatar(
+                        backgroundColor: Colors.transparent,
                         radius: MediaQuery.of(context).size.width * 0.16,
                         backgroundImage: AssetImage(widget.imagePath),
                       ),

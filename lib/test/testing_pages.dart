@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/screens/reg_mode/reg_home_page.dart';
+import 'package:sulala_app/src/screens/create_animal/user_list_of_animals.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 
 class ExamplePage extends StatefulWidget {
@@ -38,7 +38,9 @@ class _ExamplePageState extends State<ExamplePage> {
                           onPressed: () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return const RegHomePage();
+                              return const UserListOfAnimals(
+                                selectedFilters: [],
+                              );
                             }));
                           }),
                     ),

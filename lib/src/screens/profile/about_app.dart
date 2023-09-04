@@ -3,8 +3,10 @@ import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
 class AboutApp extends StatefulWidget {
+  const AboutApp({super.key});
+
   @override
-  _AboutApp createState() => _AboutApp();
+  State<AboutApp> createState() => _AboutApp();
 }
 
 class _AboutApp extends State<AboutApp> {
