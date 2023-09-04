@@ -89,7 +89,7 @@ class _PrivacySecurityPage extends State<PrivacySecurityPage> {
                   style: AppFonts.body2(color: AppColors.grayscale90),
                 ),
                 trailing: _AllowCollab
-                    ? const ToggleDisabled(checked: false)
+                    ? const ToggleDisabled(checked: true)
                     : ToggleActive(
                         value: _ShowListOfAnimals,
                         onChanged: (value) {
@@ -105,7 +105,7 @@ class _PrivacySecurityPage extends State<PrivacySecurityPage> {
                   style: AppFonts.body2(color: AppColors.grayscale90),
                 ),
                 trailing: _AllowCollab
-                    ? const ToggleDisabled(checked: false)
+                    ? const ToggleDisabled(checked: true)
                     : ToggleActive(
                         value: _ShowFamilyTree,
                         onChanged: (value) {
