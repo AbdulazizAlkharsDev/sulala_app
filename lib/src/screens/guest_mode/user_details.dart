@@ -187,6 +187,7 @@ class _SearchDetails extends State<UserDetails> {
 
   void _showFilterModalSheet(BuildContext context) {
     showModalBottomSheet(
+      showDragHandle: true,
       backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,

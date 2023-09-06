@@ -396,6 +396,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     onTap: () {
                       showModalBottomSheet(
+                        showDragHandle: true,
                         backgroundColor: Colors.transparent,
                         context: context,
                         isScrollControlled: true,

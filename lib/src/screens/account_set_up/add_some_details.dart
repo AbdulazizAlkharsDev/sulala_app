@@ -34,6 +34,7 @@ class _AddSomeDetailsPageState extends State<AddSomeDetailsPage> {
 
     // if (cameraStatus.isGranted && photosStatus.isGranted) {
     showModalBottomSheet(
+      showDragHandle: true,
       backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,

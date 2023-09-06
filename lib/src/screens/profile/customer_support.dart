@@ -47,6 +47,7 @@ class _CustomerSupportState extends State<CustomerSupport> {
 
   void _showModalSheet() {
     showModalBottomSheet(
+      showDragHandle: true,
       backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,

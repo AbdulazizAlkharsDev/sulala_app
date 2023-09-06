@@ -333,6 +333,7 @@ class _AnimalFilters extends State<AnimalFilters> {
 void _showDialog(BuildContext context, String sectionHeading) {
   if (sectionHeading == 'Tags') {
     showModalBottomSheet(
+      showDragHandle: true,
       backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,

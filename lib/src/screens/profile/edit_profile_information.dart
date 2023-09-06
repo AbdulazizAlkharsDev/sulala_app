@@ -243,6 +243,7 @@ class _EditProfileInformation extends State<EditProfileInformation> {
 
   void _showImagePicker(BuildContext context) {
     showModalBottomSheet(
+      showDragHandle: true,
       backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,

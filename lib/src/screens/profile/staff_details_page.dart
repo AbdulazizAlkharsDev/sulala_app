@@ -102,6 +102,7 @@ class _StaffDetailsPageState extends State<StaffDetailsPage> {
                 ),
                 onPressed: () {
                   showModalBottomSheet(
+                    showDragHandle: true,
                     backgroundColor: Colors.transparent,
                     context: context,
                     isScrollControlled: true,

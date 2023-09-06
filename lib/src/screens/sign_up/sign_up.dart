@@ -88,6 +88,8 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    // double width = MediaQuery.of(context).size.width / 372;
+    double height = MediaQuery.of(context).size.height / 812;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -167,8 +169,16 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
                                 ),
                               ),
                               SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.05,
+                                height: 8 * height,
+                              ),
+                              Text(
+                                "Enter your phone number, and we will send you confirmation code",
+                                style: AppFonts.headline4(
+                                  color: AppColors.grayscale90,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 40 * height,
                               ),
                               if (showEmailField)
                                 PrimaryTextField(

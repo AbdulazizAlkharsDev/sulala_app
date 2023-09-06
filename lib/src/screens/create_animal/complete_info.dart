@@ -35,6 +35,7 @@ class _CompleteInfo extends State<CompleteInfo> {
 
     // if (cameraStatus.isGranted && photosStatus.isGranted) {
     showModalBottomSheet(
+      showDragHandle: true,
       backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,
@@ -531,7 +532,7 @@ class _CompleteInfo extends State<CompleteInfo> {
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               SizedBox(
-                height: 250,
+                height: 270,
                 width: double.infinity,
                 child: Focus(
                   onFocusChange: (hasFocus) {}, // Dummy onFocusChange callback

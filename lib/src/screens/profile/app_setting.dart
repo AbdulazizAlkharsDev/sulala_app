@@ -18,6 +18,7 @@ class _AppSettings extends State<AppSettings> {
   void _showLanguageSelection() {
     List<String> languages = ['English', 'Arabic', 'Hindi'];
     showModalBottomSheet(
+      showDragHandle: true,
       backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,

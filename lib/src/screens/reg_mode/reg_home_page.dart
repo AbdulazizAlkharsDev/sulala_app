@@ -39,11 +39,11 @@ class _RegHomePage extends State<RegHomePage> {
   late List<AnimalData> _chartData;
   int sumOfNextTwoCards = 0;
   List<EventData> events = [
-    EventData(title: 'Horse Vaccination', subtitle: '09.01.2023'),
-    EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
-    EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
-    EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
-    EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
+    // EventData(title: 'Horse Vaccination', subtitle: '09.01.2023'),
+    // EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
+    // EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
+    // EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
+    // EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
   ];
   int _selectedIndex = -1;
 
@@ -175,6 +175,7 @@ class _RegHomePage extends State<RegHomePage> {
 
   void _showFilterModalSheet(BuildContext context) {
     showModalBottomSheet(
+      showDragHandle: true,
       backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,
@@ -445,28 +446,31 @@ class _RegHomePage extends State<RegHomePage> {
                         ],
                       ),
                     ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.16,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: events.length,
-                      itemBuilder: (context, index) {
-                        EventData eventData = events[index];
-                        return ListTile(
-                          title: Text(eventData.title,
+                  if (events.isNotEmpty)
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.16,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: events.length,
+                        itemBuilder: (context, index) {
+                          EventData eventData = events[index];
+                          return ListTile(
+                            title: Text(eventData.title,
+                                style: AppFonts.body1(
+                                    color: AppColors.grayscale90)),
+                            subtitle: Text(
+                              eventData.subtitle,
                               style:
-                                  AppFonts.body1(color: AppColors.grayscale90)),
-                          subtitle: Text(
-                            eventData.subtitle,
-                            style: AppFonts.body2(color: AppColors.grayscale60),
-                          ),
-                          trailing: Icon(Icons.arrow_forward_ios_rounded,
-                    color: AppColors.primary40,
-                    size: MediaQuery.of(context).size.width * 0.034),
-                        );
-                      },
+                                  AppFonts.body2(color: AppColors.grayscale60),
+                            ),
+                            trailing: Icon(Icons.arrow_forward_ios_rounded,
+                                color: AppColors.primary40,
+                                size:
+                                    MediaQuery.of(context).size.width * 0.034),
+                          );
+                        },
+                      ),
                     ),
-                  ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.039),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

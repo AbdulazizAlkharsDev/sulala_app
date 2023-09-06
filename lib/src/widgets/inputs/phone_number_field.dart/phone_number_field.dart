@@ -221,6 +221,7 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
 
   void _showFilterModalSheet(BuildContext context) {
     showModalBottomSheet(
+      showDragHandle: true,
       backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,

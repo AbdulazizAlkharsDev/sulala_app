@@ -313,6 +313,7 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
     drowupAnimalSpecies.resetSelection();
 
     final selectedSpeciesValue = await showModalBottomSheet<String>(
+      showDragHandle: true,
       backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,
@@ -345,6 +346,7 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
     drowupAnimalBreed.resetSelection();
 
     final selectedBreedValue = await showModalBottomSheet<String>(
+      showDragHandle: true,
       backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,

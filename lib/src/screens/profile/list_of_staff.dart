@@ -302,6 +302,7 @@ class _ListOfStaffState extends State<ListOfStaff> {
   Future<dynamic> inviteMembarDrowup(
       BuildContext context, double heightMediaQuery, double widthMediaQuery) {
     return showModalBottomSheet(
+      showDragHandle: true,
       backgroundColor: Colors.transparent,
       context: context,
       isScrollControlled: true,
