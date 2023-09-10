@@ -36,6 +36,53 @@ class _RegHomePage extends State<RegHomePage> {
     // );
   }
 
+  List<Tag> currentStateTags = [
+    Tag(name: 'Borrowed', status: TagStatus.notActive),
+    Tag(name: 'Adopted', status: TagStatus.notActive),
+    Tag(name: 'Donated', status: TagStatus.notActive),
+    Tag(name: 'Escaped', status: TagStatus.notActive),
+    Tag(name: 'Stolen', status: TagStatus.notActive),
+    Tag(name: 'Transferred', status: TagStatus.notActive),
+    // Tag(name: 'Injured', status: TagStatus.notActive),
+    // Tag(name: 'Sick', status: TagStatus.notActive),
+    // Tag(name: 'Quarantined', status: TagStatus.notActive),
+    // Tag(name: 'Medication', status: TagStatus.notActive),
+    // Tag(name: 'Testing', status: TagStatus.notActive),
+    // Tag(name: 'Sold', status: TagStatus.notActive),
+    // Tag(name: 'Dead', status: TagStatus.notActive),
+  ];
+  List<Tag> medicalStateTags = [
+    // Tag(name: 'Borrowed', status: TagStatus.notActive),
+    // Tag(name: 'Adopted', status: TagStatus.notActive),
+    // Tag(name: 'Donated', status: TagStatus.notActive),
+    // Tag(name: 'Escaped', status: TagStatus.notActive),
+    // Tag(name: 'Stolen', status: TagStatus.notActive),
+    // Tag(name: 'Transferred', status: TagStatus.notActive),
+    Tag(name: 'Injured', status: TagStatus.notActive),
+    Tag(name: 'Sick', status: TagStatus.notActive),
+    Tag(name: 'Quarantined', status: TagStatus.notActive),
+    Tag(name: 'Medication', status: TagStatus.notActive),
+    Tag(name: 'Testing', status: TagStatus.notActive),
+    // Tag(name: 'Sold', status: TagStatus.notActive),
+    // Tag(name: 'Dead', status: TagStatus.notActive),
+  ];
+
+  List<Tag> otherStateTags = [
+    // Tag(name: 'Borrowed', status: TagStatus.notActive),
+    // Tag(name: 'Adopted', status: TagStatus.notActive),
+    // Tag(name: 'Donated', status: TagStatus.notActive),
+    // Tag(name: 'Escaped', status: TagStatus.notActive),
+    // Tag(name: 'Stolen', status: TagStatus.notActive),
+    // Tag(name: 'Transferred', status: TagStatus.notActive),
+    // Tag(name: 'Injured', status: TagStatus.notActive),
+    // Tag(name: 'Sick', status: TagStatus.notActive),
+    // Tag(name: 'Quarantined', status: TagStatus.notActive),
+    // Tag(name: 'Medication', status: TagStatus.notActive),
+    // Tag(name: 'Testing', status: TagStatus.notActive),
+    Tag(name: 'Sold', status: TagStatus.notActive),
+    Tag(name: 'Dead', status: TagStatus.notActive),
+  ];
+
   late List<AnimalData> _chartData;
   int sumOfNextTwoCards = 0;
   List<EventData> events = [
@@ -47,109 +94,25 @@ class _RegHomePage extends State<RegHomePage> {
   ];
   int _selectedIndex = -1;
 
-  TagStatus savedBorrowedStatus = TagStatus.notActive;
-  TagStatus savedAdoptedStatus = TagStatus.notActive;
-  TagStatus savedDonatedStatus = TagStatus.notActive;
-  TagStatus savedEscapedStatus = TagStatus.notActive;
-  TagStatus savedStolenStatus = TagStatus.notActive;
-  TagStatus savedTransferredStatus = TagStatus.notActive;
-  TagStatus savedInjuredStatus = TagStatus.notActive;
-  TagStatus savedSickStatus = TagStatus.notActive;
-  TagStatus savedQuarantinedStatus = TagStatus.notActive;
-  TagStatus savedMedicationStatus = TagStatus.notActive;
-  TagStatus savedTestingStatus = TagStatus.notActive;
-  TagStatus savedSoldStatus = TagStatus.notActive;
-  TagStatus savedDeadStatus = TagStatus.notActive;
-
-  void handleBorrowedStatusChanged(TagStatus updatedStatus) {
-    setState(() {
-      savedBorrowedStatus = updatedStatus;
-    });
-    // print("Updated status: $updatedStatus");
+  void updateCurrentTagStatus(String tagName, TagStatus updatedStatus) {
+    final tagIndex = currentStateTags.indexWhere((tag) => tag.name == tagName);
+    if (tagIndex != -1) {
+      currentStateTags[tagIndex].status = updatedStatus;
+    }
   }
 
-  void handleAdoptedStatusChanged(TagStatus updatedStatus) {
-    setState(() {
-      savedAdoptedStatus = updatedStatus;
-    });
-    // print("Updated status: $updatedStatus");
+  void updateMedicalTagStatus(String tagName, TagStatus updatedStatus) {
+    final tagIndex = medicalStateTags.indexWhere((tag) => tag.name == tagName);
+    if (tagIndex != -1) {
+      medicalStateTags[tagIndex].status = updatedStatus;
+    }
   }
 
-  void handleDonatedStatusChanged(TagStatus updatedStatus) {
-    setState(() {
-      savedDonatedStatus = updatedStatus;
-    });
-    // print("Updated status: $updatedStatus");
-  }
-
-  void handleEscapedStatusChanged(TagStatus updatedStatus) {
-    setState(() {
-      savedEscapedStatus = updatedStatus;
-    });
-    // print("Updated status: $updatedStatus");
-  }
-
-  void handleStolenStatusChanged(TagStatus updatedStatus) {
-    setState(() {
-      savedStolenStatus = updatedStatus;
-    });
-    // print("Updated status: $updatedStatus");
-  }
-
-  void handleTransferredStatusChanged(TagStatus updatedStatus) {
-    setState(() {
-      savedTransferredStatus = updatedStatus;
-    });
-    // print("Updated status: $updatedStatus");
-  }
-
-  void handleInjuredStatusChanged(TagStatus updatedStatus) {
-    setState(() {
-      savedInjuredStatus = updatedStatus;
-    });
-    // print("Updated status: $updatedStatus");
-  }
-
-  void handleSickStatusChanged(TagStatus updatedStatus) {
-    setState(() {
-      savedSickStatus = updatedStatus;
-    });
-    // print("Updated status: $updatedStatus");
-  }
-
-  void handleQuarantinedStatusChanged(TagStatus updatedStatus) {
-    setState(() {
-      savedQuarantinedStatus = updatedStatus;
-    });
-    // print("Updated status: $updatedStatus");
-  }
-
-  void handleMedicationStatusChanged(TagStatus updatedStatus) {
-    setState(() {
-      savedMedicationStatus = updatedStatus;
-    });
-    // print("Updated status: $updatedStatus");
-  }
-
-  void handleTestingStatusChanged(TagStatus updatedStatus) {
-    setState(() {
-      savedTestingStatus = updatedStatus;
-    });
-    // print("Updated status: $updatedStatus");
-  }
-
-  void handleSoldStatusChanged(TagStatus updatedStatus) {
-    setState(() {
-      savedSoldStatus = updatedStatus;
-    });
-    // print("Updated status: $updatedStatus");
-  }
-
-  void handleDeadStatusChanged(TagStatus updatedStatus) {
-    setState(() {
-      savedDeadStatus = updatedStatus;
-    });
-    // print("Updated status: $updatedStatus");
+  void updateOtherTagStatus(String tagName, TagStatus updatedStatus) {
+    final tagIndex = otherStateTags.indexWhere((tag) => tag.name == tagName);
+    if (tagIndex != -1) {
+      otherStateTags[tagIndex].status = updatedStatus;
+    }
   }
 
   @override
@@ -187,32 +150,12 @@ class _RegHomePage extends State<RegHomePage> {
             heightFactor: 0.73,
             heading: "Tags",
             content: ShowFilterReg(
-              onBorrowesStatusChanged: handleBorrowedStatusChanged,
-              onAdoptedStatusChanged: handleAdoptedStatusChanged,
-              onDonatedStatusChanged: handleDonatedStatusChanged,
-              onEscapedStatusChanged: handleEscapedStatusChanged,
-              onStolenStatusChanged: handleStolenStatusChanged,
-              onTransferredStatusChanged: handleTransferredStatusChanged,
-              onInjuredStatusChanged: handleInjuredStatusChanged,
-              onSickStatusChanged: handleSickStatusChanged,
-              onQuarantinedStatusChanged: handleQuarantinedStatusChanged,
-              onMedicationStatusChanged: handleMedicationStatusChanged,
-              onTestingStatusChanged: handleTestingStatusChanged,
-              onSoldStatusChanged: handleSoldStatusChanged,
-              onDeadStatusChanged: handleDeadStatusChanged,
-              initialBorrowedStatus: savedBorrowedStatus,
-              initialAdoptedStatus: savedAdoptedStatus,
-              initialDonatedStatus: savedDonatedStatus,
-              initialEscapedStatus: savedEscapedStatus,
-              initialStolenStatus: savedStolenStatus,
-              initialTransferredStatus: savedTransferredStatus,
-              initialInjuredStatus: savedInjuredStatus,
-              initialSickStatus: savedSickStatus,
-              initialQuarantinedStatus: savedQuarantinedStatus,
-              initialMedicationStatus: savedMedicationStatus,
-              initialTestingStatus: savedTestingStatus,
-              initialSoldStatus: savedSoldStatus,
-              initialDeadStatus: savedDeadStatus,
+              currentStateTags: currentStateTags,
+              medicalStateTags: medicalStateTags,
+              otherStateTags: otherStateTags,
+              updatedCurrentTagStatus: updateCurrentTagStatus,
+              updatedMedicalTagStatus: updateMedicalTagStatus,
+              updatedOtherTagStatus: updateOtherTagStatus,
             ),
           ),
         );
@@ -556,4 +499,11 @@ class EventData {
   final String subtitle;
 
   EventData({required this.title, required this.subtitle});
+}
+
+class Tag {
+  final String name;
+  TagStatus status;
+
+  Tag({required this.name, required this.status});
 }
