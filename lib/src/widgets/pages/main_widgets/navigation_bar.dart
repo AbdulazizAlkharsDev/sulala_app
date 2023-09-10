@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sulala_app/src/screens/reg_mode/reg_home_page.dart';
 import '../../../screens/profile/profile_page.dart';
 import '../../../../test/testing_pages.dart';
-import '../../../screens/guest_mode/homescreen_guest_mode.dart';
 import '../../../theme/colors/colors.dart';
 import '../../../theme/fonts/fonts.dart';
 
