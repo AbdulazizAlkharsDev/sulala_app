@@ -7,10 +7,10 @@ import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_butt
 import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
 import 'package:sulala_app/src/widgets/inputs/search_bars/search_bar.dart';
 
-class AddParentsDropup extends StatelessWidget {
+class AddParentsDrowup extends StatelessWidget {
   StateSetter setState;
 
-  AddParentsDropup({
+  AddParentsDrowup({
     super.key,
     required this.setState,
   });
