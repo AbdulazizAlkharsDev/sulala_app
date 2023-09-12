@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/tags/tags.dart';
@@ -9,14 +10,16 @@ import 'package:sulala_app/src/screens/reg_mode/small_card_widget.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:badges/badges.dart' as badges;
 
-class RegHomePage extends StatefulWidget {
+import '../../../providers/animal_counts.dart';
+
+class RegHomePage extends ConsumerStatefulWidget {
   const RegHomePage({super.key});
 
   @override
-  State<RegHomePage> createState() => _RegHomePage();
+  ConsumerState<RegHomePage> createState() => _RegHomePage();
 }
 
-class _RegHomePage extends State<RegHomePage> {
+class _RegHomePage extends ConsumerState<RegHomePage> {
   Future<void> _refreshData() async {
     // Implement your data fetching or refreshing logic here
     // For example, you can fetch new data and update the chart, events, etc.
@@ -26,8 +29,8 @@ class _RegHomePage extends State<RegHomePage> {
       // Update other data and state variables
     });
 
-    // // Wait for a short duration to simulate a refresh
-    // await Future.delayed(const Duration(seconds: 1));
+    // Wait for a short duration to simulate a refresh
+    await Future.delayed(const Duration(seconds: 1));
 
     // // Navigate back to the same page to simulate a page reload
     // Navigator.pushReplacement(
@@ -43,42 +46,16 @@ class _RegHomePage extends State<RegHomePage> {
     Tag(name: 'Escaped', status: TagStatus.notActive),
     Tag(name: 'Stolen', status: TagStatus.notActive),
     Tag(name: 'Transferred', status: TagStatus.notActive),
-    // Tag(name: 'Injured', status: TagStatus.notActive),
-    // Tag(name: 'Sick', status: TagStatus.notActive),
-    // Tag(name: 'Quarantined', status: TagStatus.notActive),
-    // Tag(name: 'Medication', status: TagStatus.notActive),
-    // Tag(name: 'Testing', status: TagStatus.notActive),
-    // Tag(name: 'Sold', status: TagStatus.notActive),
-    // Tag(name: 'Dead', status: TagStatus.notActive),
   ];
   List<Tag> medicalStateTags = [
-    // Tag(name: 'Borrowed', status: TagStatus.notActive),
-    // Tag(name: 'Adopted', status: TagStatus.notActive),
-    // Tag(name: 'Donated', status: TagStatus.notActive),
-    // Tag(name: 'Escaped', status: TagStatus.notActive),
-    // Tag(name: 'Stolen', status: TagStatus.notActive),
-    // Tag(name: 'Transferred', status: TagStatus.notActive),
     Tag(name: 'Injured', status: TagStatus.notActive),
     Tag(name: 'Sick', status: TagStatus.notActive),
     Tag(name: 'Quarantined', status: TagStatus.notActive),
     Tag(name: 'Medication', status: TagStatus.notActive),
     Tag(name: 'Testing', status: TagStatus.notActive),
-    // Tag(name: 'Sold', status: TagStatus.notActive),
-    // Tag(name: 'Dead', status: TagStatus.notActive),
   ];
 
   List<Tag> otherStateTags = [
-    // Tag(name: 'Borrowed', status: TagStatus.notActive),
-    // Tag(name: 'Adopted', status: TagStatus.notActive),
-    // Tag(name: 'Donated', status: TagStatus.notActive),
-    // Tag(name: 'Escaped', status: TagStatus.notActive),
-    // Tag(name: 'Stolen', status: TagStatus.notActive),
-    // Tag(name: 'Transferred', status: TagStatus.notActive),
-    // Tag(name: 'Injured', status: TagStatus.notActive),
-    // Tag(name: 'Sick', status: TagStatus.notActive),
-    // Tag(name: 'Quarantined', status: TagStatus.notActive),
-    // Tag(name: 'Medication', status: TagStatus.notActive),
-    // Tag(name: 'Testing', status: TagStatus.notActive),
     Tag(name: 'Sold', status: TagStatus.notActive),
     Tag(name: 'Dead', status: TagStatus.notActive),
   ];
@@ -171,6 +148,7 @@ class _RegHomePage extends State<RegHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final trueData = ref.watch(animalCountProvider);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -274,9 +252,8 @@ class _RegHomePage extends State<RegHomePage> {
                             "assets/icons/frame/24px/cow_chicken.png",
                             width: MediaQuery.of(context).size.width * 0.128,
                           ),
-                          animalData: AnimalData(
-                              'ALL', sumOfNextTwoCards, _chartData[0].color),
-                          quan: sumOfNextTwoCards.toString(),
+                          animalData: trueData.first,
+                          quan: trueData.first.quan.toString(),
                           onPressed: () {
                             setState(() {
                               _updateChartData(sumOfNextTwoCards, 'ALL');
@@ -472,7 +449,8 @@ class _RegHomePage extends State<RegHomePage> {
   }
 
   List<Widget> _buildLegendItems() {
-    return _chartData.map((data) {
+    final trueData = ref.watch(animalCountProvider);
+    return trueData.skip(1).map((data) {
       return Row(
         mainAxisSize: MainAxisSize.min,
         children: [

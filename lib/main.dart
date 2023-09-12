@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sulala_app/src/screens/guest_mode/search_page_animals.dart';
 import 'package:sulala_app/src/screens/guest_mode/search_page_owner_animals.dart';
 import 'package:sulala_app/src/screens/sign_in/sign_in.dart';
@@ -14,7 +15,9 @@ import 'package:sulala_app/src/screens/reg_mode/notifications_list.dart';
 import 'package:sulala_app/src/screens/reg_mode/reg_home_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
