@@ -27,65 +27,56 @@ class DrowupWidget extends StatefulWidget {
 class _DrowupWidgetState extends State<DrowupWidget> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: true, // Keyboard will resize the screen
-      backgroundColor: Colors.transparent,
-      body: Align(
-        alignment: Alignment.bottomCenter, // Align to the bottom of the screen
-        child: FractionallySizedBox(
-          heightFactor:
-              widget.heightFactor ?? 0.6, // Take 70% of the screen height
-          child: Container(
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              color: AppColors.grayscale0,
-              backgroundBlendMode: null,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(24),
-                topRight: Radius.circular(24),
-              ),
-            ),
-            padding: const EdgeInsets.all(16),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (widget.heading != null)
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.025,
-                    ),
-                  widget.heading != null
-                      ? widget.primaryTextButton != null
-                          ? Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  widget.heading!,
-                                  style: AppFonts.title3(
-                                      color: AppColors.grayscale90),
-                                ),
-                                widget.primaryTextButton!,
-                              ],
-                            )
-                          : Text(
+    return FractionallySizedBox(
+      heightFactor: widget.heightFactor ?? 0.6, // Take 70% of the screen height
+      child: Container(
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          color: AppColors.grayscale0,
+          backgroundBlendMode: null,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(24),
+            topRight: Radius.circular(24),
+          ),
+        ),
+        padding: const EdgeInsets.all(16),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (widget.heading != null)
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.025,
+                ),
+              widget.heading != null
+                  ? widget.primaryTextButton != null
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
                               widget.heading!,
                               style:
                                   AppFonts.title3(color: AppColors.grayscale90),
-                            )
-                      : const SizedBox.shrink(),
-                  const SizedBox(height: 16),
-                  widget.content,
-                ],
-              ),
-            ),
+                            ),
+                            widget.primaryTextButton!,
+                          ],
+                        )
+                      : Text(
+                          widget.heading!,
+                          style: AppFonts.title3(color: AppColors.grayscale90),
+                        )
+                  : const SizedBox.shrink(),
+              const SizedBox(height: 16),
+              widget.content,
+              SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.064,
+                  width: MediaQuery.of(context).size.width * 0.914,
+                  child: widget.primaryButton),
+            ],
           ),
         ),
       ),
-      floatingActionButton: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.064,
-          width: MediaQuery.of(context).size.width * 0.914,
-          child: widget.primaryButton),
     );
   }
 }

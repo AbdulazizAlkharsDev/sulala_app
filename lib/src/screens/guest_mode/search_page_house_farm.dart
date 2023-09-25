@@ -108,7 +108,6 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: MediaQuery.of(context).size.height * 0.029),
             Padding(
               padding: EdgeInsets.fromLTRB(
                   MediaQuery.of(context).size.width * 0.042,

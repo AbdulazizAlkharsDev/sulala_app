@@ -175,7 +175,9 @@ class _SearchDetails extends State<UserDetails> {
           width: MediaQuery.of(context).size.width * 0.4,
           child: PrimaryButton(
             text: "Start your farm",
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed('/join_now');
+            },
             status: PrimaryButtonStatus.idle,
             position: PrimaryButtonPosition.primary,
           ),
