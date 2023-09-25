@@ -4,19 +4,21 @@ import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
 class TwoInformationBlock extends StatelessWidget {
   final String head1;
-
   final String head2;
+  final String subtitle1;
+  final String subtitle2;
 
   const TwoInformationBlock({
     required this.head1,
     required this.head2,
+    required this.subtitle1,
+    required this.subtitle2,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      
       decoration: BoxDecoration(
         color: const Color(0xFFF9F5EC),
         borderRadius: BorderRadius.circular(14),
@@ -34,7 +36,7 @@ class TwoInformationBlock extends StatelessWidget {
                   style: AppFonts.body2(color: AppColors.grayscale90),
                 ),
                 Text(
-                  "Animals",
+                  subtitle1,
                   style: AppFonts.caption2(color: AppColors.grayscale70),
                 ),
               ],
@@ -55,7 +57,7 @@ class TwoInformationBlock extends StatelessWidget {
                   style: AppFonts.body2(color: AppColors.grayscale90),
                 ),
                 Text(
-                  "Collaborations",
+                  subtitle2,
                   style: AppFonts.caption2(color: AppColors.grayscale70),
                 ),
               ],

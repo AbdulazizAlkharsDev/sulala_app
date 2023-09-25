@@ -1,7 +1,7 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/screens/create_animal/user_list_of_animals.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
+import 'package:sulala_app/test/ListOfParents.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -36,12 +36,19 @@ class _ExamplePageState extends State<ExamplePage> {
                           status: PrimaryButtonStatus.idle,
                           text: "Test the page",
                           onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return const UserListOfAnimals(
-                                selectedFilters: [],
-                              );
-                            }));
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return ListOfParents(
+                                    selectedMammalDam: '',
+                                    selectedMammalSire: '',
+                                    selectedOviDam: '',
+                                    selectedOviSire: '',
+                                  );
+                                },
+                              ),
+                            );
                           }),
                     ),
                   ],

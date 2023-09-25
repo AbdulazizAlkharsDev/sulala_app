@@ -75,6 +75,9 @@ class GeneralInfoAnimalWidget extends StatelessWidget {
                   textButton: "Add",
                   textHead: "Date of sale",
                 ),
+                const SizedBox(
+                  height: 32,
+                )
               ],
             ),
           ),

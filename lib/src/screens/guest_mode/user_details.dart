@@ -131,7 +131,11 @@ class _SearchDetails extends State<UserDetails> {
                   ],
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-                const TwoInformationBlock(head1: '24', head2: '4'),
+                const TwoInformationBlock(
+                    head1: '24',
+                    head2: '4',
+                    subtitle1: 'Animals',
+                    subtitle2: 'Collaborations'),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.04),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

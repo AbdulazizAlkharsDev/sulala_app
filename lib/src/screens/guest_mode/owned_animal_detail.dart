@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/tags/tags.dart';
+import 'package:sulala_app/src/widgets/pages/owned_animal/breeding_info.dart';
 import 'package:sulala_app/src/widgets/pages/owned_animal/general_info_animal_widget.dart';
 
 class OwnedAnimalDetails extends StatefulWidget {
@@ -198,7 +199,7 @@ class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails>
                         height: MediaQuery.of(context).size.height * 0.03,
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.3,
+                        height: MediaQuery.of(context).size.height * 0.4,
                         width: MediaQuery.of(context).size.width * 0.91,
                         child: TabBarView(
                           controller: _tabController,
@@ -216,7 +217,7 @@ class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails>
                             ),
 
                             // Content for the 'Breeding' tab
-                            const Center(child: Text('Breeding Tab Content')),
+                            const BreedingInfo(),
 
                             // Content for the 'Medical' tab
                             const Center(child: Text('Medical Tab Content')),
