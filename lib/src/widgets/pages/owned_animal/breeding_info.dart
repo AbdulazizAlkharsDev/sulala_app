@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:sulala_app/src/widgets/other/one_information_block.dart';
 import 'package:sulala_app/test/ListOfBreedingEvents.dart';
 import 'package:sulala_app/test/ListOfChildren.dart';
-import 'package:sulala_app/test/ListOfPartners.dart';
-import '../../../../test/ListOfParents.dart';
+import 'package:sulala_app/test/list_of_mates.dart';
+import '../../../screens/breeding/parents_page.dart';
 import '../../../theme/colors/colors.dart';
 import '../../../theme/fonts/fonts.dart';
 import '../../other/two_information_block.dart';
@@ -29,28 +29,30 @@ class BreedingInfo extends StatelessWidget {
             child: const OneInformationBlock(
                 head1: 'Pregnant', subtitle1: 'Current State'),
           ),
-        SizedBox(
-          height: heightMediaQuery * 8,
-        ),
-        SizedBox(
-          width: 343 * widthMediaQuery,
-          child: const TwoInformationBlock(
-            head1: '12.02.2023',
-            head2: '12.02.2023',
-            subtitle1: "Last Breeding Date",
-            subtitle2: 'Next Breeding Date',
+        if (animalGender)
+          SizedBox(
+            height: heightMediaQuery * 8,
           ),
-        ),
-        SizedBox(
-          height: heightMediaQuery * 24,
-        ),
+        if (animalGender)
+          SizedBox(
+            width: 343 * widthMediaQuery,
+            child: const TwoInformationBlock(
+              head1: '12.02.2023',
+              head2: '12.02.2023',
+              subtitle1: "Last Breeding Date",
+              subtitle2: 'Next Breeding Date',
+            ),
+          ),
+        if (animalGender)
+          SizedBox(
+            height: heightMediaQuery * 24,
+          ),
         Expanded(
           child: SingleChildScrollView(
             child: Column(
               children: [
                 ListTile(
-                  contentPadding: EdgeInsets.only(
-                      top: 8 * heightMediaQuery, bottom: 8 * heightMediaQuery),
+                  contentPadding: const EdgeInsets.only(right: 0, left: 0),
                   leading: Image.asset(
                       'assets/icons/frame/24px/breeding_history.png'),
                   title: Text(
@@ -81,8 +83,7 @@ class BreedingInfo extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  contentPadding: EdgeInsets.only(
-                      top: 8 * heightMediaQuery, bottom: 8 * heightMediaQuery),
+                  contentPadding: const EdgeInsets.only(right: 0, left: 0),
                   leading: Image.asset('assets/icons/frame/24px/parents.png'),
                   title: Text(
                     'Parents',
@@ -95,7 +96,7 @@ class BreedingInfo extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return const ListOfParents(
+                          return const ParentsPage(
                             selectedMammalDam: '',
                             selectedMammalSire: '',
                             selectedOviDam: '',
@@ -107,7 +108,7 @@ class BreedingInfo extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  contentPadding: EdgeInsets.only(bottom: 8 * heightMediaQuery),
+                  contentPadding: const EdgeInsets.only(right: 0, left: 0),
                   leading:
                       Image.asset('assets/icons/frame/24px/family_tree.png'),
                   title: Text(
@@ -118,8 +119,7 @@ class BreedingInfo extends StatelessWidget {
                       size: 24 * widthMediaQuery),
                 ),
                 ListTile(
-                  contentPadding: EdgeInsets.only(
-                      top: 8 * heightMediaQuery, bottom: 8 * heightMediaQuery),
+                  contentPadding: const EdgeInsets.only(right: 0, left: 0),
                   leading: animalGender
                       ? Image.asset('assets/icons/frame/24px/male_mates.png')
                       : Image.asset('assets/icons/frame/24px/female_mates.png'),
@@ -149,7 +149,7 @@ class BreedingInfo extends StatelessWidget {
                 ),
                 ListTile(
                   contentPadding: EdgeInsets.only(
-                      top: 8 * heightMediaQuery, bottom: 32 * heightMediaQuery),
+                      right: 0, left: 0, bottom: 32 * heightMediaQuery),
                   leading: Image.asset('assets/icons/frame/24px/children.png'),
                   title: Text(
                     'Children',

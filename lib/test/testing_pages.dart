@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print, prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/test/ListOfParents.dart';
+import 'package:sulala_app/src/screens/breeding/parents_page.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -40,7 +40,7 @@ class _ExamplePageState extends State<ExamplePage> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return ListOfParents(
+                                  return ParentsPage(
                                     selectedMammalDam: '',
                                     selectedMammalSire: '',
                                     selectedOviDam: '',
