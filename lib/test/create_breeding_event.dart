@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sulala_app/test/ListOfBreedingEvents.dart';
 import 'package:sulala_app/test/datetextfiled.dart';
-
 
 // ignore: depend_on_referenced_packages
 
@@ -11,8 +9,9 @@ class CreateBreedingEvents extends StatefulWidget {
   final String selectedAnimalSpecies;
   final String selectedAnimalBreed;
 
-  CreateBreedingEvents(
-      {required this.selectedAnimalType,
+  const CreateBreedingEvents(
+      {super.key,
+      required this.selectedAnimalType,
       required this.selectedAnimalSpecies,
       required this.selectedAnimalBreed});
 
@@ -22,7 +21,7 @@ class CreateBreedingEvents extends StatefulWidget {
 }
 
 class _CreateBreedingEvents extends State<CreateBreedingEvents> {
-  final TextEditingController _BreedingnotesController =
+  final TextEditingController _breedingnotesController =
       TextEditingController();
   final TextEditingController _breedingeventnumberController =
       TextEditingController();
@@ -758,7 +757,7 @@ class _CreateBreedingEvents extends State<CreateBreedingEvents> {
               const SizedBox(height: 10),
               TextFormField(
                 maxLines: 6, // Set the maximum number of lines
-                controller: _BreedingnotesController,
+                controller: _breedingnotesController,
                 decoration: InputDecoration(
                   hintText:
                       'Add Additional Information If Needed', // Add your hint text here
@@ -784,7 +783,7 @@ class _CreateBreedingEvents extends State<CreateBreedingEvents> {
               context,
               MaterialPageRoute(
                 builder: (context) => ListOfBreedingEvents(
-                  breedingNotesController: _BreedingnotesController,
+                  breedingNotesController: _breedingnotesController,
                   breedingEventNumberController: _breedingeventnumberController,
                   selectedBreedSire: selectedBreedSire,
                   selectedBreedDam: selectedBreedDam,
