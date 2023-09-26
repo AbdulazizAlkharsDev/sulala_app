@@ -80,7 +80,7 @@ flutter:
     - assets/icons/frame/24px/
     - assets/icons/flags/
     - assets/illustrations/
-    - assets/avatars/120px/
+    - assets/avatars/
     - assets/graphic/
   #   - images/a_dot_ham.jpeg
 

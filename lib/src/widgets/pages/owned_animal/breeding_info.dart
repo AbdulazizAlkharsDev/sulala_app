@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/widgets/other/one_information_block.dart';
 import 'package:sulala_app/test/ListOfBreedingEvents.dart';
-import 'package:sulala_app/test/ListOfChildren.dart';
-import 'package:sulala_app/test/list_of_mates.dart';
+import 'package:sulala_app/src/screens/breeding/list_of_children.dart';
+import 'package:sulala_app/src/screens/breeding/list_of_mates.dart';
 import '../../../screens/breeding/parents_page.dart';
 import '../../../theme/colors/colors.dart';
 import '../../../theme/fonts/fonts.dart';
@@ -141,7 +141,7 @@ class BreedingInfo extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return ListOfPartners();
+                          return ListOfMates();
                         },
                       ),
                     );
