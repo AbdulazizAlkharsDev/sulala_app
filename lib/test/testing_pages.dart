@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print, prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/screens/breeding/create_breeding_event.dart';
+import 'package:sulala_app/test/list_of_breeding_events.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -40,10 +40,18 @@ class _ExamplePageState extends State<ExamplePage> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return CreateBreedingEvents(
-                                      selectedAnimalType: 'Ovu',
-                                      selectedAnimalSpecies: 'Horse',
-                                      selectedAnimalBreed: 'Arabian');
+                                  return ListOfBreedingEvents(
+                                    breedingEventNumberController:
+                                        TextEditingController(),
+                                    breedingNotesController:
+                                        TextEditingController(),
+                                    selectedBreedChildren: '432234',
+                                    selectedBreedDam: '4322435',
+                                    selectedBreedPartner: 'dsada',
+                                    selectedBreedSire: 'dsadsa',
+                                    selectedBreedingDate: 'dsadsa',
+                                    selectedDeliveryDate: 'dsadsa',
+                                  );
                                 },
                               ),
                             );

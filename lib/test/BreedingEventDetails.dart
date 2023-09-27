@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/test/ListOfBreedingEvents.dart';
+import 'package:sulala_app/test/list_of_breeding_events.dart';
 
 class BreedingEventDetails extends StatefulWidget {
   final BreedingEventVariables

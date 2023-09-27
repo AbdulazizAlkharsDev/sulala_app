@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:sulala_app/test/BreedingEventDetails.dart';
 import 'package:sulala_app/src/screens/breeding/create_breeding_event.dart';
@@ -38,7 +36,8 @@ class ListOfBreedingEvents extends StatefulWidget {
   final String selectedBreedingDate;
   final String selectedDeliveryDate;
 
-  ListOfBreedingEvents({
+  const ListOfBreedingEvents({
+    super.key,
     required this.breedingNotesController,
     required this.breedingEventNumberController,
     required this.selectedBreedSire,
@@ -50,7 +49,7 @@ class ListOfBreedingEvents extends StatefulWidget {
   });
 
   @override
-  _ListOfBreedingEvents createState() => _ListOfBreedingEvents();
+  State<ListOfBreedingEvents> createState() => _ListOfBreedingEvents();
 }
 
 class _ListOfBreedingEvents extends State<ListOfBreedingEvents> {
