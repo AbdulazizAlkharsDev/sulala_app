@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:sulala_app/test/BreedingEventDetails.dart';
-import 'package:sulala_app/test/create_breeding_event.dart';
+import 'package:sulala_app/src/screens/breeding/create_breeding_event.dart';
 
 class BreedingEventVariables {
   final String eventNumber;
