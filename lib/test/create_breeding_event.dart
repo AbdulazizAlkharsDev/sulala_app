@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/test/ListOfBreedingEvents.dart';
-import 'package:sulala_app/test/datetextfiled.dart';
+import '../src/theme/colors/colors.dart';
+import '../src/theme/fonts/fonts.dart';
+import '../src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
+import '../src/widgets/inputs/date_fields/primary_date_field.dart';
+import '../src/widgets/inputs/paragraph_text_fields/paragraph_text_field.dart';
+import '../src/widgets/inputs/text_fields/primary_text_field.dart';
 
 // ignore: depend_on_referenced_packages
 
@@ -522,262 +528,190 @@ class _CreateBreedingEvents extends State<CreateBreedingEvents> {
 
   @override
   Widget build(BuildContext context) {
+    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
+    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Harry'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-            // Handle back button press
-            // Add your code here
-          },
+        centerTitle: true,
+        title: Text(
+          'Harry',
+          style: AppFonts.headline3(color: AppColors.grayscale90),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColors.grayscale10,
+            ),
             child: IconButton(
-              icon: const Icon(Icons.close),
+              icon: const Icon(
+                Icons.arrow_back,
+                color: Colors.black,
+              ),
               onPressed: () {
                 Navigator.pop(context);
-                // Handle back button press
-                // Add your code here
               },
             ),
           ),
-        ],
+        ),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(16.0),
+        child: Padding(
+          padding: EdgeInsets.only(
+              left: 16.0 * widthMediaQuery, right: 16.0 * widthMediaQuery),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 'Create Event',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppFonts.title3(color: AppColors.grayscale90),
               ),
-              const SizedBox(height: 25),
-              const Text(
-                "Breeding Event Num",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 10),
-              TextFormField(
+              SizedBox(height: 24 * heightMediaQuery),
+              PrimaryTextField(
                 controller: _breedingeventnumberController,
-                decoration: InputDecoration(
-                  hintText: 'Enter Breeding Number', // Add your hint text here
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50.0),
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                      vertical: 12.0, horizontal: 16.0),
-                ),
-                textInputAction:
-                    TextInputAction.done, // Change the keyboard action
+                hintText: 'Enter Breeding Number',
+                labelText: 'Breeding Number',
               ),
-              const SizedBox(height: 20),
-              const Row(
+              SizedBox(height: 16 * heightMediaQuery),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    child: Text(
-                      'Breeding ID',
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
+                  Text(
+                    'Breeding ID',
+                    style: AppFonts.body2(color: AppColors.grayscale70),
                   ),
                   Text(
                     '001-1',
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
+                    style: AppFonts.body2(color: AppColors.grayscale90),
                   ),
                 ],
               ),
-              Column(
+              SizedBox(
+                height: 10 * heightMediaQuery,
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const SizedBox(
-                    height: 10,
+                  Text(
+                    'Sire (Father)',
+                    style: AppFonts.body2(color: AppColors.grayscale70),
                   ),
-                  Row(
-                    children: [
-                      const Expanded(
-                        flex: 4,
-                        child: Text(
-                          'Sire (Father)',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 0,
-                        child: TextButton(
-                          onPressed: () {
-                            _showBreedSireSelectionSheet(context);
-                          },
-                          child: Text(
-                            selectedBreedSire,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 36, 86, 38),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Expanded(
-                        flex: 4,
-                        child: Text(
-                          'Dam (Mother)',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 0,
-                        child: TextButton(
-                          onPressed: () {
-                            _showBreedDamSelectionSheet(context);
-                          },
-                          child: Text(
-                            selectedBreedDam,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 36, 86, 38),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Expanded(
-                        flex: 4,
-                        child: Text(
-                          'Breeding Partner',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 0,
-                        child: TextButton(
-                          onPressed: () {
-                            _showBreedPartnerSelectionSheet(context);
-                          },
-                          child: Text(
-                            selectedBreedPartner,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 36, 86, 38),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  PrimaryTextButton(
+                    status: TextStatus.idle,
+                    text: selectedBreedSire,
+                    onPressed: () {
+                      _showBreedSireSelectionSheet(context);
+                    },
+                    position: TextButtonPosition.right,
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
-              const Text(
-                "Breeding Date",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Dam (Mother)',
+                    style: AppFonts.body2(color: AppColors.grayscale70),
+                  ),
+                  PrimaryTextButton(
+                    status: TextStatus.idle,
+                    text: selectedBreedDam,
+                    onPressed: () {
+                      _showBreedDamSelectionSheet(context);
+                    },
+                    position: TextButtonPosition.right,
+                  ),
+                ],
               ),
-              DateTextField(
-                onDateSelected: setBreedingSelectedDate,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Breeding Partner',
+                    style: AppFonts.body2(color: AppColors.grayscale70),
+                  ),
+                  PrimaryTextButton(
+                    status: TextStatus.idle,
+                    text: selectedBreedPartner,
+                    onPressed: () {
+                      _showBreedPartnerSelectionSheet(context);
+                    },
+                    position: TextButtonPosition.right,
+                  ),
+                ],
               ),
-              const SizedBox(height: 10),
-              const Text(
-                "Delivery Date",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              DateTextField(
-                onDateSelected: setDeliverySelectedDate,
-              ),
-              const SizedBox(height: 25),
-              const Text(
-                "Add Children +",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                selectedBreedChildren,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Color.fromARGB(255, 36, 86, 38),
-                ),
-              ),
-              TextButton(
-                onPressed: () {
-                  _showBreedChildrenSelectionSheet(context);
+              SizedBox(height: 10 * heightMediaQuery),
+              PrimaryDateField(
+                labelText: 'Breeding Date',
+                hintText: 'DD/MM/YYYY',
+                onChanged: (value) {
+                  setState(() {
+                    selectedBreedingDate = value.toString();
+                  });
                 },
-                child: Text(
-                  "Add Children +",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
               ),
-              const SizedBox(height: 10),
-              const Divider(),
-              const SizedBox(height: 10),
-              const Text(
+              SizedBox(height: 20 * heightMediaQuery),
+              PrimaryDateField(
+                labelText: 'Delivery Date',
+                hintText: 'DD/MM/YYYY',
+                onChanged: (value) {
+                  setState(() {
+                    selectedDeliveryDate = value.toString();
+                  });
+                },
+              ),
+              SizedBox(height: 34 * heightMediaQuery),
+              Text(
+                "Children",
+                style: AppFonts.title5(color: AppColors.grayscale90),
+              ),
+              SizedBox(height: 16 * heightMediaQuery),
+              if (selectedBreedChildren.isNotEmpty)
+                Text(
+                  selectedBreedChildren,
+                  style: AppFonts.body1(color: AppColors.primary40),
+                ),
+              Row(
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      _showBreedChildrenSelectionSheet(context);
+                    },
+                    child: Text(
+                      "Add Children",
+                      style: AppFonts.body1(color: AppColors.primary40),
+                    ),
+                  ),
+                  const Icon(Icons.add, color: AppColors.primary40),
+                ],
+              ),
+              SizedBox(height: 24 * heightMediaQuery),
+              Text(
                 "Notes",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppFonts.title5(color: AppColors.grayscale90),
               ),
-              const SizedBox(height: 10),
-              TextFormField(
-                maxLines: 6, // Set the maximum number of lines
-                controller: _breedingnotesController,
-                decoration: InputDecoration(
-                  hintText:
-                      'Add Additional Information If Needed', // Add your hint text here
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  contentPadding: const EdgeInsets.symmetric(
-                      vertical: 12.0, horizontal: 16.0),
-                ),
-                textInputAction:
-                    TextInputAction.done, // Change the keyboard action
+              SizedBox(height: 20 * heightMediaQuery),
+              ParagraphTextField(
+                hintText: 'Add Notes',
+                maxLines: 6,
+                onChanged: (value) {
+                  setState(() {
+                    _breedingnotesController.text = value;
+                  });
+                },
               ),
-              const SizedBox(height: 30),
+              SizedBox(height: 85 * heightMediaQuery),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16),
-        child: ElevatedButton(
+      floatingActionButton: SizedBox(
+        height: 52 * heightMediaQuery,
+        width: 343 * widthMediaQuery,
+        child: PrimaryButton(
           onPressed: () {
             Navigator.push(
               context,
@@ -795,17 +729,7 @@ class _CreateBreedingEvents extends State<CreateBreedingEvents> {
               ),
             );
           },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color.fromARGB(255, 36, 86, 38),
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50),
-            ),
-          ),
-          child: const Text(
-            'Create Event',
-            style: TextStyle(color: Colors.white),
-          ),
+          text: 'Create Event',
         ),
       ),
     );
