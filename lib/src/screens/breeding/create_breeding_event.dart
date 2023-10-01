@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/test/list_of_breeding_events.dart';
+import 'package:sulala_app/src/screens/breeding/list_of_breeding_events.dart';
 import 'package:sulala_app/src/screens/breeding/search_breeding_partner.dart';
 import 'package:sulala_app/src/screens/breeding/search_children.dart';
 import 'package:sulala_app/src/screens/breeding/search_father.dart';

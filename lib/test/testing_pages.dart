@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print, prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/test/list_of_breeding_events.dart';
+import 'package:sulala_app/src/screens/breeding/list_of_breeding_events.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
