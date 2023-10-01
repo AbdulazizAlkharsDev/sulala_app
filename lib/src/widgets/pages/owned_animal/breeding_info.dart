@@ -141,7 +141,7 @@ class BreedingInfo extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return ListOfMates();
+                          return const ListOfMates();
                         },
                       ),
                     );
@@ -162,7 +162,7 @@ class BreedingInfo extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return ListOfChildren();
+                          return const ListOfChildren();
                         },
                       ),
                     );
