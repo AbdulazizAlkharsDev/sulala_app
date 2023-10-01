@@ -4,11 +4,11 @@ import 'package:sulala_app/src/screens/breeding/search_children.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/navigate_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
-import '../src/theme/colors/colors.dart';
-import '../src/theme/fonts/fonts.dart';
-import '../src/widgets/inputs/date_fields/primary_date_field.dart';
-import '../src/widgets/inputs/paragraph_text_fields/paragraph_text_field.dart';
-import '../src/widgets/inputs/text_fields/primary_text_field.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/inputs/date_fields/primary_date_field.dart';
+import '../../widgets/inputs/paragraph_text_fields/paragraph_text_field.dart';
+import '../../widgets/inputs/text_fields/primary_text_field.dart';
 
 class EditBreedingEventDetails extends StatefulWidget {
   final BreedingEventVariables

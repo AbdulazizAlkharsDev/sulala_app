@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/screens/breeding/list_of_breeding_events.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
-import 'package:sulala_app/test/edit_breeding_event_detail.dart';
+import 'package:sulala_app/src/screens/breeding/edit_breeding_event_detail.dart';
 
-import '../src/theme/colors/colors.dart';
-import '../src/theme/fonts/fonts.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
 
 class BreedingEventDetails extends StatefulWidget {
   final BreedingEventVariables
