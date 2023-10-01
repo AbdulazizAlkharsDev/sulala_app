@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/screens/breeding/list_of_breeding_events.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
+import 'package:sulala_app/test/edit_breeding_event_detail.dart';
 
 import '../src/theme/colors/colors.dart';
 import '../src/theme/fonts/fonts.dart';
@@ -53,7 +54,13 @@ class _BreedingEventDetailsState extends State<BreedingEventDetails> {
         actions: [
           InkWell(
             onTap: () {
-              // Handle edit button tap
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => EditBreedingEventDetails(
+                    breedingEvent: widget.breedingEvent,
+                  ),
+                ),
+              );
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -73,189 +80,191 @@ class _BreedingEventDetailsState extends State<BreedingEventDetails> {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16 * widthMediaQuery),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              widget.breedingEvent.eventNumber,
-              style: AppFonts.title3(
-                color: AppColors.grayscale90,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget.breedingEvent.eventNumber,
+                style: AppFonts.title3(
+                  color: AppColors.grayscale90,
+                ),
               ),
-            ),
-            SizedBox(
-              height: 24 * heightMediaQuery,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Breeding ID',
-                  style: AppFonts.body2(color: AppColors.grayscale70),
-                ),
-                Text(
-                  '001-1',
-                  style: AppFonts.body2(color: AppColors.grayscale90),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 6 * heightMediaQuery,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Sire (Father)',
-                  style: AppFonts.body2(color: AppColors.grayscale70),
-                ),
-                PrimaryTextButton(
-                  text: '${widget.breedingEvent.sire} (ID Needed)',
-                  onPressed: () {},
-                  position: TextButtonPosition.right,
-                  status: TextStatus.idle,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Dam (Mother)',
-                  style: AppFonts.body2(color: AppColors.grayscale70),
-                ),
-                PrimaryTextButton(
-                  text: '${widget.breedingEvent.sire} (ID Needed)',
-                  onPressed: () {},
-                  position: TextButtonPosition.right,
-                  status: TextStatus.idle,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Breeding Partner',
-                  style: AppFonts.body2(color: AppColors.grayscale70),
-                ),
-                PrimaryTextButton(
-                  text: '${widget.breedingEvent.sire} (ID Needed)',
-                  onPressed: () {},
-                  position: TextButtonPosition.right,
-                  status: TextStatus.idle,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 6 * heightMediaQuery,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Breeding Date',
-                  style: AppFonts.body2(color: AppColors.grayscale70),
-                ),
-                widget.breedingEvent.deliveryDate.isEmpty
-                    ? Text(
-                        'No Date Added',
-                        style: AppFonts.body2(color: AppColors.grayscale90),
-                      )
-                    : Text(
-                        widget.breedingEvent.deliveryDate,
-                        style: AppFonts.body2(color: AppColors.grayscale90),
-                      ),
-              ],
-            ),
-            SizedBox(
-              height: 20 * heightMediaQuery,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Breeding Date',
-                  style: AppFonts.body2(color: AppColors.grayscale70),
-                ),
-                widget.breedingEvent.deliveryDate.isEmpty
-                    ? Text(
-                        'No Date Added',
-                        style: AppFonts.body2(color: AppColors.grayscale90),
-                      )
-                    : Text(
-                        widget.breedingEvent.deliveryDate,
-                        style: AppFonts.body2(color: AppColors.grayscale90),
-                      ),
-              ],
-            ),
-            SizedBox(
-              height: 34 * heightMediaQuery,
-            ),
-            Text(
-              "Children",
-              style: AppFonts.title5(color: AppColors.grayscale90),
-            ),
-            SizedBox(
-              height: 16 * heightMediaQuery,
-            ),
-            widget.breedingEvent.children.isEmpty
-                ? Column(
-                    children: [
-                      SizedBox(
-                        height: 8 * heightMediaQuery,
-                      ),
-                      Center(
-                          child: Image.asset(
-                              'assets/illustrations/cow_childx.png')),
-                    ],
-                  )
-                : ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    onTap: () {
-                      // Add your onPressed functionality here
-                    },
-                    leading: CircleAvatar(
-                      radius: 24 * widthMediaQuery,
-                      backgroundColor: Colors.black,
-                    ),
-                    title: Text(
-                      'Hello',
-                      // widget.breedingEvent.children,
-                      style: AppFonts.headline3(color: AppColors.grayscale90),
-                    ),
-                    subtitle: Text(
-                      'Age',
-                      style: AppFonts.body2(color: AppColors.grayscale70),
-                    ),
-                    trailing: Text(
-                      'ID#090909',
-                      style: AppFonts.body2(color: AppColors.grayscale90),
-                    ),
+              SizedBox(
+                height: 24 * heightMediaQuery,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Breeding ID',
+                    style: AppFonts.body2(color: AppColors.grayscale70),
                   ),
-            SizedBox(
-              height: 24 * heightMediaQuery,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Notes",
-                  style: AppFonts.title5(color: AppColors.grayscale90),
-                ),
-                InkWell(
-                    onTap: () {},
-                    child: Image.asset('assets/icons/frame/24px/24_Edit.png'))
-              ],
-            ),
-            SizedBox(
-              height: 16 * heightMediaQuery,
-            ),
-            Text(
-              'Max had twins in this breeding event',
-              // (widget.breedingEvent.notes),
-              style: AppFonts.body2(color: AppColors.grayscale70),
-            ),
-          ],
+                  Text(
+                    '001-1',
+                    style: AppFonts.body2(color: AppColors.grayscale90),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 6 * heightMediaQuery,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Sire (Father)',
+                    style: AppFonts.body2(color: AppColors.grayscale70),
+                  ),
+                  PrimaryTextButton(
+                    text: '${widget.breedingEvent.sire} (ID Needed)',
+                    onPressed: () {},
+                    position: TextButtonPosition.right,
+                    status: TextStatus.idle,
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Dam (Mother)',
+                    style: AppFonts.body2(color: AppColors.grayscale70),
+                  ),
+                  PrimaryTextButton(
+                    text: '${widget.breedingEvent.sire} (ID Needed)',
+                    onPressed: () {},
+                    position: TextButtonPosition.right,
+                    status: TextStatus.idle,
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Breeding Partner',
+                    style: AppFonts.body2(color: AppColors.grayscale70),
+                  ),
+                  PrimaryTextButton(
+                    text: '${widget.breedingEvent.sire} (ID Needed)',
+                    onPressed: () {},
+                    position: TextButtonPosition.right,
+                    status: TextStatus.idle,
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 6 * heightMediaQuery,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Breeding Date',
+                    style: AppFonts.body2(color: AppColors.grayscale70),
+                  ),
+                  widget.breedingEvent.deliveryDate.isEmpty
+                      ? Text(
+                          'No Date Added',
+                          style: AppFonts.body2(color: AppColors.grayscale90),
+                        )
+                      : Text(
+                          widget.breedingEvent.deliveryDate,
+                          style: AppFonts.body2(color: AppColors.grayscale90),
+                        ),
+                ],
+              ),
+              SizedBox(
+                height: 20 * heightMediaQuery,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Breeding Date',
+                    style: AppFonts.body2(color: AppColors.grayscale70),
+                  ),
+                  widget.breedingEvent.deliveryDate.isEmpty
+                      ? Text(
+                          'No Date Added',
+                          style: AppFonts.body2(color: AppColors.grayscale90),
+                        )
+                      : Text(
+                          widget.breedingEvent.deliveryDate,
+                          style: AppFonts.body2(color: AppColors.grayscale90),
+                        ),
+                ],
+              ),
+              SizedBox(
+                height: 34 * heightMediaQuery,
+              ),
+              Text(
+                "Children",
+                style: AppFonts.title5(color: AppColors.grayscale90),
+              ),
+              SizedBox(
+                height: 16 * heightMediaQuery,
+              ),
+              widget.breedingEvent.children.isEmpty
+                  ? Column(
+                      children: [
+                        SizedBox(
+                          height: 8 * heightMediaQuery,
+                        ),
+                        Center(
+                            child: Image.asset(
+                                'assets/illustrations/cow_childx.png')),
+                      ],
+                    )
+                  : ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      onTap: () {
+                        // Add your onPressed functionality here
+                      },
+                      leading: CircleAvatar(
+                        radius: 24 * widthMediaQuery,
+                        backgroundColor: Colors.black,
+                      ),
+                      title: Text(
+                        'Hello',
+                        // widget.breedingEvent.children,
+                        style: AppFonts.headline3(color: AppColors.grayscale90),
+                      ),
+                      subtitle: Text(
+                        'Age',
+                        style: AppFonts.body2(color: AppColors.grayscale70),
+                      ),
+                      trailing: Text(
+                        'ID#090909',
+                        style: AppFonts.body2(color: AppColors.grayscale90),
+                      ),
+                    ),
+              SizedBox(
+                height: 24 * heightMediaQuery,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Notes",
+                    style: AppFonts.title5(color: AppColors.grayscale90),
+                  ),
+                  InkWell(
+                      onTap: () {},
+                      child: Image.asset('assets/icons/frame/24px/24_Edit.png'))
+                ],
+              ),
+              SizedBox(
+                height: 16 * heightMediaQuery,
+              ),
+              Text(
+                'Max had twins in this breeding event',
+                // (widget.breedingEvent.notes),
+                style: AppFonts.body2(color: AppColors.grayscale70),
+              ),
+            ],
+          ),
         ),
       ),
     );
