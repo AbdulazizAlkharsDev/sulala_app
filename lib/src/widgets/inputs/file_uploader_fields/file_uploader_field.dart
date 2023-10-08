@@ -177,6 +177,7 @@ class _FileUploaderFieldState extends State<FileUploaderField> {
         Expanded(
           child: ListView.builder(
             shrinkWrap: true,
+            reverse: true,
             itemCount: _uploadedFiles.length,
             itemBuilder: (context, index) {
               return fileWidgets[index];

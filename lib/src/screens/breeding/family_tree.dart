@@ -9,8 +9,8 @@ class FamilyTree extends StatefulWidget {
 
 class _FamilyTree extends State<FamilyTree> {
   List<Widget> fatherParents = [
-    AnimalCard(name: 'F1'),
-    Column(
+    const AnimalCard(name: 'F1'),
+    const Column(
       children: [
         SizedBox(
           height: 20,
@@ -19,12 +19,12 @@ class _FamilyTree extends State<FamilyTree> {
         VerticalConnector(),
       ],
     ), // Custom connector line
-    AnimalCard(name: 'F2'),
+    const AnimalCard(name: 'F2'),
   ];
 
   List<Widget> motherParents = [
-    AnimalCard(name: 'M1'),
-    Column(
+    const AnimalCard(name: 'M1'),
+    const Column(
       children: [
         SizedBox(
           height: 20,
@@ -33,12 +33,12 @@ class _FamilyTree extends State<FamilyTree> {
         VerticalConnector(),
       ],
     ), // Custom connector line
-    AnimalCard(name: 'M2'),
+    const AnimalCard(name: 'M2'),
   ];
 
   List<Widget> parentList = [
-    AnimalCard(name: 'Father'),
-    Column(
+    const AnimalCard(name: 'Father'),
+    const Column(
       children: [
         SizedBox(
           height: 20,
@@ -47,23 +47,23 @@ class _FamilyTree extends State<FamilyTree> {
         VerticalConnector(),
       ],
     ), // Custom connector line
-    AnimalCard(name: 'Mother'),
+    const AnimalCard(name: 'Mother'),
   ];
 
   List<Widget> animalList = [
-    AnimalCard(name: 'Animal'),
-    VerticalConnector(),
+    const AnimalCard(name: 'Animal'),
+    const VerticalConnector(),
   ];
 
   List<Widget> childrenList = [
-    AnimalCard(name: 'Child 1'),
+    const AnimalCard(name: 'Child 1'),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: InteractiveViewer(
-        boundaryMargin: EdgeInsets.all(double.infinity),
+        boundaryMargin: const EdgeInsets.all(double.infinity),
         minScale: 0.5,
         maxScale: 2.0,
         child: Padding(
@@ -88,18 +88,18 @@ class _FamilyTree extends State<FamilyTree> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                       height: 50), // Space between Father's Parents and Father
                   // Parents: Father and Mother
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: parentList,
                   ),
-                  SizedBox(
+                  const SizedBox(
                       height: 50), // Space between parents and "The Animal"
                   // The Animal
                   ...animalList,
-                  SizedBox(
+                  const SizedBox(
                       height: 50), // Space between "The Animal" and children
                   // Mother's Parents
 
@@ -109,10 +109,10 @@ class _FamilyTree extends State<FamilyTree> {
                     child: Row(
                       children: [
                         for (var i = 0; i < childrenList.length; i++) ...[
-                          if (i > 0) CustomConnectorLine(),
+                          if (i > 0) const CustomConnectorLine(),
                           childrenList[i],
                           if (i < childrenList.length - 1)
-                            CustomConnectorLine(),
+                            const CustomConnectorLine(),
                         ],
                       ],
                     ),
@@ -131,7 +131,7 @@ class _FamilyTree extends State<FamilyTree> {
                 .add(AnimalCard(name: 'Child ${childrenList.length + 1}'));
           });
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -140,13 +140,13 @@ class _FamilyTree extends State<FamilyTree> {
 class AnimalCard extends StatelessWidget {
   final String name;
 
-  AnimalCard({required this.name});
+  const AnimalCard({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      color: Color.fromARGB(255, 248, 243, 208),
+      color: const Color.fromARGB(255, 248, 243, 208),
       child: IntrinsicWidth(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -155,7 +155,7 @@ class AnimalCard extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 name,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
                 ),
@@ -169,10 +169,12 @@ class AnimalCard extends StatelessWidget {
 }
 
 class CustomConnectorLine extends StatelessWidget {
+  const CustomConnectorLine({super.key});
+
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      size: Size(30, 2), // Adjust the size as needed
+      size: const Size(30, 2), // Adjust the size as needed
       painter: CustomLinePainter(),
     );
   }
@@ -200,10 +202,12 @@ class CustomLinePainter extends CustomPainter {
 }
 
 class VerticalConnector extends StatelessWidget {
+  const VerticalConnector({super.key});
+
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      size: Size(2, 30), // Adjust the size as needed
+      size: const Size(2, 30), // Adjust the size as needed
       painter: VerticalLinePainter(),
     );
   }
