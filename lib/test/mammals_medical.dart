@@ -3,7 +3,9 @@ import 'package:intl/intl.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 import 'package:sulala_app/src/widgets/inputs/file_uploader_fields/file_uploader_field.dart';
 import 'package:sulala_app/src/widgets/inputs/paragraph_text_fields/paragraph_text_field.dart';
-
+import 'package:sulala_app/test/add_vaccination.dart';
+import 'package:sulala_app/test/edit_vaccination.dart';
+import 'package:sulala_app/test/pregnant_status_drawup.dart';
 import '../src/theme/colors/colors.dart';
 import '../src/theme/fonts/fonts.dart';
 import '../src/widgets/other/one_information_block.dart';
@@ -19,8 +21,8 @@ class MammalsMedical extends StatefulWidget {
 TextEditingController mammalmedicalNeedsController = TextEditingController();
 bool _isMammalEditMode = false;
 bool _isFemale = true;
-String newMammalpregnantStatus = '';
-String mammalpregnantStatuses = '';
+bool? newMammalpregnantStatus;
+bool mammalpregnantStatuses = false;
 String newmammalmatingdate = 'ADD';
 String newmammalsonardate = 'ADD';
 String newmammalexpdeliverydate = 'ADD';
@@ -41,6 +43,20 @@ class _MammalsMedicalState extends State<MammalsMedical> {
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2101),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            // Change the background color of the date picker
+            primaryColor: AppColors.primary30,
+            colorScheme: const ColorScheme.light(primary: AppColors.primary20),
+            buttonTheme:
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+            // Here you can customize more colors if needed
+            // For example, you can change the header color, selected day color, etc.
+          ),
+          child: child!,
+        );
+      },
     );
 
     if (expdeliveryDate != null &&
@@ -52,107 +68,22 @@ class _MammalsMedicalState extends State<MammalsMedical> {
     }
   }
 
-  void _showPregnantStatusSelection() {
-    double sheetHeight = MediaQuery.of(context).size.height * 0.35;
+  void _showPregnantStatusSelection(BuildContext context) {
     showModalBottomSheet(
-      context: context,
       showDragHandle: true,
+      backgroundColor: Colors.transparent,
+      context: context,
+      isScrollControlled: true,
+      isDismissible: true,
       builder: (BuildContext context) {
-        return StatefulBuilder(
-          builder: (BuildContext context, StateSetter setState) {
-            return SizedBox(
-              height: sheetHeight,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      'Pregnancy Status',
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Flexible(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          ListTile(
-                            title: const Text('Not Pregnant'),
-                            trailing: mammalpregnantStatuses == 'Not Pregnant'
-                                ? Container(
-                                    width: 25,
-                                    height: 25,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                        color: Colors.green,
-                                        width: 6.0,
-                                      ),
-                                    ),
-                                  )
-                                : Container(
-                                    width: 25,
-                                    height: 25,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                        color: Colors.grey,
-                                        width: 2.0,
-                                      ),
-                                    ),
-                                  ),
-                            onTap: () {
-                              setState(() {
-                                mammalpregnantStatuses = 'Not Pregnant';
-                              });
-                            },
-                          ),
-                          ListTile(
-                            title: const Text('Pregnant'),
-                            trailing: mammalpregnantStatuses == 'Pregnant'
-                                ? Container(
-                                    width: 25,
-                                    height: 25,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                        color: Colors.green,
-                                        width: 6.0,
-                                      ),
-                                    ),
-                                  )
-                                : Container(
-                                    width: 25,
-                                    height: 25,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                        color: Colors.grey,
-                                        width: 2.0,
-                                      ),
-                                    ),
-                                  ),
-                            onTap: () {
-                              setState(() {
-                                mammalpregnantStatuses = 'Pregnant';
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
+        return PregnantStatusWidget(
+          mammalpregnantStatuses: mammalpregnantStatuses,
+          newMammalpregnantStatus: newMammalpregnantStatus,
         );
       },
     ).then((_) {
       setState(() {
-        newMammalpregnantStatus = mammalpregnantStatuses;
+        newMammalpregnantStatus == mammalpregnantStatuses;
       });
     });
   }
@@ -303,6 +234,9 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                   ),
                 ),
                 ListTile(
+                  onTap: () {
+                    _showPregnantStatusSelection(context);
+                  },
                   contentPadding: const EdgeInsets.only(right: 0, left: 0),
                   leading: Text(
                     'Pregnancy status',
@@ -321,6 +255,9 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                   ),
                 ),
                 ListTile(
+                  onTap: () {
+                    _showexpdeliveryDatePickerModalSheet();
+                  },
                   contentPadding: const EdgeInsets.only(right: 0, left: 0),
                   leading: Text(
                     'Date of Mating',
@@ -339,6 +276,9 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                   ),
                 ),
                 ListTile(
+                  onTap: () {
+                    _showexpdeliveryDatePickerModalSheet();
+                  },
                   contentPadding: const EdgeInsets.only(right: 0, left: 0),
                   leading: Text(
                     'Date of sonar',
@@ -357,6 +297,9 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                   ),
                 ),
                 ListTile(
+                  onTap: () {
+                    _showexpdeliveryDatePickerModalSheet();
+                  },
                   contentPadding: const EdgeInsets.only(right: 0, left: 0),
                   leading: Text(
                     'Exp. Delivery Date',
@@ -416,7 +359,6 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                         style: AppFonts.body2(color: AppColors.grayscale70),
                       ),
                     ]),
-
                 trailing: const Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -431,12 +373,13 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                   ],
                 ),
                 onTap: () {
-                  // Handle the edit action here
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const EditVaccination(),
+                    ),
+                  );
                 },
-                // subtitle: Text(
-                //   'First Dose Date',
-                //   style: AppFonts.body2(color: AppColors.grayscale70),
-                // ),
               );
             },
           ),
@@ -444,26 +387,12 @@ class _MammalsMedicalState extends State<MammalsMedical> {
             children: [
               PrimaryTextButton(
                 onPressed: () {
-                  // Show the VaccineEntryPage as a modal sheet
-                  // showModalBottomSheet(
-                  //   context: context,
-                  //   builder: (BuildContext context) {
-                  //     return VaccineEntryPage(
-                  //       onSave: (vaccineName, firstDoseDate, secondDoseDate) {
-                  //         // Save vaccine details to the list
-                  //         setState(() {
-                  //           mammalvaccineDetailsList.add(
-                  //             VaccineDetails(
-                  //               mammalvaccineName: vaccineName,
-                  //               firstDoseDate: firstDoseDate,
-                  //               secondDoseDate: secondDoseDate,
-                  //             ),
-                  //           );
-                  //         });
-                  //       },
-                  //     );
-                  //   },
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AddVaccination(),
+                    ),
+                  );
                 },
                 text: 'Add Vaccination',
                 status: TextStatus.idle,
@@ -729,211 +658,6 @@ class _MammalsMedicalState extends State<MammalsMedical> {
     //     ),
     //   ),
     // );
-  }
-}
-
-class VaccineEntryPage extends StatefulWidget {
-  final Function(String, DateTime?, DateTime?) onSave;
-
-  const VaccineEntryPage({super.key, required this.onSave});
-
-  @override
-  // ignore: library_private_types_in_public_api
-  _VaccineEntryPageState createState() => _VaccineEntryPageState();
-}
-
-class _VaccineEntryPageState extends State<VaccineEntryPage> {
-  TextEditingController vaccineNameController = TextEditingController();
-  DateTime? firstDoseDate;
-  DateTime? secondDoseDate;
-
-  @override
-  void dispose() {
-    vaccineNameController.dispose();
-    super.dispose();
-  }
-
-  Future<void> _selectDate(BuildContext context, bool isFirstDose) async {
-    final selectedDate = await showDatePicker(
-      context: context,
-      initialDate: isFirstDose
-          ? firstDoseDate ?? DateTime.now()
-          : secondDoseDate ?? DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
-    );
-
-    if (selectedDate != null) {
-      setState(() {
-        if (isFirstDose) {
-          firstDoseDate = selectedDate;
-        } else {
-          secondDoseDate = selectedDate;
-        }
-      });
-    }
-  }
-
-  void _saveDataAndNavigateBack() {
-    String newVaccineName = vaccineNameController.text;
-    widget.onSave(newVaccineName, firstDoseDate, secondDoseDate);
-
-    // Close the modal sheet and return to MyPage
-    Navigator.pop(context);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const Text(
-              "Add Vaccination",
-              style: TextStyle(
-                fontSize: 35,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const Text(
-              "Vaccine",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              controller: vaccineNameController,
-              decoration: InputDecoration(
-                labelText: 'Vaccine Name',
-                suffixIcon: IconButton(
-                  icon: const Icon(Icons.clear),
-                  onPressed: () {
-                    setState(() {
-                      vaccineNameController.clear();
-                    });
-                  },
-                ),
-                hintText: 'Enter Vaccine Name',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50.0),
-                ),
-                contentPadding: const EdgeInsets.symmetric(
-                  vertical: 12.0,
-                  horizontal: 16.0,
-                ),
-              ),
-              textInputAction: TextInputAction.done,
-            ),
-            const SizedBox(height: 20),
-            const Text('Add Date Of Vaccination:'),
-            const SizedBox(height: 8),
-            TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50.0),
-                ),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                suffixIcon: IconButton(
-                  icon: const Icon(Icons.calendar_today,
-                      color: Color(0xFF245626)),
-                  onPressed: () {
-                    _selectDate(context, true);
-                  },
-                ),
-              ),
-              readOnly: true,
-              controller: TextEditingController(
-                text: firstDoseDate == null
-                    ? 'Date Of Vaccination'
-                    : '${firstDoseDate?.toLocal()}'.split(' ')[0],
-              ),
-            ),
-            const SizedBox(height: 20),
-            const Text('Add Next Date Of Vaccination:'),
-            const SizedBox(height: 8),
-            TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50.0),
-                ),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                suffixIcon: IconButton(
-                  icon: const Icon(Icons.calendar_today,
-                      color: Color(0xFF245626)),
-                  onPressed: () {
-                    _selectDate(context, false);
-                  },
-                ),
-              ),
-              readOnly: true,
-              controller: TextEditingController(
-                text: secondDoseDate == null
-                    ? 'Next Date Of Vaccination'
-                    : '${secondDoseDate?.toLocal()}'.split(' ')[0],
-              ),
-            ),
-            const SizedBox(height: 20),
-            GestureDetector(
-              onTap: () {
-                // Handle file upload logic here
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                width: double.infinity,
-                height: 150,
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.file_open_outlined,
-                      size: 35,
-                    ),
-                    Text(
-                      'Upload File, PDF, Jpeg, PNG',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            Container(
-              width: double
-                  .infinity, // Make the button expand to full screen width
-              padding: const EdgeInsets.all(16),
-              child: ElevatedButton(
-                onPressed: () {
-                  // Save data and navigate back to MyPage
-                  _saveDataAndNavigateBack();
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 36, 86, 38),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                ),
-                child: const Text(
-                  'Save',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
   }
 }
 

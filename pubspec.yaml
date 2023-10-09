@@ -90,6 +90,8 @@ flutter:
     - assets/avatars/80px/
     - assets/avatars/120px/
     - assets/graphic/
+    - assets/icons/frame/24px/20_Clear_form.png
+
     # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
