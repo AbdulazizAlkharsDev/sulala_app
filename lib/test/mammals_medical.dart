@@ -3,7 +3,11 @@ import 'package:intl/intl.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 import 'package:sulala_app/src/widgets/inputs/file_uploader_fields/file_uploader_field.dart';
 import 'package:sulala_app/src/widgets/inputs/paragraph_text_fields/paragraph_text_field.dart';
+import 'package:sulala_app/test/add_medical_checkup.dart';
+import 'package:sulala_app/test/add_surgeries.dart';
 import 'package:sulala_app/test/add_vaccination.dart';
+import 'package:sulala_app/test/edit_medical_checkup.dart';
+import 'package:sulala_app/test/edit_surgeries.dart';
 import 'package:sulala_app/test/edit_vaccination.dart';
 import 'package:sulala_app/test/pregnant_status_drawup.dart';
 import '../src/theme/colors/colors.dart';
@@ -448,7 +452,6 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                         style: AppFonts.body2(color: AppColors.grayscale70),
                       ),
                     ]),
-
                 trailing: const Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -463,12 +466,13 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                   ],
                 ),
                 onTap: () {
-                  // Handle the edit action here
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const EditMedicalCheckUp(),
+                    ),
+                  );
                 },
-                // subtitle: Text(
-                //   'First Dose Date',
-                //   style: AppFonts.body2(color: AppColors.grayscale70),
-                // ),
               );
             },
           ),
@@ -476,26 +480,12 @@ class _MammalsMedicalState extends State<MammalsMedical> {
             children: [
               PrimaryTextButton(
                 onPressed: () {
-                  // Show the VaccineEntryPage as a modal sheet
-                  // showModalBottomSheet(
-                  //   context: context,
-                  //   builder: (BuildContext context) {
-                  //     return VaccineEntryPage(
-                  //       onSave: (vaccineName, firstDoseDate, secondDoseDate) {
-                  //         // Save vaccine details to the list
-                  //         setState(() {
-                  //           mammalvaccineDetailsList.add(
-                  //             VaccineDetails(
-                  //               mammalvaccineName: vaccineName,
-                  //               firstDoseDate: firstDoseDate,
-                  //               secondDoseDate: secondDoseDate,
-                  //             ),
-                  //           );
-                  //         });
-                  //       },
-                  //     );
-                  //   },
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AddMedicalCheckUp(),
+                    ),
+                  );
                 },
                 text: 'Add Examination Results',
                 status: TextStatus.idle,
@@ -551,7 +541,6 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                         style: AppFonts.body2(color: AppColors.grayscale70),
                       ),
                     ]),
-
                 trailing: const Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -566,12 +555,13 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                   ],
                 ),
                 onTap: () {
-                  // Handle the edit action here
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const EditSurgeriesRecords(),
+                    ),
+                  );
                 },
-                // subtitle: Text(
-                //   'First Dose Date',
-                //   style: AppFonts.body2(color: AppColors.grayscale70),
-                // ),
               );
             },
           ),
@@ -579,28 +569,14 @@ class _MammalsMedicalState extends State<MammalsMedical> {
             children: [
               PrimaryTextButton(
                 onPressed: () {
-                  // Show the VaccineEntryPage as a modal sheet
-                  // showModalBottomSheet(
-                  //   context: context,
-                  //   builder: (BuildContext context) {
-                  //     return VaccineEntryPage(
-                  //       onSave: (vaccineName, firstDoseDate, secondDoseDate) {
-                  //         // Save vaccine details to the list
-                  //         setState(() {
-                  //           mammalvaccineDetailsList.add(
-                  //             VaccineDetails(
-                  //               mammalvaccineName: vaccineName,
-                  //               firstDoseDate: firstDoseDate,
-                  //               secondDoseDate: secondDoseDate,
-                  //             ),
-                  //           );
-                  //         });
-                  //       },
-                  //     );
-                  //   },
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AddSurgeriesRecords(),
+                    ),
+                  );
                 },
-                text: 'Add Examination Results',
+                text: 'Add Surgeries Records',
                 status: TextStatus.idle,
               ),
               SizedBox(
@@ -617,384 +593,6 @@ class _MammalsMedicalState extends State<MammalsMedical> {
             height: 16 * heightMediaQuery,
           ),
         ],
-      ),
-    );
-
-    //                         const Padding(
-    //                           padding: EdgeInsets.all(8.0),
-    //                           child: Text(
-    //                             'Additonal Notes',
-    //                             style: TextStyle(
-    //                                 fontSize: 18,
-    //                                 color: Colors.black,
-    //                                 fontWeight: FontWeight.bold),
-    //                           ),
-    //                         ),
-    //                         const SizedBox(height: 12),
-    //                         Padding(
-    //                           padding:
-    //                               const EdgeInsets.symmetric(horizontal: 16),
-    //                           child: Text(
-    //                             widget.mammalnotesController.text,
-    //                             style: const TextStyle(
-    //                               fontSize: 14,
-    //                               color: Colors.black,
-    //                             ),
-    //                           ),
-    //                         ),
-    //                       ],
-    //                     ),
-    //                   ),
-    //                   // Medical Tabbar View Ends
-    //                 ],
-    //               ),
-    //             ),
-    //             Container()
-    //           ],
-    //         ),
-    //       ),
-
-    //       // Tab Bar
-    //     ),
-    //   ),
-    // );
-  }
-}
-
-class MedicalCheckupEntryPage extends StatefulWidget {
-  final Function(String, DateTime?) onSave;
-
-  const MedicalCheckupEntryPage({super.key, required this.onSave});
-
-  @override
-  // ignore: library_private_types_in_public_api
-  _MedicalCheckupEntryPageState createState() =>
-      _MedicalCheckupEntryPageState();
-}
-
-class _MedicalCheckupEntryPageState extends State<MedicalCheckupEntryPage> {
-  TextEditingController checkupNameController = TextEditingController();
-  DateTime? checkupDate;
-
-  @override
-  void dispose() {
-    checkupNameController.dispose();
-    super.dispose();
-  }
-
-  Future<void> _selectDate(BuildContext context) async {
-    final selectedDate = await showDatePicker(
-      context: context,
-      initialDate: checkupDate ?? DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
-    );
-
-    if (selectedDate != null) {
-      setState(() {
-        checkupDate = selectedDate;
-      });
-    }
-  }
-
-  void _saveDataAndNavigateBack() {
-    String newCheckupName = checkupNameController.text;
-    widget.onSave(newCheckupName, checkupDate);
-
-    // Close the modal sheet and return to MyPage
-    Navigator.pop(context);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const Text(
-              "Add Medical Checkup",
-              style: TextStyle(
-                fontSize: 35,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const Text(
-              "Checkup",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              controller: checkupNameController,
-              decoration: InputDecoration(
-                labelText: 'Checkup Name',
-                suffixIcon: IconButton(
-                  icon: const Icon(Icons.clear),
-                  onPressed: () {
-                    setState(() {
-                      checkupNameController.clear();
-                    });
-                  },
-                ),
-                hintText: 'Enter Checkup Name',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50.0),
-                ),
-                contentPadding: const EdgeInsets.symmetric(
-                  vertical: 12.0,
-                  horizontal: 16.0,
-                ),
-              ),
-              textInputAction: TextInputAction.done,
-            ),
-            const SizedBox(height: 20),
-            const Text('Add Checkup Date:'),
-            const SizedBox(height: 8),
-            TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50.0),
-                ),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                suffixIcon: IconButton(
-                  icon: const Icon(Icons.calendar_today,
-                      color: Color(0xFF245626)),
-                  onPressed: () {
-                    _selectDate(context);
-                  },
-                ),
-              ),
-              readOnly: true,
-              controller: TextEditingController(
-                text: checkupDate == null
-                    ? 'Checkup Date'
-                    : DateFormat('yyyy-MM-dd').format(checkupDate!),
-              ),
-            ),
-            const SizedBox(height: 20),
-            GestureDetector(
-              onTap: () {
-                // Handle file upload logic here
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                width: double.infinity,
-                height: 150,
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.file_open_outlined,
-                      size: 35,
-                    ),
-                    Text(
-                      'Upload File, PDF, Jpeg, PNG',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: _saveDataAndNavigateBack,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 36, 86, 38),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                ),
-                child: const Text(
-                  'Save',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class SurgeryEntryPage extends StatefulWidget {
-  final Function(String, DateTime?) onSave;
-
-  const SurgeryEntryPage({super.key, required this.onSave});
-
-  @override
-  // ignore: library_private_types_in_public_api
-  _SurgeryEntryPageState createState() => _SurgeryEntryPageState();
-}
-
-class _SurgeryEntryPageState extends State<SurgeryEntryPage> {
-  TextEditingController surgeryNameController = TextEditingController();
-  DateTime? surgeryDate;
-
-  @override
-  void dispose() {
-    surgeryNameController.dispose();
-    super.dispose();
-  }
-
-  Future<void> _selectDate(BuildContext context) async {
-    final selectedDate = await showDatePicker(
-      context: context,
-      initialDate: surgeryDate ?? DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
-    );
-
-    if (selectedDate != null) {
-      setState(() {
-        surgeryDate = selectedDate;
-      });
-    }
-  }
-
-  void _saveDataAndNavigateBack() {
-    String newSurgeryName = surgeryNameController.text;
-    widget.onSave(newSurgeryName, surgeryDate);
-
-    // Close the modal sheet and return to MyPage
-    Navigator.pop(context);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const Text(
-              "Add Surgery",
-              style: TextStyle(
-                fontSize: 35,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const Text(
-              "Surgery",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              controller: surgeryNameController,
-              decoration: InputDecoration(
-                labelText: 'Surgery Name',
-                suffixIcon: IconButton(
-                  icon: const Icon(Icons.clear),
-                  onPressed: () {
-                    setState(() {
-                      surgeryNameController.clear();
-                    });
-                  },
-                ),
-                hintText: 'Enter Surgery Name',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50.0),
-                ),
-                contentPadding: const EdgeInsets.symmetric(
-                  vertical: 12.0,
-                  horizontal: 16.0,
-                ),
-              ),
-              textInputAction: TextInputAction.done,
-            ),
-            const SizedBox(height: 20),
-            const Text('Add Surgery Date:'),
-            const SizedBox(height: 8),
-            TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50.0),
-                ),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                suffixIcon: IconButton(
-                  icon: const Icon(Icons.calendar_today,
-                      color: Color(0xFF245626)),
-                  onPressed: () {
-                    _selectDate(context);
-                  },
-                ),
-              ),
-              readOnly: true,
-              controller: TextEditingController(
-                text: surgeryDate == null
-                    ? 'Surgery Date'
-                    : DateFormat('yyyy-MM-dd').format(surgeryDate!),
-              ),
-            ),
-            const SizedBox(height: 20),
-            GestureDetector(
-              onTap: () {
-                // Handle file upload logic here
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                width: double.infinity,
-                height: 150,
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.file_open_outlined,
-                      size: 35,
-                    ),
-                    Text(
-                      'Upload File, PDF, Jpeg, PNG',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: _saveDataAndNavigateBack,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 36, 86, 38),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                ),
-                child: const Text(
-                  'Save',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
