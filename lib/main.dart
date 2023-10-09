@@ -28,6 +28,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.grayscale00,
+        bottomSheetTheme: const BottomSheetThemeData(
+          dragHandleColor: AppColors.grayscale20,
+          dragHandleSize: Size(40, 4),
+        ),
       ),
       title: 'Sulala App',
       home: Builder(

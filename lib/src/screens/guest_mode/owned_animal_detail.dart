@@ -42,6 +42,7 @@ class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -85,155 +86,152 @@ class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails>
             ),
           ],
         ),
-        body: SingleChildScrollView(
-          child: Stack(
-            children: [
-              Align(
-                alignment: Alignment.topCenter,
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: Image.asset(
-                    "assets/graphic/Animal_p.png",
-                    fit: BoxFit.fitWidth,
-                  ),
+        body: Stack(
+          children: [
+            Align(
+              alignment: Alignment.topCenter,
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Image.asset(
+                  "assets/graphic/Animal_p.png",
+                  fit: BoxFit.fitWidth,
                 ),
               ),
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.228,
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(
-                          MediaQuery.of(context).size.width * 0.085),
-                      topRight: Radius.circular(
-                          MediaQuery.of(context).size.width * 0.085),
-                    ),
+            ),
+            Positioned(
+              top: MediaQuery.of(context).size.height * 0.228,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(
+                        MediaQuery.of(context).size.width * 0.085),
+                    topRight: Radius.circular(
+                        MediaQuery.of(context).size.width * 0.085),
                   ),
-                  child: const SizedBox(), // Add your content here
                 ),
+                child: const SizedBox(), // Add your content here
               ),
-              Center(
-                child: FractionalTranslation(
-                  translation:
-                      Offset(0, MediaQuery.of(context).size.height * 0.000185),
-                  child: Expanded(
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          radius: MediaQuery.of(context).size.width * 0.16,
-                          backgroundImage: AssetImage(widget.imagePath),
+            ),
+            Center(
+              child: FractionalTranslation(
+                translation:
+                    Offset(0, MediaQuery.of(context).size.height * 0.000185),
+                child: Expanded(
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        radius: MediaQuery.of(context).size.width * 0.16,
+                        backgroundImage: AssetImage(widget.imagePath),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.019,
+                      ),
+                      Text(
+                        widget.title,
+                        style: AppFonts.title4(color: AppColors.grayscale90),
+                      ),
+                      Text(
+                        "ID #${widget.title}",
+                        style: AppFonts.body2(color: AppColors.grayscale70),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.019,
+                      ),
+                      IntrinsicWidth(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Tags(
+                              text: 'Mammal',
+                              icon: Icons.pets,
+                              onPress: () {
+                                // Handle tag click
+                              },
+                              status: TagStatus.active,
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.021,
+                            ),
+                            Tags(
+                              text: 'Herbivore',
+                              icon: Icons.pets,
+                              onPress: () {
+                                // Handle tag click
+                              },
+                              status: TagStatus.active,
+                            ),
+                          ],
                         ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.019,
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.039,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.91,
+                        height: MediaQuery.of(context).size.height * 0.05,
+                        decoration: BoxDecoration(
+                          color: AppColors.grayscale10,
+                          borderRadius: BorderRadius.circular(24),
                         ),
-                        Text(
-                          widget.title,
-                          style: AppFonts.title4(color: AppColors.grayscale90),
-                        ),
-                        Text(
-                          "ID #${widget.title}",
-                          style: AppFonts.body2(color: AppColors.grayscale70),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.019,
-                        ),
-                        IntrinsicWidth(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Tags(
-                                text: 'Mammal',
-                                icon: Icons.pets,
-                                onPress: () {
-                                  // Handle tag click
-                                },
-                                status: TagStatus.active,
-                              ),
-                              SizedBox(
-                                width:
-                                    MediaQuery.of(context).size.width * 0.021,
-                              ),
-                              Tags(
-                                text: 'Herbivore',
-                                icon: Icons.pets,
-                                onPress: () {
-                                  // Handle tag click
-                                },
-                                status: TagStatus.active,
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.039,
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * 0.91,
-                          height: MediaQuery.of(context).size.height * 0.05,
-                          decoration: BoxDecoration(
-                            color: AppColors.grayscale10,
+                        child: TabBar(
+                          controller: _tabController,
+                          indicator: BoxDecoration(
+                            color: AppColors.primary50,
                             borderRadius: BorderRadius.circular(24),
                           ),
-                          child: TabBar(
-                            controller: _tabController,
-                            indicator: BoxDecoration(
-                              color: AppColors.primary50,
-                              borderRadius: BorderRadius.circular(24),
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          indicatorColor: Colors.transparent,
+                          labelColor: AppColors.grayscale0,
+                          unselectedLabelColor: AppColors.grayscale60,
+                          labelStyle:
+                              AppFonts.body2(color: AppColors.grayscale0),
+                          tabs: const [
+                            Tab(text: 'General'),
+                            Tab(text: 'Breeding'),
+                            Tab(text: 'Medical'),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.03,
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.4,
+                        width: MediaQuery.of(context).size.width * 0.91,
+                        child: TabBarView(
+                          controller: _tabController,
+                          children: [
+                            // Content for the 'General' tab
+                            GeneralInfoAnimalWidget(
+                              onDateOfBirthPressed: () {},
+                              onDateOfDeathPressed: () {},
+                              onDateOfMatingPressed: () {},
+                              onDateOfSalePressed: () {},
+                              onDateOfWeaningPressed: () {},
+                              age: "3 years",
+                              type: "Mammal",
+                              sex: "Female",
                             ),
-                            indicatorSize: TabBarIndicatorSize.tab,
-                            indicatorColor: Colors.transparent,
-                            labelColor: AppColors.grayscale0,
-                            unselectedLabelColor: AppColors.grayscale60,
-                            labelStyle:
-                                AppFonts.body2(color: AppColors.grayscale0),
-                            tabs: const [
-                              Tab(text: 'General'),
-                              Tab(text: 'Breeding'),
-                              Tab(text: 'Medical'),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.03,
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.4,
-                          width: MediaQuery.of(context).size.width * 0.91,
-                          child: TabBarView(
-                            controller: _tabController,
-                            children: [
-                              // Content for the 'General' tab
-                              GeneralInfoAnimalWidget(
-                                onDateOfBirthPressed: () {},
-                                onDateOfDeathPressed: () {},
-                                onDateOfMatingPressed: () {},
-                                onDateOfSalePressed: () {},
-                                onDateOfWeaningPressed: () {},
-                                age: "3 years",
-                                type: "Mammal",
-                                sex: "Female",
-                              ),
 
-                              // Content for the 'Breeding' tab
-                              const BreedingInfo(),
+                            // Content for the 'Breeding' tab
+                            const BreedingInfo(),
 
-                              // Content for the 'Medical' tab
-                              const MammalsMedical(),
-                            ],
-                          ),
+                            // Content for the 'Medical' tab
+                            const MammalsMedical(),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:nuts_activity_indicator/nuts_activity_indicator.dart';
 import '../../../theme/colors/colors.dart';
+import '../../../theme/fonts/fonts.dart';
 
 enum FlatButtonPosition {
   primary,
@@ -59,9 +60,7 @@ class FlatButton extends StatelessWidget {
               const SizedBox(width: 8), //Don't use MediaQuery here
               Text(
                 text,
-                style: TextStyle(
-                  color: _getTextColor(status),
-                ),
+                style: AppFonts.body1(color: _getTextColor(status)),
               ),
             ],
           );
@@ -71,9 +70,7 @@ class FlatButton extends StatelessWidget {
             children: [
               Text(
                 text,
-                style: TextStyle(
-                  color: _getTextColor(status),
-                ),
+                style: AppFonts.body1(color: _getTextColor(status)),
               ),
               const SizedBox(width: 8), //Don't use MediaQuery here
               Icon(
@@ -85,9 +82,7 @@ class FlatButton extends StatelessWidget {
         default:
           return Text(
             text,
-            style: TextStyle(
-              color: _getTextColor(status),
-            ),
+            style: AppFonts.body1(color: _getTextColor(status)),
           );
       }
     }
@@ -96,15 +91,15 @@ class FlatButton extends StatelessWidget {
   Color _getButtonColor(FlatButtonStatus status) {
     switch (status) {
       case FlatButtonStatus.idle:
-        return AppColors.grayscale00;
+        return Colors.transparent;
       case FlatButtonStatus.pressed:
         return AppColors.grayscale10;
       case FlatButtonStatus.loading:
-        return AppColors.grayscale00;
+        return Colors.transparent;
       case FlatButtonStatus.disabled:
-        return AppColors.grayscale00;
+        return Colors.transparent;
       default:
-        return AppColors.grayscale00;
+        return Colors.transparent;
     }
   }
 

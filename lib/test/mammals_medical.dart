@@ -9,6 +9,7 @@ import 'package:sulala_app/test/add_vaccination.dart';
 import 'package:sulala_app/test/edit_medical_checkup.dart';
 import 'package:sulala_app/test/edit_surgeries.dart';
 import 'package:sulala_app/test/edit_vaccination.dart';
+import 'package:sulala_app/test/in_the_pregnant_drawup.dart';
 import 'package:sulala_app/test/pregnant_status_drawup.dart';
 import '../src/theme/colors/colors.dart';
 import '../src/theme/fonts/fonts.dart';
@@ -92,6 +93,26 @@ class _MammalsMedicalState extends State<MammalsMedical> {
     });
   }
 
+  void _showIsPregnantSelection(BuildContext context) {
+    showModalBottomSheet(
+      showDragHandle: true,
+      backgroundColor: Colors.transparent,
+      context: context,
+      isScrollControlled: true,
+      isDismissible: true,
+      builder: (BuildContext context) {
+        return IsPregnantWidget(
+          mammalpregnantStatuses: mammalpregnantStatuses,
+          newMammalpregnantStatus: newMammalpregnantStatus,
+        );
+      },
+    ).then((_) {
+      setState(() {
+        newMammalpregnantStatus == mammalpregnantStatuses;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double heightMediaQuery = MediaQuery.of(context).size.height / 812;
@@ -150,9 +171,9 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                     ),
             ],
           ),
-          SizedBox(
-            height: heightMediaQuery * 8,
-          ),
+          // SizedBox(
+          //   height: heightMediaQuery * 8,
+          // ),
           _isMammalEditMode
               ? Column(
                   children: [
@@ -172,7 +193,7 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                       height: heightMediaQuery * 8,
                     ),
                     SizedBox(
-                      height: heightMediaQuery * 192,
+                      height: heightMediaQuery * 190,
                       child: const FileUploaderField(),
                     ),
                   ],
@@ -181,7 +202,7 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      mammalmedicalNeedsController.text,
+                      'Be sure to include joint support medicine, antibiotics, anti-inflammatory medication, and topical antiseptics when packing your first-aid kit for your horses. If you have the essentials, you can keep your four-legged friends in the best condition possible.',
                       style: AppFonts.body2(color: AppColors.grayscale70),
                     ),
                     SizedBox(
@@ -302,7 +323,7 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                 ),
                 ListTile(
                   onTap: () {
-                    _showexpdeliveryDatePickerModalSheet();
+                    _showIsPregnantSelection(context);
                   },
                   contentPadding: const EdgeInsets.only(right: 0, left: 0),
                   leading: Text(
@@ -343,6 +364,7 @@ class _MammalsMedicalState extends State<MammalsMedical> {
             height: 14 * heightMediaQuery,
           ),
           ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
             padding: EdgeInsets.zero,
             itemCount: 2,
             shrinkWrap:
@@ -432,6 +454,7 @@ class _MammalsMedicalState extends State<MammalsMedical> {
             height: 14 * heightMediaQuery,
           ),
           ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
             padding: EdgeInsets.zero,
             itemCount: 3,
             shrinkWrap:
@@ -521,6 +544,7 @@ class _MammalsMedicalState extends State<MammalsMedical> {
             height: 14 * heightMediaQuery,
           ),
           ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
             padding: EdgeInsets.zero,
             itemCount: 3,
             shrinkWrap:
@@ -590,7 +614,7 @@ class _MammalsMedicalState extends State<MammalsMedical> {
             ],
           ),
           SizedBox(
-            height: 16 * heightMediaQuery,
+            height: 24 * heightMediaQuery,
           ),
         ],
       ),
