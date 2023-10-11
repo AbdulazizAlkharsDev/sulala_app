@@ -54,6 +54,7 @@ dependencies:
   permission_handler: ^10.4.3
   flutter_riverpod: ^2.4.0
   intl: ^0.18.1
+  showcaseview: ^2.0.3
 
 dev_dependencies:
   flutter_test:

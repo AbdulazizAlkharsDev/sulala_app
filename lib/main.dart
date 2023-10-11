@@ -4,8 +4,6 @@ import 'package:sulala_app/src/screens/guest_mode/search_page_animals.dart';
 import 'package:sulala_app/src/screens/guest_mode/search_page_owner_animals.dart';
 import 'package:sulala_app/src/screens/sign_in/sign_in.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar.dart';
 import 'package:sulala_app/src/screens/guest_mode/search_page.dart';
 import 'package:sulala_app/src/screens/guest_mode/search_page_house_farm.dart';
 import 'package:sulala_app/src/screens/sign_up/join_now.dart';
@@ -13,6 +11,7 @@ import 'package:sulala_app/src/screens/sign_up/sign_up.dart';
 import 'package:sulala_app/src/screens/sign_up/create_password.dart';
 import 'package:sulala_app/src/screens/reg_mode/notifications_list.dart';
 import 'package:sulala_app/src/screens/reg_mode/reg_home_page.dart';
+import 'package:sulala_app/test/SplashScreen.dart';
 
 void main() {
   runApp(const ProviderScope(
@@ -26,7 +25,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.grayscale00,
         bottomSheetTheme: const BottomSheetThemeData(
@@ -35,13 +33,14 @@ class MyApp extends StatelessWidget {
         ),
       ),
       title: 'Sulala App',
-      home: Builder(
-        builder: (context) {
-          AppFonts.setWidthFactor(context);
-          return const MyAppHomePage();
-        },
-      ),
+      // home: Builder(
+      //   builder: (context) {
+      //     AppFonts.setWidthFactor(context);
+      //     return const MyAppHomePage();
+      //   },
+      // ),
       routes: {
+        '/': (context) => SplashScreen(),
         '/search': (context) => const SearchPage(),
         '/search_house_farm': (context) => const SearchPageHouseFarm(),
         '/search_animals': (context) => const SearchPageAnimals(),
