@@ -3,7 +3,6 @@ import 'package:sulala_app/test/StartUrFarm.dart';
 
 import '../src/screens/guest_mode/search_page.dart';
 
-
 class HomeScreen1 extends StatefulWidget {
   const HomeScreen1({super.key});
 
@@ -51,7 +50,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
           Row(
             children: [
               Expanded(
-                child: CardWidget(
+                child: CardWidget1(
                   icon: Icons.book,
                   text: 'Searching For Animals',
                   buttonText: 'Find Animals',
@@ -63,7 +62,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                 ),
               ),
               Expanded(
-                child: CardWidget(
+                child: CardWidget1(
                   icon: Icons.music_note,
                   text: 'Search For\nFarms',
                   buttonText: 'Find Farms',
@@ -120,14 +119,14 @@ class _HomeScreen1State extends State<HomeScreen1> {
   }
 }
 
-class CardWidget extends StatelessWidget {
+class CardWidget1 extends StatelessWidget {
   final IconData icon;
   final String text;
   final String buttonText;
   final VoidCallback onPressed;
   final Color color;
 
-  const CardWidget({
+  const CardWidget1({
     super.key,
     required this.icon,
     required this.text,

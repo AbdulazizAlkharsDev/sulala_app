@@ -11,7 +11,7 @@ import 'package:sulala_app/src/screens/sign_up/sign_up.dart';
 import 'package:sulala_app/src/screens/sign_up/create_password.dart';
 import 'package:sulala_app/src/screens/reg_mode/notifications_list.dart';
 import 'package:sulala_app/src/screens/reg_mode/reg_home_page.dart';
-import 'package:sulala_app/test/SplashScreen.dart';
+import 'package:sulala_app/test/splash_screen.dart';
 
 void main() {
   runApp(const ProviderScope(

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:showcaseview/showcaseview.dart';
-import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar.dart';
-
+import 'package:sulala_app/test/guest_mode_tutorial.dart';
 import '../src/theme/colors/colors.dart';
 import '../src/theme/fonts/fonts.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
@@ -24,12 +25,12 @@ class _SplashScreenState extends State<SplashScreen> {
         isLoading = false; // Hide the loading indicator
       });
 
-      // After the delay, navigate to the GuestHomeScreenTutorial
+      // After the delay, navigate to the Home Page Based on the user Auth
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => ShowCaseWidget(
             builder: Builder(
-              builder: (context) => const MyAppHomePage(),
+              builder: (context) => const GuestModeTutorial(),
             ),
           ),
         ),
