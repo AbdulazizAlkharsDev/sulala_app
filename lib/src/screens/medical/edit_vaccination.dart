@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/navigate_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/src/widgets/inputs/date_fields/primary_date_field.dart';
 import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
-import '../src/theme/colors/colors.dart';
-import '../src/theme/fonts/fonts.dart';
-import '../src/widgets/inputs/file_uploader_fields/file_uploader_field.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/inputs/file_uploader_fields/file_uploader_field.dart';
 
-class AddVaccination extends StatefulWidget {
-  const AddVaccination({super.key});
+class EditVaccination extends StatefulWidget {
+  const EditVaccination({super.key});
 
   @override
-  State<AddVaccination> createState() => _AddVaccinationState();
+  State<EditVaccination> createState() => _EditVaccinationState();
 }
 
-class _AddVaccinationState extends State<AddVaccination> {
+class _EditVaccinationState extends State<EditVaccination> {
   TextEditingController vaccineNameController = TextEditingController();
   DateTime? firstDoseDate;
   DateTime? secondDoseDate;
@@ -53,7 +54,7 @@ class _AddVaccinationState extends State<AddVaccination> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  "Add Vaccination",
+                  "Edit Vaccination",
                   style: AppFonts.title3(color: AppColors.grayscale90),
                 ),
                 SizedBox(
@@ -86,18 +87,34 @@ class _AddVaccinationState extends State<AddVaccination> {
                     child: const FileUploaderField(),
                   ),
                 ),
+                SizedBox(
+                  height: 16 * heightMediaQuery,
+                ),
+                SizedBox(
+                  height: 52 * heightMediaQuery,
+                  width: 343 * widthMediaQuery,
+                  child: PrimaryButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    text: 'Save',
+                  ),
+                ),
+                SizedBox(
+                  height: 8 * heightMediaQuery,
+                ),
+                SizedBox(
+                  height: 52 * heightMediaQuery,
+                  width: 343 * widthMediaQuery,
+                  child: NavigateButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    text: 'Delete',
+                  ),
+                ),
               ],
             ),
-          ),
-        ),
-        floatingActionButton: SizedBox(
-          height: 52 * heightMediaQuery,
-          width: 343 * widthMediaQuery,
-          child: PrimaryButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            text: 'Save',
           ),
         ),
       ),

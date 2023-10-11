@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/flat_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/secondary_button.dart';
-import '../src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import '../src/widgets/inputs/draw_ups/draw_up_widget.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/inputs/draw_ups/draw_up_widget.dart';
 
 // ignore: must_be_immutable
 class IsPregnantWidget extends StatelessWidget {

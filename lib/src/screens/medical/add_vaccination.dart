@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/navigate_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/src/widgets/inputs/date_fields/primary_date_field.dart';
 import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
-import '../src/theme/colors/colors.dart';
-import '../src/theme/fonts/fonts.dart';
-import '../src/widgets/inputs/file_uploader_fields/file_uploader_field.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/inputs/file_uploader_fields/file_uploader_field.dart';
 
-class EditSurgeriesRecords extends StatefulWidget {
-  const EditSurgeriesRecords({super.key});
+class AddVaccination extends StatefulWidget {
+  const AddVaccination({super.key});
 
   @override
-  State<EditSurgeriesRecords> createState() => _EditSurgeriesRecordsState();
+  State<AddVaccination> createState() => _AddVaccinationState();
 }
 
-class _EditSurgeriesRecordsState extends State<EditSurgeriesRecords> {
-  TextEditingController surgeryNameController = TextEditingController();
+class _AddVaccinationState extends State<AddVaccination> {
+  TextEditingController vaccineNameController = TextEditingController();
   DateTime? firstDoseDate;
   DateTime? secondDoseDate;
 
@@ -54,27 +53,27 @@ class _EditSurgeriesRecordsState extends State<EditSurgeriesRecords> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  "Edit Surgeries Records",
+                  "Add Vaccination",
                   style: AppFonts.title3(color: AppColors.grayscale90),
                 ),
                 SizedBox(
-                  height: 16 * heightMediaQuery,
+                  height: 32 * heightMediaQuery,
                 ),
                 PrimaryTextField(
-                  hintText: 'Surgery Name',
-                  controller: surgeryNameController,
-                  labelText: 'Surgery Name',
+                  hintText: 'Vaccine Name',
+                  controller: vaccineNameController,
+                  labelText: 'Vaccine Name',
                 ),
                 SizedBox(height: 24 * heightMediaQuery),
                 PrimaryDateField(
-                  hintText: 'Date Of Surgery',
-                  labelText: 'Date Of Surgery',
+                  hintText: 'Date Of Vaccination',
+                  labelText: 'Date Of Vaccination',
                   onChanged: (value) => setState(() => firstDoseDate = value),
                 ),
                 SizedBox(height: 24 * heightMediaQuery),
                 PrimaryDateField(
-                  hintText: 'Date Of Next Surgery',
-                  labelText: 'Date Of Next Surgery',
+                  hintText: 'Date Of Next Vaccination',
+                  labelText: 'Date Of Next Vaccination',
                   onChanged: (value) => setState(() => secondDoseDate = value),
                 ),
                 SizedBox(height: 24 * heightMediaQuery),
@@ -87,34 +86,18 @@ class _EditSurgeriesRecordsState extends State<EditSurgeriesRecords> {
                     child: const FileUploaderField(),
                   ),
                 ),
-                SizedBox(
-                  height: 16 * heightMediaQuery,
-                ),
-                SizedBox(
-                  height: 52 * heightMediaQuery,
-                  width: 343 * widthMediaQuery,
-                  child: PrimaryButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    text: 'Save',
-                  ),
-                ),
-                SizedBox(
-                  height: 8 * heightMediaQuery,
-                ),
-                SizedBox(
-                  height: 52 * heightMediaQuery,
-                  width: 343 * widthMediaQuery,
-                  child: NavigateButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    text: 'Delete',
-                  ),
-                ),
               ],
             ),
+          ),
+        ),
+        floatingActionButton: SizedBox(
+          height: 52 * heightMediaQuery,
+          width: 343 * widthMediaQuery,
+          child: PrimaryButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            text: 'Save',
           ),
         ),
       ),

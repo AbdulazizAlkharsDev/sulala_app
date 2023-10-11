@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.grayscale00,
         bottomSheetTheme: const BottomSheetThemeData(

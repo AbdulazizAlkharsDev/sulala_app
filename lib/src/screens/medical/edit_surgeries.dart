@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/navigate_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/src/widgets/inputs/date_fields/primary_date_field.dart';
 import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
-import '../src/theme/colors/colors.dart';
-import '../src/theme/fonts/fonts.dart';
-import '../src/widgets/inputs/file_uploader_fields/file_uploader_field.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/inputs/file_uploader_fields/file_uploader_field.dart';
 
-class AddMedicalCheckUp extends StatefulWidget {
-  const AddMedicalCheckUp({super.key});
+class EditSurgeriesRecords extends StatefulWidget {
+  const EditSurgeriesRecords({super.key});
 
   @override
-  State<AddMedicalCheckUp> createState() => _AddMedicalCheckUpState();
+  State<EditSurgeriesRecords> createState() => _EditSurgeriesRecordsState();
 }
 
-class _AddMedicalCheckUpState extends State<AddMedicalCheckUp> {
-  TextEditingController checkupNameController = TextEditingController();
+class _EditSurgeriesRecordsState extends State<EditSurgeriesRecords> {
+  TextEditingController surgeryNameController = TextEditingController();
   DateTime? firstDoseDate;
   DateTime? secondDoseDate;
 
@@ -53,27 +54,27 @@ class _AddMedicalCheckUpState extends State<AddMedicalCheckUp> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  "Add Medical Checkup",
+                  "Edit Surgeries Records",
                   style: AppFonts.title3(color: AppColors.grayscale90),
                 ),
                 SizedBox(
-                  height: 32 * heightMediaQuery,
+                  height: 16 * heightMediaQuery,
                 ),
                 PrimaryTextField(
-                  hintText: 'Checkup Name',
-                  controller: checkupNameController,
-                  labelText: 'Checkup Name',
+                  hintText: 'Surgery Name',
+                  controller: surgeryNameController,
+                  labelText: 'Surgery Name',
                 ),
                 SizedBox(height: 24 * heightMediaQuery),
                 PrimaryDateField(
-                  hintText: 'Date Of Checkup',
-                  labelText: 'Date Of Checkup',
+                  hintText: 'Date Of Surgery',
+                  labelText: 'Date Of Surgery',
                   onChanged: (value) => setState(() => firstDoseDate = value),
                 ),
                 SizedBox(height: 24 * heightMediaQuery),
                 PrimaryDateField(
-                  hintText: 'Date Of Next Checkup',
-                  labelText: 'Date Of Next Checkup',
+                  hintText: 'Date Of Next Surgery',
+                  labelText: 'Date Of Next Surgery',
                   onChanged: (value) => setState(() => secondDoseDate = value),
                 ),
                 SizedBox(height: 24 * heightMediaQuery),
@@ -86,18 +87,34 @@ class _AddMedicalCheckUpState extends State<AddMedicalCheckUp> {
                     child: const FileUploaderField(),
                   ),
                 ),
+                SizedBox(
+                  height: 16 * heightMediaQuery,
+                ),
+                SizedBox(
+                  height: 52 * heightMediaQuery,
+                  width: 343 * widthMediaQuery,
+                  child: PrimaryButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    text: 'Save',
+                  ),
+                ),
+                SizedBox(
+                  height: 8 * heightMediaQuery,
+                ),
+                SizedBox(
+                  height: 52 * heightMediaQuery,
+                  width: 343 * widthMediaQuery,
+                  child: NavigateButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    text: 'Delete',
+                  ),
+                ),
               ],
             ),
-          ),
-        ),
-        floatingActionButton: SizedBox(
-          height: 52 * heightMediaQuery,
-          width: 343 * widthMediaQuery,
-          child: PrimaryButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            text: 'Save',
           ),
         ),
       ),

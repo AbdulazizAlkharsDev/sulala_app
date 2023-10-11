@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../src/theme/colors/colors.dart';
-import '../src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import '../src/widgets/inputs/draw_ups/draw_up_widget.dart';
+import '../../theme/colors/colors.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/inputs/draw_ups/draw_up_widget.dart';
 
 // ignore: must_be_immutable
 class PregnantStatusWidget extends StatelessWidget {
