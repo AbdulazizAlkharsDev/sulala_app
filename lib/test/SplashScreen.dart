@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     // Simulate loading for 2 seconds (you can adjust this duration)
-    Future.delayed(const Duration(seconds: 1000), () {
+    Future.delayed(const Duration(seconds: 2), () {
       setState(() {
         isLoading = false; // Hide the loading indicator
       });
