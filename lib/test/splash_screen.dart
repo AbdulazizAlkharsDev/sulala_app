@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:showcaseview/showcaseview.dart';
+import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar.dart';
 import 'package:sulala_app/test/guest_mode_tutorial.dart';
 import '../src/theme/colors/colors.dart';
 import '../src/theme/fonts/fonts.dart';
@@ -32,6 +33,12 @@ class _SplashScreenState extends State<SplashScreen> {
             builder: Builder(
               builder: (context) => const GuestModeTutorial(),
             ),
+            enableAutoScroll: true,
+            onFinish: () {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => const MyAppHomePage()),
+              );
+            },
           ),
         ),
       );

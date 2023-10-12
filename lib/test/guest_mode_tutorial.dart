@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:showcaseview/showcaseview.dart';
-import 'package:sulala_app/test/GuestHomePage.dart';
 import '../src/theme/colors/colors.dart';
 import '../src/theme/fonts/fonts.dart';
+import '../src/widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 import '../src/widgets/pages/homepage_widgets/card.dart';
+import '../src/widgets/pages/homepage_widgets/title_text.dart';
 
 class GuestModeTutorial extends StatefulWidget {
   const GuestModeTutorial({super.key});
@@ -22,9 +24,14 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) =>
-        ShowCaseWidget.of(context).startShowCase(
-            [_findAnimals, _findFarms, _joinNow, _signIn, _next1]));
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => ShowCaseWidget.of(context).startShowCase(
+              [_findAnimals, _findFarms, _joinNow, _signIn, _next1],
+            ));
+  }
+
+  void _cancelShowcase() {
+    ShowCaseWidget.of(context).dismiss();
   }
 
   @override
@@ -55,7 +62,9 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.0097),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    _cancelShowcase();
+                  },
                   child: const Image(
                     image:
                         AssetImage('assets/icons/frame/24px/Icon-button1.png'),
@@ -69,7 +78,7 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
         elevation: 0,
       ),
       body: Padding(
-        padding: EdgeInsets.all(24 * heightMediaQuery),
+        padding: EdgeInsets.all(16 * heightMediaQuery),
         child: Column(
           children: [
             Row(
@@ -127,14 +136,12 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
                 ),
               ],
             ),
-            const SizedBox(height: 120),
-            const Text(
-              'Want To Start Your Farm\n Right Now & Join',
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 20),
+            SizedBox(height: 107 * heightMediaQuery),
+            const TitleText(
+                text: 'Want to start your farm\nright now and join?'),
+            SizedBox(height: 24 * heightMediaQuery),
             Showcase(
+              
               key: _joinNow,
               description: 'Join The Farms',
               tooltipBackgroundColor: const Color.fromARGB(255, 36, 86, 38),
@@ -146,21 +153,19 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
               targetBorderRadius: const BorderRadius.all(
                 Radius.circular(50),
               ),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 36, 86,
-                      38), // Set the background color of the button
-                ),
-                onPressed: () {},
-                child: const Text(
-                  'Join Now',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16), // Set the text color of the button
+              child: SizedBox(
+                height: 52 * heightMediaQuery,
+                width: 108 * heightMediaQuery,
+                child: PrimaryButton(
+                  text: 'Join now',
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/join_now');
+                  },
+                  status: PrimaryButtonStatus.idle,
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 8 * heightMediaQuery),
             Showcase(
               key: _signIn,
               description: 'Sign In By Clicking This',
@@ -172,12 +177,12 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
                 onPressed: () {
                   // Handle text button press
                 },
-                child: const Text(
-                  'Sign In',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: const Color.fromARGB(255, 36, 86, 38),
-                  ),
+                child: PrimaryTextButton(
+                  status: TextStatus.idle,
+                  text: 'Sign in',
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/sign_in');
+                  },
                 ),
               ),
             ),
@@ -186,7 +191,7 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
       ),
       floatingActionButton: Showcase(
         key: _next1,
-        targetPadding: EdgeInsets.all(5),
+        targetPadding: const EdgeInsets.all(5),
         targetBorderRadius: const BorderRadius.all(
           Radius.circular(50),
         ),
@@ -204,7 +209,7 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
           // );
         },
         disposeOnTap: true,
-        child: Container(
+        child: SizedBox(
           height: 70,
           width: 100,
           child: FloatingActionButton(
@@ -220,7 +225,7 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
             elevation: 10,
             shape: const CircleBorder(),
             child: const Icon(
-              Icons.arrow_right_alt,
+              Icons.arrow_forward_rounded,
               size: 54,
             ),
           ),
