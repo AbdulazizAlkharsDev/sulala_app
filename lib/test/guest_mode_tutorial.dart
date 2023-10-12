@@ -141,7 +141,6 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
                 text: 'Want to start your farm\nright now and join?'),
             SizedBox(height: 24 * heightMediaQuery),
             Showcase(
-              
               key: _joinNow,
               description: 'Join The Farms',
               tooltipBackgroundColor: const Color.fromARGB(255, 36, 86, 38),
@@ -209,29 +208,23 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
           // );
         },
         disposeOnTap: true,
-        child: SizedBox(
-          height: 70,
-          width: 100,
-          child: FloatingActionButton(
-            onPressed: () {
-              // Navigator.of(context).push(
-              //   MaterialPageRoute(
-              //     builder: (context) =>
-              //         const RegHomeScreenTutorial(), // Replace with your desired page.
-              //   ),
-              // );
-            },
-            backgroundColor: Colors.white,
-            elevation: 10,
-            shape: const CircleBorder(),
-            child: const Icon(
-              Icons.arrow_forward_rounded,
-              size: 54,
-            ),
+        child: FloatingActionButton(
+          onPressed: () {
+            // Navigator.of(context).push(
+            //   MaterialPageRoute(
+            //     builder: (context) =>
+            //         const RegHomeScreenTutorial(), // Replace with your desired page.
+            //   ),
+            // );
+          },
+          backgroundColor: Colors.white,
+          shape: const CircleBorder(),
+          child: const Icon(
+            Icons.arrow_forward_rounded,
+            color: Colors.black,
           ),
         ),
       ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }
