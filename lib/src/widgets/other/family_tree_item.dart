@@ -8,6 +8,7 @@ class FamilyTreeItem extends StatelessWidget {
   final String sex;
   final String id;
   final String tag;
+  final bool selected;
 
   const FamilyTreeItem({
     Key? key, // Add 'Key?' type to the key parameter
@@ -16,6 +17,7 @@ class FamilyTreeItem extends StatelessWidget {
     required this.sex,
     required this.tag,
     required this.id,
+    required this.selected,
   }) : super(key: key); // Call the super constructor with the provided key
 
   @override
@@ -30,11 +32,28 @@ class FamilyTreeItem extends StatelessWidget {
 
     return Column(
       children: [
-        CircleAvatar(
-          backgroundColor: Colors.transparent,
-          backgroundImage: getImage(),
-          radius: MediaQuery.of(context).size.width * 0.0875,
-        ),
+        (selected)
+            ? Container(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color.fromARGB(255, 255, 237, 74), // Shadow color
+                      blurRadius: 10, // Spread of the shadow
+                    ),
+                  ],
+                ),
+                child: CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  backgroundImage: getImage(),
+                  radius: MediaQuery.of(context).size.width * 0.0875,
+                ),
+              )
+            : CircleAvatar(
+                backgroundColor: Colors.transparent,
+                backgroundImage: getImage(),
+                radius: MediaQuery.of(context).size.width * 0.0875,
+              ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.009),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

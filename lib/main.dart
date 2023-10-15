@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
       //   },
       // ),
       routes: {
-        '/': (context) => SplashScreen(),
+        '/': (context) => const SplashScreen(),
         '/search': (context) => const SearchPage(),
         '/search_house_farm': (context) => const SearchPageHouseFarm(),
         '/search_animals': (context) => const SearchPageAnimals(),
