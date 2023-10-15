@@ -33,7 +33,6 @@ class _SplashScreenState extends State<SplashScreen> {
             builder: Builder(
               builder: (context) => const GuestModeTutorial(),
             ),
-            enableAutoScroll: true,
             onFinish: () {
               Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => const MyAppHomePage()),

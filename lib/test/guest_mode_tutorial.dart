@@ -19,15 +19,15 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
   final GlobalKey _findFarms = GlobalKey();
   final GlobalKey _joinNow = GlobalKey();
   final GlobalKey _signIn = GlobalKey();
-  final GlobalKey _next1 = GlobalKey();
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => ShowCaseWidget.of(context).startShowCase(
-              [_findAnimals, _findFarms, _joinNow, _signIn, _next1],
-            ));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ShowCaseWidget.of(context).startShowCase(
+        [_findAnimals, _findFarms, _joinNow, _signIn],
+      );
+    });
   }
 
   void _cancelShowcase() {
@@ -142,16 +142,15 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
             SizedBox(height: 24 * heightMediaQuery),
             Showcase(
               key: _joinNow,
-              description: 'Join The Farms',
-              tooltipBackgroundColor: const Color.fromARGB(255, 36, 86, 38),
-              descTextStyle: const TextStyle(
-                  fontSize: 18,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
-              targetPadding: const EdgeInsets.all(5),
-              targetBorderRadius: const BorderRadius.all(
-                Radius.circular(50),
-              ),
+              description: 'Join the App',
+              targetPadding: EdgeInsets.fromLTRB(
+                  50 * widthMediaQuery,
+                  25 * heightMediaQuery,
+                  50 * widthMediaQuery,
+                  25 * heightMediaQuery),
+              targetShapeBorder: const CircleBorder(),
+              tooltipBackgroundColor: Colors.transparent,
+              descTextStyle: AppFonts.headline1(color: AppColors.grayscale00),
               child: SizedBox(
                 height: 52 * heightMediaQuery,
                 width: 108 * heightMediaQuery,
@@ -166,12 +165,16 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
             ),
             SizedBox(height: 8 * heightMediaQuery),
             Showcase(
+              targetPadding: EdgeInsets.fromLTRB(
+                  50 * widthMediaQuery,
+                  25 * heightMediaQuery,
+                  50 * widthMediaQuery,
+                  25 * heightMediaQuery),
+              targetShapeBorder: const CircleBorder(),
+              tooltipBackgroundColor: Colors.transparent,
+              descTextStyle: AppFonts.headline1(color: AppColors.grayscale00),
               key: _signIn,
-              description: 'Sign In By Clicking This',
-              descTextStyle: const TextStyle(
-                  fontSize: 18,
-                  color: Color.fromARGB(255, 36, 86, 38),
-                  fontWeight: FontWeight.bold),
+              description: 'Sign in',
               child: TextButton(
                 onPressed: () {
                   // Handle text button press
@@ -186,43 +189,6 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
               ),
             ),
           ],
-        ),
-      ),
-      floatingActionButton: Showcase(
-        key: _next1,
-        targetPadding: const EdgeInsets.all(5),
-        targetBorderRadius: const BorderRadius.all(
-          Radius.circular(50),
-        ),
-        description: 'Click Here To Go To Next Page Tutorial',
-        descTextStyle: const TextStyle(
-            fontSize: 18,
-            color: Color.fromARGB(255, 36, 86, 38),
-            fontWeight: FontWeight.bold),
-        onTargetClick: () {
-          // Navigator.of(context).push(
-          //   MaterialPageRoute(
-          //     builder: (context) =>
-          //         const RegHomeScreenTutorial(), // Replace with your desired page.
-          //   ),
-          // );
-        },
-        disposeOnTap: true,
-        child: FloatingActionButton(
-          onPressed: () {
-            // Navigator.of(context).push(
-            //   MaterialPageRoute(
-            //     builder: (context) =>
-            //         const RegHomeScreenTutorial(), // Replace with your desired page.
-            //   ),
-            // );
-          },
-          backgroundColor: Colors.white,
-          shape: const CircleBorder(),
-          child: const Icon(
-            Icons.arrow_forward_rounded,
-            color: Colors.black,
-          ),
         ),
       ),
     );
