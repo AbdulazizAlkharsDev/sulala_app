@@ -20,9 +20,9 @@ class _FamilyTree extends State<FamilyTree> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            GestureDetector(child: AnimalCard(name: 'F1')),
+            GestureDetector(child: const AnimalCard(name: 'F1')),
             const SizedBox(width: 30),
-            AnimalCard(name: 'F2'),
+            const AnimalCard(name: 'F2'),
           ],
         ),
         LineDrawer(
@@ -61,9 +61,10 @@ class _FamilyTree extends State<FamilyTree> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             GestureDetector(
-                onDoubleTap: () {}, child: ParentAnimalCard(Parentname: 'M1')),
+                onDoubleTap: () {},
+                child: const ParentAnimalCard(parentname: 'M1')),
             const SizedBox(width: 30),
-            AnimalCard(name: 'M2'),
+            const AnimalCard(name: 'M2'),
           ],
         ),
         LineDrawer(
@@ -116,7 +117,7 @@ class _FamilyTree extends State<FamilyTree> {
                       showFatherParents = !showFatherParents;
                     });
                   },
-                  child: AnimalCard(name: 'Father')),
+                  child: const AnimalCard(name: 'Father')),
               const SizedBox(width: 135),
               GestureDetector(
                   onDoubleTap: () {
@@ -124,7 +125,7 @@ class _FamilyTree extends State<FamilyTree> {
                       showMotherParents = !showMotherParents;
                     });
                   },
-                  child: AnimalCard(name: 'Mother')),
+                  child: const AnimalCard(name: 'Mother')),
             ],
           ),
           LineDrawer(
@@ -157,7 +158,7 @@ class _FamilyTree extends State<FamilyTree> {
   }
 
   List<Widget> animalList = [
-    MainAnimalCard(
+    const MainAnimalCard(
       mainanimalname: 'Animal',
     ),
     LineDrawer(
@@ -181,7 +182,7 @@ class _FamilyTree extends State<FamilyTree> {
   ];
 
   List<Widget> childrenList = [
-    AnimalCard(name: 'Child 1'),
+    const AnimalCard(name: 'Child 1'),
   ];
 
   @override
@@ -267,7 +268,7 @@ class _FamilyTree extends State<FamilyTree> {
                             ),
                           childrenList[i],
                           if (i < childrenList.length - 1)
-                            CustomConnectorLine(),
+                            const CustomConnectorLine(),
                         ],
                       ],
                     ),
@@ -296,7 +297,8 @@ class _FamilyTree extends State<FamilyTree> {
 class MainAnimalCard extends StatefulWidget {
   final String mainanimalname;
 
-  MainAnimalCard({
+  const MainAnimalCard({
+    super.key,
     required this.mainanimalname,
   });
 
@@ -320,10 +322,10 @@ class _MainAnimalCardState extends State<MainAnimalCard> {
 class AnimalCard extends StatefulWidget {
   final String name;
 
-  AnimalCard({required this.name});
+  const AnimalCard({super.key, required this.name});
 
   @override
-  _AnimalCardState createState() => _AnimalCardState();
+  State<AnimalCard> createState() => _AnimalCardState();
 }
 
 class _AnimalCardState extends State<AnimalCard> {
@@ -354,61 +356,6 @@ class _AnimalCardState extends State<AnimalCard> {
     // Add more animal data as needed
   ];
 
-  void _showAnimalListModal(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      showDragHandle: true,
-      builder: (BuildContext context) {
-        return SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Text(
-                  'List Of Animals',
-                  style: TextStyle(
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Container(
-                height: 400,
-                child: ListView.builder(
-                  itemCount: animals.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final animalData = animals[index];
-                    final animalName = animalData['name'];
-                    final animalImage = animalData['image'];
-
-                    return ListTile(
-                      leading: CircleAvatar(
-                        radius: 25,
-                        backgroundImage: AssetImage(animalImage),
-                      ),
-                      title: Text(animalName),
-                      onTap: () {
-                        setState(() {
-                          selectedAnimalImage = animalImage;
-                          selectedAnimalName = animalName;
-                        });
-                        Navigator.of(context).pop(); // Close the modal sheet
-                      },
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return const FamilyTreeItem(
@@ -422,12 +369,12 @@ class _AnimalCardState extends State<AnimalCard> {
 }
 
 class ParentAnimalCard extends StatefulWidget {
-  final String Parentname;
+  final String parentname;
 
-  ParentAnimalCard({required this.Parentname});
+  const ParentAnimalCard({super.key, required this.parentname});
 
   @override
-  _ParentAnimalCard createState() => _ParentAnimalCard();
+  State<ParentAnimalCard> createState() => _ParentAnimalCard();
 }
 
 class _ParentAnimalCard extends State<ParentAnimalCard> {
@@ -480,7 +427,7 @@ class _ParentAnimalCard extends State<ParentAnimalCard> {
               const SizedBox(
                 height: 15,
               ),
-              Container(
+              SizedBox(
                 height: 400,
                 child: ListView.builder(
                   itemCount: animals.length,
@@ -532,7 +479,7 @@ class _ParentAnimalCard extends State<ParentAnimalCard> {
               children: [
                 if (selectedAnimalImage == null)
                   Text(
-                    widget.Parentname,
+                    widget.parentname,
                     style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
@@ -556,6 +503,8 @@ class _ParentAnimalCard extends State<ParentAnimalCard> {
 }
 
 class CustomConnectorLine extends StatelessWidget {
+  const CustomConnectorLine({super.key});
+
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
@@ -587,6 +536,8 @@ class CustomLinePainter extends CustomPainter {
 }
 
 class VerticalConnector extends StatelessWidget {
+  const VerticalConnector({super.key});
+
   @override
   Widget build(BuildContext context) {
     return CustomPaint(

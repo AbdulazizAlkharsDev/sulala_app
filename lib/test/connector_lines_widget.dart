@@ -89,8 +89,8 @@ class LinePainter extends CustomPainter {
 
       // Draw an arrowhead at the end of the line if desired
       if (config.drawArrow) {
-        final arrowLength = 10.0; // Length of the arrowhead
-        final arrowAngle = 20.0; // Angle of the arrowhead
+        const arrowLength = 10.0; // Length of the arrowhead
+        const arrowAngle = 20.0; // Angle of the arrowhead
         final arrowRadians =
             (currentAngle + config.angle + 180 - arrowAngle) * (pi / 180.0);
 

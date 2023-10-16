@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 import '../src/theme/colors/colors.dart';
@@ -80,23 +79,12 @@ class _TreeViewPageState extends State<TreeViewPage> {
     );
   }
 
-  Random r = Random();
-
   Widget animalCard(int a) {
     return InkWell(
       onTap: () {
-        print('clicked');
+        // print('clicked');
       },
-      child:
-          // FamilyTreeItem(
-          //   id: "12345",
-          //   name: '$a',
-          //   sex: 'Male',
-          //   tag: 'Borrowed',
-          //   selected: true,
-          // )
-
-          Padding(
+      child: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(
           children: [
