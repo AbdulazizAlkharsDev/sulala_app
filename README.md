@@ -12,6 +12,7 @@ A few resources to get you started if this is your first Flutter project:
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
   double heightMediaQuery = MediaQuery.of(context).size.height / 812;
   double widthMediaQuery = MediaQuery.of(context).size.width / 375;
+  import 'package:sulala_app/src/data/globals.dart' as globals;
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:showcaseview/showcaseview.dart';
-import '../src/theme/colors/colors.dart';
-import '../src/theme/fonts/fonts.dart';
-import '../src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import '../src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
-import '../src/widgets/pages/homepage_widgets/card.dart';
-import '../src/widgets/pages/homepage_widgets/title_text.dart';
+import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
+import '../../widgets/pages/homepage_widgets/card.dart';
+import '../../widgets/pages/homepage_widgets/title_text.dart';
 
 class GuestModeTutorial extends StatefulWidget {
   const GuestModeTutorial({super.key});
@@ -15,6 +16,7 @@ class GuestModeTutorial extends StatefulWidget {
 }
 
 class _GuestModeTutorial extends State<GuestModeTutorial> {
+  final GlobalKey _close = GlobalKey();
   final GlobalKey _findAnimals = GlobalKey();
   final GlobalKey _findFarms = GlobalKey();
   final GlobalKey _joinNow = GlobalKey();
@@ -25,7 +27,7 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ShowCaseWidget.of(context).startShowCase(
-        [_findAnimals, _findFarms, _joinNow, _signIn],
+        [_close, _findAnimals, _findFarms, _joinNow, _signIn],
       );
     });
   }
@@ -53,7 +55,7 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.of(context).pushNamed('/search');
+                    // Navigator.of(context).pushNamed('/search');
                   },
                   child: const Image(
                     image:
@@ -61,14 +63,23 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
                   ),
                 ),
                 SizedBox(width: MediaQuery.of(context).size.width * 0.0097),
-                InkWell(
-                  onTap: () {
-                    _cancelShowcase();
-                  },
-                  child: const Image(
-                    image:
-                        AssetImage('assets/icons/frame/24px/Icon-button1.png'),
-                  ),
+                Showcase(
+                  targetShapeBorder: const CircleBorder(),
+                  tooltipBackgroundColor: Colors.transparent,
+                  descTextStyle:
+                      AppFonts.headline1(color: AppColors.grayscale00),
+                  description: 'Close the tutorial',
+                  key: _close,
+                  child: InkWell(
+                      onTap: () {
+                        _cancelShowcase();
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const MyAppHomePage()));
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Icon(Icons.close, color: AppColors.grayscale90),
+                      )),
                 ),
               ],
             ),
@@ -103,7 +114,7 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
                       title: 'Searching\nfor animals?',
                       buttonText: 'Find animals',
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/search_animals');
+                        // Navigator.of(context).pushNamed('/search_animals');
                       },
                     ),
                   ),
@@ -129,7 +140,7 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
                       title: 'Searching \nfor farm?',
                       buttonText: 'Find farms',
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/search_house_farm');
+                        // Navigator.of(context).pushNamed('/search_house_farm');
                       },
                     ),
                   ),
@@ -157,7 +168,7 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
                 child: PrimaryButton(
                   text: 'Join now',
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/join_now');
+                    // Navigator.of(context).pushNamed('/join_now');
                   },
                   status: PrimaryButtonStatus.idle,
                 ),
@@ -183,7 +194,7 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
                   status: TextStatus.idle,
                   text: 'Sign in',
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/sign_in');
+                    // Navigator.of(context).pushNamed('/sign_in');
                   },
                 ),
               ),

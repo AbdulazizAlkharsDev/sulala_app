@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:graphite/graphite.dart';
 import '../src/theme/colors/colors.dart';
@@ -17,16 +15,26 @@ List<NodeInput> flowChart = [
   //   EdgeInput(outcome: "mainAnimal"),
   // ]),
   NodeInput(id: "mainAnimal", next: [
-    EdgeInput(outcome: "child1"),
-    EdgeInput(outcome: "child2"),
-    EdgeInput(outcome: "child3"),
+    EdgeInput(outcome: "startPoint"),
   ]),
+  NodeInput(
+      id: "startPoint",
+      next: [
+        EdgeInput(outcome: "child1"),
+        EdgeInput(outcome: "child2"),
+        EdgeInput(outcome: "child3"),
+        EdgeInput(outcome: "child4"),
+        EdgeInput(outcome: "child5"),
+      ],
+      size: const NodeSize(width: 0, height: 0)),
   NodeInput(id: "child1", next: []),
   NodeInput(id: "child2", next: []),
   NodeInput(id: "child3", next: []),
+  NodeInput(id: "child4", next: []),
+  NodeInput(id: "child5", next: []),
 ];
 
-enum FlowStepType { mainAnimal, child, father, mother }
+enum FlowStepType { mainAnimal, startPoint, child, father, mother }
 
 class FlowStep {
   final FlowStepType type;
@@ -37,9 +45,12 @@ Map<String, FlowStep> data = {
   // "father": FlowStep(type: FlowStepType.father),
   // "mother": FlowStep(type: FlowStepType.mother),
   "mainAnimal": FlowStep(type: FlowStepType.mainAnimal),
+  "startPoint": FlowStep(type: FlowStepType.startPoint),
   "child1": FlowStep(type: FlowStepType.child),
   "child2": FlowStep(type: FlowStepType.child),
   "child3": FlowStep(type: FlowStepType.child),
+  "child4": FlowStep(type: FlowStepType.child),
+  "child5": FlowStep(type: FlowStepType.child),
 };
 
 class FlowchartPage extends StatefulWidget {
@@ -60,6 +71,8 @@ class FlowchartPageState extends State<FlowchartPage> {
         return Father(data: info);
       case FlowStepType.mother:
         return Mother(data: info);
+      case FlowStepType.startPoint:
+        return StartPoint(data: info);
     }
   }
 
@@ -99,74 +112,11 @@ class FlowchartPageState extends State<FlowchartPage> {
           maxScale: 10,
           constrained: false,
           child: DirectGraph(
-            pathBuilder: (income, node, points, arrowType) {
-              final points = [
-                [310.0, 200.0], // X and Y coordinates of the starting point
-                [310.0, 250.0], // X and Y coordinates of the ending point
-              ];
-              final path = Path();
-
-              // Calculate the midpoint between the start and end points
-              final startPoint = Offset(points[0][0], points[0][1]);
-              final endPoint = Offset(points[1][0], points[1][1]);
-              final midpoint = startPoint + (endPoint - startPoint) / 2;
-
-              // Calculate the angle of the path with a radius of 8
-              const angleRadius = 8.0;
-              final angle = atan2(
-                  endPoint.dy - startPoint.dy, endPoint.dx - startPoint.dx);
-              final controlPoint = Offset(
-                midpoint.dx + angleRadius * cos(angle - pi / 2),
-                midpoint.dy + angleRadius * sin(angle - pi / 2),
-              );
-
-              // Move to the starting point
-              path.moveTo(points[0][0], points[0][1]);
-
-              // Add a dot at the starting point (you can customize the size)
-              final dotRadius = 3.0;
-              path.addArc(
-                Rect.fromCircle(center: startPoint, radius: dotRadius),
-                0,
-                2 * pi,
-              );
-
-              // Add the curved line to the arrow
-              path.quadraticBezierTo(
-                controlPoint.dx,
-                controlPoint.dy,
-                points[1][0],
-                points[1][1],
-              );
-
-              return path;
-
-              // // Customize the path for each edge here
-              // final path = Path();
-              // path.moveTo(points[0][0], points[0][1]);
-
-              // // You can customize the path as needed based on the incoming edge information
-              // // and the points provided.
-
-              // // For example, to create a simple curved path, you can use quadratic Bezier curve:
-              // // final controlPointX = (points[0][0] + points[1][0]) / 2;
-              // // final controlPointY = (points[0][1] + points[1][1]) / 2 - 50;
-              // // path.quadraticBezierTo(
-              // //     controlPointX, controlPointY, points[1][0], points[1][1]);
-
-              // // Or create straight lines:
-              // for (var i = 1; i < points.length; i++) {
-              //   path.lineTo(points[i][0], points[i][1]);
-              // }
-
-              // return path;
-            },
             list: list,
             defaultCellSize:
-                Size(100 * widthMediaQuery, 140 * heightMediaQuery),
-            cellPadding: EdgeInsets.symmetric(
-                vertical: 36 * heightMediaQuery,
-                horizontal: 44 * widthMediaQuery),
+                Size(100 * widthMediaQuery, 150 * heightMediaQuery),
+            cellPadding:
+                const EdgeInsets.symmetric(vertical: -10, horizontal: 0),
             contactEdgesDistance: 0,
             orientation: MatrixOrientation.Vertical,
             nodeBuilder: (BuildContext context, NodeInput node) =>
@@ -174,12 +124,12 @@ class FlowchartPageState extends State<FlowchartPage> {
             centered: true,
             minScale: .1,
             maxScale: 1,
-            clipBehavior: Clip.hardEdge,
-            tipAngle: 0.5,
+            tipAngle: 0,
             tipLength: 5,
             paintBuilder: (edge) {
               return Paint()
                 ..color = AppColors.primary10
+                ..strokeJoin = StrokeJoin.round
                 ..strokeWidth = 2
                 ..strokeCap = StrokeCap.round
                 ..style = PaintingStyle.stroke;
@@ -201,12 +151,15 @@ class MainAnimal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 16.0),
-      child: FamilyTreeItem(
-        id: "12345",
-        name: name,
-        sex: 'Male',
-        tag: 'Borrowed',
-        selected: true,
+      child: InkWell(
+        onTap: () {},
+        child: FamilyTreeItem(
+          id: "12345",
+          name: name,
+          sex: 'Male',
+          tag: 'Borrowed',
+          selected: true,
+        ),
       ),
     );
   }
@@ -222,12 +175,15 @@ class Child extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0),
-      child: FamilyTreeItem(
-        id: "12345",
-        name: name,
-        sex: 'Male',
-        tag: 'Borrowed',
-        selected: false,
+      child: InkWell(
+        onTap: () {},
+        child: FamilyTreeItem(
+          id: "12345",
+          name: name,
+          sex: 'Male',
+          tag: 'Borrowed',
+          selected: false,
+        ),
       ),
     );
   }
@@ -264,5 +220,16 @@ class Mother extends StatelessWidget {
       tag: 'Borrowed',
       selected: false,
     );
+  }
+}
+
+class StartPoint extends StatelessWidget {
+  final FlowStep data;
+
+  const StartPoint({super.key, required this.data});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox.shrink();
   }
 }

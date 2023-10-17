@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/screens/sign_up/sign_up.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
@@ -206,8 +207,12 @@ class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
                                             setState(() {
                                               // whoOwnTheFarmController.clear();
                                               hasError = false;
-                                              Navigator.pushNamed(
-                                                  context, '/sign_up');
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const SignUp(),
+                                                ),
+                                              );
                                             });
                                           } else {
                                             setState(() {

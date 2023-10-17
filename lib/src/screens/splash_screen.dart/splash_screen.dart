@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:showcaseview/showcaseview.dart';
 import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar.dart';
-import 'package:sulala_app/test/guest_mode_tutorial.dart';
-import '../src/theme/colors/colors.dart';
-import '../src/theme/fonts/fonts.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -31,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
         MaterialPageRoute(
           builder: (context) => ShowCaseWidget(
             builder: Builder(
-              builder: (context) => const GuestModeTutorial(),
+              builder: (context) => const MyAppHomePage(),
             ),
             onFinish: () {
               Navigator.of(context).pushReplacement(

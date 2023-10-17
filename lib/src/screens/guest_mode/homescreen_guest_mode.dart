@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/screens/guest_mode/search_page.dart';
+import 'package:sulala_app/src/screens/guest_mode/search_page_animals.dart';
+import 'package:sulala_app/src/screens/guest_mode/search_page_house_farm.dart';
 import 'package:sulala_app/src/screens/guest_mode/shimmer_homescreen.dart';
+import 'package:sulala_app/src/screens/sign_in/sign_in.dart';
+import 'package:sulala_app/src/screens/sign_up/join_now.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
-
 import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
 import '../../widgets/pages/homepage_widgets/card.dart';
 import '../../widgets/pages/homepage_widgets/title_text.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,6 +21,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  double heightMediaQuery = globals.heightMediaQuery;
+  double widthMediaQuery = globals.widthMediaQuery;
   bool _isLoading = true; // Add a boolean for loading state
 
   @override
@@ -53,7 +60,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).pushNamed('/search');
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const SearchPage(),
+                        ),
+                      );
                     },
                     child: const Image(
                       image:
@@ -125,7 +136,11 @@ class _HomeScreenState extends State<HomeScreen> {
               title: 'Searching\nfor animals?',
               buttonText: 'Find animals',
               onPressed: () {
-                Navigator.of(context).pushNamed('/search_animals');
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const SearchPageAnimals(),
+                  ),
+                );
               },
             ),
           ),
@@ -137,7 +152,11 @@ class _HomeScreenState extends State<HomeScreen> {
               title: 'Searching \nfor farm?',
               buttonText: 'Find farms',
               onPressed: () {
-                Navigator.of(context).pushNamed('/search_house_farm');
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const SearchPageHouseFarm(),
+                  ),
+                );
               },
             ),
           ),
@@ -152,7 +171,11 @@ class _HomeScreenState extends State<HomeScreen> {
         child: PrimaryButton(
           text: 'Join now',
           onPressed: () {
-            Navigator.of(context).pushNamed('/join_now');
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const JoinNow(),
+              ),
+            );
           },
           status: PrimaryButtonStatus.idle,
         ),
@@ -162,7 +185,11 @@ class _HomeScreenState extends State<HomeScreen> {
         status: TextStatus.idle,
         text: 'Sign in',
         onPressed: () {
-          Navigator.of(context).pushNamed('/sign_in');
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const SignIn(),
+            ),
+          );
         },
       ),
     ];
