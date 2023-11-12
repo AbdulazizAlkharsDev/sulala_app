@@ -7,6 +7,7 @@ import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
 import '../../widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 import '../../widgets/pages/homepage_widgets/card.dart';
 import '../../widgets/pages/homepage_widgets/title_text.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class GuestModeTutorial extends StatefulWidget {
   const GuestModeTutorial({super.key});
@@ -38,8 +39,8 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
+    // double heightMediaQuery = MediaQuery.of(context).size.height / 812;
+    // double widthMediaQuery = MediaQuery.of(context).size.width / 375;
 
     return Scaffold(
       appBar: AppBar(
@@ -62,7 +63,7 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
                         AssetImage('assets/icons/frame/24px/Icon-button.png'),
                   ),
                 ),
-                SizedBox(width: MediaQuery.of(context).size.width * 0.0097),
+                SizedBox(width: globals.widthMediaQuery * 4),
                 Showcase(
                   targetShapeBorder: const CircleBorder(),
                   tooltipBackgroundColor: Colors.transparent,
@@ -89,7 +90,7 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
         elevation: 0,
       ),
       body: Padding(
-        padding: EdgeInsets.all(16 * heightMediaQuery),
+        padding: EdgeInsets.all(16 * globals.heightMediaQuery),
         child: Column(
           children: [
             Row(
@@ -97,10 +98,11 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
                 Expanded(
                   child: Showcase(
                     targetPadding: EdgeInsets.fromLTRB(
-                        50 * widthMediaQuery,
-                        25 * heightMediaQuery,
-                        50 * widthMediaQuery,
-                        25 * heightMediaQuery),
+                      50 * globals.widthMediaQuery,
+                      25 * globals.heightMediaQuery,
+                      50 * globals.widthMediaQuery,
+                      25 * globals.heightMediaQuery,
+                    ),
                     targetShapeBorder: const CircleBorder(),
                     key: _findAnimals,
                     tooltipBackgroundColor: Colors.transparent,
@@ -119,14 +121,15 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
                     ),
                   ),
                 ),
-                SizedBox(width: 13 * widthMediaQuery),
+                SizedBox(width: 13 * globals.widthMediaQuery),
                 Expanded(
                   child: Showcase(
                     targetPadding: EdgeInsets.fromLTRB(
-                        50 * widthMediaQuery,
-                        25 * heightMediaQuery,
-                        50 * widthMediaQuery,
-                        25 * heightMediaQuery),
+                      50 * globals.widthMediaQuery,
+                      25 * globals.heightMediaQuery,
+                      50 * globals.widthMediaQuery,
+                      25 * globals.heightMediaQuery,
+                    ),
                     targetShapeBorder: const CircleBorder(),
                     key: _findFarms,
                     tooltipBackgroundColor: Colors.transparent,
@@ -147,24 +150,25 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
                 ),
               ],
             ),
-            SizedBox(height: 107 * heightMediaQuery),
+            SizedBox(height: 107 * globals.heightMediaQuery),
             const TitleText(
                 text: 'Want to start your farm\nright now and join?'),
-            SizedBox(height: 24 * heightMediaQuery),
+            SizedBox(height: 24 * globals.heightMediaQuery),
             Showcase(
               key: _joinNow,
               description: 'Join the App',
               targetPadding: EdgeInsets.fromLTRB(
-                  50 * widthMediaQuery,
-                  25 * heightMediaQuery,
-                  50 * widthMediaQuery,
-                  25 * heightMediaQuery),
+                50 * globals.widthMediaQuery,
+                25 * globals.heightMediaQuery,
+                50 * globals.widthMediaQuery,
+                25 * globals.heightMediaQuery,
+              ),
               targetShapeBorder: const CircleBorder(),
               tooltipBackgroundColor: Colors.transparent,
               descTextStyle: AppFonts.headline1(color: AppColors.grayscale00),
               child: SizedBox(
-                height: 52 * heightMediaQuery,
-                width: 108 * heightMediaQuery,
+                height: 52 * globals.heightMediaQuery,
+                width: 108 * globals.widthMediaQuery,
                 child: PrimaryButton(
                   text: 'Join now',
                   onPressed: () {
@@ -174,13 +178,14 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
                 ),
               ),
             ),
-            SizedBox(height: 8 * heightMediaQuery),
+            SizedBox(height: 8 * globals.heightMediaQuery),
             Showcase(
               targetPadding: EdgeInsets.fromLTRB(
-                  50 * widthMediaQuery,
-                  25 * heightMediaQuery,
-                  50 * widthMediaQuery,
-                  25 * heightMediaQuery),
+                50 * globals.widthMediaQuery,
+                25 * globals.heightMediaQuery,
+                50 * globals.widthMediaQuery,
+                25 * globals.heightMediaQuery,
+              ),
               targetShapeBorder: const CircleBorder(),
               tooltipBackgroundColor: Colors.transparent,
               descTextStyle: AppFonts.headline1(color: AppColors.grayscale00),
