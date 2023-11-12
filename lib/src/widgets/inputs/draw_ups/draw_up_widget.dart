@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
+import '../../../theme/colors/colors.dart';
+import '../../../theme/fonts/fonts.dart';
+import '../../controls_and_buttons/buttons/primary_button.dart';
+import '../../controls_and_buttons/text_buttons/primary_textbutton.dart';
 
 class DrowupWidget extends StatefulWidget {
   final Widget content;
@@ -46,9 +47,7 @@ class _DrowupWidgetState extends State<DrowupWidget> {
             mainAxisSize: MainAxisSize.min,
             children: [
               if (widget.heading != null)
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.025,
-                ),
+                SizedBox(height: globals.heightMediaQuery * 21),
               widget.heading != null
                   ? widget.primaryTextButton != null
                       ? Row(
@@ -70,8 +69,8 @@ class _DrowupWidgetState extends State<DrowupWidget> {
               const SizedBox(height: 16),
               widget.content,
               SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.064,
-                  width: MediaQuery.of(context).size.width * 0.914,
+                  height: globals.heightMediaQuery * 52,
+                  width: globals.widthMediaQuery * 343,
                   child: widget.primaryButton),
             ],
           ),
