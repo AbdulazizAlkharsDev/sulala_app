@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/screens/create_animal/complete_info.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import 'complete_info.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class SelectedOptionsPage extends StatefulWidget {
   final String selectedAnimalType;
@@ -35,8 +36,8 @@ class _SelectedOptionsPageState extends State<SelectedOptionsPage> {
         leading: IconButton(
           padding: EdgeInsets.zero,
           icon: Container(
-            width: MediaQuery.of(context).size.width * 0.1,
-            height: MediaQuery.of(context).size.width * 0.1,
+            width: globals.widthMediaQuery * 37.5,
+            height: globals.widthMediaQuery * 37.5,
             decoration: BoxDecoration(
               color: AppColors.grayscale10,
               borderRadius: BorderRadius.circular(50),
@@ -52,8 +53,8 @@ class _SelectedOptionsPageState extends State<SelectedOptionsPage> {
           IconButton(
             padding: EdgeInsets.zero,
             icon: Container(
-              width: MediaQuery.of(context).size.width * 0.1,
-              height: MediaQuery.of(context).size.width * 0.1,
+              width: globals.widthMediaQuery * 37.5,
+              height: globals.widthMediaQuery * 37.5,
               decoration: BoxDecoration(
                 color: AppColors.grayscale10,
                 borderRadius: BorderRadius.circular(50),
@@ -69,25 +70,25 @@ class _SelectedOptionsPageState extends State<SelectedOptionsPage> {
       ),
       body: Padding(
         padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.042,
-            right: MediaQuery.of(context).size.width * 0.042),
+            left: globals.widthMediaQuery * 16,
+            right: globals.widthMediaQuery * 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.029,
+              height: globals.heightMediaQuery * 24,
             ),
             Text('Chosen Options',
                 style: AppFonts.headline2(color: AppColors.grayscale90)),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.009,
+              height: globals.heightMediaQuery * 8,
             ),
             Text(
               'You can apply any changes',
               style: AppFonts.body2(color: AppColors.grayscale60),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.029,
+              height: globals.heightMediaQuery * 24,
             ),
             Row(
               children: [
@@ -101,16 +102,16 @@ class _SelectedOptionsPageState extends State<SelectedOptionsPage> {
                   style: AppFonts.body2(color: AppColors.grayscale90),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.02,
+                  width: globals.widthMediaQuery * 8,
                 ),
                 Icon(Icons.arrow_forward_ios_rounded,
                     color: AppColors.primary40,
-                    size: MediaQuery.of(context).size.width * 0.034),
+                    size: globals.widthMediaQuery * 12.75),
               ],
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+            SizedBox(height: globals.heightMediaQuery * 8),
             const Divider(),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+            SizedBox(height: globals.heightMediaQuery * 8),
             Row(
               children: [
                 Text(
@@ -123,16 +124,16 @@ class _SelectedOptionsPageState extends State<SelectedOptionsPage> {
                   style: AppFonts.body2(color: AppColors.grayscale90),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.02,
+                  width: globals.widthMediaQuery * 8,
                 ),
                 Icon(Icons.arrow_forward_ios_rounded,
                     color: AppColors.primary40,
-                    size: MediaQuery.of(context).size.width * 0.034),
+                    size: globals.widthMediaQuery * 12.75),
               ],
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+            SizedBox(height: globals.heightMediaQuery * 8),
             const Divider(),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+            SizedBox(height: globals.heightMediaQuery * 8),
             Row(
               children: [
                 Text(
@@ -145,19 +146,19 @@ class _SelectedOptionsPageState extends State<SelectedOptionsPage> {
                   style: AppFonts.body2(color: AppColors.grayscale90),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.02,
+                  width: globals.widthMediaQuery * 8,
                 ),
                 Icon(Icons.arrow_forward_ios_rounded,
                     color: AppColors.primary40,
-                    size: MediaQuery.of(context).size.width * 0.034),
+                    size: globals.widthMediaQuery * 12.75),
               ],
             ),
           ],
         ),
       ),
       floatingActionButton: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.914,
-        height: MediaQuery.of(context).size.height * 0.064,
+        width: globals.widthMediaQuery * 343,
+        height: globals.heightMediaQuery * 52,
         child: PrimaryButton(
             onPressed: () {
               Navigator.push(

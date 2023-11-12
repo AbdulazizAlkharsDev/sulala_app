@@ -1,10 +1,13 @@
 // ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
-import 'package:sulala_app/src/widgets/inputs/search_bars/search_bar.dart';
+
+import 'package:sulala_app/src/data/globals.dart' as globals;
+
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/inputs/draw_ups/draw_up_widget.dart';
+import '../../widgets/inputs/search_bars/search_bar.dart';
 
 class DrowupAnimalBreed extends StatefulWidget {
   TextEditingController searchValue = TextEditingController();
@@ -27,21 +30,18 @@ class DrowupAnimalBreed extends StatefulWidget {
       _selectedItemIndex = -1; // Reset selected index
     });
   }
-} 
+}
 
 int _selectedItemIndex = -1;
 
 class _DrowupAnimalBreedState extends State<DrowupAnimalBreed> {
-
-  
   @override
   Widget build(BuildContext context) {
-   
     return DrowupWidget(
       heading: 'Animal Breed',
       heightFactor: 0.9,
       content: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.68,
+        height: globals.heightMediaQuery * 552.16,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -58,7 +58,7 @@ class _DrowupAnimalBreedState extends State<DrowupAnimalBreed> {
                 },
                 hintText: 'Search by breed'),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.029,
+              height: globals.heightMediaQuery * 24,
             ),
             Expanded(
               child: ListView.builder(
@@ -69,7 +69,7 @@ class _DrowupAnimalBreedState extends State<DrowupAnimalBreed> {
                     title: Text(widget.filteredBreedList[index],
                         style: AppFonts.body2(color: AppColors.grayscale90)),
                     trailing: Container(
-                      width: MediaQuery.of(context).size.width * 0.064,
+                      width: globals.widthMediaQuery * 24,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(

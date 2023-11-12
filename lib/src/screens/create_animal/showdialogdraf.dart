@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/secondary_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/tags/tags.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/controls_and_buttons/buttons/secondary_button.dart';
+import '../../widgets/controls_and_buttons/tags/tags.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 typedef TagStatusCallback = void Function(TagStatus status);
 
@@ -108,14 +109,14 @@ class _ShowFilterUserState extends State<ShowFilterUser> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.025,
+          height: globals.heightMediaQuery * 20,
         ),
         Text(
           'Current State',
           style: AppFonts.headline3(color: AppColors.grayscale90),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.012,
+          height: globals.heightMediaQuery * 10,
         ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,7 +136,7 @@ class _ShowFilterUserState extends State<ShowFilterUser> {
               },
               status: borrowed, // Use the current borrowed status
             ),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+            SizedBox(width: globals.widthMediaQuery * 8),
             Tags(
               text: 'Adopted',
               onPress: () {
@@ -151,7 +152,7 @@ class _ShowFilterUserState extends State<ShowFilterUser> {
               },
               status: adopted,
             ),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+            SizedBox(width: globals.widthMediaQuery * 8),
             Tags(
               text: 'Donated',
               onPress: () {
@@ -183,7 +184,7 @@ class _ShowFilterUserState extends State<ShowFilterUser> {
               },
               status: escaped,
             ),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+            SizedBox(width: globals.widthMediaQuery * 8),
             Tags(
               text: 'Stolen',
               onPress: () {
@@ -197,7 +198,7 @@ class _ShowFilterUserState extends State<ShowFilterUser> {
               },
               status: stolen,
             ),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+            SizedBox(width: globals.widthMediaQuery * 8),
             Tags(
               text: 'Transferred',
               onPress: () {
@@ -216,12 +217,12 @@ class _ShowFilterUserState extends State<ShowFilterUser> {
           ],
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.029,
+          height: globals.heightMediaQuery * 24,
         ),
         Text('Medical State',
             style: AppFonts.headline3(color: AppColors.grayscale90)),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.012,
+          height: globals.heightMediaQuery * 10,
         ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -240,7 +241,7 @@ class _ShowFilterUserState extends State<ShowFilterUser> {
               },
               status: injured,
             ),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+            SizedBox(width: globals.widthMediaQuery * 8),
             Tags(
               text: 'Sick',
               onPress: () {
@@ -256,7 +257,7 @@ class _ShowFilterUserState extends State<ShowFilterUser> {
               },
               status: sick,
             ),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+            SizedBox(width: globals.widthMediaQuery * 8),
             Tags(
               text: 'Quarantined',
               onPress: () {
@@ -291,7 +292,7 @@ class _ShowFilterUserState extends State<ShowFilterUser> {
               },
               status: medication,
             ),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+            SizedBox(width: globals.widthMediaQuery * 8),
             Tags(
               text: 'Testing',
               onPress: () {
@@ -310,14 +311,14 @@ class _ShowFilterUserState extends State<ShowFilterUser> {
           ],
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.029,
+          height: globals.heightMediaQuery * 24,
         ),
         Text(
           'Others',
           style: AppFonts.headline3(color: AppColors.grayscale90),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.012,
+          height: globals.heightMediaQuery * 10,
         ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -337,7 +338,7 @@ class _ShowFilterUserState extends State<ShowFilterUser> {
               },
               status: sold,
             ),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+            SizedBox(width: globals.widthMediaQuery * 8),
             Tags(
               text: 'Dead',
               onPress: () {
@@ -356,14 +357,14 @@ class _ShowFilterUserState extends State<ShowFilterUser> {
           ],
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.039,
+          height: globals.heightMediaQuery * 32,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.064,
-              width: MediaQuery.of(context).size.width * 0.44,
+              height: globals.heightMediaQuery * 52,
+              width: globals.widthMediaQuery * 165,
               child: SecondaryButton(
                 onPressed: () {
                   setState(() {
@@ -398,8 +399,8 @@ class _ShowFilterUserState extends State<ShowFilterUser> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.064,
-              width: MediaQuery.of(context).size.width * 0.44,
+              height: globals.heightMediaQuery * 52,
+              width: globals.widthMediaQuery * 165,
               child: PrimaryButton(
                 onPressed: () {
                   Navigator.pop(context);

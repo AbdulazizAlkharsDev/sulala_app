@@ -1,11 +1,12 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
-import 'package:sulala_app/src/widgets/inputs/search_bars/search_bar.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/inputs/draw_ups/draw_up_widget.dart';
+import '../../widgets/inputs/search_bars/search_bar.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class AddParentsDrowup extends StatelessWidget {
   StateSetter setState;
@@ -46,7 +47,7 @@ class AddParentsDrowup extends StatelessWidget {
       heading: 'Add Mother',
       heightFactor: 0.9,
       content: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.68,
+        height: globals.heightMediaQuery * 552.16,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -63,7 +64,7 @@ class AddParentsDrowup extends StatelessWidget {
                 },
                 hintText: 'Search by species'),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.029,
+              height: globals.heightMediaQuery * 24,
             ),
             Expanded(
               child: ListView.builder(
@@ -86,15 +87,13 @@ class AddParentsDrowup extends StatelessWidget {
                             ? Row(
                                 children: [
                                   CircleAvatar(
-                                    radius: MediaQuery.of(context).size.width *
-                                        0.064,
+                                    radius: globals.widthMediaQuery * 24,
                                     backgroundImage: const AssetImage(
                                         'assets/avatars/120px/Horse_avatar.png'),
                                     backgroundColor: Colors.transparent,
                                   ),
                                   SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.042,
+                                    width: globals.widthMediaQuery * 16,
                                   ),
                                   Text(
                                     modalAnimalSpeciesList[index],
@@ -106,15 +105,13 @@ class AddParentsDrowup extends StatelessWidget {
                             : Row(
                                 children: [
                                   CircleAvatar(
-                                    radius: MediaQuery.of(context).size.width *
-                                        0.064,
+                                    radius: globals.widthMediaQuery * 24,
                                     backgroundImage: const AssetImage(
                                         'assets/avatars/120px/Horse_avatar.png'),
                                     backgroundColor: Colors.transparent,
                                   ),
                                   SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.042,
+                                    width: globals.widthMediaQuery * 16,
                                   ),
                                   Text(
                                     filteredModalList[index],

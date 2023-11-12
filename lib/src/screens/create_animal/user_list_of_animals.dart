@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/screens/guest_mode/owned_animal_detail.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/inputs/search_bars/button_search_bar.dart';
-import 'package:sulala_app/src/screens/create_animal/animal_filters.dart';
-import 'package:sulala_app/src/screens/create_animal/create_animal.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/inputs/search_bars/button_search_bar.dart';
+import '../guest_mode/owned_animal_detail.dart';
+import 'animal_filters.dart';
+import 'create_animal.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class UserListOfAnimals extends StatefulWidget {
   final List<String> selectedFilters;
@@ -125,13 +126,14 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
               IconButton(
                 padding: EdgeInsets.zero,
                 icon: Container(
-                    width: MediaQuery.of(context).size.width * 0.1,
-                    height: MediaQuery.of(context).size.width * 0.1,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.primary50,
-                    ),
-                    child: const Icon(Icons.add)),
+                  width: globals.widthMediaQuery * 37.5,
+                  height: globals.widthMediaQuery * 37.5,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.primary50,
+                  ),
+                  child: const Icon(Icons.add),
+                ),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -146,8 +148,8 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
-                left: MediaQuery.of(context).size.width * 0.042,
-                right: MediaQuery.of(context).size.width * 0.042),
+                left: globals.widthMediaQuery * 16,
+                right: globals.widthMediaQuery * 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -169,13 +171,13 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
                         visible: widget.selectedFilters
                             .isNotEmpty, // Show space if there are selected filters
                         child: Wrap(
-                          spacing: MediaQuery.of(context).size.width * 0.02,
+                          spacing: globals.widthMediaQuery * 8,
                           children: widget.selectedFilters.map((filter) {
                             return Chip(
                               deleteIcon: Icon(
                                 Icons.close_rounded,
                                 color: AppColors.grayscale90,
-                                size: MediaQuery.of(context).size.width * 0.05,
+                                size: globals.widthMediaQuery * 18,
                               ),
                               labelStyle:
                                   AppFonts.body2(color: AppColors.grayscale90),
@@ -198,7 +200,7 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
                 mammals.isNotEmpty
                     ? _filteredMammals.isNotEmpty
                         ? SizedBox(
-                            height: MediaQuery.of(context).size.height,
+                            height: globals.heightMediaQuery,
                             child: ListView.builder(
                               shrinkWrap: true,
                               itemCount: _filteredMammals.length,
@@ -208,8 +210,7 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
                                   contentPadding: EdgeInsets.zero,
                                   leading: CircleAvatar(
                                     backgroundColor: Colors.transparent,
-                                    radius: MediaQuery.of(context).size.width *
-                                        0.064,
+                                    radius: globals.widthMediaQuery * 24,
                                     backgroundImage:
                                         AssetImage(mammal['image']),
                                   ),
@@ -232,8 +233,7 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
                                     'assets/illustrations/cow_search.png',
                                   ),
                                   SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.04,
+                                    height: globals.heightMediaQuery * 32,
                                   ),
                                   Text(
                                     'No Animals Found',
@@ -246,8 +246,7 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
                                         color: AppColors.grayscale70),
                                   ),
                                   SizedBox(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.03,
+                                    height: globals.heightMediaQuery * 24,
                                   ),
                                 ],
                               ),
@@ -262,7 +261,7 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
                               'assets/illustrations/cow_search.png',
                             ),
                             SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.04,
+                              height: globals.heightMediaQuery * 32,
                             ),
                             Text(
                               'No Animals Added',
@@ -275,11 +274,11 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
                                   AppFonts.body2(color: AppColors.grayscale70),
                             ),
                             SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.03,
+                              height: globals.heightMediaQuery * 24,
                             ),
                             SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.45,
-                              height: MediaQuery.of(context).size.height * 0.05,
+                              width: globals.widthMediaQuery * 168.75,
+                              height: globals.heightMediaQuery * 40,
                               child: PrimaryButton(
                                   text: 'Add',
                                   onPressed: () {
