@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/flat_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/secondary_button.dart';
+import '../../widgets/controls_and_buttons/buttons/flat_button.dart';
 import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/controls_and_buttons/buttons/secondary_button.dart';
 import '../../widgets/inputs/draw_ups/draw_up_widget.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 // ignore: must_be_immutable
 class IsPregnantWidget extends StatelessWidget {
@@ -28,8 +29,8 @@ class IsPregnantWidget extends StatelessWidget {
                 Column(
                   children: [
                     SizedBox(
-                      width: 343 * MediaQuery.of(context).size.width / 375,
-                      height: 52 * MediaQuery.of(context).size.height / 812,
+                      width: 343 * globals.widthMediaQuery,
+                      height: 52 * globals.heightMediaQuery,
                       child: PrimaryButton(
                           text: 'Yes',
                           onPressed: () {
@@ -37,11 +38,11 @@ class IsPregnantWidget extends StatelessWidget {
                           }),
                     ),
                     SizedBox(
-                      height: 8 * MediaQuery.of(context).size.height / 812,
+                      height: 8 * globals.heightMediaQuery,
                     ),
                     SizedBox(
-                      width: 343 * MediaQuery.of(context).size.width / 375,
-                      height: 52 * MediaQuery.of(context).size.height / 812,
+                      width: 343 * globals.widthMediaQuery,
+                      height: 52 * globals.heightMediaQuery,
                       child: SecondaryButton(
                           text: 'No',
                           onPressed: () {
@@ -49,11 +50,11 @@ class IsPregnantWidget extends StatelessWidget {
                           }),
                     ),
                     SizedBox(
-                      height: 8 * MediaQuery.of(context).size.height / 812,
+                      height: 8 * globals.heightMediaQuery,
                     ),
                     SizedBox(
-                      width: 343 * MediaQuery.of(context).size.width / 375,
-                      height: 52 * MediaQuery.of(context).size.height / 812,
+                      width: 343 * globals.widthMediaQuery,
+                      height: 52 * globals.heightMediaQuery,
                       child: FlatButton(
                           text: 'Cancel',
                           onPressed: () {

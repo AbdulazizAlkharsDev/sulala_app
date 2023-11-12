@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/inputs/date_fields/primary_date_field.dart';
-import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/inputs/date_fields/primary_date_field.dart';
 import '../../widgets/inputs/file_uploader_fields/file_uploader_field.dart';
+import '../../widgets/inputs/text_fields/primary_text_field.dart';
 
 class AddMedicalCheckUp extends StatefulWidget {
   const AddMedicalCheckUp({super.key});
@@ -20,8 +21,6 @@ class _AddMedicalCheckUpState extends State<AddMedicalCheckUp> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -31,7 +30,7 @@ class _AddMedicalCheckUpState extends State<AddMedicalCheckUp> {
             IconButton(
               padding: EdgeInsets.zero,
               icon: Container(
-                padding: EdgeInsets.all(8 * widthMediaQuery),
+                padding: EdgeInsets.all(8 * globals.widthMediaQuery),
                 decoration: const BoxDecoration(
                     color: AppColors.grayscale10, shape: BoxShape.circle),
                 child: const Icon(
@@ -48,7 +47,8 @@ class _AddMedicalCheckUpState extends State<AddMedicalCheckUp> {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
-                left: 16 * widthMediaQuery, right: 16 * widthMediaQuery),
+                left: 16 * globals.widthMediaQuery,
+                right: 16 * globals.widthMediaQuery),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -57,26 +57,26 @@ class _AddMedicalCheckUpState extends State<AddMedicalCheckUp> {
                   style: AppFonts.title3(color: AppColors.grayscale90),
                 ),
                 SizedBox(
-                  height: 32 * heightMediaQuery,
+                  height: 32 * globals.heightMediaQuery,
                 ),
                 PrimaryTextField(
                   hintText: 'Checkup Name',
                   controller: checkupNameController,
                   labelText: 'Checkup Name',
                 ),
-                SizedBox(height: 24 * heightMediaQuery),
+                SizedBox(height: 24 * globals.heightMediaQuery),
                 PrimaryDateField(
                   hintText: 'Date Of Checkup',
                   labelText: 'Date Of Checkup',
                   onChanged: (value) => setState(() => firstDoseDate = value),
                 ),
-                SizedBox(height: 24 * heightMediaQuery),
+                SizedBox(height: 24 * globals.heightMediaQuery),
                 PrimaryDateField(
                   hintText: 'Date Of Next Checkup',
                   labelText: 'Date Of Next Checkup',
                   onChanged: (value) => setState(() => secondDoseDate = value),
                 ),
-                SizedBox(height: 24 * heightMediaQuery),
+                SizedBox(height: 24 * globals.heightMediaQuery),
                 SizedBox(
                   height: 220,
                   width: double.infinity,
@@ -91,8 +91,8 @@ class _AddMedicalCheckUpState extends State<AddMedicalCheckUp> {
           ),
         ),
         floatingActionButton: SizedBox(
-          height: 52 * heightMediaQuery,
-          width: 343 * widthMediaQuery,
+          height: 52 * globals.heightMediaQuery,
+          width: 343 * globals.widthMediaQuery,
           child: PrimaryButton(
             onPressed: () {
               Navigator.pop(context);

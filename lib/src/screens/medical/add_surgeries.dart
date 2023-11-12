@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/inputs/date_fields/primary_date_field.dart';
-import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/inputs/date_fields/primary_date_field.dart';
 import '../../widgets/inputs/file_uploader_fields/file_uploader_field.dart';
+import '../../widgets/inputs/text_fields/primary_text_field.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class AddSurgeriesRecords extends StatefulWidget {
   const AddSurgeriesRecords({super.key});
@@ -20,8 +21,6 @@ class _AddSurgeriesRecordsState extends State<AddSurgeriesRecords> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -31,7 +30,7 @@ class _AddSurgeriesRecordsState extends State<AddSurgeriesRecords> {
             IconButton(
               padding: EdgeInsets.zero,
               icon: Container(
-                padding: EdgeInsets.all(8 * widthMediaQuery),
+                padding: EdgeInsets.all(8 * globals.widthMediaQuery),
                 decoration: const BoxDecoration(
                     color: AppColors.grayscale10, shape: BoxShape.circle),
                 child: const Icon(
@@ -48,7 +47,8 @@ class _AddSurgeriesRecordsState extends State<AddSurgeriesRecords> {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
-                left: 16 * widthMediaQuery, right: 16 * widthMediaQuery),
+                left: 16 * globals.widthMediaQuery,
+                right: 16 * globals.widthMediaQuery),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -57,26 +57,26 @@ class _AddSurgeriesRecordsState extends State<AddSurgeriesRecords> {
                   style: AppFonts.title3(color: AppColors.grayscale90),
                 ),
                 SizedBox(
-                  height: 32 * heightMediaQuery,
+                  height: 32 * globals.heightMediaQuery,
                 ),
                 PrimaryTextField(
                   hintText: 'Surgery Name',
                   controller: surgeryNameController,
                   labelText: 'Surgery Name',
                 ),
-                SizedBox(height: 24 * heightMediaQuery),
+                SizedBox(height: 24 * globals.heightMediaQuery),
                 PrimaryDateField(
                   hintText: 'Date Of Surgery',
                   labelText: 'Date Of Surgery',
                   onChanged: (value) => setState(() => firstDoseDate = value),
                 ),
-                SizedBox(height: 24 * heightMediaQuery),
+                SizedBox(height: 24 * globals.heightMediaQuery),
                 PrimaryDateField(
                   hintText: 'Date Of Next Surgery',
                   labelText: 'Date Of Next Surgery',
                   onChanged: (value) => setState(() => secondDoseDate = value),
                 ),
-                SizedBox(height: 24 * heightMediaQuery),
+                SizedBox(height: 24 * globals.heightMediaQuery),
                 SizedBox(
                   height: 220,
                   width: double.infinity,
@@ -91,8 +91,8 @@ class _AddSurgeriesRecordsState extends State<AddSurgeriesRecords> {
           ),
         ),
         floatingActionButton: SizedBox(
-          height: 52 * heightMediaQuery,
-          width: 343 * widthMediaQuery,
+          height: 52 * globals.heightMediaQuery,
+          width: 343 * globals.widthMediaQuery,
           child: PrimaryButton(
             onPressed: () {
               Navigator.pop(context);

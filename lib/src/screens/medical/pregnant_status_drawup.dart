@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../../theme/colors/colors.dart';
 import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
 import '../../widgets/inputs/draw_ups/draw_up_widget.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 // ignore: must_be_immutable
 class PregnantStatusWidget extends StatelessWidget {
@@ -94,11 +94,11 @@ class PregnantStatusWidget extends StatelessWidget {
                       },
                     ),
                     SizedBox(
-                      height: 55 * MediaQuery.of(context).size.height / 812,
+                      height: 55 * globals.heightMediaQuery,
                     ),
                     SizedBox(
-                      width: 343 * MediaQuery.of(context).size.width / 375,
-                      height: 52 * MediaQuery.of(context).size.height / 812,
+                      width: 343 * globals.widthMediaQuery,
+                      height: 52 * globals.heightMediaQuery,
                       child: PrimaryButton(
                           text: 'Confirm',
                           onPressed: () {

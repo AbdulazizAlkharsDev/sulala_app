@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
-import 'package:sulala_app/src/widgets/inputs/file_uploader_fields/file_uploader_field.dart';
-import 'package:sulala_app/src/widgets/inputs/paragraph_text_fields/paragraph_text_field.dart';
-import 'package:sulala_app/src/screens/medical/add_medical_checkup.dart';
-import 'package:sulala_app/src/screens/medical/add_surgeries.dart';
-import 'package:sulala_app/src/screens/medical/add_vaccination.dart';
-import 'package:sulala_app/src/screens/medical/edit_medical_checkup.dart';
-import 'package:sulala_app/src/screens/medical/edit_surgeries.dart';
-import 'package:sulala_app/src/screens/medical/edit_vaccination.dart';
-import 'package:sulala_app/src/screens/medical/is_pregnant_drawup.dart';
-import 'package:sulala_app/src/screens/medical/pregnant_status_drawup.dart';
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
+import '../../widgets/inputs/file_uploader_fields/file_uploader_field.dart';
+import '../../widgets/inputs/paragraph_text_fields/paragraph_text_field.dart';
 import '../../widgets/other/one_information_block.dart';
 import '../../widgets/other/two_information_block.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
+import 'add_medical_checkup.dart';
+import 'add_surgeries.dart';
+import 'add_vaccination.dart';
+import 'edit_medical_checkup.dart';
+import 'edit_surgeries.dart';
+import 'edit_vaccination.dart';
+import 'is_pregnant_drawup.dart';
+import 'pregnant_status_drawup.dart';
 
 class MammalsMedical extends StatefulWidget {
   const MammalsMedical({super.key});
@@ -115,22 +116,20 @@ class _MammalsMedicalState extends State<MammalsMedical> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            width: widthMediaQuery * 343,
+            width: globals.widthMediaQuery * 343,
             child: const OneInformationBlock(
                 head1: '29.02.2023', subtitle1: 'Next Vaccination'),
           ),
           SizedBox(
-            height: heightMediaQuery * 8,
+            height: globals.heightMediaQuery * 8,
           ),
           SizedBox(
-            width: 343 * widthMediaQuery,
+            width: 343 * globals.widthMediaQuery,
             child: const TwoInformationBlock(
               head1: '12.02.2023',
               head2: '12.02.2023',
@@ -139,7 +138,7 @@ class _MammalsMedicalState extends State<MammalsMedical> {
             ),
           ),
           SizedBox(
-            height: heightMediaQuery * 24,
+            height: globals.heightMediaQuery * 24,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -178,7 +177,7 @@ class _MammalsMedicalState extends State<MammalsMedical> {
               ? Column(
                   children: [
                     SizedBox(
-                      height: heightMediaQuery * 144,
+                      height: globals.heightMediaQuery * 144,
                       child: ParagraphTextField(
                           maxLines: 6,
                           onChanged: (value) {
@@ -190,10 +189,10 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                               'Be sure to include joint support medicine, antibiotics, anti-inflammatory medication, and topical antiseptics when packing your first-aid kit for your horses. If you have the essentials, you can keep your four-legged friends in the best condition possible.'),
                     ),
                     SizedBox(
-                      height: heightMediaQuery * 8,
+                      height: globals.heightMediaQuery * 8,
                     ),
                     SizedBox(
-                      height: heightMediaQuery * 190,
+                      height: globals.heightMediaQuery * 190,
                       child: const FileUploaderField(),
                     ),
                   ],
@@ -206,7 +205,7 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                       style: AppFonts.body2(color: AppColors.grayscale70),
                     ),
                     SizedBox(
-                      height: heightMediaQuery * 22,
+                      height: globals.heightMediaQuery * 22,
                     ),
                     Row(
                       children: [
@@ -229,7 +228,7 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                   ],
                 ),
           SizedBox(
-            height: 16 * heightMediaQuery,
+            height: 16 * globals.heightMediaQuery,
           ),
           Visibility(
             visible: _isFemale,
@@ -342,7 +341,7 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                     ],
                   ),
                 ),
-                SizedBox(height: 16 * heightMediaQuery),
+                SizedBox(height: 16 * globals.heightMediaQuery),
               ],
             ),
           ),
@@ -361,7 +360,7 @@ class _MammalsMedicalState extends State<MammalsMedical> {
             ],
           ),
           SizedBox(
-            height: 14 * heightMediaQuery,
+            height: 14 * globals.heightMediaQuery,
           ),
           ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
@@ -372,7 +371,10 @@ class _MammalsMedicalState extends State<MammalsMedical> {
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
                 contentPadding: EdgeInsets.fromLTRB(
-                    0, 10 * heightMediaQuery, 0, 10 * heightMediaQuery),
+                    0,
+                    10 * globals.heightMediaQuery,
+                    0,
+                    10 * globals.heightMediaQuery),
                 leading: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -424,17 +426,17 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                 status: TextStatus.idle,
               ),
               SizedBox(
-                width: 8 * widthMediaQuery,
+                width: 8 * globals.widthMediaQuery,
               ),
               Icon(
                 Icons.add,
                 color: AppColors.primary40,
-                size: 16 * widthMediaQuery,
+                size: 16 * globals.widthMediaQuery,
               ),
             ],
           ),
           SizedBox(
-            height: 16 * heightMediaQuery,
+            height: 16 * globals.heightMediaQuery,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -451,7 +453,7 @@ class _MammalsMedicalState extends State<MammalsMedical> {
             ],
           ),
           SizedBox(
-            height: 14 * heightMediaQuery,
+            height: 14 * globals.heightMediaQuery,
           ),
           ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
@@ -462,7 +464,10 @@ class _MammalsMedicalState extends State<MammalsMedical> {
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
                 contentPadding: EdgeInsets.fromLTRB(
-                    0, 10 * heightMediaQuery, 0, 10 * heightMediaQuery),
+                    0,
+                    10 * globals.heightMediaQuery,
+                    0,
+                    10 * globals.heightMediaQuery),
                 leading: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -514,17 +519,17 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                 status: TextStatus.idle,
               ),
               SizedBox(
-                width: 8 * widthMediaQuery,
+                width: 8 * globals.widthMediaQuery,
               ),
               Icon(
                 Icons.add,
                 color: AppColors.primary40,
-                size: 16 * widthMediaQuery,
+                size: 16 * globals.widthMediaQuery,
               ),
             ],
           ),
           SizedBox(
-            height: 16 * heightMediaQuery,
+            height: 16 * globals.heightMediaQuery,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -541,7 +546,7 @@ class _MammalsMedicalState extends State<MammalsMedical> {
             ],
           ),
           SizedBox(
-            height: 14 * heightMediaQuery,
+            height: 14 * globals.heightMediaQuery,
           ),
           ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
@@ -552,7 +557,10 @@ class _MammalsMedicalState extends State<MammalsMedical> {
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
                 contentPadding: EdgeInsets.fromLTRB(
-                    0, 10 * heightMediaQuery, 0, 10 * heightMediaQuery),
+                    0,
+                    10 * globals.heightMediaQuery,
+                    0,
+                    10 * globals.heightMediaQuery),
                 leading: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -604,17 +612,17 @@ class _MammalsMedicalState extends State<MammalsMedical> {
                 status: TextStatus.idle,
               ),
               SizedBox(
-                width: 8 * widthMediaQuery,
+                width: 8 * globals.widthMediaQuery,
               ),
               Icon(
                 Icons.add,
                 color: AppColors.primary40,
-                size: 16 * widthMediaQuery,
+                size: 16 * globals.widthMediaQuery,
               ),
             ],
           ),
           SizedBox(
-            height: 24 * heightMediaQuery,
+            height: 24 * globals.heightMediaQuery,
           ),
         ],
       ),

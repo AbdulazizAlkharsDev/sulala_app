@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/navigate_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/inputs/date_fields/primary_date_field.dart';
-import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/navigate_button.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/inputs/date_fields/primary_date_field.dart';
 import '../../widgets/inputs/file_uploader_fields/file_uploader_field.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
+
+import '../../widgets/inputs/text_fields/primary_text_field.dart';
 
 class EditVaccination extends StatefulWidget {
   const EditVaccination({super.key});
@@ -21,8 +23,6 @@ class _EditVaccinationState extends State<EditVaccination> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -32,7 +32,7 @@ class _EditVaccinationState extends State<EditVaccination> {
             IconButton(
               padding: EdgeInsets.zero,
               icon: Container(
-                padding: EdgeInsets.all(8 * widthMediaQuery),
+                padding: EdgeInsets.all(8 * globals.widthMediaQuery),
                 decoration: const BoxDecoration(
                     color: AppColors.grayscale10, shape: BoxShape.circle),
                 child: const Icon(
@@ -49,7 +49,8 @@ class _EditVaccinationState extends State<EditVaccination> {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
-                left: 16 * widthMediaQuery, right: 16 * widthMediaQuery),
+                left: 16 * globals.widthMediaQuery,
+                right: 16 * globals.widthMediaQuery),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -58,26 +59,26 @@ class _EditVaccinationState extends State<EditVaccination> {
                   style: AppFonts.title3(color: AppColors.grayscale90),
                 ),
                 SizedBox(
-                  height: 32 * heightMediaQuery,
+                  height: 32 * globals.heightMediaQuery,
                 ),
                 PrimaryTextField(
                   hintText: 'Vaccine Name',
                   controller: vaccineNameController,
                   labelText: 'Vaccine Name',
                 ),
-                SizedBox(height: 24 * heightMediaQuery),
+                SizedBox(height: 24 * globals.heightMediaQuery),
                 PrimaryDateField(
                   hintText: 'Date Of Vaccination',
                   labelText: 'Date Of Vaccination',
                   onChanged: (value) => setState(() => firstDoseDate = value),
                 ),
-                SizedBox(height: 24 * heightMediaQuery),
+                SizedBox(height: 24 * globals.heightMediaQuery),
                 PrimaryDateField(
                   hintText: 'Date Of Next Vaccination',
                   labelText: 'Date Of Next Vaccination',
                   onChanged: (value) => setState(() => secondDoseDate = value),
                 ),
-                SizedBox(height: 24 * heightMediaQuery),
+                SizedBox(height: 24 * globals.heightMediaQuery),
                 SizedBox(
                   height: 220,
                   width: double.infinity,
@@ -88,11 +89,11 @@ class _EditVaccinationState extends State<EditVaccination> {
                   ),
                 ),
                 SizedBox(
-                  height: 16 * heightMediaQuery,
+                  height: 16 * globals.heightMediaQuery,
                 ),
                 SizedBox(
-                  height: 52 * heightMediaQuery,
-                  width: 343 * widthMediaQuery,
+                  height: 52 * globals.heightMediaQuery,
+                  width: 343 * globals.widthMediaQuery,
                   child: PrimaryButton(
                     onPressed: () {
                       Navigator.pop(context);
@@ -101,11 +102,11 @@ class _EditVaccinationState extends State<EditVaccination> {
                   ),
                 ),
                 SizedBox(
-                  height: 8 * heightMediaQuery,
+                  height: 8 * globals.heightMediaQuery,
                 ),
                 SizedBox(
-                  height: 52 * heightMediaQuery,
-                  width: 343 * widthMediaQuery,
+                  height: 52 * globals.heightMediaQuery,
+                  width: 343 * globals.widthMediaQuery,
                   child: NavigateButton(
                     onPressed: () {
                       Navigator.pop(context);
