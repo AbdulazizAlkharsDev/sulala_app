@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class TwoInformationBlock extends StatelessWidget {
   final String head1;
@@ -43,7 +44,7 @@ class TwoInformationBlock extends StatelessWidget {
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height * 0.027,
+            height: globals.heightMediaQuery * 22,
             width: 1,
             color: AppColors.grayscale30,
           ),

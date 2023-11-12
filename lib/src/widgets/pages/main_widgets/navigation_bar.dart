@@ -4,6 +4,7 @@ import '../../../screens/profile/profile_page.dart';
 import '../../../../test/testing_pages.dart';
 import '../../../theme/colors/colors.dart';
 import '../../../theme/fonts/fonts.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class MyAppHomePage extends StatefulWidget {
   const MyAppHomePage({Key? key}) : super(key: key);
@@ -29,9 +30,9 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
           children: _pages,
         ),
         bottomNavigationBar: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.074,
+          height: globals.heightMediaQuery * 60,
           child: BottomNavigationBar(
-            iconSize: MediaQuery.of(context).size.width * 0.064,
+            iconSize: globals.widthMediaQuery * 24,
             currentIndex: _currentIndex,
             onTap: (index) {
               setState(() {
@@ -47,11 +48,11 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
               BottomNavigationBarItem(
                 icon: Image.asset(
                   "assets/icons/frame/24px/Outlined_Cow_Icon.png",
-                  scale: 24 / (MediaQuery.of(context).size.width * 0.064),
+                  scale: 24 / (globals.widthMediaQuery * 24),
                 ),
                 activeIcon: Image.asset(
                   "assets/icons/frame/24px/Filled_Cow_Icon.png",
-                  scale: 24 / (MediaQuery.of(context).size.width * 0.064),
+                  scale: 24 / (globals.widthMediaQuery * 24),
                 ),
                 label: 'Animals',
               ),

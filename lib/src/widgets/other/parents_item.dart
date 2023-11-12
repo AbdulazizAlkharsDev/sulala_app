@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class ParentsItem extends StatelessWidget {
   final String? imageUrl;
@@ -20,8 +21,6 @@ class ParentsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     ImageProvider<Object>? getImage() {
       if (imageUrl != null) {
         return NetworkImage(imageUrl!);
@@ -35,9 +34,9 @@ class ParentsItem extends StatelessWidget {
         CircleAvatar(
           backgroundColor: Colors.transparent,
           backgroundImage: getImage(),
-          radius: 60 * widthMediaQuery,
+          radius: 60 * globals.widthMediaQuery,
         ),
-        SizedBox(height: 16 * heightMediaQuery),
+        SizedBox(height: 16 * globals.heightMediaQuery),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -45,7 +44,7 @@ class ParentsItem extends StatelessWidget {
                 ? Image.asset(
                     "assets/icons/frame/24px/16_Gender_female_1_5.png")
                 : Image.asset("assets/icons/frame/24px/16_Gender_male_1_5.png"),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.01),
+            SizedBox(width: globals.widthMediaQuery * 3.75),
             Text(
               name,
               style: AppFonts.title5(

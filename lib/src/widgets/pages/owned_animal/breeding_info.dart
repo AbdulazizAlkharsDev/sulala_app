@@ -1,14 +1,15 @@
 // ignore_for_file: dead_code
 
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/widgets/other/one_information_block.dart';
-import 'package:sulala_app/src/screens/breeding/list_of_breeding_events.dart';
-import 'package:sulala_app/src/screens/breeding/list_of_children.dart';
-import 'package:sulala_app/src/screens/breeding/list_of_mates.dart';
+import '../../../screens/breeding/list_of_breeding_events.dart';
+import '../../../screens/breeding/list_of_children.dart';
+import '../../../screens/breeding/list_of_mates.dart';
 import '../../../screens/breeding/parents_page.dart';
 import '../../../theme/colors/colors.dart';
 import '../../../theme/fonts/fonts.dart';
+import '../../other/one_information_block.dart';
 import '../../other/two_information_block.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class BreedingInfo extends StatelessWidget {
   const BreedingInfo({
@@ -18,25 +19,23 @@ class BreedingInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool animalGender = true;
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (animalGender)
             SizedBox(
-              width: widthMediaQuery * 343,
+              width: globals.widthMediaQuery * 343,
               child: const OneInformationBlock(
                   head1: 'Pregnant', subtitle1: 'Current State'),
             ),
           if (animalGender)
             SizedBox(
-              height: heightMediaQuery * 8,
+              height: globals.heightMediaQuery * 8,
             ),
           if (animalGender)
             SizedBox(
-              width: 343 * widthMediaQuery,
+              width: 343 * globals.widthMediaQuery,
               child: const TwoInformationBlock(
                 head1: '12.02.2023',
                 head2: '12.02.2023',
@@ -46,7 +45,7 @@ class BreedingInfo extends StatelessWidget {
             ),
           if (animalGender)
             SizedBox(
-              height: heightMediaQuery * 24,
+              height: globals.heightMediaQuery * 24,
             ),
           Column(
             children: [
@@ -59,7 +58,7 @@ class BreedingInfo extends StatelessWidget {
                   style: AppFonts.headline3(color: AppColors.grayscale90),
                 ),
                 trailing: Icon(Icons.chevron_right_rounded,
-                    size: 24 * widthMediaQuery),
+                    size: 24 * globals.widthMediaQuery),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -89,7 +88,7 @@ class BreedingInfo extends StatelessWidget {
                   style: AppFonts.headline3(color: AppColors.grayscale90),
                 ),
                 trailing: Icon(Icons.chevron_right_rounded,
-                    size: 24 * widthMediaQuery),
+                    size: 24 * globals.widthMediaQuery),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -114,7 +113,7 @@ class BreedingInfo extends StatelessWidget {
                   style: AppFonts.headline3(color: AppColors.grayscale90),
                 ),
                 trailing: Icon(Icons.chevron_right_rounded,
-                    size: 24 * widthMediaQuery),
+                    size: 24 * globals.widthMediaQuery),
               ),
               ListTile(
                 contentPadding: const EdgeInsets.only(right: 0, left: 0),
@@ -131,7 +130,7 @@ class BreedingInfo extends StatelessWidget {
                         style: AppFonts.headline3(color: AppColors.grayscale90),
                       ),
                 trailing: Icon(Icons.chevron_right_rounded,
-                    size: 24 * widthMediaQuery),
+                    size: 24 * globals.widthMediaQuery),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -145,14 +144,14 @@ class BreedingInfo extends StatelessWidget {
               ),
               ListTile(
                 contentPadding: EdgeInsets.only(
-                    right: 0, left: 0, bottom: 32 * heightMediaQuery),
+                    right: 0, left: 0, bottom: 32 * globals.heightMediaQuery),
                 leading: Image.asset('assets/icons/frame/24px/children.png'),
                 title: Text(
                   'Children',
                   style: AppFonts.headline3(color: AppColors.grayscale90),
                 ),
                 trailing: Icon(Icons.chevron_right_rounded,
-                    size: 24 * widthMediaQuery),
+                    size: 24 * globals.widthMediaQuery),
                 onTap: () {
                   Navigator.push(
                     context,

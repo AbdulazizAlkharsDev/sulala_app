@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../../../theme/colors/colors.dart';
 import '../../../theme/fonts/fonts.dart';
 import '../../controls_and_buttons/buttons/primary_button.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class CardWidget extends StatelessWidget {
   final Color color;
@@ -30,8 +30,8 @@ class CardWidget extends StatelessWidget {
       ),
       color: color,
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.44,
-        height: MediaQuery.of(context).size.height * 0.25,
+        width: globals.widthMediaQuery * 165,
+        height: globals.heightMediaQuery * 203,
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +39,7 @@ class CardWidget extends StatelessWidget {
           children: [
             CircleAvatar(
               backgroundColor: Colors.white,
-              radius: MediaQuery.of(context).size.width * 0.0591,
+              radius: globals.widthMediaQuery * 22,
               child: Image.asset(
                 iconPath,
               ),
@@ -60,8 +60,8 @@ class CardWidget extends StatelessWidget {
             ),
             Center(
               child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.35,
-                height: MediaQuery.of(context).size.height * 0.05,
+                width: globals.widthMediaQuery * 132,
+                height: globals.heightMediaQuery * 40,
                 child: PrimaryButton(
                   status: PrimaryButtonStatus.idle,
                   text: buttonText,

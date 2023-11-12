@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/lists/table_lsit/table_textbutton.dart';
-import 'package:sulala_app/src/widgets/other/three_information_block.dart';
+import '../../../theme/colors/colors.dart';
+import '../../../theme/fonts/fonts.dart';
+import '../../lists/table_lsit/table_textbutton.dart';
+import '../../other/three_information_block.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class GeneralInfoAnimalWidget extends StatelessWidget {
   final VoidCallback onDateOfBirthPressed;
@@ -32,7 +33,7 @@ class GeneralInfoAnimalWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          width: MediaQuery.of(context).size.width * 0.91,
+          width: globals.widthMediaQuery * 343,
           child: ThreeInformationBlock(
             head1: type,
             head2: age,
@@ -40,7 +41,7 @@ class GeneralInfoAnimalWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.03,
+          height: globals.heightMediaQuery * 24,
         ),
         Text(
           "General Information",
