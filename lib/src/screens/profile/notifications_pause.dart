@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/toggles/toggle_active.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/toggles/toggle_disabled.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/toggles/toggle_active.dart';
+import '../../widgets/controls_and_buttons/toggles/toggle_disabled.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class NotificationSettingsPage extends StatefulWidget {
   const NotificationSettingsPage({super.key});
@@ -21,8 +22,6 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -49,9 +48,9 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
         ),
         body: Padding(
           padding: EdgeInsets.only(
-              left: 16 * widthMediaQuery,
-              right: 16 * widthMediaQuery,
-              top: 24 * heightMediaQuery),
+              left: 16 * globals.widthMediaQuery,
+              right: 16 * globals.widthMediaQuery,
+              top: 24 * globals.heightMediaQuery),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -59,7 +58,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
                 'Notifications',
                 style: AppFonts.title4(color: AppColors.grayscale90),
               ),
-              SizedBox(height: 16 * heightMediaQuery),
+              SizedBox(height: 16 * globals.heightMediaQuery),
               ListTile(
                 contentPadding: EdgeInsets.zero,
                 title: Text(

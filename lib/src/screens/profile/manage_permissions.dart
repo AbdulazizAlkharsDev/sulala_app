@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/tags/tags.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/toggles/toggle_active.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/controls_and_buttons/tags/tags.dart';
+import '../../widgets/controls_and_buttons/toggles/toggle_active.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 typedef PermissionsCallback = void Function({
   bool isViewOnlySelected,
@@ -37,8 +38,6 @@ class _ManagePermissionsState extends State<ManagePermissions> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
@@ -67,7 +66,8 @@ class _ManagePermissionsState extends State<ManagePermissions> {
           ),
           body: Padding(
             padding: EdgeInsets.only(
-                left: 16 * widthMediaQuery, right: 16 * widthMediaQuery),
+                left: 16 * globals.widthMediaQuery,
+                right: 16 * globals.widthMediaQuery),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -76,20 +76,20 @@ class _ManagePermissionsState extends State<ManagePermissions> {
                   style: AppFonts.title3(color: AppColors.grayscale90),
                 ),
                 SizedBox(
-                  height: 32 * heightMediaQuery,
+                  height: 32 * globals.heightMediaQuery,
                 ),
                 Text(
                   'Role',
                   style: AppFonts.headline3(color: AppColors.grayscale90),
                 ),
                 SizedBox(
-                  height: 8 * heightMediaQuery,
+                  height: 8 * globals.heightMediaQuery,
                 ),
                 Text(
                   'When the staff member is given permission to edit, they can add/edit data',
                   style: AppFonts.body2(color: AppColors.grayscale70),
                 ),
-                SizedBox(height: 16 * heightMediaQuery),
+                SizedBox(height: 16 * globals.heightMediaQuery),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -149,13 +149,13 @@ class _ManagePermissionsState extends State<ManagePermissions> {
                   ],
                 ),
                 if (showList) ...[
-                  SizedBox(height: 32 * heightMediaQuery),
+                  SizedBox(height: 32 * globals.heightMediaQuery),
                   Text(
                     'What Info Can This Member Edit?',
                     style: AppFonts.headline3(color: AppColors.grayscale90),
                   ),
                   SizedBox(
-                    height: 16 * heightMediaQuery,
+                    height: 16 * globals.heightMediaQuery,
                   ),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
@@ -222,8 +222,8 @@ class _ManagePermissionsState extends State<ManagePermissions> {
             ),
           ),
           floatingActionButton: SizedBox(
-            width: 343 * widthMediaQuery,
-            height: 52 * heightMediaQuery,
+            width: 343 * globals.widthMediaQuery,
+            height: 52 * globals.heightMediaQuery,
             child: PrimaryButton(
               onPressed: () {
                 widget.onPermissionsChanged(

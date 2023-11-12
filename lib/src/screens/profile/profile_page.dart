@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/navigate_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/secondary_button.dart';
-import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
-import 'package:sulala_app/src/widgets/other/three_information_block.dart';
-import 'package:sulala_app/src/screens/profile/about_app.dart';
-import 'package:sulala_app/src/screens/profile/app_setting.dart';
-import 'package:sulala_app/src/screens/profile/customer_support.dart';
-import 'package:sulala_app/src/screens/profile/edit_profile_information.dart';
-import 'package:sulala_app/src/screens/profile/list_of_staff.dart';
-import 'package:sulala_app/src/screens/profile/notifications_pause.dart';
-import 'package:sulala_app/src/screens/profile/privacy_security.dart';
-import 'package:sulala_app/src/screens/profile/shimmer_profile_page.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/navigate_button.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/controls_and_buttons/buttons/secondary_button.dart';
+import '../../widgets/inputs/draw_ups/draw_up_widget.dart';
+import '../../widgets/other/three_information_block.dart';
+import 'about_app.dart';
+import 'app_setting.dart';
+import 'customer_support.dart';
+import 'edit_profile_information.dart';
+import 'list_of_staff.dart';
+import 'notifications_pause.dart';
+import 'privacy_security.dart';
+import 'shimmer_profile_page.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -42,8 +43,6 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -84,20 +83,21 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             Padding(
               padding: EdgeInsets.only(
-                  left: 16 * widthMediaQuery, right: 16 * widthMediaQuery),
+                  left: 16 * globals.widthMediaQuery,
+                  right: 16 * globals.widthMediaQuery),
               child: isLoading
                   ? const ShimmerProfilePage()
                   : Column(
                       children: [
-                        SizedBox(height: 40 * heightMediaQuery),
+                        SizedBox(height: 40 * globals.heightMediaQuery),
                         CircleAvatar(
                           backgroundColor: Colors.transparent,
-                          radius: 60 * widthMediaQuery,
+                          radius: 60 * globals.widthMediaQuery,
                           backgroundImage: const AssetImage(
                               'assets/avatars/120px/Staff1.png'),
                         ),
                         SizedBox(
-                          height: 16 * heightMediaQuery,
+                          height: 16 * globals.heightMediaQuery,
                         ),
                         Text(
                           'John Smith',
@@ -107,14 +107,14 @@ class _ProfilePageState extends State<ProfilePage> {
                           '123-456-7890',
                           style: AppFonts.body2(color: AppColors.grayscale70),
                         ),
-                        SizedBox(height: 16 * heightMediaQuery),
+                        SizedBox(height: 16 * globals.heightMediaQuery),
                         Text(
                           'Head of Farm',
                           style: AppFonts.body2(color: AppColors.grayscale70),
                         ),
-                        SizedBox(height: 32 * heightMediaQuery),
+                        SizedBox(height: 32 * globals.heightMediaQuery),
                         SizedBox(
-                          height: 40 * heightMediaQuery,
+                          height: 40 * globals.heightMediaQuery,
                           child: PrimaryButton(
                             onPressed: () {
                               Navigator.push(
@@ -128,13 +128,13 @@ class _ProfilePageState extends State<ProfilePage> {
                             position: PrimaryButtonPosition.right,
                           ),
                         ),
-                        SizedBox(height: 24 * heightMediaQuery),
+                        SizedBox(height: 24 * globals.heightMediaQuery),
                         const ThreeInformationBlock(
                           head1: '24',
                           head2: '1',
                           head3: '4',
                         ),
-                        SizedBox(height: 24 * heightMediaQuery),
+                        SizedBox(height: 24 * globals.heightMediaQuery),
                       ],
                     ),
             ),
@@ -145,13 +145,14 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Padding(
               padding: EdgeInsets.only(
-                  left: 16 * widthMediaQuery, right: 16 * widthMediaQuery),
+                  left: 16 * globals.widthMediaQuery,
+                  right: 16 * globals.widthMediaQuery),
               child: Column(
                 children: [
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        padding: EdgeInsets.all(6 * widthMediaQuery),
+                        padding: EdgeInsets.all(6 * globals.widthMediaQuery),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.grayscale0,
@@ -176,7 +177,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        padding: EdgeInsets.all(6 * widthMediaQuery),
+                        padding: EdgeInsets.all(6 * globals.widthMediaQuery),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.grayscale0,
@@ -200,7 +201,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        padding: EdgeInsets.all(6 * widthMediaQuery),
+                        padding: EdgeInsets.all(6 * globals.widthMediaQuery),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.grayscale0,
@@ -231,13 +232,14 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Padding(
               padding: EdgeInsets.only(
-                  left: 16 * widthMediaQuery, right: 16 * widthMediaQuery),
+                  left: 16 * globals.widthMediaQuery,
+                  right: 16 * globals.widthMediaQuery),
               child: Column(
                 children: [
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        padding: EdgeInsets.all(6 * widthMediaQuery),
+                        padding: EdgeInsets.all(6 * globals.widthMediaQuery),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.grayscale0,
@@ -262,7 +264,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        padding: EdgeInsets.all(6 * widthMediaQuery),
+                        padding: EdgeInsets.all(6 * globals.widthMediaQuery),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.grayscale0,
@@ -294,13 +296,14 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Padding(
               padding: EdgeInsets.only(
-                  left: 16 * widthMediaQuery, right: 16 * widthMediaQuery),
+                  left: 16 * globals.widthMediaQuery,
+                  right: 16 * globals.widthMediaQuery),
               child: Column(
                 children: [
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        padding: EdgeInsets.all(6 * widthMediaQuery),
+                        padding: EdgeInsets.all(6 * globals.widthMediaQuery),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.grayscale0,
@@ -324,7 +327,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        padding: EdgeInsets.all(6 * widthMediaQuery),
+                        padding: EdgeInsets.all(6 * globals.widthMediaQuery),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.grayscale0,
@@ -348,7 +351,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                          padding: EdgeInsets.all(6 * widthMediaQuery),
+                          padding: EdgeInsets.all(6 * globals.widthMediaQuery),
                           decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: AppColors.grayscale0,
@@ -376,13 +379,14 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Padding(
               padding: EdgeInsets.only(
-                  left: 16 * widthMediaQuery, right: 16 * widthMediaQuery),
+                  left: 16 * globals.widthMediaQuery,
+                  right: 16 * globals.widthMediaQuery),
               child: Column(
                 children: [
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     leading: Container(
-                      padding: EdgeInsets.all(6 * widthMediaQuery),
+                      padding: EdgeInsets.all(6 * globals.widthMediaQuery),
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: AppColors.grayscale0,
@@ -412,16 +416,16 @@ class _ProfilePageState extends State<ProfilePage> {
                                   style: AppFonts.title3(
                                       color: AppColors.grayscale90),
                                 ),
-                                SizedBox(height: 32 * heightMediaQuery),
+                                SizedBox(height: 32 * globals.heightMediaQuery),
                                 SizedBox(
-                                  height: 52 * heightMediaQuery,
+                                  height: 52 * globals.heightMediaQuery,
                                   width: double.infinity,
                                   child: NavigateButton(
                                       onPressed: () {}, text: 'Yes'),
                                 ),
-                                SizedBox(height: 8 * heightMediaQuery),
+                                SizedBox(height: 8 * globals.heightMediaQuery),
                                 SizedBox(
-                                  height: 52 * heightMediaQuery,
+                                  height: 52 * globals.heightMediaQuery,
                                   width: double.infinity,
                                   child: SecondaryButton(
                                       onPressed: () {}, text: 'Cancel'),
