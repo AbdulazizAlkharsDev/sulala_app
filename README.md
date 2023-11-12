@@ -13,6 +13,8 @@ A few resources to get you started if this is your first Flutter project:
   double heightMediaQuery = MediaQuery.of(context).size.height / 812;
   double widthMediaQuery = MediaQuery.of(context).size.width / 375;
   import 'package:sulala_app/src/data/globals.dart' as globals;
+  globals.widthMediaQuery * 16
+  globals.heightMediaQuery * 16
 
   persistentFooterButtons: [
   SizedBox(

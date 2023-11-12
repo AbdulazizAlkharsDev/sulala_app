@@ -1,11 +1,12 @@
+
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/screens/create_animal/drow_up_animal_breed.dart';
-import 'package:sulala_app/src/screens/create_animal/drow_up_animal_species.dart';
-import 'package:sulala_app/src/screens/create_animal/select_options.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
 import '../../widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
-import 'package:sulala_app/src/data/globals.dart' as globals;
+import 'drow_up_animal_breed.dart';
+import 'drow_up_animal_species.dart';
+import 'select_options.dart';
 
 class CreateAnimalPage extends StatefulWidget {
   const CreateAnimalPage({Key? key}) : super(key: key);
