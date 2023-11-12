@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class ShimmerListOfStaff extends StatelessWidget {
   const ShimmerListOfStaff({super.key});
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return SizedBox(
       width: double.infinity,
       child: Column(
@@ -24,30 +23,31 @@ class ShimmerListOfStaff extends StatelessWidget {
                       baseColor: Colors.grey[300]!,
                       highlightColor: Colors.grey[100]!,
                       child: Container(
-                          height: 60 * heightMediaQuery,
+                          height: 60 * globals.heightMediaQuery,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius:
-                                BorderRadius.circular(20 * widthMediaQuery),
+                            borderRadius: BorderRadius.circular(
+                                20 * globals.widthMediaQuery),
                           )),
                     ),
-                    SizedBox(height: 10 * heightMediaQuery),
+                    SizedBox(height: 10 * globals.heightMediaQuery),
                   ],
                 ),
-              SizedBox(height: 14 * heightMediaQuery),
+              SizedBox(height: 14 * globals.heightMediaQuery),
               Text(
                 'Requests',
                 style: AppFonts.headline3(color: AppColors.grayscale80),
               ),
-              SizedBox(height: 8 * heightMediaQuery),
+              SizedBox(height: 8 * globals.heightMediaQuery),
               Shimmer.fromColors(
                 baseColor: Colors.grey[300]!,
                 highlightColor: Colors.grey[100]!,
                 child: Container(
-                    height: 60 * heightMediaQuery,
+                    height: 60 * globals.heightMediaQuery,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(20 * widthMediaQuery),
+                      borderRadius:
+                          BorderRadius.circular(20 * globals.widthMediaQuery),
                     )),
               ),
             ],

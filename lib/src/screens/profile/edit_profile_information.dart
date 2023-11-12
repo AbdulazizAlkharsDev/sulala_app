@@ -119,8 +119,7 @@ class _EditProfileInformation extends State<EditProfileInformation> {
                     ),
                   ),
                 ),
-                SizedBox(
-                    height: (16 * MediaQuery.of(context).size.height) / 812),
+                SizedBox(height: 16 * globals.heightMediaQuery),
                 Center(
                   child: PrimaryTextButton(
                     onPressed: () {
@@ -130,97 +129,82 @@ class _EditProfileInformation extends State<EditProfileInformation> {
                     status: TextStatus.idle,
                   ),
                 ),
-                SizedBox(
-                    height: (32 * MediaQuery.of(context).size.height) / 812),
+                SizedBox(height: 32 * globals.heightMediaQuery),
                 Text(
                   "General Info",
                   style: AppFonts.headline3(color: AppColors.grayscale90),
                 ),
-                SizedBox(
-                    height: (24 * MediaQuery.of(context).size.height) / 812),
+                SizedBox(height: 24 * globals.heightMediaQuery),
                 PrimaryTextField(
                     hintText: 'Enter your first name',
                     controller: _firstnameController,
                     labelText: 'First Name'),
-                SizedBox(
-                    height: (16 * MediaQuery.of(context).size.height) / 812),
+                SizedBox(height: 16 * globals.heightMediaQuery),
                 PrimaryTextField(
                     hintText: 'Enter your first name',
                     controller: _secondnameController,
                     labelText: 'Second Name'),
-                SizedBox(
-                    height: (24 * MediaQuery.of(context).size.height) / 812),
+                SizedBox(height: 24 * globals.heightMediaQuery),
                 Text(
                   "Farm Name",
                   style: AppFonts.headline3(color: AppColors.grayscale90),
                 ),
-                SizedBox(
-                    height: (24 * MediaQuery.of(context).size.height) / 812),
+                SizedBox(height: 24 * globals.heightMediaQuery),
                 PrimaryTextField(
                   hintText: 'Enter your first name',
                   controller: _firstnameController,
                 ),
-                SizedBox(
-                    height: (24 * MediaQuery.of(context).size.height) / 812),
+                SizedBox(height: 24 * globals.heightMediaQuery),
                 Text(
                   "Farm Owner",
                   style: AppFonts.headline3(color: AppColors.grayscale90),
                 ),
-                SizedBox(
-                    height: (24 * MediaQuery.of(context).size.height) / 812),
+                SizedBox(height: 24 * globals.heightMediaQuery),
                 PrimaryTextField(
                   hintText: 'Enter your first name',
                   controller: _firstnameController,
                 ),
-                SizedBox(
-                    height: (32 * MediaQuery.of(context).size.height) / 812),
+                SizedBox(height: 32 * globals.heightMediaQuery),
                 Text("Contact Details",
                     style: AppFonts.headline3(color: AppColors.grayscale90)),
-                SizedBox(
-                    height: (24 * MediaQuery.of(context).size.height) / 812),
+                SizedBox(height: 24 * globals.heightMediaQuery),
                 PrimaryTextField(
                   hintText: 'Enter your first name',
                   controller: _phonenumController,
                   labelText: 'Phone Number',
                 ),
-                SizedBox(
-                    height: (16 * MediaQuery.of(context).size.height) / 812),
+                SizedBox(height: 16 * globals.heightMediaQuery),
                 PrimaryTextField(
                   hintText: 'Enter your first name',
                   controller: _emailController,
                   labelText: 'Email Address',
                 ),
-                SizedBox(
-                    height: (32 * MediaQuery.of(context).size.height) / 812),
+                SizedBox(height: 32 * globals.heightMediaQuery),
                 Text("Farm Address",
                     style: AppFonts.headline3(color: AppColors.grayscale90)),
-                SizedBox(
-                    height: (24 * MediaQuery.of(context).size.height) / 812),
+                SizedBox(height: 24 * globals.heightMediaQuery),
                 PrimaryTextField(
                   hintText: 'Enter Address',
                   controller: _addressController,
                 ),
-                SizedBox(
-                    height: (16 * MediaQuery.of(context).size.height) / 812),
+                SizedBox(height: 16 * globals.heightMediaQuery),
                 PrimaryTextField(
                   hintText: 'Enter your first name',
                   controller: _cityController,
                 ),
-                SizedBox(
-                    height: (16 * MediaQuery.of(context).size.height) / 812),
+                SizedBox(height: 16 * globals.heightMediaQuery),
                 PrimaryTextField(
                   hintText: 'Enter your first name',
                   controller: _countryController,
                 ),
-                SizedBox(
-                    height: (100 * MediaQuery.of(context).size.height) / 812),
+                SizedBox(height: 100 * globals.heightMediaQuery),
               ],
             ),
           ),
         ),
         floatingActionButton: SizedBox(
-          height: (52 * MediaQuery.of(context).size.height) / 812,
-          width: (343 * MediaQuery.of(context).size.width) / 375,
+          height: 52 * globals.heightMediaQuery,
+          width: 343 * globals.widthMediaQuery,
           child: PrimaryButton(
             onPressed: () {
               //Save informations

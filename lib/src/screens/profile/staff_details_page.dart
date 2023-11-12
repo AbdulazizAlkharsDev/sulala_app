@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/navigate_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/secondary_button.dart';
-import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
-import 'package:sulala_app/src/widgets/lists/table_lsit/table_clickable_link.dart';
-import 'package:sulala_app/src/screens/profile/list_of_staff.dart';
-import 'package:sulala_app/src/widgets/other/custom_snack_bar.dart';
-import 'package:sulala_app/src/screens/profile/manage_permissions.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/navigate_button.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/controls_and_buttons/buttons/secondary_button.dart';
+import '../../widgets/inputs/draw_ups/draw_up_widget.dart';
+import '../../widgets/lists/table_lsit/table_clickable_link.dart';
+import '../../widgets/other/custom_snack_bar.dart';
+import 'list_of_staff.dart';
+import 'manage_permissions.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class StaffDetailsPage extends StatefulWidget {
   final String imagePath;
@@ -58,8 +59,6 @@ class _StaffDetailsPageState extends State<StaffDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -86,7 +85,7 @@ class _StaffDetailsPageState extends State<StaffDetailsPage> {
           ),
           actions: [
             Padding(
-              padding: EdgeInsets.only(right: 6.0 * widthMediaQuery),
+              padding: EdgeInsets.only(right: 6.0 * globals.widthMediaQuery),
               child: IconButton(
                 padding: EdgeInsets.zero,
                 icon: Container(
@@ -138,11 +137,11 @@ class _StaffDetailsPageState extends State<StaffDetailsPage> {
                               ),
                             ),
                             SizedBox(
-                              height: 32 * heightMediaQuery,
+                              height: 32 * globals.heightMediaQuery,
                             ),
                             SizedBox(
                               width: double.infinity,
-                              height: 52 * heightMediaQuery,
+                              height: 52 * globals.heightMediaQuery,
                               child: NavigateButton(
                                 onPressed: () {
                                   Navigator.of(context).pushReplacement(
@@ -155,7 +154,7 @@ class _StaffDetailsPageState extends State<StaffDetailsPage> {
                                     context,
                                     'Member was Deleted',
                                     Icons.check_circle_rounded,
-                                    24 * heightMediaQuery,
+                                    24 * globals.heightMediaQuery,
                                     color: AppColors.primary10,
                                   );
                                 },
@@ -163,11 +162,11 @@ class _StaffDetailsPageState extends State<StaffDetailsPage> {
                               ),
                             ),
                             SizedBox(
-                              height: 8 * heightMediaQuery,
+                              height: 8 * globals.heightMediaQuery,
                             ),
                             SizedBox(
                               width: double.infinity,
-                              height: 52 * heightMediaQuery,
+                              height: 52 * globals.heightMediaQuery,
                               child: SecondaryButton(
                                 onPressed: () {},
                                 text: 'Cancel',
@@ -186,18 +185,19 @@ class _StaffDetailsPageState extends State<StaffDetailsPage> {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
-                right: 16.0 * widthMediaQuery, left: 16.0 * widthMediaQuery),
+                right: 16.0 * globals.widthMediaQuery,
+                left: 16.0 * globals.widthMediaQuery),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 44 * heightMediaQuery),
+                SizedBox(height: 44 * globals.heightMediaQuery),
                 Center(
                   child: CircleAvatar(
-                    radius: 60 * widthMediaQuery,
+                    radius: 60 * globals.widthMediaQuery,
                     backgroundImage: AssetImage(widget.imagePath),
                   ),
                 ),
-                SizedBox(height: 16 * heightMediaQuery),
+                SizedBox(height: 16 * globals.heightMediaQuery),
                 Center(
                   child: Text(
                     widget.title,
@@ -211,14 +211,14 @@ class _StaffDetailsPageState extends State<StaffDetailsPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 32 * heightMediaQuery,
+                  height: 32 * globals.heightMediaQuery,
                 ),
                 Text(
                   'Member Permissions',
                   style: AppFonts.title5(color: AppColors.grayscale90),
                 ),
                 SizedBox(
-                  height: 14 * heightMediaQuery,
+                  height: 14 * globals.heightMediaQuery,
                 ),
                 ListTile(
                   contentPadding: EdgeInsets.zero,
@@ -237,14 +237,14 @@ class _StaffDetailsPageState extends State<StaffDetailsPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 32 * heightMediaQuery,
+                  height: 32 * globals.heightMediaQuery,
                 ),
                 Text(
                   'Contact Details',
                   style: AppFonts.title5(color: AppColors.grayscale90),
                 ),
                 SizedBox(
-                  height: 14 * heightMediaQuery,
+                  height: 14 * globals.heightMediaQuery,
                 ),
                 TableClickableText(
                   iconPath: 'assets/icons/frame/24px/Outlined_Phone.png',
@@ -253,7 +253,7 @@ class _StaffDetailsPageState extends State<StaffDetailsPage> {
                   urlText: widget.phoneNumber,
                 ),
                 SizedBox(
-                  height: 20 * heightMediaQuery,
+                  height: 20 * globals.heightMediaQuery,
                 ),
                 TableClickableText(
                   iconPath: 'assets/icons/frame/24px/16_Mail.png',
@@ -262,14 +262,14 @@ class _StaffDetailsPageState extends State<StaffDetailsPage> {
                   urlText: widget.email,
                 ),
                 SizedBox(
-                  height: 35 * heightMediaQuery,
+                  height: 35 * globals.heightMediaQuery,
                 ),
                 Text(
                   'Address',
                   style: AppFonts.title5(color: AppColors.grayscale90),
                 ),
                 SizedBox(
-                  height: 14 * heightMediaQuery,
+                  height: 14 * globals.heightMediaQuery,
                 ),
                 ListTile(
                   contentPadding: EdgeInsets.zero,
@@ -287,8 +287,8 @@ class _StaffDetailsPageState extends State<StaffDetailsPage> {
           ),
         ),
         floatingActionButton: SizedBox(
-          width: 343 * widthMediaQuery,
-          height: 52 * heightMediaQuery,
+          width: 343 * globals.widthMediaQuery,
+          height: 52 * globals.heightMediaQuery,
           child: PrimaryButton(
               onPressed: () {
                 Navigator.push(

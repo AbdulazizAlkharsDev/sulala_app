@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
-import 'package:sulala_app/src/screens/profile/staff_details_page.dart';
-import 'package:sulala_app/src/screens/profile/shimmer_list_of_staff.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/inputs/draw_ups/draw_up_widget.dart';
+import 'shimmer_list_of_staff.dart';
+import 'staff_details_page.dart';
 
 class ListOfStaff extends StatefulWidget {
   const ListOfStaff({super.key});
@@ -84,8 +85,6 @@ class _ListOfStaffState extends State<ListOfStaff> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -122,7 +121,8 @@ class _ListOfStaffState extends State<ListOfStaff> {
                 ),
               ),
               onPressed: () {
-                inviteMembarDrowup(context, heightMediaQuery, widthMediaQuery);
+                inviteMembarDrowup(
+                    context, globals.heightMediaQuery, globals.widthMediaQuery);
               },
             ),
           ],
@@ -130,8 +130,8 @@ class _ListOfStaffState extends State<ListOfStaff> {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
-              left: 16 * heightMediaQuery,
-              right: 16 * heightMediaQuery,
+              left: 16 * globals.heightMediaQuery,
+              right: 16 * globals.heightMediaQuery,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,7 +141,7 @@ class _ListOfStaffState extends State<ListOfStaff> {
                   style: AppFonts.title3(color: AppColors.grayscale90),
                 ),
                 SizedBox(
-                  height: 24 * heightMediaQuery,
+                  height: 24 * globals.heightMediaQuery,
                 ),
                 isLoading
                     ? const Center(child: ShimmerListOfStaff())
@@ -149,26 +149,28 @@ class _ListOfStaffState extends State<ListOfStaff> {
                         ? Center(
                             child: Column(
                             children: [
-                              SizedBox(height: 120 * heightMediaQuery),
+                              SizedBox(height: 120 * globals.heightMediaQuery),
                               Image.asset(
                                 'assets/illustrations/farmer.png',
                                 fit: BoxFit.cover,
                               ),
-                              SizedBox(height: 44 * heightMediaQuery),
+                              SizedBox(height: 44 * globals.heightMediaQuery),
                               Text(
                                 'You have no staff',
                                 style: AppFonts.headline3(
                                     color: AppColors.grayscale90),
                               ),
-                              SizedBox(height: 90 * heightMediaQuery),
+                              SizedBox(height: 90 * globals.heightMediaQuery),
                               SizedBox(
-                                  width: 154 * widthMediaQuery,
-                                  height: 52 * heightMediaQuery,
+                                  width: 154 * globals.widthMediaQuery,
+                                  height: 52 * globals.heightMediaQuery,
                                   child: PrimaryButton(
                                       text: 'Invite a Member',
                                       onPressed: () {
-                                        inviteMembarDrowup(context,
-                                            heightMediaQuery, widthMediaQuery);
+                                        inviteMembarDrowup(
+                                            context,
+                                            globals.heightMediaQuery,
+                                            globals.widthMediaQuery);
                                       }))
                             ],
                           ))
@@ -181,7 +183,7 @@ class _ListOfStaffState extends State<ListOfStaff> {
                                 contentPadding: EdgeInsets.zero,
                                 leading: CircleAvatar(
                                   backgroundColor: Colors.transparent,
-                                  radius: 24 * widthMediaQuery,
+                                  radius: 24 * globals.widthMediaQuery,
                                   backgroundImage:
                                       AssetImage(options[index]['imagePath']),
                                 ),
@@ -221,24 +223,25 @@ class _ListOfStaffState extends State<ListOfStaff> {
                     : Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 24 * heightMediaQuery),
+                          SizedBox(height: 24 * globals.heightMediaQuery),
                           Text(
                             'Requests',
                             style: AppFonts.headline3(
                                 color: AppColors.grayscale80),
                           ),
-                          SizedBox(height: 8 * heightMediaQuery),
+                          SizedBox(height: 8 * globals.heightMediaQuery),
                           ListView.builder(
                             shrinkWrap: true,
                             // physics: const NeverScrollableScrollPhysics(),
                             itemCount: options.length,
                             itemBuilder: (context, index) {
                               return ListTile(
-                                minVerticalPadding: 8 * heightMediaQuery,
+                                minVerticalPadding:
+                                    8 * globals.heightMediaQuery,
                                 contentPadding: EdgeInsets.zero,
                                 leading: CircleAvatar(
                                   backgroundColor: Colors.transparent,
-                                  radius: 24 * widthMediaQuery,
+                                  radius: 24 * globals.widthMediaQuery,
                                   backgroundImage:
                                       AssetImage(options[index]['imagePath']),
                                 ),
@@ -259,7 +262,7 @@ class _ListOfStaffState extends State<ListOfStaff> {
                                         backgroundColor: AppColors.primary50,
                                         shape: const CircleBorder(),
                                         padding: EdgeInsets.all(
-                                            12 * widthMediaQuery),
+                                            12 * globals.widthMediaQuery),
                                       ),
                                       child: const Icon(
                                         Icons.check,
@@ -276,8 +279,7 @@ class _ListOfStaffState extends State<ListOfStaff> {
                                         elevation: 0,
                                         shape: const CircleBorder(),
                                         padding: EdgeInsets.all(
-                                            MediaQuery.of(context).size.width *
-                                                0.032),
+                                            globals.widthMediaQuery * 12),
                                       ),
                                       child: const Icon(Icons.close_rounded,
                                           color: AppColors.grayscale90),
