@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/tags/tags.dart';
-import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
-import 'package:sulala_app/src/widgets/pages/homepage_widgets/card.dart';
-import 'package:sulala_app/src/screens/reg_mode/show_filter_reg.dart';
-import 'package:sulala_app/src/screens/reg_mode/small_card_widget.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:badges/badges.dart' as badges;
-
+import 'package:sulala_app/src/data/globals.dart' as globals;
+import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../providers/animal_counts.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/tags/tags.dart';
+import '../../widgets/inputs/draw_ups/draw_up_widget.dart';
+import '../../widgets/pages/homepage_widgets/card.dart';
+import 'show_filter_reg.dart';
+import 'small_card_widget.dart';
 
 class RegHomePage extends ConsumerStatefulWidget {
   const RegHomePage({super.key});
@@ -171,7 +171,7 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
                           AssetImage('assets/icons/frame/24px/Icon-button.png'),
                     ),
                   ),
-                  SizedBox(width: MediaQuery.of(context).size.width * 0.0097),
+                  SizedBox(width: globals.widthMediaQuery * 3.75),
                   GestureDetector(
                     onTap: () {
                       _removeEvent(1);
@@ -180,8 +180,8 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
                     child: events.isNotEmpty
                         ? badges.Badge(
                             badgeStyle: badges.BadgeStyle(
-                              padding: EdgeInsets.all(
-                                  MediaQuery.of(context).size.width * 0.02),
+                              padding:
+                                  EdgeInsets.all(8 * globals.widthMediaQuery),
                             ),
                             badgeContent: Text(
                               events.length.toString(),
@@ -216,9 +216,9 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
           child: SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width * 0.042,
-                  right: MediaQuery.of(context).size.width * 0.042,
-                  top: MediaQuery.of(context).size.height * 0.02),
+                  left: globals.widthMediaQuery * 16,
+                  right: globals.widthMediaQuery * 16,
+                  top: globals.heightMediaQuery * 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -236,21 +236,20 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
                               AssetImage('assets/icons/frame/24px/filter1.png'),
                         ),
                       ),
-                      SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.058),
+                      SizedBox(width: globals.widthMediaQuery * 22),
                     ],
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.014),
+                  SizedBox(height: globals.heightMediaQuery * 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.182,
-                        width: MediaQuery.of(context).size.width * 0.282,
+                        height: globals.heightMediaQuery * 148,
+                        width: globals.widthMediaQuery * 106,
                         child: SmallCardWidget(
                           icon: Image.asset(
                             "assets/icons/frame/24px/cow_chicken.png",
-                            width: MediaQuery.of(context).size.width * 0.128,
+                            width: globals.widthMediaQuery * 48,
                           ),
                           animalData: trueData.first,
                           quan: trueData.first.quan.toString(),
@@ -263,12 +262,12 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
                         ),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.182,
-                        width: MediaQuery.of(context).size.width * 0.282,
+                        height: globals.heightMediaQuery * 148,
+                        width: globals.widthMediaQuery * 106,
                         child: SmallCardWidget(
                           icon: Image.asset(
                             "assets/icons/frame/24px/cow_framed.png",
-                            width: MediaQuery.of(context).size.width * 0.128,
+                            width: globals.widthMediaQuery * 48,
                           ),
                           quan: _chartData[0].quan.toString(),
                           animalData: _chartData[0],
@@ -281,12 +280,12 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
                         ),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.182,
-                        width: MediaQuery.of(context).size.width * 0.282,
+                        height: globals.heightMediaQuery * 148,
+                        width: globals.widthMediaQuery * 106,
                         child: SmallCardWidget(
                           icon: Image.asset(
                             "assets/icons/frame/24px/chicken_framed.png",
-                            width: MediaQuery.of(context).size.width * 0.128,
+                            width: globals.widthMediaQuery * 48,
                           ),
                           animalData: _chartData[1],
                           quan: _chartData[1].quan.toString(),
@@ -300,13 +299,13 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+                  SizedBox(height: globals.heightMediaQuery * 16),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.576,
-                        height: MediaQuery.of(context).size.height * 0.27,
+                        width: globals.widthMediaQuery * 216,
+                        height: globals.heightMediaQuery * 220,
                         child: SfCircularChart(
                           margin: const EdgeInsets.all(0),
                           series: <CircularSeries>[
@@ -335,11 +334,9 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
                           children: [
                             Image.asset(
                               'assets/icons/frame/24px/24_Warning-circled.png',
-                              width: MediaQuery.of(context).size.width * 0.058,
+                              width: globals.widthMediaQuery * 22,
                             ),
-                            SizedBox(
-                                width:
-                                    MediaQuery.of(context).size.width * 0.032),
+                            SizedBox(width: globals.widthMediaQuery * 12),
                           ],
                         ),
                       Text(
@@ -348,7 +345,7 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.014),
+                  SizedBox(height: globals.heightMediaQuery * 12),
                   if (events.isEmpty)
                     Center(
                       child: Column(
@@ -356,9 +353,7 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
                           Image.asset(
                             'assets/illustrations/calendar_x.png',
                           ),
-                          SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.014),
+                          SizedBox(height: globals.heightMediaQuery * 12),
                           Text(
                             'You have no upcoming events so far',
                             style: AppFonts.body2(color: AppColors.grayscale70),
@@ -368,7 +363,7 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
                     ),
                   if (events.isNotEmpty)
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.16,
+                      height: globals.heightMediaQuery * 130,
                       child: ListView.builder(
                         shrinkWrap: true,
                         itemCount: events.length,
@@ -385,13 +380,12 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
                             ),
                             trailing: Icon(Icons.arrow_forward_ios_rounded,
                                 color: AppColors.primary40,
-                                size:
-                                    MediaQuery.of(context).size.width * 0.034),
+                                size: globals.widthMediaQuery * 12.75),
                           );
                         },
                       ),
                     ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.039),
+                  SizedBox(height: globals.heightMediaQuery * 32),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -406,8 +400,7 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
                           },
                         ),
                       ),
-                      SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.015),
+                      SizedBox(width: globals.widthMediaQuery * 6),
                       Expanded(
                         child: CardWidget(
                           color: const Color.fromRGBO(246, 239, 205, 1),
@@ -422,7 +415,7 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
                       ),
                     ],
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.029),
+                  SizedBox(height: globals.heightMediaQuery * 24),
                 ],
               ),
             ),
@@ -455,9 +448,8 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(Icons.circle,
-              color: data.color,
-              size: MediaQuery.of(context).size.width * 0.021),
-          SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+              color: data.color, size: globals.widthMediaQuery * 8),
+          SizedBox(width: globals.widthMediaQuery * 8),
           Text('${data.animal}: ${data.quan}'),
         ],
       );

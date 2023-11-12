@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class NotificationList extends StatelessWidget {
   final List<Map<String, dynamic>> notifications = [
@@ -61,8 +62,7 @@ class NotificationList extends StatelessWidget {
           backgroundColor: Colors.transparent,
           leading: IconButton(
             icon: Container(
-              padding:
-                  EdgeInsets.all(MediaQuery.of(context).size.width * 0.016),
+              padding: EdgeInsets.all(globals.widthMediaQuery * 6),
               decoration: BoxDecoration(
                 color: AppColors.grayscale10,
                 borderRadius: BorderRadius.circular(50),
@@ -79,8 +79,8 @@ class NotificationList extends StatelessWidget {
         ),
         body: Padding(
           padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.042,
-              right: MediaQuery.of(context).size.width * 0.042),
+              left: 16 * globals.widthMediaQuery,
+              right: globals.widthMediaQuery * 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -88,7 +88,7 @@ class NotificationList extends StatelessWidget {
                 'Notifications',
                 style: AppFonts.title4(color: AppColors.grayscale90),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              SizedBox(height: globals.heightMediaQuery * 16),
               Expanded(
                 child: ListView.builder(
                   itemCount: notifications.length,
@@ -99,7 +99,7 @@ class NotificationList extends StatelessWidget {
                     return ListTile(
                       leading: CircleAvatar(
                         backgroundColor: Colors.transparent,
-                        radius: MediaQuery.of(context).size.width * 0.064,
+                        radius: globals.widthMediaQuery * 24,
                         backgroundImage:
                             AssetImage(notification['imagePath'] as String),
                       ),
@@ -126,8 +126,7 @@ class NotificationList extends StatelessWidget {
                                     backgroundColor: AppColors.primary50,
                                     shape: const CircleBorder(),
                                     padding: EdgeInsets.all(
-                                        MediaQuery.of(context).size.width *
-                                            0.032),
+                                        globals.widthMediaQuery * 12),
                                   ),
                                   child: const Icon(
                                     Icons.check,
@@ -144,8 +143,7 @@ class NotificationList extends StatelessWidget {
                                     elevation: 0,
                                     shape: const CircleBorder(),
                                     padding: EdgeInsets.all(
-                                        MediaQuery.of(context).size.width *
-                                            0.032),
+                                        globals.widthMediaQuery * 12),
                                   ),
                                   child: const Icon(Icons.close_rounded,
                                       color: AppColors.grayscale90),
