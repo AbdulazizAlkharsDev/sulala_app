@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/screens/guest_mode/owned_animal_detail.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/inputs/search_bars/button_search_bar.dart';
-import 'package:sulala_app/src/widgets/lists/animal_list/animal_list_widget.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/inputs/search_bars/button_search_bar.dart';
+import '../../widgets/lists/animal_list/animal_list_widget.dart';
+import 'owned_animal_detail.dart';
 
 class SearchPageOwnerAnimals extends StatefulWidget {
   const SearchPageOwnerAnimals({super.key});
@@ -127,19 +128,21 @@ class _SearchPageOwnerAnimalsState extends State<SearchPageOwnerAnimals> {
           children: [
             Padding(
               padding: EdgeInsets.fromLTRB(
-                  MediaQuery.of(context).size.width * 0.042,
-                  MediaQuery.of(context).size.width * 0.01,
-                  MediaQuery.of(context).size.width * 0.042,
-                  MediaQuery.of(context).size.width * 0.01),
+                globals.widthMediaQuery * 16,
+                globals.widthMediaQuery * 4,
+                globals.widthMediaQuery * 16,
+                globals.widthMediaQuery * 4,
+              ),
               child: Text("Animals",
                   style: AppFonts.title3(color: AppColors.grayscale90)),
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(
-                  MediaQuery.of(context).size.width * 0.042,
-                  MediaQuery.of(context).size.width * 0.01,
-                  MediaQuery.of(context).size.width * 0.042,
-                  MediaQuery.of(context).size.width * 0.01),
+                globals.widthMediaQuery * 16,
+                globals.widthMediaQuery * 4,
+                globals.widthMediaQuery * 16,
+                globals.widthMediaQuery * 4,
+              ),
               child: ButtonSearchBar(
                 onChange: filterOptions,
                 hintText: "Search by name or ID",
@@ -150,7 +153,7 @@ class _SearchPageOwnerAnimalsState extends State<SearchPageOwnerAnimals> {
                 },
               ),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+            SizedBox(height: globals.heightMediaQuery * 24),
             if (filteredAnimals.isNotEmpty)
               Expanded(
                 child: ListView.builder(
@@ -168,17 +171,13 @@ class _SearchPageOwnerAnimalsState extends State<SearchPageOwnerAnimals> {
                               const Image(
                                   image: AssetImage(
                                       'assets/illustrations/cow_search.png')),
-                              SizedBox(
-                                  height: MediaQuery.of(context).size.height *
-                                      0.04),
+                              SizedBox(height: globals.heightMediaQuery * 32),
                               Text(
                                 "No animals found",
                                 style: AppFonts.headline3(
                                     color: AppColors.grayscale90),
                               ),
-                              SizedBox(
-                                  height: MediaQuery.of(context).size.height *
-                                      0.005),
+                              SizedBox(height: globals.heightMediaQuery * 4),
                               Text(
                                 "Try adjusting the filters",
                                 style: AppFonts.body2(
@@ -190,11 +189,9 @@ class _SearchPageOwnerAnimalsState extends State<SearchPageOwnerAnimals> {
                       );
                     } else {
                       return Padding(
-                        padding: EdgeInsets.all(
-                            MediaQuery.of(context).size.width * 0.026),
+                        padding: EdgeInsets.all(globals.widthMediaQuery * 10),
                         child: AnimalListWidget(
-                          avatarRadius:
-                              MediaQuery.of(context).size.width * 0.064,
+                          avatarRadius: globals.widthMediaQuery * 24,
                           imagePath: option['imagePath'],
                           textHead: option['title'],
                           textBody: option['geninfo'],
@@ -218,14 +215,12 @@ class _SearchPageOwnerAnimalsState extends State<SearchPageOwnerAnimals> {
                       const Image(
                           image: AssetImage(
                               'assets/illustrations/cow_search.png')),
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04),
+                      SizedBox(height: globals.heightMediaQuery * 32),
                       Text(
                         "No animals found",
                         style: AppFonts.headline3(color: AppColors.grayscale90),
                       ),
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.005),
+                      SizedBox(height: globals.heightMediaQuery * 4),
                       Text(
                         "Try adjusting the filters",
                         style: AppFonts.body2(color: AppColors.grayscale70),

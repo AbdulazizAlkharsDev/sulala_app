@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
+
+import 'package:sulala_app/src/data/globals.dart' as globals;
+
+import '../../theme/colors/colors.dart';
 
 class ShimmerHomePageWidget extends StatelessWidget {
   const ShimmerHomePageWidget({super.key});
@@ -9,20 +12,19 @@ class ShimmerHomePageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-     Row(
+        Row(
           children: [
             Expanded(
               child: Container(
                   width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.26,
+                  height: globals.heightMediaQuery * 211,
                   decoration: BoxDecoration(
                     color: AppColors.grayscale10,
-                    borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.05),
+                    borderRadius:
+                        BorderRadius.circular(globals.widthMediaQuery * 19),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(
-                        MediaQuery.of(context).size.width * 0.032),
+                    padding: EdgeInsets.all((globals.widthMediaQuery * 18)),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,42 +33,40 @@ class ShimmerHomePageWidget extends StatelessWidget {
                           baseColor: Colors.grey[300]!,
                           highlightColor: Colors.grey[100]!,
                           child: Container(
-                            width: MediaQuery.of(context).size.width * 0.128,
-                            height: MediaQuery.of(context).size.height * 0.06,
+                            width: globals.widthMediaQuery * 48,
+                            height: globals.heightMediaQuery * 49,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(
-                                  MediaQuery.of(context).size.width / 2),
+                                  globals.widthMediaQuery / 188),
                             ),
                           ),
                         ),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.017),
+                        SizedBox(height: globals.heightMediaQuery * 14),
                         Shimmer.fromColors(
                           baseColor: Colors.grey[300]!,
                           highlightColor: Colors.grey[100]!,
                           child: Container(
                             width: double.infinity,
-                            height: MediaQuery.of(context).size.height * 0.068,
+                            height: globals.heightMediaQuery * 55,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(
-                                  MediaQuery.of(context).size.width * 0.064),
+                                  globals.widthMediaQuery * 24),
                             ),
                           ),
                         ),
-                        SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.017),
+                        SizedBox(height: globals.heightMediaQuery * 14),
                         Shimmer.fromColors(
                           baseColor: Colors.grey[300]!,
                           highlightColor: Colors.grey[100]!,
                           child: Container(
                             width: double.infinity,
-                            height: MediaQuery.of(context).size.height * 0.05,
+                            height: globals.heightMediaQuery * 40,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(
-                                  MediaQuery.of(context).size.width * 0.064),
+                                  globals.widthMediaQuery * 24),
                             ),
                           ),
                         ),
@@ -74,19 +74,18 @@ class ShimmerHomePageWidget extends StatelessWidget {
                     ),
                   )),
             ),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.035),
+            SizedBox(width: globals.widthMediaQuery * 13),
             Expanded(
               child: Container(
                   width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.26,
+                  height: globals.heightMediaQuery * 211,
                   decoration: BoxDecoration(
                     color: AppColors.grayscale10,
-                    borderRadius: BorderRadius.circular(
-                        MediaQuery.of(context).size.width * 0.05),
+                    borderRadius:
+                        BorderRadius.circular(globals.widthMediaQuery * 19),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(
-                        MediaQuery.of(context).size.width * 0.032),
+                    padding: EdgeInsets.all(globals.widthMediaQuery * 12),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,42 +94,44 @@ class ShimmerHomePageWidget extends StatelessWidget {
                           baseColor: Colors.grey[300]!,
                           highlightColor: Colors.grey[100]!,
                           child: Container(
-                            width: MediaQuery.of(context).size.width * 0.128,
-                            height: MediaQuery.of(context).size.height * 0.06,
+                            width: globals.widthMediaQuery * 48,
+                            height: globals.heightMediaQuery * 48,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(
-                                  MediaQuery.of(context).size.width / 2),
+                                  globals.widthMediaQuery / 187),
                             ),
                           ),
                         ),
                         SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.017),
+                          height: globals.heightMediaQuery * 14,
+                        ),
                         Shimmer.fromColors(
                           baseColor: Colors.grey[300]!,
                           highlightColor: Colors.grey[100]!,
                           child: Container(
                             width: double.infinity,
-                            height: MediaQuery.of(context).size.height * 0.068,
+                            height: globals.heightMediaQuery * 55,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(
-                                  MediaQuery.of(context).size.width * 0.064),
+                                  globals.widthMediaQuery * 24),
                             ),
                           ),
                         ),
                         SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.017),
+                          height: globals.heightMediaQuery * 14,
+                        ),
                         Shimmer.fromColors(
                           baseColor: Colors.grey[300]!,
                           highlightColor: Colors.grey[100]!,
                           child: Container(
                             width: double.infinity,
-                            height: MediaQuery.of(context).size.height * 0.05,
+                            height: globals.heightMediaQuery * 40,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(
-                                  MediaQuery.of(context).size.width * 0.064),
+                                  globals.widthMediaQuery * 24),
                             ),
                           ),
                         ),

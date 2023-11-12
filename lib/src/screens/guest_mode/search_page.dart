@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/inputs/search_bars/search_bar.dart';
-import 'package:sulala_app/src/widgets/lists/animal_list/animal_list_widget.dart';
-import 'package:sulala_app/src/widgets/lists/staff_text/staff_list_widget.dart';
-import 'package:sulala_app/src/screens/guest_mode/animal_details.dart';
-import 'package:sulala_app/src/screens/guest_mode/user_details.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
 import '../../widgets/controls_and_buttons/icon_buttons/secondary_icon_button.dart';
+import '../../widgets/inputs/search_bars/search_bar.dart';
+import '../../widgets/lists/animal_list/animal_list_widget.dart';
+import '../../widgets/lists/staff_text/staff_list_widget.dart';
+import 'animal_details.dart';
+import 'user_details.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -175,15 +176,16 @@ class _SearchPageState extends State<SearchPage> {
             children: [
               Padding(
                 padding: EdgeInsets.fromLTRB(
-                    MediaQuery.of(context).size.width * 0.042,
-                    MediaQuery.of(context).size.width * 0.01,
-                    MediaQuery.of(context).size.width * 0.042,
-                    MediaQuery.of(context).size.width * 0.01),
+                  globals.widthMediaQuery * 16,
+                  globals.widthMediaQuery * 4,
+                  globals.widthMediaQuery * 16,
+                  globals.widthMediaQuery * 4,
+                ),
                 child: Row(
                   children: [
                     Expanded(
                       child: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.05,
+                        height: globals.heightMediaQuery * 40,
                         child: PrimarySearchBar(
                           onChange: filterOptions,
                           hintText: "Search Staff",
@@ -192,7 +194,7 @@ class _SearchPageState extends State<SearchPage> {
                       ),
                     ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.01,
+                      width: globals.widthMediaQuery * 4,
                     ),
                     SecondaryIconButton(
                       status: SecondaryIconButtonStatus.idle,
@@ -208,14 +210,15 @@ class _SearchPageState extends State<SearchPage> {
                   ],
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+              SizedBox(height: globals.heightMediaQuery * 24),
               if (filteredOptions.isNotEmpty)
                 Padding(
                   padding: EdgeInsets.fromLTRB(
-                      MediaQuery.of(context).size.width * 0.042,
-                      MediaQuery.of(context).size.width * 0.01,
-                      MediaQuery.of(context).size.width * 0.042,
-                      MediaQuery.of(context).size.width * 0.01),
+                    globals.widthMediaQuery * 16,
+                    globals.widthMediaQuery * 4,
+                    globals.widthMediaQuery * 16,
+                    globals.widthMediaQuery * 4,
+                  ),
                   child: Text(
                     'Farms',
                     style: AppFonts.caption1(color: AppColors.grayscale80),
@@ -223,7 +226,7 @@ class _SearchPageState extends State<SearchPage> {
                 ),
               if (filteredOptions.isNotEmpty)
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.167,
+                  height: globals.heightMediaQuery * 135,
                   child: ListView.builder(
                       shrinkWrap: true,
                       itemCount: filteredOptions.length,
@@ -231,26 +234,27 @@ class _SearchPageState extends State<SearchPage> {
                         final option = filteredOptions[index];
                         return Padding(
                           padding: EdgeInsets.all(
-                              MediaQuery.of(context).size.width * 0.026),
+                            globals.widthMediaQuery * 10,
+                          ),
                           child: StaffListWidget(
                             imagePath: option['imagePath'],
                             textHead: option['title'],
                             textBody: option['subtitle'],
-                            avatarRadius:
-                                MediaQuery.of(context).size.width * 0.064,
+                            avatarRadius: globals.widthMediaQuery * 24,
                             onPressed: () => navigateToUserDetailsPage(option),
                           ),
                         );
                       }),
                 ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+              SizedBox(height: globals.heightMediaQuery * 24),
               if (filteredAnimals.isNotEmpty)
                 Padding(
                   padding: EdgeInsets.fromLTRB(
-                      MediaQuery.of(context).size.width * 0.042,
-                      MediaQuery.of(context).size.width * 0.01,
-                      MediaQuery.of(context).size.width * 0.042,
-                      MediaQuery.of(context).size.width * 0.01),
+                    globals.widthMediaQuery * 16,
+                    globals.widthMediaQuery * 4,
+                    globals.widthMediaQuery * 16,
+                    globals.widthMediaQuery * 4,
+                  ),
                   child: Text(
                     'Animals',
                     style: AppFonts.caption1(color: AppColors.grayscale80),
@@ -265,11 +269,9 @@ class _SearchPageState extends State<SearchPage> {
                       itemBuilder: (context, index) {
                         final option = filteredAnimals[index];
                         return Padding(
-                          padding: EdgeInsets.all(
-                              MediaQuery.of(context).size.width * 0.026),
+                          padding: EdgeInsets.all(globals.widthMediaQuery * 10),
                           child: AnimalListWidget(
-                            avatarRadius:
-                                MediaQuery.of(context).size.width * 0.064,
+                            avatarRadius: globals.widthMediaQuery * 24,
                             imagePath: option['imagePath'],
                             textHead: option['title'],
                             textBody: option['geninfo'],

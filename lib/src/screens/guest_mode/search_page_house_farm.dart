@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/inputs/search_bars/button_search_bar.dart';
-import 'package:sulala_app/src/widgets/lists/animal_list/animal_list_widget.dart';
-import 'package:sulala_app/src/screens/guest_mode/user_details.dart';
+
+import 'package:sulala_app/src/data/globals.dart' as globals;
+
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/inputs/search_bars/button_search_bar.dart';
+import '../../widgets/lists/animal_list/animal_list_widget.dart';
+import 'user_details.dart';
 
 class SearchPageHouseFarm extends StatefulWidget {
   const SearchPageHouseFarm({super.key});
@@ -110,19 +113,21 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
           children: [
             Padding(
               padding: EdgeInsets.fromLTRB(
-                  MediaQuery.of(context).size.width * 0.042,
-                  MediaQuery.of(context).size.width * 0.01,
-                  MediaQuery.of(context).size.width * 0.042,
-                  MediaQuery.of(context).size.width * 0.01),
+                globals.widthMediaQuery * 16,
+                globals.widthMediaQuery * 4,
+                globals.widthMediaQuery * 16,
+                globals.widthMediaQuery * 4,
+              ),
               child: Text("House Farm",
                   style: AppFonts.title3(color: AppColors.grayscale90)),
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(
-                  MediaQuery.of(context).size.width * 0.042,
-                  MediaQuery.of(context).size.width * 0.01,
-                  MediaQuery.of(context).size.width * 0.042,
-                  MediaQuery.of(context).size.width * 0.01),
+                globals.widthMediaQuery * 16,
+                globals.widthMediaQuery * 4,
+                globals.widthMediaQuery * 16,
+                globals.widthMediaQuery * 4,
+              ),
               child: ButtonSearchBar(
                 onChange: filterOptions,
                 hintText: "Search by name or ID",
@@ -133,7 +138,7 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
                 },
               ),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+            SizedBox(height: globals.heightMediaQuery * 24),
             if (filteredFarms.isNotEmpty)
               Expanded(
                 child: ListView.builder(
@@ -151,17 +156,13 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
                               const Image(
                                   image: AssetImage(
                                       'assets/illustrations/home_search.png')),
-                              SizedBox(
-                                  height: MediaQuery.of(context).size.height *
-                                      0.04),
+                              SizedBox(height: globals.heightMediaQuery * 32),
                               Text(
                                 "No farms found",
                                 style: AppFonts.headline3(
                                     color: AppColors.grayscale90),
                               ),
-                              SizedBox(
-                                  height: MediaQuery.of(context).size.height *
-                                      0.005),
+                              SizedBox(height: globals.heightMediaQuery * 4),
                               Text(
                                 "Try adjusting the filters",
                                 style: AppFonts.body2(
@@ -173,11 +174,9 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
                       );
                     } else {
                       return Padding(
-                        padding: EdgeInsets.all(
-                            MediaQuery.of(context).size.width * 0.026),
+                        padding: EdgeInsets.all(globals.widthMediaQuery * 10),
                         child: AnimalListWidget(
-                          avatarRadius:
-                              MediaQuery.of(context).size.width * 0.064,
+                          avatarRadius: globals.widthMediaQuery * 24,
                           imagePath: option['imagePath'],
                           textHead: option['title'],
                           textBody: option['subtitle'],
@@ -201,14 +200,12 @@ class _SearchPageHouseFarmState extends State<SearchPageHouseFarm> {
                       const Image(
                           image: AssetImage(
                               'assets/illustrations/home_search.png')),
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.04),
+                      SizedBox(height: globals.heightMediaQuery * 32),
                       Text(
                         "No farms found",
                         style: AppFonts.headline3(color: AppColors.grayscale90),
                       ),
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.005),
+                      SizedBox(height: globals.heightMediaQuery * 4),
                       Text(
                         "Try adjusting the filters",
                         style: AppFonts.body2(color: AppColors.grayscale70),

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/icon_secondary_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/secondary_button.dart';
-import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
-import 'package:sulala_app/src/widgets/lists/table_lsit/table_clickable_link.dart';
-import 'package:sulala_app/src/widgets/other/two_information_block.dart';
+
+import 'package:sulala_app/src/data/globals.dart' as globals;
+
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/icon_secondary_button.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/controls_and_buttons/buttons/secondary_button.dart';
+import '../../widgets/inputs/draw_ups/draw_up_widget.dart';
+import '../../widgets/lists/table_lsit/table_clickable_link.dart';
+import '../../widgets/other/two_information_block.dart';
 
 class UserDetails extends StatefulWidget {
   final String imagePath;
@@ -55,26 +58,26 @@ class _SearchDetails extends State<UserDetails> {
         ),
         body: Padding(
           padding: EdgeInsets.fromLTRB(
-            MediaQuery.of(context).size.width * 0.042,
+            globals.widthMediaQuery * 16,
             0,
-            MediaQuery.of(context).size.width * 0.042,
+            globals.widthMediaQuery * 16,
             0,
           ),
           child: SingleChildScrollView(
             child: Column(
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.029,
+                  height: globals.heightMediaQuery * 24,
                 ),
                 Center(
                   child: CircleAvatar(
                     backgroundColor: Colors.transparent,
-                    radius: MediaQuery.of(context).size.width * 0.16,
+                    radius: globals.widthMediaQuery * 60,
                     backgroundImage: AssetImage(widget.imagePath),
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.019,
+                  height: globals.heightMediaQuery * 15,
                 ),
                 Text(
                   widget.title,
@@ -85,22 +88,20 @@ class _SearchDetails extends State<UserDetails> {
                   style: AppFonts.body2(color: AppColors.primary30),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.019,
+                  height: globals.heightMediaQuery * 15,
                 ),
                 Text(
                   'House Farm',
                   style: AppFonts.body2(color: AppColors.grayscale70),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.029,
-                ),
+                SizedBox(height: globals.heightMediaQuery * 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Flexible(
                       child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.45,
-                        height: MediaQuery.of(context).size.height * 0.05,
+                        width: globals.widthMediaQuery * 169,
+                        height: globals.heightMediaQuery * 41,
                         child: IconSecondaryButton(
                           iconPath:
                               'assets/icons/frame/24px/20_Status-farm.png',
@@ -114,8 +115,8 @@ class _SearchDetails extends State<UserDetails> {
                     ),
                     Flexible(
                       child: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.05,
-                        width: MediaQuery.of(context).size.width * 0.45,
+                        height: globals.heightMediaQuery * 15,
+                        width: globals.widthMediaQuery * 169,
                         child: IconSecondaryButton(
                           iconPath:
                               'assets/icons/frame/24px/Outlined_Cow_green_icon.png',
@@ -130,13 +131,17 @@ class _SearchDetails extends State<UserDetails> {
                     ),
                   ],
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                SizedBox(
+                  height: globals.heightMediaQuery * 33,
+                ),
                 const TwoInformationBlock(
                     head1: '24',
                     head2: '4',
                     subtitle1: 'Animals',
                     subtitle2: 'Collaborations'),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                SizedBox(
+                  height: globals.heightMediaQuery * 33,
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -147,9 +152,10 @@ class _SearchDetails extends State<UserDetails> {
                       ),
                     ),
                     SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.017),
+                      height: globals.heightMediaQuery * 14,
+                    ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.05,
+                      height: globals.heightMediaQuery * 41,
                       child: TableClickableText(
                         text1: 'Phone number',
                         urlText: widget.phoneNumber,
@@ -158,7 +164,7 @@ class _SearchDetails extends State<UserDetails> {
                       ),
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.05,
+                      height: globals.heightMediaQuery * 41,
                       child: TableClickableText(
                         text1: 'Email address',
                         urlText: widget.email,
@@ -166,8 +172,7 @@ class _SearchDetails extends State<UserDetails> {
                         iconPath: 'assets/icons/frame/24px/16_Mail.png',
                       ),
                     ),
-                    SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.065),
+                    SizedBox(height: globals.heightMediaQuery * 53),
                   ],
                 ),
               ],
@@ -175,8 +180,8 @@ class _SearchDetails extends State<UserDetails> {
           ),
         ),
         floatingActionButton: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.064,
-          width: MediaQuery.of(context).size.width * 0.4,
+          height: globals.heightMediaQuery * 52,
+          width: globals.widthMediaQuery * 150,
           child: PrimaryButton(
             text: "Start your farm",
             onPressed: () {
@@ -211,25 +216,23 @@ class _SearchDetails extends State<UserDetails> {
                   child: Image(
                       image: AssetImage('assets/illustrations/farm_gray.png')),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.029,
-                ),
+                SizedBox(height: globals.heightMediaQuery * 24),
                 Text(
                   'Join this farm?',
                   style: AppFonts.title3(color: AppColors.grayscale90),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+                SizedBox(height: globals.heightMediaQuery * 15),
                 Text(
                   "If you join ${widget.title}, you won't be able to create your own farm.",
                   style: AppFonts.body2(color: AppColors.grayscale70),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.029),
+                SizedBox(height: globals.heightMediaQuery * 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.064,
-                      width: MediaQuery.of(context).size.width * 0.44,
+                      height: globals.heightMediaQuery * 52,
+                      width: globals.widthMediaQuery * 165,
                       child: SecondaryButton(
                         onPressed: () {
                           Navigator.pop(context);
@@ -239,8 +242,8 @@ class _SearchDetails extends State<UserDetails> {
                       ),
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.064,
-                      width: MediaQuery.of(context).size.width * 0.44,
+                      height: globals.heightMediaQuery * 52,
+                      width: globals.widthMediaQuery * 165,
                       child: PrimaryButton(
                         onPressed: () {},
                         text: "Join farm",
