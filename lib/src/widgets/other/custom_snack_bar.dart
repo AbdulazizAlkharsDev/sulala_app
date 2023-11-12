@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
 
 class CustomSnackBar {
   static void show(BuildContext context, String message, IconData icon,
@@ -15,8 +16,6 @@ class CustomSnackBar {
 
       OverlayEntry entry = OverlayEntry(
         builder: (BuildContext context) {
-          // double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-          double widthMediaQuery = MediaQuery.of(context).size.width / 375;
           return Positioned(
             bottom: heightFromBottom, // Adjust the bottom margin as desired
             left: (box.size.width - snackBarWidth) / 2.0,
@@ -26,14 +25,14 @@ class CustomSnackBar {
               color: Colors.white,
               borderRadius: BorderRadius.circular(8.0),
               child: Padding(
-                padding: EdgeInsets.all(16 * widthMediaQuery),
+                padding: EdgeInsets.all(16 * globals.widthMediaQuery),
                 child: Row(
                   children: [
                     Icon(
                       icon,
                       color: color,
                     ),
-                    SizedBox(width: 8 * widthMediaQuery),
+                    SizedBox(width: 8 * globals.widthMediaQuery),
                     Expanded(
                       child: Text(
                         message,

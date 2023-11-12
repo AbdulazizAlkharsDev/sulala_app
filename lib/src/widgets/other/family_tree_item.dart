@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class FamilyTreeItem extends StatelessWidget {
   final String? imageUrl;
@@ -46,15 +47,15 @@ class FamilyTreeItem extends StatelessWidget {
                 child: CircleAvatar(
                   backgroundColor: Colors.transparent,
                   backgroundImage: getImage(),
-                  radius: MediaQuery.of(context).size.width * 0.0875,
+                  radius: globals.widthMediaQuery * 32,
                 ),
               )
             : CircleAvatar(
                 backgroundColor: Colors.transparent,
                 backgroundImage: getImage(),
-                radius: MediaQuery.of(context).size.width * 0.0875,
+                radius: globals.widthMediaQuery * 32,
               ),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.009),
+        SizedBox(height: globals.heightMediaQuery * 8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -64,20 +65,20 @@ class FamilyTreeItem extends StatelessWidget {
                 color: AppColors.grayscale90,
               ),
             ),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.01),
+            SizedBox(width: globals.widthMediaQuery * 4),
             sex.toLowerCase() != "male"
                 ? Image.asset("assets/icons/frame/24px/16_Gender_female.png")
                 : Image.asset("assets/icons/frame/24px/16_Gender_male.png"),
           ],
         ),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.004),
+        SizedBox(height: globals.heightMediaQuery * 3),
         Text(
           'ID #$id',
           style: AppFonts.caption2(
             color: AppColors.grayscale80,
           ),
         ),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.004),
+        SizedBox(height: globals.heightMediaQuery * 3),
         Text(
           tag,
           style: AppFonts.caption3(
