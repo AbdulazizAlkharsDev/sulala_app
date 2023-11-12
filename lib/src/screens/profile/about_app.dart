@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class AboutApp extends StatefulWidget {
   const AboutApp({super.key});
@@ -12,8 +13,6 @@ class AboutApp extends StatefulWidget {
 class _AboutApp extends State<AboutApp> {
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -46,16 +45,16 @@ class _AboutApp extends State<AboutApp> {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
-                left: 16 * widthMediaQuery,
-                right: 16 * widthMediaQuery,
-                top: 24 * heightMediaQuery),
+                left: 16 * globals.widthMediaQuery,
+                right: 16 * globals.widthMediaQuery,
+                top: 24 * globals.heightMediaQuery),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
                   child: Container(
-                    width: 120 * widthMediaQuery,
-                    height: 120 * widthMediaQuery,
+                    width: 120 * globals.widthMediaQuery,
+                    height: 120 * globals.widthMediaQuery,
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 227, 227, 227),
                       borderRadius: BorderRadius.circular(30),
@@ -68,13 +67,13 @@ class _AboutApp extends State<AboutApp> {
                     ),
                   ),
                 ),
-                SizedBox(height: 16 * heightMediaQuery),
+                SizedBox(height: 16 * globals.heightMediaQuery),
                 Center(
                   child: Text('Version Of The App: 0.1.12',
                       style: AppFonts.body2(color: AppColors.grayscale70)),
                 ),
                 SizedBox(
-                  height: 32 * heightMediaQuery,
+                  height: 32 * globals.heightMediaQuery,
                 ),
                 Container(
                   decoration: const BoxDecoration(

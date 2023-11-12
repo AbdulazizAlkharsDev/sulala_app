@@ -1,13 +1,14 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
-import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
-import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
-import 'package:sulala_app/src/widgets/other/custom_snack_bar.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
+import '../../widgets/inputs/draw_ups/draw_up_widget.dart';
+import '../../widgets/inputs/text_fields/primary_text_field.dart';
+import '../../widgets/other/custom_snack_bar.dart';
 
 class EditProfileInformation extends StatefulWidget {
   const EditProfileInformation({super.key});
@@ -63,7 +64,6 @@ class _EditProfileInformation extends State<EditProfileInformation> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -73,8 +73,7 @@ class _EditProfileInformation extends State<EditProfileInformation> {
           leading: IconButton(
             padding: EdgeInsets.zero,
             icon: Container(
-              padding:
-                  EdgeInsets.all((6 * MediaQuery.of(context).size.width) / 375),
+              padding: EdgeInsets.all(6 * globals.widthMediaQuery),
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: AppColors.grayscale10,
@@ -94,17 +93,18 @@ class _EditProfileInformation extends State<EditProfileInformation> {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
-                left: (16 * MediaQuery.of(context).size.width) / 375,
-                right: (16 * MediaQuery.of(context).size.width) / 375),
+                left: (16 * globals.widthMediaQuery),
+                right: (16 * globals.widthMediaQuery)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                    height: (40 * MediaQuery.of(context).size.height) / 812),
+                  height: 40 * globals.heightMediaQuery,
+                ),
                 GestureDetector(
                   child: Center(
                     child: CircleAvatar(
-                      radius: MediaQuery.of(context).size.width * 0.16,
+                      radius: 60 * globals.widthMediaQuery,
                       backgroundColor: AppColors.grayscale10,
                       backgroundImage: _selectedImage != null
                           ? FileImage(_selectedImage!)
@@ -230,7 +230,7 @@ class _EditProfileInformation extends State<EditProfileInformation> {
                 context,
                 'Information Updated',
                 Icons.check_circle_rounded,
-                80 * heightMediaQuery,
+                80 * globals.heightMediaQuery,
                 color: AppColors.primary10,
               );
             },

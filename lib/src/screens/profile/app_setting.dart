@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/inputs/draw_ups/draw_up_widget.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class AppSettings extends StatefulWidget {
   const AppSettings({super.key});
@@ -65,11 +66,10 @@ class _AppSettings extends State<AppSettings> {
                         });
                       },
                     ),
-                  SizedBox(
-                      height: 32 * MediaQuery.of(context).size.height / 812),
+                  SizedBox(height: 32 * globals.heightMediaQuery),
                   SizedBox(
                     width: double.infinity,
-                    height: 52 * MediaQuery.of(context).size.height / 812,
+                    height: 52 * globals.heightMediaQuery,
                     child: PrimaryButton(
                         onPressed: () {
                           setState(() {
@@ -94,8 +94,6 @@ class _AppSettings extends State<AppSettings> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -127,9 +125,9 @@ class _AppSettings extends State<AppSettings> {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
-              left: 16 * widthMediaQuery,
-              right: 16 * widthMediaQuery,
-              top: 24 * heightMediaQuery),
+              left: 16 * globals.widthMediaQuery,
+              right: 16 * globals.widthMediaQuery,
+              top: 24 * globals.heightMediaQuery),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

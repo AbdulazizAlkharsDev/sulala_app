@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/secondary_button.dart';
-import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/controls_and_buttons/buttons/secondary_button.dart';
+import '../../widgets/inputs/draw_ups/draw_up_widget.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class CustomerSupport extends StatefulWidget {
   const CustomerSupport({super.key});
@@ -105,11 +106,11 @@ class _CustomerSupportState extends State<CustomerSupport> {
                 },
               ),
               SizedBox(
-                height: 32 * MediaQuery.of(context).size.height / 812,
+                height: 32 * globals.heightMediaQuery,
               ),
               SizedBox(
-                width: 343 * MediaQuery.of(context).size.width / 375,
-                height: 52 * MediaQuery.of(context).size.height / 812,
+                width: 343 * globals.widthMediaQuery,
+                height: 52 * globals.heightMediaQuery,
                 child: SecondaryButton(
                   text: 'Cancel',
                   onPressed: () {
@@ -126,8 +127,6 @@ class _CustomerSupportState extends State<CustomerSupport> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
@@ -162,13 +161,13 @@ class _CustomerSupportState extends State<CustomerSupport> {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                    left: 16 * widthMediaQuery,
-                    right: 16 * widthMediaQuery,
-                    top: 8 * heightMediaQuery),
+                    left: 16 * globals.widthMediaQuery,
+                    right: 16 * globals.widthMediaQuery,
+                    top: 8 * globals.heightMediaQuery),
                 child: Text('FAQs',
                     style: AppFonts.title3(color: AppColors.grayscale90)),
               ),
-              SizedBox(height: 32 * heightMediaQuery),
+              SizedBox(height: 32 * globals.heightMediaQuery),
               for (int i = 0; i < quastions.length; i++)
                 Container(
                   decoration: const BoxDecoration(
@@ -210,8 +209,8 @@ class _CustomerSupportState extends State<CustomerSupport> {
             ],
           ),
           floatingActionButton: SizedBox(
-            width: 343 * widthMediaQuery,
-            height: 52 * heightMediaQuery,
+            width: 343 * globals.widthMediaQuery,
+            height: 52 * globals.heightMediaQuery,
             child: PrimaryButton(
               onPressed: _showModalSheet,
               text: 'Need Help',
