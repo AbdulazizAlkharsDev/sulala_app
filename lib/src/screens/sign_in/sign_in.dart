@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/screens/sign_in/confirm_otp_page.dart';
-import 'package:sulala_app/src/screens/sign_in/enter_password.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/apple_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/google_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
-import 'package:sulala_app/src/widgets/inputs/phone_number_field.dart/phone_number_field.dart';
-import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
+
+import 'package:sulala_app/src/data/globals.dart' as globals;
+
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/apple_button.dart';
+import '../../widgets/controls_and_buttons/buttons/google_button.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
+import '../../widgets/inputs/phone_number_field.dart/phone_number_field.dart';
+import '../../widgets/inputs/text_fields/primary_text_field.dart';
+import 'confirm_otp_page.dart';
+import 'enter_password.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({
@@ -135,7 +138,7 @@ class _SignInState extends State<SignIn> with SingleTickerProviderStateMixin {
             Align(
               alignment: Alignment.topCenter,
               child: SizedBox(
-                width: MediaQuery.of(context).size.width,
+                width: globals.widthMediaQuery * 375,
                 child: Image.asset(
                   "assets/graphic/Animal_p.png",
                   fit: BoxFit.fitWidth,
@@ -146,30 +149,30 @@ class _SignInState extends State<SignIn> with SingleTickerProviderStateMixin {
               child: Column(
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.228,
+                    height: globals.heightMediaQuery * 185,
                   ),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(
-                            MediaQuery.of(context).size.width * 0.085),
+                          globals.widthMediaQuery * 32,
+                        ),
                         topRight: Radius.circular(
-                            MediaQuery.of(context).size.width * 0.085),
+                          globals.widthMediaQuery * 32,
+                        ),
                       ),
                     ),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
-                        MediaQuery.of(context).size.width * 0.042,
+                        globals.widthMediaQuery * 15,
                         0,
-                        MediaQuery.of(context).size.width * 0.042,
+                        globals.widthMediaQuery * 15,
                         MediaQuery.of(context).viewInsets.bottom,
                       ),
                       child: Column(
                         children: [
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.05,
-                          ),
+                          SizedBox(height: globals.heightMediaQuery * 41),
                           Column(
                             children: [
                               Text(
@@ -178,10 +181,7 @@ class _SignInState extends State<SignIn> with SingleTickerProviderStateMixin {
                                   color: AppColors.grayscale90,
                                 ),
                               ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.05,
-                              ),
+                              SizedBox(height: globals.heightMediaQuery * 41),
                               if (showEmailField)
                                 PrimaryTextField(
                                   controller: emailController,
@@ -208,13 +208,9 @@ class _SignInState extends State<SignIn> with SingleTickerProviderStateMixin {
                                     savedPhoneNumber = value;
                                   });
                                 }),
+                              SizedBox(height: globals.heightMediaQuery * 24),
                               SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.03,
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.064,
+                                height: globals.heightMediaQuery * 52,
                                 width: double.infinity,
                                 child: PrimaryButton(
                                   status: buttonStatus,
@@ -258,44 +254,30 @@ class _SignInState extends State<SignIn> with SingleTickerProviderStateMixin {
                                   },
                                 ),
                               ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.05,
-                              ),
+                              SizedBox(height: globals.heightMediaQuery * 41),
                               const Divider(
                                 color: AppColors.grayscale20,
                                 thickness: 1,
                               ),
+                              SizedBox(height: globals.heightMediaQuery * 41),
                               SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.05,
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.064,
+                                height: globals.heightMediaQuery * 52,
                                 width: double.infinity,
                                 child: AppleButton(
                                   status: appleButtonStatus,
                                   onPressed: () {},
                                 ),
                               ),
+                              SizedBox(height: globals.heightMediaQuery * 12),
                               SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.015,
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.064,
+                                height: globals.heightMediaQuery * 52,
                                 width: double.infinity,
                                 child: GoogleButton(
                                   status: googleButtonStatus,
                                   onPressed: () {},
                                 ),
                               ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.015,
-                              ),
+                              SizedBox(height: globals.heightMediaQuery * 12),
                               PrimaryTextButton(
                                 status: textStatus,
                                 text: showEmailField == false

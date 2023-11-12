@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
-import 'package:sulala_app/src/widgets/inputs/otp_fields/otp_field.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
+import '../../widgets/inputs/otp_fields/otp_field.dart';
 
 class ConfirmOTPPage extends StatefulWidget {
   final String? phoneNumber;
@@ -94,13 +95,13 @@ class _ConfirmOTPPageState extends State<ConfirmOTPPage> {
         ),
         body: _buildContent(),
         floatingActionButton: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.15,
+          height: globals.heightMediaQuery * 122,
           child: Column(
             children: [
               if (isResendButtonVisible) _buildResendButton(),
               if (!isResendButtonVisible) _buildCountdown(),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
+                height: globals.heightMediaQuery * 16,
               ),
               if (isResendButtonVisible)
                 _buildConfirmButton(PrimaryButtonStatus.disabled, () {}),
@@ -117,9 +118,9 @@ class _ConfirmOTPPageState extends State<ConfirmOTPPage> {
   Widget _buildContent() {
     return Padding(
       padding: EdgeInsets.only(
-        left: MediaQuery.of(context).size.width * 0.05,
-        right: MediaQuery.of(context).size.width * 0.05,
-        top: MediaQuery.of(context).size.height * 0.05,
+        left: globals.widthMediaQuery * 19,
+        right: globals.widthMediaQuery * 19,
+        top: globals.heightMediaQuery * 41,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,7 +130,7 @@ class _ConfirmOTPPageState extends State<ConfirmOTPPage> {
             style: AppFonts.title2(color: AppColors.grayscale90),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.009,
+            height: globals.heightMediaQuery * 7,
           ),
           Text.rich(
             TextSpan(
@@ -150,10 +151,10 @@ class _ConfirmOTPPageState extends State<ConfirmOTPPage> {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.05,
+            height: globals.heightMediaQuery * 41,
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.9,
+            width: globals.widthMediaQuery * 337,
             child: OTPField(
               onFilled: onOTPFilled,
               onError: isOTPError,
@@ -165,7 +166,7 @@ class _ConfirmOTPPageState extends State<ConfirmOTPPage> {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.03,
+            height: globals.heightMediaQuery * 24,
           ),
           if (otpErrorState)
             Center(
@@ -205,8 +206,8 @@ class _ConfirmOTPPageState extends State<ConfirmOTPPage> {
   Widget _buildConfirmButton(
       PrimaryButtonStatus status, VoidCallback onPressed) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.064,
-      width: MediaQuery.of(context).size.width * 0.914,
+      height: globals.heightMediaQuery * 52,
+      width: globals.widthMediaQuery * 343,
       child: PrimaryButton(
         text: "Confirm",
         status: status,

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/screens/sign_in/confirm_otp_page.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/inputs/password_fields/password_field.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/inputs/password_fields/password_field.dart';
+import 'confirm_otp_page.dart';
 
 class EnterPassword extends StatefulWidget {
   final String emailAddress;
@@ -53,9 +54,9 @@ class _EnterPasswordState extends State<EnterPassword> {
         ),
         body: Padding(
           padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.05,
-            right: MediaQuery.of(context).size.width * 0.05,
-            top: MediaQuery.of(context).size.height * 0.05,
+            left: globals.widthMediaQuery * 19,
+            right: globals.widthMediaQuery * 19,
+            top: globals.heightMediaQuery * 40,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +66,7 @@ class _EnterPasswordState extends State<EnterPassword> {
                 style: AppFonts.title2(color: AppColors.grayscale90),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.05,
+                height: globals.heightMediaQuery * 40,
               ),
               PasswordField(
                 hintText: 'Password',
@@ -106,12 +107,12 @@ class _EnterPasswordState extends State<EnterPassword> {
           ),
         ),
         floatingActionButton: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.064,
+          height: globals.heightMediaQuery * 52,
           child: Column(
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.064,
-                width: MediaQuery.of(context).size.width * 0.914,
+                height: globals.heightMediaQuery * 52,
+                width: globals.widthMediaQuery * 343,
                 child: PrimaryButton(
                     text: "Confirm",
                     status: buttonStatus,
