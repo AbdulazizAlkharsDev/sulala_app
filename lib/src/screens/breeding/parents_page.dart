@@ -3,6 +3,7 @@ import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_butt
 import 'package:sulala_app/src/widgets/other/parents_item.dart';
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class ParentsPage extends StatefulWidget {
   final String selectedOviSire;
@@ -52,8 +53,6 @@ class _ParentsPageState extends State<ParentsPage> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -104,7 +103,8 @@ class _ParentsPageState extends State<ParentsPage> {
       ),
       body: Padding(
         padding: EdgeInsets.only(
-            right: 16 * widthMediaQuery, left: 16 * widthMediaQuery),
+            right: 16 * globals.widthMediaQuery,
+            left: 16 * globals.widthMediaQuery),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -118,17 +118,17 @@ class _ParentsPageState extends State<ParentsPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: 151 * heightMediaQuery,
+                          height: 151 * globals.heightMediaQuery,
                         ),
                         Image.asset('assets/illustrations/cowx_child.png'),
-                        SizedBox(height: 32 * heightMediaQuery),
+                        SizedBox(height: 32 * globals.heightMediaQuery),
                         Text(
                           'No Parents ',
                           style:
                               AppFonts.headline3(color: AppColors.grayscale90),
                         ),
                         SizedBox(
-                          height: 8 * heightMediaQuery,
+                          height: 8 * globals.heightMediaQuery,
                         ),
                         Text(
                           "This Animal Doesn't Have Parents.",
@@ -139,11 +139,11 @@ class _ParentsPageState extends State<ParentsPage> {
                           style: AppFonts.body2(color: AppColors.grayscale70),
                         ),
                         SizedBox(
-                          height: 125 * heightMediaQuery,
+                          height: 125 * globals.heightMediaQuery,
                         ),
                         SizedBox(
-                          width: 130 * widthMediaQuery,
-                          height: 52 * heightMediaQuery,
+                          width: 130 * globals.widthMediaQuery,
+                          height: 52 * globals.heightMediaQuery,
                           child: PrimaryButton(
                             text: 'Add Parents',
                             onPressed: () {
@@ -157,7 +157,7 @@ class _ParentsPageState extends State<ParentsPage> {
                 : Column(
                     children: [
                       SizedBox(
-                        height: 24 * heightMediaQuery,
+                        height: 24 * globals.heightMediaQuery,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -173,7 +173,7 @@ class _ParentsPageState extends State<ParentsPage> {
                               ),
                             ],
                           ),
-                          SizedBox(width: 55 * widthMediaQuery),
+                          SizedBox(width: 55 * globals.widthMediaQuery),
                           const ParentsItem(
                             id: '2222',
                             name: '9999',
@@ -184,7 +184,7 @@ class _ParentsPageState extends State<ParentsPage> {
                         ],
                       ),
                       SizedBox(
-                        height: 120 * heightMediaQuery,
+                        height: 120 * globals.heightMediaQuery,
                       ),
                       Image.asset('assets/illustrations/horse_love.png'),
                     ],

@@ -9,6 +9,7 @@ import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary
 import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
 import 'package:sulala_app/src/screens/create_animal/showdialogdraf.dart';
 import 'package:sulala_app/src/screens/create_animal/user_list_of_animals.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class AnimalFilters extends StatefulWidget {
   const AnimalFilters({super.key});
@@ -61,7 +62,7 @@ class _AnimalFilters extends State<AnimalFilters> {
           actions: [
             Padding(
               padding: EdgeInsets.only(
-                right: MediaQuery.of(context).size.width * 0.042,
+                right: globals.widthMediaQuery * 16,
               ),
               child: IconButton(
                 padding: EdgeInsets.zero,
@@ -79,8 +80,8 @@ class _AnimalFilters extends State<AnimalFilters> {
                   Navigator.pop(context);
                 },
                 icon: Container(
-                  width: MediaQuery.of(context).size.width * 0.1,
-                  height: MediaQuery.of(context).size.width * 0.1,
+                  width: globals.widthMediaQuery * 37.5,
+                  height: globals.widthMediaQuery * 37.5,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: AppColors.grayscale10,
@@ -108,8 +109,8 @@ class _AnimalFilters extends State<AnimalFilters> {
         ),
         persistentFooterButtons: [
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.914,
-            height: MediaQuery.of(context).size.height * 0.065,
+            width: globals.widthMediaQuery * 343,
+            height: globals.heightMediaQuery * 52,
             child: PrimaryButton(
               onPressed: () {
                 List<String> selectedFiltersList = [];
@@ -150,8 +151,8 @@ class _AnimalFilters extends State<AnimalFilters> {
 
     return Padding(
       padding: EdgeInsets.only(
-          left: MediaQuery.of(context).size.width * 0.042,
-          right: MediaQuery.of(context).size.width * 0.042),
+          left: globals.widthMediaQuery * 16,
+          right: globals.widthMediaQuery * 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -186,10 +187,10 @@ class _AnimalFilters extends State<AnimalFilters> {
           ),
           Container(
             height: 1,
-            width: MediaQuery.of(context).size.width * 0.914,
+            width: globals.widthMediaQuery * 343,
             color: AppColors.grayscale20,
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.018),
+          SizedBox(height: globals.heightMediaQuery * 15),
         ],
       ),
     );
@@ -204,8 +205,8 @@ class _AnimalFilters extends State<AnimalFilters> {
 
     return Padding(
       padding: EdgeInsets.only(
-          left: MediaQuery.of(context).size.width * 0.042,
-          right: MediaQuery.of(context).size.width * 0.042),
+          left: globals.widthMediaQuery * 16,
+          right: globals.widthMediaQuery * 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -240,10 +241,10 @@ class _AnimalFilters extends State<AnimalFilters> {
           ),
           Container(
             height: 1,
-            width: MediaQuery.of(context).size.width * 0.914,
+            width: globals.heightMediaQuery * 343,
             color: AppColors.grayscale20,
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.018),
+          SizedBox(height: globals.heightMediaQuery * 15),
         ],
       ),
     );
@@ -265,7 +266,7 @@ class _AnimalFilters extends State<AnimalFilters> {
         style: AppFonts.body2(color: textColor),
       ),
       trailing: Container(
-        width: MediaQuery.of(context).size.width * 0.064,
+        width: globals.widthMediaQuery * 24,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(

@@ -12,6 +12,7 @@ import 'package:sulala_app/src/widgets/inputs/file_uploader_fields/file_uploader
 import 'package:sulala_app/src/widgets/inputs/paragraph_text_fields/paragraph_text_field.dart';
 import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
 import 'package:sulala_app/src/screens/create_animal/drow_up_add_parents.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class CompleteInfo extends StatefulWidget {
   const CompleteInfo({super.key});
@@ -66,7 +67,7 @@ class _CompleteInfo extends State<CompleteInfo> {
                 ),
                 Container(
                   height: 1,
-                  width: MediaQuery.of(context).size.width * 0.914,
+                  width: globals.widthMediaQuery * 343,
                   color: AppColors.grayscale20,
                 ),
                 ListTile(
@@ -130,8 +131,8 @@ class _CompleteInfo extends State<CompleteInfo> {
           IconButton(
             padding: EdgeInsets.zero,
             icon: Container(
-              width: MediaQuery.of(context).size.width * 0.1,
-              height: MediaQuery.of(context).size.width * 0.1,
+              width: globals.widthMediaQuery * 37.5,
+              height: globals.widthMediaQuery * 37.5,
               decoration: BoxDecoration(
                 color: AppColors.grayscale10,
                 borderRadius: BorderRadius.circular(50),
@@ -148,16 +149,16 @@ class _CompleteInfo extends State<CompleteInfo> {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.042,
-              right: MediaQuery.of(context).size.width * 0.042),
+              left: globals.widthMediaQuery * 16,
+              right: globals.widthMediaQuery * 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              SizedBox(height: globals.heightMediaQuery * 40),
               Center(
                 child: GestureDetector(
                   child: CircleAvatar(
-                    radius: MediaQuery.of(context).size.width * 0.16,
+                    radius: globals.widthMediaQuery * 60,
                     backgroundColor: AppColors.grayscale10,
                     backgroundImage: _selectedImage != null
                         ? FileImage(_selectedImage!)
@@ -172,7 +173,7 @@ class _CompleteInfo extends State<CompleteInfo> {
                   ),
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              SizedBox(height: globals.heightMediaQuery * 16),
               Center(
                 child: PrimaryTextButton(
                   status: TextStatus.idle,
@@ -182,26 +183,26 @@ class _CompleteInfo extends State<CompleteInfo> {
                   text: 'Add Photo',
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.029),
+              SizedBox(height: globals.heightMediaQuery * 24),
               PrimaryTextField(
                   labelText: 'Name',
                   hintText: 'Enter Name',
                   controller: nameController),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.039),
+              SizedBox(height: globals.heightMediaQuery * 32),
               Text(
                 "Family Tree",
                 style: AppFonts.headline2(color: AppColors.grayscale90),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.009),
+              SizedBox(height: globals.heightMediaQuery * 8),
               Text(
                 "Add Parents If They're In The System",
                 style: AppFonts.body2(color: AppColors.grayscale60),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              SizedBox(height: globals.heightMediaQuery * 16),
               Padding(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.01,
-                    bottom: MediaQuery.of(context).size.height * 0.01),
+                    top: globals.heightMediaQuery * 8,
+                    bottom: globals.heightMediaQuery * 8),
                 child: Row(
                   children: [
                     Expanded(
@@ -224,8 +225,7 @@ class _CompleteInfo extends State<CompleteInfo> {
               Visibility(
                 visible: _addParents,
                 child: Padding(
-                  padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.019),
+                  padding: EdgeInsets.only(top: globals.heightMediaQuery * 16),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -244,8 +244,7 @@ class _CompleteInfo extends State<CompleteInfo> {
                           )
                         ],
                       ),
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.019),
+                      SizedBox(height: globals.heightMediaQuery * 16),
                       Row(
                         children: [
                           Text(
@@ -267,11 +266,11 @@ class _CompleteInfo extends State<CompleteInfo> {
                   ),
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.009),
+              SizedBox(height: globals.heightMediaQuery * 8),
               Padding(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.01,
-                    bottom: MediaQuery.of(context).size.height * 0.01),
+                    top: globals.heightMediaQuery * 8,
+                    bottom: globals.heightMediaQuery * 8),
                 child: Row(
                   children: [
                     Expanded(
@@ -295,7 +294,8 @@ class _CompleteInfo extends State<CompleteInfo> {
                 visible: addChildren,
                 child: Padding(
                   padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.019),
+                    top: globals.heightMediaQuery * 16,
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -315,7 +315,8 @@ class _CompleteInfo extends State<CompleteInfo> {
                         ],
                       ),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.019),
+                        height: globals.heightMediaQuery * 16,
+                      ),
                       Row(
                         children: [
                           Text(
@@ -335,18 +336,25 @@ class _CompleteInfo extends State<CompleteInfo> {
                   ),
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              SizedBox(
+                height: globals.heightMediaQuery * 16,
+              ),
               const Divider(),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              SizedBox(
+                height: globals.heightMediaQuery * 16,
+              ),
               Text(
                 "Animal Sex",
                 style: AppFonts.headline2(color: AppColors.grayscale90),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              SizedBox(
+                height: globals.heightMediaQuery * 16,
+              ),
               Padding(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.014,
-                    bottom: MediaQuery.of(context).size.height * 0.014),
+                  top: globals.heightMediaQuery * 12,
+                  bottom: globals.heightMediaQuery * 12,
+                ),
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -362,8 +370,8 @@ class _CompleteInfo extends State<CompleteInfo> {
                         ),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width * 0.064,
-                        height: MediaQuery.of(context).size.width * 0.064,
+                        width: globals.widthMediaQuery * 24,
+                        height: globals.widthMediaQuery * 24,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
@@ -380,8 +388,8 @@ class _CompleteInfo extends State<CompleteInfo> {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.014,
-                    bottom: MediaQuery.of(context).size.height * 0.014),
+                    top: globals.heightMediaQuery * 12,
+                    bottom: globals.heightMediaQuery * 12),
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -397,8 +405,8 @@ class _CompleteInfo extends State<CompleteInfo> {
                         ),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width * 0.064,
-                        height: MediaQuery.of(context).size.width * 0.064,
+                        width: globals.widthMediaQuery * 24,
+                        height: globals.widthMediaQuery * 24,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
@@ -415,8 +423,8 @@ class _CompleteInfo extends State<CompleteInfo> {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.014,
-                    bottom: MediaQuery.of(context).size.height * 0.014),
+                    top: globals.heightMediaQuery * 12,
+                    bottom: globals.heightMediaQuery * 12),
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -432,8 +440,8 @@ class _CompleteInfo extends State<CompleteInfo> {
                         ),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width * 0.064,
-                        height: MediaQuery.of(context).size.width * 0.064,
+                        width: globals.widthMediaQuery * 24,
+                        height: globals.widthMediaQuery * 24,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
@@ -448,19 +456,19 @@ class _CompleteInfo extends State<CompleteInfo> {
                   ),
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              SizedBox(height: globals.heightMediaQuery * 16),
               const Divider(),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              SizedBox(height: globals.heightMediaQuery * 16),
               Text(
                 "Dates",
                 style: AppFonts.headline2(color: AppColors.grayscale90),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.029),
+              SizedBox(height: globals.heightMediaQuery * 24),
               const PrimaryDateField(
                 hintText: 'DD.MM.YYYY',
                 labelText: 'Date of Birth',
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.029),
+              SizedBox(height: globals.heightMediaQuery * 24),
               Row(
                 children: [
                   PrimaryTextButton(
@@ -473,12 +481,12 @@ class _CompleteInfo extends State<CompleteInfo> {
                 ],
               ),
               const Divider(),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              SizedBox(height: globals.heightMediaQuery * 16),
               Text(
                 "Add Tag",
                 style: AppFonts.headline2(color: AppColors.grayscale90),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              SizedBox(height: globals.heightMediaQuery * 16),
               Row(
                 children: [
                   PrimaryTextButton(
@@ -486,13 +494,13 @@ class _CompleteInfo extends State<CompleteInfo> {
                     status: TextStatus.idle,
                     text: 'Add Tags',
                   ),
-                  SizedBox(width: MediaQuery.of(context).size.width * 0.02),
+                  SizedBox(width: globals.widthMediaQuery * 8),
                   const Icon(Icons.add_rounded,
                       color: AppColors.primary40, size: 20),
                 ],
               ),
               const Divider(),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              SizedBox(height: globals.heightMediaQuery * 16),
               Text(
                 "Custom Fields",
                 style: AppFonts.headline2(color: AppColors.grayscale90),
@@ -501,7 +509,7 @@ class _CompleteInfo extends State<CompleteInfo> {
                 "Add Custom Fields If Needed",
                 style: AppFonts.body2(color: AppColors.grayscale60),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              SizedBox(height: globals.heightMediaQuery * 16),
               Row(
                 children: [
                   PrimaryTextButton(
@@ -509,18 +517,18 @@ class _CompleteInfo extends State<CompleteInfo> {
                     status: TextStatus.idle,
                     text: 'Add Custom Fields',
                   ),
-                  SizedBox(width: MediaQuery.of(context).size.width * 0.02),
+                  SizedBox(width: globals.widthMediaQuery * 8),
                   const Icon(Icons.add_rounded,
                       color: AppColors.primary40, size: 20),
                 ],
               ),
               const Divider(),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+              SizedBox(height: globals.heightMediaQuery * 16),
               Text(
                 "Additional Notes",
                 style: AppFonts.headline2(color: AppColors.grayscale90),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              SizedBox(height: globals.heightMediaQuery * 16),
               ParagraphTextField(
                 hintText: 'Add Any Additional Notes if Needed',
                 maxLines: 8,
@@ -530,7 +538,7 @@ class _CompleteInfo extends State<CompleteInfo> {
                   });
                 },
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              SizedBox(height: globals.heightMediaQuery * 16),
               SizedBox(
                 height: 270,
                 width: double.infinity,
@@ -539,14 +547,14 @@ class _CompleteInfo extends State<CompleteInfo> {
                   child: const FileUploaderField(),
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.09),
+              SizedBox(height: globals.heightMediaQuery * 73),
             ],
           ),
         ),
       ),
       floatingActionButton: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.064,
-        width: MediaQuery.of(context).size.width * 0.914,
+        height: globals.heightMediaQuery * 52,
+        width: globals.widthMediaQuery * 343,
         child: PrimaryButton(
           onPressed: () {},
           status: PrimaryButtonStatus.idle,

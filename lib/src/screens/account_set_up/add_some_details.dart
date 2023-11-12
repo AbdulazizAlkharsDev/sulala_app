@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
-
 import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
-
 import 'dart:io';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class AddSomeDetailsPage extends StatefulWidget {
   const AddSomeDetailsPage({super.key});
@@ -65,7 +63,7 @@ class _AddSomeDetailsPageState extends State<AddSomeDetailsPage> {
                 ),
                 Container(
                   height: 1,
-                  width: MediaQuery.of(context).size.width * 0.914,
+                  width: globals.widthMediaQuery * 343,
                   color: AppColors.grayscale20,
                 ),
                 ListTile(
@@ -122,8 +120,7 @@ class _AddSomeDetailsPageState extends State<AddSomeDetailsPage> {
           elevation: 0,
           leading: IconButton(
             icon: Container(
-              padding:
-                  EdgeInsets.all(MediaQuery.of(context).size.width * 0.016),
+              padding: EdgeInsets.all(globals.widthMediaQuery * 6),
               decoration: BoxDecoration(
                 color: AppColors.grayscale10,
                 borderRadius: BorderRadius.circular(50),
@@ -153,8 +150,8 @@ class _AddSomeDetailsPageState extends State<AddSomeDetailsPage> {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
-                left: MediaQuery.of(context).size.width * 0.042,
-                right: MediaQuery.of(context).size.width * 0.042),
+                left: globals.widthMediaQuery * 16,
+                right: globals.widthMediaQuery * 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -162,14 +159,14 @@ class _AddSomeDetailsPageState extends State<AddSomeDetailsPage> {
                   'Add Some Details',
                   style: AppFonts.title3(color: AppColors.grayscale90),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                SizedBox(height: globals.heightMediaQuery * 40),
                 Text('Add Profile Photo',
                     style: AppFonts.headline3(color: AppColors.grayscale90)),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.029),
+                SizedBox(height: globals.heightMediaQuery * 24),
                 Center(
                   child: GestureDetector(
                     child: CircleAvatar(
-                      radius: MediaQuery.of(context).size.width * 0.16,
+                      radius: globals.widthMediaQuery * 60,
                       backgroundColor: AppColors.grayscale10,
                       backgroundImage: _selectedImage != null
                           ? FileImage(_selectedImage!)
@@ -177,14 +174,14 @@ class _AddSomeDetailsPageState extends State<AddSomeDetailsPage> {
                       child: _selectedImage == null
                           ? Icon(
                               Icons.camera_alt_outlined,
-                              size: MediaQuery.of(context).size.width * 0.064,
+                              size: globals.widthMediaQuery * 24,
                               color: Colors.black,
                             )
                           : null,
                     ),
                   ),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+                SizedBox(height: globals.heightMediaQuery * 16),
                 Center(
                   child: PrimaryTextButton(
                     onPressed: () {
@@ -194,12 +191,12 @@ class _AddSomeDetailsPageState extends State<AddSomeDetailsPage> {
                     text: 'Add Photo',
                   ),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                SizedBox(height: globals.heightMediaQuery * 40),
                 Text(
                   "What's your farm address?",
                   style: AppFonts.headline3(color: AppColors.grayscale90),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.029),
+                SizedBox(height: globals.heightMediaQuery * 24),
                 PrimaryTextField(
                   controller: country,
                   hintText: 'Country',
@@ -209,7 +206,7 @@ class _AddSomeDetailsPageState extends State<AddSomeDetailsPage> {
                     });
                   },
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+                SizedBox(height: globals.heightMediaQuery * 16),
                 PrimaryTextField(
                   controller: country,
                   hintText: 'City',
@@ -219,10 +216,10 @@ class _AddSomeDetailsPageState extends State<AddSomeDetailsPage> {
                     });
                   },
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+                SizedBox(height: globals.heightMediaQuery * 122),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.914,
-                  height: MediaQuery.of(context).size.height * 0.064,
+                  width: globals.widthMediaQuery * 343,
+                  height: globals.heightMediaQuery * 52,
                   child: PrimaryButton(
                     onPressed: () {
                       Navigator.pushNamed(context, '/');

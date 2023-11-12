@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print, prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import '../src/screens/sign_up/sign_up.dart';
+import '../src/screens/create_animal/complete_info.dart';
 
 class ExamplePage extends StatefulWidget {
   const ExamplePage({Key? key}) : super(key: key);
@@ -40,7 +40,7 @@ class _ExamplePageState extends State<ExamplePage> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return SignUp();
+                                  return CompleteInfo();
                                 },
                               ),
                             );

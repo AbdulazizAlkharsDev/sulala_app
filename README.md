@@ -14,6 +14,37 @@ A few resources to get you started if this is your first Flutter project:
   double widthMediaQuery = MediaQuery.of(context).size.width / 375;
   import 'package:sulala_app/src/data/globals.dart' as globals;
 
+  persistentFooterButtons: [
+  SizedBox(
+  width: MediaQuery.of(context).size.width _ 0.914,
+  height: MediaQuery.of(context).size.height _ 0.065,
+  child: PrimaryButton(
+  onPressed: () {
+  List<String> selectedFiltersList = [];
+  selectedAnimals.forEach((key, value) {
+  if (value != null) {
+  selectedFiltersList.add(value);
+  }
+  });
+  selectedAnimals1.forEach((key, value) {
+  if (value != null) {
+  selectedFiltersList.add(value);
+  }
+  });
+  Navigator.push(
+  context,
+  MaterialPageRoute(
+  builder: (context) => UserListOfAnimals(
+  selectedFilters: selectedFiltersList,
+  ),
+  ),
+  );
+  },
+  text: "Continue",
+  ),
+  ),
+  ],
+
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.

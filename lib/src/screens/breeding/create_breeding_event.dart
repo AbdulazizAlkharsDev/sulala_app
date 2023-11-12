@@ -11,6 +11,7 @@ import '../../widgets/controls_and_buttons/text_buttons/primary_textbutton.dart'
 import '../../widgets/inputs/date_fields/primary_date_field.dart';
 import '../../widgets/inputs/paragraph_text_fields/paragraph_text_field.dart';
 import '../../widgets/inputs/text_fields/primary_text_field.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 // ignore: depend_on_referenced_packages
 
@@ -56,8 +57,6 @@ class _CreateBreedingEvents extends State<CreateBreedingEvents> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -89,7 +88,8 @@ class _CreateBreedingEvents extends State<CreateBreedingEvents> {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
-              left: 16.0 * widthMediaQuery, right: 16.0 * widthMediaQuery),
+              left: 16.0 * globals.widthMediaQuery,
+              right: 16.0 * globals.widthMediaQuery),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -97,13 +97,13 @@ class _CreateBreedingEvents extends State<CreateBreedingEvents> {
                 'Create Event',
                 style: AppFonts.title3(color: AppColors.grayscale90),
               ),
-              SizedBox(height: 24 * heightMediaQuery),
+              SizedBox(height: 24 * globals.heightMediaQuery),
               PrimaryTextField(
                 controller: _breedingeventnumberController,
                 hintText: 'Enter Breeding Number',
                 labelText: 'Breeding Number',
               ),
-              SizedBox(height: 16 * heightMediaQuery),
+              SizedBox(height: 16 * globals.heightMediaQuery),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -118,7 +118,7 @@ class _CreateBreedingEvents extends State<CreateBreedingEvents> {
                 ],
               ),
               SizedBox(
-                height: 10 * heightMediaQuery,
+                height: 10 * globals.heightMediaQuery,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -186,7 +186,7 @@ class _CreateBreedingEvents extends State<CreateBreedingEvents> {
                   ),
                 ],
               ),
-              SizedBox(height: 10 * heightMediaQuery),
+              SizedBox(height: 10 * globals.heightMediaQuery),
               PrimaryDateField(
                 labelText: 'Breeding Date',
                 hintText: 'DD/MM/YYYY',
@@ -196,7 +196,7 @@ class _CreateBreedingEvents extends State<CreateBreedingEvents> {
                   });
                 },
               ),
-              SizedBox(height: 20 * heightMediaQuery),
+              SizedBox(height: 20 * globals.heightMediaQuery),
               PrimaryDateField(
                 labelText: 'Delivery Date',
                 hintText: 'DD/MM/YYYY',
@@ -206,12 +206,12 @@ class _CreateBreedingEvents extends State<CreateBreedingEvents> {
                   });
                 },
               ),
-              SizedBox(height: 34 * heightMediaQuery),
+              SizedBox(height: 34 * globals.heightMediaQuery),
               Text(
                 "Children",
                 style: AppFonts.title5(color: AppColors.grayscale90),
               ),
-              SizedBox(height: 16 * heightMediaQuery),
+              SizedBox(height: 16 * globals.heightMediaQuery),
               if (selectedBreedChildren.isNotEmpty)
                 Text(
                   selectedBreedChildren,
@@ -236,12 +236,12 @@ class _CreateBreedingEvents extends State<CreateBreedingEvents> {
                   const Icon(Icons.add, color: AppColors.primary40),
                 ],
               ),
-              SizedBox(height: 24 * heightMediaQuery),
+              SizedBox(height: 24 * globals.heightMediaQuery),
               Text(
                 "Notes",
                 style: AppFonts.title5(color: AppColors.grayscale90),
               ),
-              SizedBox(height: 20 * heightMediaQuery),
+              SizedBox(height: 20 * globals.heightMediaQuery),
               ParagraphTextField(
                 hintText: 'Add Notes',
                 maxLines: 6,
@@ -251,14 +251,14 @@ class _CreateBreedingEvents extends State<CreateBreedingEvents> {
                   });
                 },
               ),
-              SizedBox(height: 85 * heightMediaQuery),
+              SizedBox(height: 85 * globals.heightMediaQuery),
             ],
           ),
         ),
       ),
       floatingActionButton: SizedBox(
-        height: 52 * heightMediaQuery,
-        width: 343 * widthMediaQuery,
+        height: 52 * globals.heightMediaQuery,
+        width: 343 * globals.widthMediaQuery,
         child: PrimaryButton(
           onPressed: () {
             Navigator.push(

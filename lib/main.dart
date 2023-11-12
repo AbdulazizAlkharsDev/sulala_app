@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sulala_app/src/data/globals.dart' as globals;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sulala_app/src/screens/guest_mode/search_page_owner_animals.dart';
-import 'package:sulala_app/src/screens/sign_in/sign_in.dart';
 import 'package:sulala_app/src/screens/splash_screen.dart/splash_screen.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/screens/sign_up/sign_up.dart';
 import 'package:sulala_app/src/screens/sign_up/create_password.dart';
 import 'package:sulala_app/src/screens/reg_mode/notifications_list.dart';
 import 'package:sulala_app/src/screens/reg_mode/reg_home_page.dart';
@@ -34,8 +32,6 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreen(),
         '/search_owner_animals': (context) => const SearchPageOwnerAnimals(),
-        '/sign_up': (context) => const SignUp(),
-        '/sign_in': (context) => const SignIn(),
         '/create_password': (context) => const CreatePassword(),
         '/reg_home_page': (context) => const RegHomePage(),
         '/notifications': (context) => NotificationList(),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sulala_app/src/screens/breeding/list_of_breeding_events.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 import 'package:sulala_app/src/screens/breeding/edit_breeding_event_detail.dart';
-
+import 'package:sulala_app/src/data/globals.dart' as globals;
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
 
@@ -22,8 +22,6 @@ class BreedingEventDetails extends StatefulWidget {
 class _BreedingEventDetailsState extends State<BreedingEventDetails> {
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -79,7 +77,7 @@ class _BreedingEventDetailsState extends State<BreedingEventDetails> {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16 * widthMediaQuery),
+        padding: EdgeInsets.symmetric(horizontal: 16 * globals.widthMediaQuery),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +89,7 @@ class _BreedingEventDetailsState extends State<BreedingEventDetails> {
                 ),
               ),
               SizedBox(
-                height: 24 * heightMediaQuery,
+                height: 24 * globals.heightMediaQuery,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -107,7 +105,7 @@ class _BreedingEventDetailsState extends State<BreedingEventDetails> {
                 ],
               ),
               SizedBox(
-                height: 6 * heightMediaQuery,
+                height: 6 * globals.heightMediaQuery,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -155,7 +153,7 @@ class _BreedingEventDetailsState extends State<BreedingEventDetails> {
                 ],
               ),
               SizedBox(
-                height: 6 * heightMediaQuery,
+                height: 6 * globals.heightMediaQuery,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -176,7 +174,7 @@ class _BreedingEventDetailsState extends State<BreedingEventDetails> {
                 ],
               ),
               SizedBox(
-                height: 20 * heightMediaQuery,
+                height: 20 * globals.heightMediaQuery,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -197,20 +195,20 @@ class _BreedingEventDetailsState extends State<BreedingEventDetails> {
                 ],
               ),
               SizedBox(
-                height: 34 * heightMediaQuery,
+                height: 34 * globals.heightMediaQuery,
               ),
               Text(
                 "Children",
                 style: AppFonts.title5(color: AppColors.grayscale90),
               ),
               SizedBox(
-                height: 16 * heightMediaQuery,
+                height: 16 * globals.heightMediaQuery,
               ),
               widget.breedingEvent.children.isEmpty
                   ? Column(
                       children: [
                         SizedBox(
-                          height: 8 * heightMediaQuery,
+                          height: 8 * globals.heightMediaQuery,
                         ),
                         Center(
                             child: Image.asset(
@@ -223,7 +221,7 @@ class _BreedingEventDetailsState extends State<BreedingEventDetails> {
                         // Add your onPressed functionality here
                       },
                       leading: CircleAvatar(
-                        radius: 24 * widthMediaQuery,
+                        radius: 24 * globals.widthMediaQuery,
                         backgroundColor: Colors.black,
                       ),
                       title: Text(
@@ -241,7 +239,7 @@ class _BreedingEventDetailsState extends State<BreedingEventDetails> {
                       ),
                     ),
               SizedBox(
-                height: 24 * heightMediaQuery,
+                height: 24 * globals.heightMediaQuery,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -256,7 +254,7 @@ class _BreedingEventDetailsState extends State<BreedingEventDetails> {
                 ],
               ),
               SizedBox(
-                height: 16 * heightMediaQuery,
+                height: 16 * globals.heightMediaQuery,
               ),
               Text(
                 'Max had twins in this breeding event',

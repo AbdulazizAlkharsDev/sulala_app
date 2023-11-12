@@ -9,6 +9,7 @@ import '../../theme/fonts/fonts.dart';
 import '../../widgets/inputs/date_fields/primary_date_field.dart';
 import '../../widgets/inputs/paragraph_text_fields/paragraph_text_field.dart';
 import '../../widgets/inputs/text_fields/primary_text_field.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class EditBreedingEventDetails extends StatefulWidget {
   final BreedingEventVariables
@@ -27,8 +28,6 @@ class EditBreedingEventDetails extends StatefulWidget {
 class _EditBreedingEventDetailsState extends State<EditBreedingEventDetails> {
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -58,7 +57,7 @@ class _EditBreedingEventDetailsState extends State<EditBreedingEventDetails> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16 * widthMediaQuery),
+        padding: EdgeInsets.symmetric(horizontal: 16 * globals.widthMediaQuery),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,7 +69,7 @@ class _EditBreedingEventDetailsState extends State<EditBreedingEventDetails> {
                 ),
               ),
               SizedBox(
-                height: 24 * heightMediaQuery,
+                height: 24 * globals.heightMediaQuery,
               ),
               PrimaryTextField(
                 controller: TextEditingController(
@@ -79,7 +78,7 @@ class _EditBreedingEventDetailsState extends State<EditBreedingEventDetails> {
                 labelText: 'Breeding Event',
               ),
               SizedBox(
-                height: 26 * heightMediaQuery,
+                height: 26 * globals.heightMediaQuery,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -95,7 +94,7 @@ class _EditBreedingEventDetailsState extends State<EditBreedingEventDetails> {
                 ],
               ),
               SizedBox(
-                height: 6 * heightMediaQuery,
+                height: 6 * globals.heightMediaQuery,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -143,7 +142,7 @@ class _EditBreedingEventDetailsState extends State<EditBreedingEventDetails> {
                 ],
               ),
               SizedBox(
-                height: 6 * heightMediaQuery,
+                height: 6 * globals.heightMediaQuery,
               ),
               PrimaryDateField(
                 labelText: 'Breeding Date',
@@ -157,7 +156,7 @@ class _EditBreedingEventDetailsState extends State<EditBreedingEventDetails> {
                 },
               ),
               SizedBox(
-                height: 20 * heightMediaQuery,
+                height: 20 * globals.heightMediaQuery,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -178,20 +177,20 @@ class _EditBreedingEventDetailsState extends State<EditBreedingEventDetails> {
                 ],
               ),
               SizedBox(
-                height: 34 * heightMediaQuery,
+                height: 34 * globals.heightMediaQuery,
               ),
               Text(
                 "Children",
                 style: AppFonts.title5(color: AppColors.grayscale90),
               ),
               SizedBox(
-                height: 16 * heightMediaQuery,
+                height: 16 * globals.heightMediaQuery,
               ),
               widget.breedingEvent.children.isEmpty
                   ? Column(
                       children: [
                         SizedBox(
-                          height: 8 * heightMediaQuery,
+                          height: 8 * globals.heightMediaQuery,
                         ),
                         Center(
                             child: Image.asset(
@@ -204,7 +203,7 @@ class _EditBreedingEventDetailsState extends State<EditBreedingEventDetails> {
                         // Add your onPressed functionality here
                       },
                       leading: CircleAvatar(
-                        radius: 24 * widthMediaQuery,
+                        radius: 24 * globals.widthMediaQuery,
                         backgroundColor: Colors.black,
                       ),
                       title: Text(
@@ -221,7 +220,7 @@ class _EditBreedingEventDetailsState extends State<EditBreedingEventDetails> {
                         style: AppFonts.body2(color: AppColors.grayscale90),
                       ),
                     ),
-              SizedBox(height: 16 * heightMediaQuery),
+              SizedBox(height: 16 * globals.heightMediaQuery),
               InkWell(
                 onTap: () {
                   Navigator.of(context).push(
@@ -236,18 +235,18 @@ class _EditBreedingEventDetailsState extends State<EditBreedingEventDetails> {
                       text: 'Add Children',
                     ),
                     SizedBox(
-                      width: 8 * widthMediaQuery,
+                      width: 8 * globals.widthMediaQuery,
                     ),
                     Icon(
                       Icons.add_rounded,
                       color: AppColors.primary40,
-                      size: 20 * widthMediaQuery,
+                      size: 20 * globals.widthMediaQuery,
                     )
                   ],
                 ),
               ),
               SizedBox(
-                height: 24 * heightMediaQuery,
+                height: 24 * globals.heightMediaQuery,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -262,7 +261,7 @@ class _EditBreedingEventDetailsState extends State<EditBreedingEventDetails> {
                 ],
               ),
               SizedBox(
-                height: 16 * heightMediaQuery,
+                height: 16 * globals.heightMediaQuery,
               ),
               ParagraphTextField(
                 hintText: 'Add Notes',
@@ -274,29 +273,29 @@ class _EditBreedingEventDetailsState extends State<EditBreedingEventDetails> {
                 },
               ),
               SizedBox(
-                height: 100 * heightMediaQuery,
+                height: 100 * globals.heightMediaQuery,
               ),
               SizedBox(
-                height: 52 * heightMediaQuery,
-                width: 343 * widthMediaQuery,
+                height: 52 * globals.heightMediaQuery,
+                width: 343 * globals.widthMediaQuery,
                 child: PrimaryButton(
                   text: 'Save Changes',
                   onPressed: () {},
                 ),
               ),
               SizedBox(
-                height: 8 * heightMediaQuery,
+                height: 8 * globals.heightMediaQuery,
               ),
               SizedBox(
-                height: 52 * heightMediaQuery,
-                width: 343 * widthMediaQuery,
+                height: 52 * globals.heightMediaQuery,
+                width: 343 * globals.widthMediaQuery,
                 child: NavigateButton(
                   text: 'Delete Event',
                   onPressed: () {},
                 ),
               ),
               SizedBox(
-                height: 16 * heightMediaQuery,
+                height: 16 * globals.heightMediaQuery,
               ),
             ],
           ),

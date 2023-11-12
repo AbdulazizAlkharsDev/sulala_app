@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:sulala_app/src/data/globals.dart' as globals;
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
 import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
@@ -129,8 +129,6 @@ class _ListOfChildrenState extends State<ListOfChildren> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -161,7 +159,8 @@ class _ListOfChildrenState extends State<ListOfChildren> {
       ),
       body: Padding(
         padding: EdgeInsets.only(
-            right: 16 * widthMediaQuery, left: 16 * widthMediaQuery),
+            right: 16 * globals.widthMediaQuery,
+            left: 16 * globals.widthMediaQuery),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -170,7 +169,7 @@ class _ListOfChildrenState extends State<ListOfChildren> {
               style: AppFonts.title3(color: AppColors.grayscale90),
             ),
             SizedBox(
-              height: 16 * heightMediaQuery,
+              height: 16 * globals.heightMediaQuery,
             ),
             Expanded(
               child: children.isEmpty
@@ -179,17 +178,17 @@ class _ListOfChildrenState extends State<ListOfChildren> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           SizedBox(
-                            height: 151 * heightMediaQuery,
+                            height: 151 * globals.heightMediaQuery,
                           ),
                           Image.asset('assets/illustrations/cow_childx.png'),
-                          SizedBox(height: 32 * heightMediaQuery),
+                          SizedBox(height: 32 * globals.heightMediaQuery),
                           Text(
                             'No Children',
                             style: AppFonts.headline3(
                                 color: AppColors.grayscale90),
                           ),
                           SizedBox(
-                            height: 8 * heightMediaQuery,
+                            height: 8 * globals.heightMediaQuery,
                           ),
                           Text(
                             "This animal doesn’t have children.",
@@ -200,11 +199,11 @@ class _ListOfChildrenState extends State<ListOfChildren> {
                             style: AppFonts.body2(color: AppColors.grayscale70),
                           ),
                           SizedBox(
-                            height: 125 * heightMediaQuery,
+                            height: 125 * globals.heightMediaQuery,
                           ),
                           SizedBox(
-                            width: 130 * widthMediaQuery,
-                            height: 52 * heightMediaQuery,
+                            width: 130 * globals.widthMediaQuery,
+                            height: 52 * globals.heightMediaQuery,
                             child: PrimaryButton(
                               text: 'Add Children',
                               onPressed: () {
@@ -239,7 +238,7 @@ class _ListOfChildrenState extends State<ListOfChildren> {
                               ],
                             ),
                             SizedBox(
-                              height: 8 * heightMediaQuery,
+                              height: 8 * globals.heightMediaQuery,
                             ),
                             ListView.builder(
                               shrinkWrap: true,
@@ -253,7 +252,7 @@ class _ListOfChildrenState extends State<ListOfChildren> {
                                 return ListTile(
                                   contentPadding: EdgeInsets.zero,
                                   leading: CircleAvatar(
-                                    radius: 24 * widthMediaQuery,
+                                    radius: 24 * globals.widthMediaQuery,
                                     backgroundColor: Colors.transparent,
                                     backgroundImage:
                                         AssetImage(child['avatarImage']),
@@ -277,7 +276,7 @@ class _ListOfChildrenState extends State<ListOfChildren> {
                               },
                             ),
                             SizedBox(
-                              height: 16 * heightMediaQuery,
+                              height: 16 * globals.heightMediaQuery,
                             ),
                           ],
                         );

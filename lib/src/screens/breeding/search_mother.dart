@@ -3,6 +3,7 @@ import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_butt
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
 import '../../widgets/inputs/search_bars/search_bar.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class SearchMother extends StatefulWidget {
   const SearchMother({super.key});
@@ -32,16 +33,14 @@ class _SearchMotherState extends State<SearchMother> {
   ];
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return SafeArea(
       child: Scaffold(
           body: Padding(
         padding: EdgeInsets.only(
-            left: 16 * widthMediaQuery,
-            right: 16 * widthMediaQuery,
-            top: 16 * heightMediaQuery,
-            bottom: 16 * heightMediaQuery),
+            left: 16 * globals.widthMediaQuery,
+            right: 16 * globals.widthMediaQuery,
+            top: 16 * globals.heightMediaQuery,
+            bottom: 16 * globals.heightMediaQuery),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -49,8 +48,8 @@ class _SearchMotherState extends State<SearchMother> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  height: 40 * heightMediaQuery,
-                  width: 300 * widthMediaQuery,
+                  height: 40 * globals.heightMediaQuery,
+                  width: 300 * globals.widthMediaQuery,
                   child: PrimarySearchBar(
                     hintText: 'Search By Name Or ID',
                     onChange: (value) {
@@ -132,8 +131,8 @@ class _SearchMotherState extends State<SearchMother> {
                 ),
                 // I want a X button
                 Container(
-                  height: 40 * heightMediaQuery,
-                  width: 40 * widthMediaQuery,
+                  height: 40 * globals.heightMediaQuery,
+                  width: 40 * globals.widthMediaQuery,
                   decoration: const BoxDecoration(
                     color: AppColors.grayscale10,
                     shape: BoxShape.circle,
@@ -148,7 +147,7 @@ class _SearchMotherState extends State<SearchMother> {
               ],
             ),
             SizedBox(
-              height: 24 * heightMediaQuery,
+              height: 24 * globals.heightMediaQuery,
             ),
             breedMotherDetails.isEmpty
                 ? Expanded(
@@ -159,7 +158,7 @@ class _SearchMotherState extends State<SearchMother> {
                           children: [
                             Image.asset('assets/illustrations/cowx_child.png'),
                             SizedBox(
-                              height: 32 * heightMediaQuery,
+                              height: 32 * globals.heightMediaQuery,
                             ),
                             Text(
                               'No Results',
@@ -168,7 +167,7 @@ class _SearchMotherState extends State<SearchMother> {
                               ),
                             ),
                             SizedBox(
-                              height: 8 * heightMediaQuery,
+                              height: 8 * globals.heightMediaQuery,
                             ),
                             Text(
                               'Do you want to create an animal?',
@@ -177,11 +176,11 @@ class _SearchMotherState extends State<SearchMother> {
                               ),
                             ),
                             SizedBox(
-                              height: 105 * heightMediaQuery,
+                              height: 105 * globals.heightMediaQuery,
                             ),
                             SizedBox(
-                              height: 52 * heightMediaQuery,
-                              width: 160 * widthMediaQuery,
+                              height: 52 * globals.heightMediaQuery,
+                              width: 160 * globals.widthMediaQuery,
                               child: PrimaryButton(
                                 text: 'Create Animal',
                                 onPressed: () {},
@@ -199,7 +198,7 @@ class _SearchMotherState extends State<SearchMother> {
                         return ListTile(
                           contentPadding: EdgeInsets.zero,
                           leading: CircleAvatar(
-                            radius: 24 * widthMediaQuery,
+                            radius: 24 * globals.widthMediaQuery,
                             child: Text(breedMotherDetails[index]['name']![0],
                                 style: AppFonts.headline3(
                                     color: AppColors.grayscale90)),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/src/screens/breeding/breeding_event_detail.dart';
 import 'package:sulala_app/src/screens/breeding/create_breeding_event.dart';
-
+import 'package:sulala_app/src/data/globals.dart' as globals;
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
 
@@ -85,8 +85,6 @@ class _ListOfBreedingEvents extends State<ListOfBreedingEvents> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -152,8 +150,8 @@ class _ListOfBreedingEvents extends State<ListOfBreedingEvents> {
       ),
       body: Padding(
         padding: EdgeInsets.only(
-          right: 16 * widthMediaQuery,
-          left: 16 * widthMediaQuery,
+          right: 16 * globals.widthMediaQuery,
+          left: 16 * globals.widthMediaQuery,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -161,7 +159,7 @@ class _ListOfBreedingEvents extends State<ListOfBreedingEvents> {
             Text('Breeding History',
                 style: AppFonts.title3(color: AppColors.grayscale90)),
             SizedBox(
-              height: 16 * heightMediaQuery,
+              height: 16 * globals.heightMediaQuery,
             ),
             breedingEvents.isEmpty
                 ? Expanded(
@@ -171,7 +169,7 @@ class _ListOfBreedingEvents extends State<ListOfBreedingEvents> {
                         children: [
                           Image.asset('assets/illustrations/child_x.png'),
                           SizedBox(
-                            height: 32 * heightMediaQuery,
+                            height: 32 * globals.heightMediaQuery,
                           ),
                           Text(
                             'No Breeding Events Yet',
@@ -179,17 +177,17 @@ class _ListOfBreedingEvents extends State<ListOfBreedingEvents> {
                                 color: AppColors.grayscale90),
                           ),
                           SizedBox(
-                            height: 8 * heightMediaQuery,
+                            height: 8 * globals.heightMediaQuery,
                           ),
                           Text(
                             'Add a breeding event to get started',
                             style: AppFonts.body2(color: AppColors.grayscale70),
                           ),
                           SizedBox(
-                            height: 140 * heightMediaQuery,
+                            height: 140 * globals.heightMediaQuery,
                           ),
                           SizedBox(
-                            height: 52 * heightMediaQuery,
+                            height: 52 * globals.heightMediaQuery,
                             child: PrimaryButton(
                               onPressed: () {
                                 Navigator.push(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:sulala_app/src/data/globals.dart' as globals;
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
 import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
@@ -42,8 +42,6 @@ class _ListOfMatesState extends State<ListOfMates> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -74,7 +72,8 @@ class _ListOfMatesState extends State<ListOfMates> {
       ),
       body: Padding(
         padding: EdgeInsets.only(
-            left: 16 * widthMediaQuery, right: 16 * widthMediaQuery),
+            left: 16 * globals.widthMediaQuery,
+            right: 16 * globals.widthMediaQuery),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -89,29 +88,29 @@ class _ListOfMatesState extends State<ListOfMates> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           SizedBox(
-                            height: 151 * heightMediaQuery,
+                            height: 151 * globals.heightMediaQuery,
                           ),
                           Image.asset(
                               'assets/illustrations/cow_broke_adult.png'),
-                          SizedBox(height: 32 * heightMediaQuery),
+                          SizedBox(height: 32 * globals.heightMediaQuery),
                           Text(
                             'No Mates Yet',
                             style: AppFonts.headline3(
                                 color: AppColors.grayscale90),
                           ),
                           SizedBox(
-                            height: 8 * heightMediaQuery,
+                            height: 8 * globals.heightMediaQuery,
                           ),
                           Text(
                             "This animal hasn’t been mated yet.",
                             style: AppFonts.body2(color: AppColors.grayscale70),
                           ),
                           SizedBox(
-                            height: 125 * heightMediaQuery,
+                            height: 125 * globals.heightMediaQuery,
                           ),
                           SizedBox(
-                            width: 130 * widthMediaQuery,
-                            height: 52 * heightMediaQuery,
+                            width: 130 * globals.widthMediaQuery,
+                            height: 52 * globals.heightMediaQuery,
                             child: PrimaryButton(
                               text: 'Add Mate',
                               onPressed: () {
@@ -146,10 +145,10 @@ class _ListOfMatesState extends State<ListOfMates> {
                             ),
                             ListTile(
                               contentPadding: EdgeInsets.only(
-                                  top: 8 * heightMediaQuery,
-                                  bottom: 16 * heightMediaQuery),
+                                  top: 8 * globals.heightMediaQuery,
+                                  bottom: 16 * globals.heightMediaQuery),
                               leading: CircleAvatar(
-                                radius: 24 * widthMediaQuery,
+                                radius: 24 * globals.widthMediaQuery,
                                 backgroundColor: Colors.transparent,
                                 backgroundImage:
                                     AssetImage(partner['avatarImage']),

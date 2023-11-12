@@ -6,6 +6,7 @@ import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary
 import 'package:sulala_app/src/widgets/inputs/phone_number_field.dart/phone_number_field.dart';
 import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
 import 'package:sulala_app/src/screens/account_set_up/add_some_details.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class AddPersonalInfoPage extends StatefulWidget {
   const AddPersonalInfoPage({super.key});
@@ -67,8 +68,7 @@ class _AddPersonalInfoPageState extends State<AddPersonalInfoPage> {
           leading: IconButton(
             padding: EdgeInsets.zero,
             icon: Container(
-              padding:
-                  EdgeInsets.all(MediaQuery.of(context).size.width * 0.016),
+              padding: EdgeInsets.all(globals.widthMediaQuery * 6),
               decoration: BoxDecoration(
                 color: AppColors.grayscale10,
                 borderRadius: BorderRadius.circular(50),
@@ -98,8 +98,9 @@ class _AddPersonalInfoPageState extends State<AddPersonalInfoPage> {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
-                left: MediaQuery.of(context).size.width * 0.042,
-                right: MediaQuery.of(context).size.width * 0.042),
+              left: globals.widthMediaQuery * 16,
+              right: globals.widthMediaQuery * 16,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -107,10 +108,10 @@ class _AddPersonalInfoPageState extends State<AddPersonalInfoPage> {
                   'Add Personal Information',
                   style: AppFonts.title3(color: AppColors.grayscale90),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                SizedBox(height: globals.heightMediaQuery * 40),
                 Text("What's your name?",
                     style: AppFonts.headline3(color: AppColors.grayscale90)),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.029),
+                SizedBox(height: globals.heightMediaQuery * 24),
                 PrimaryTextField(
                   controller: nameController,
                   hintText: "Enter First Name",
@@ -120,7 +121,7 @@ class _AddPersonalInfoPageState extends State<AddPersonalInfoPage> {
                     });
                   },
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.019),
+                SizedBox(height: globals.heightMediaQuery * 16),
                 PrimaryTextField(
                   controller: lastNameController,
                   hintText: "Enter Last Name",
@@ -130,10 +131,10 @@ class _AddPersonalInfoPageState extends State<AddPersonalInfoPage> {
                     });
                   },
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                SizedBox(height: globals.heightMediaQuery * 40),
                 Text("What is the name of your farm?",
                     style: AppFonts.headline3(color: AppColors.grayscale90)),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.029),
+                SizedBox(height: globals.heightMediaQuery * 24),
                 PrimaryTextField(
                   controller: farmNameController,
                   hintText: "Farm Name",
@@ -143,10 +144,10 @@ class _AddPersonalInfoPageState extends State<AddPersonalInfoPage> {
                     });
                   },
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                SizedBox(height: globals.heightMediaQuery * 40),
                 Text("Who owns the farm?",
                     style: AppFonts.headline3(color: AppColors.grayscale90)),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.029),
+                SizedBox(height: globals.heightMediaQuery * 24),
                 PrimaryTextField(
                   controller: ownerNameController,
                   hintText: "Owner Name",
@@ -156,19 +157,19 @@ class _AddPersonalInfoPageState extends State<AddPersonalInfoPage> {
                     });
                   },
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                SizedBox(height: globals.heightMediaQuery * 40),
                 Text('Contacts',
                     style: AppFonts.headline3(color: AppColors.grayscale90)),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                SizedBox(height: globals.heightMediaQuery * 8),
                 Text(
                     'Add contact details to help other people contact you for collaboration',
                     style: AppFonts.body2(color: AppColors.grayscale70)),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                SizedBox(height: globals.heightMediaQuery * 24),
                 PhoneNumberField(
                   label: 'Phone Number',
                   onSave: (value) => savePhoneNumber,
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.024),
+                SizedBox(height: globals.heightMediaQuery * 20),
                 const SizedBox(height: 8),
                 PrimaryTextField(
                   hintText: 'Enter Email',
@@ -187,10 +188,10 @@ class _AddPersonalInfoPageState extends State<AddPersonalInfoPage> {
                     });
                   },
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                SizedBox(height: globals.heightMediaQuery * 40),
                 SizedBox(
                   width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.064,
+                  height: globals.heightMediaQuery * 52,
                   child: PrimaryButton(
                     status: buttonStatus,
                     text: 'Continue',
@@ -225,7 +226,7 @@ class _AddPersonalInfoPageState extends State<AddPersonalInfoPage> {
                     // },
                   ),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.025),
+                SizedBox(height: globals.heightMediaQuery * 20),
               ],
             ),
           ),

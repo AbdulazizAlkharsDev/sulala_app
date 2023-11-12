@@ -5,6 +5,7 @@ import 'package:sulala_app/src/screens/create_animal/select_options.dart';
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
 import '../../widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class CreateAnimalPage extends StatefulWidget {
   const CreateAnimalPage({Key? key}) : super(key: key);
@@ -72,8 +73,8 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
             IconButton(
               padding: EdgeInsets.zero,
               icon: Container(
-                  width: MediaQuery.of(context).size.width * 0.1,
-                  height: MediaQuery.of(context).size.width * 0.1,
+                  width: globals.widthMediaQuery * 37.5,
+                  height: globals.widthMediaQuery * 37.5,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: AppColors.grayscale10,
@@ -91,8 +92,8 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
-                left: MediaQuery.of(context).size.width * 0.042,
-                right: MediaQuery.of(context).size.width * 0.042),
+                left: globals.widthMediaQuery * 16,
+                right: globals.widthMediaQuery * 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -107,7 +108,7 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
                   ],
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
+                  height: globals.heightMediaQuery * 16,
                 ),
                 if (showAnimalSpeciesSection)
                   Column(
@@ -116,12 +117,12 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
                       Center(
                         child: Container(
                           height: 1,
-                          width: MediaQuery.of(context).size.width * 0.912,
+                          width: globals.widthMediaQuery * 343,
                           color: AppColors.grayscale20,
                         ),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
+                        height: globals.heightMediaQuery * 16,
                       ),
                       Text(
                         'Animal Species',
@@ -144,17 +145,17 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.007,
+                          height: globals.heightMediaQuery * 6,
                         ),
                         Center(
                           child: Container(
                             height: 1,
-                            width: MediaQuery.of(context).size.width * 0.912,
+                            width: globals.widthMediaQuery * 343,
                             color: AppColors.grayscale20,
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02,
+                          height: globals.heightMediaQuery * 16,
                         ),
                         Text(
                           'Animal Breeds',
@@ -228,7 +229,7 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
       title:
           Text(animalType, style: AppFonts.body2(color: AppColors.grayscale90)),
       trailing: Container(
-        width: MediaQuery.of(context).size.width * 0.064,
+        width: globals.widthMediaQuery * 24,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
@@ -253,7 +254,7 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
       title:
           Text(optionText, style: AppFonts.body2(color: AppColors.grayscale90)),
       trailing: Container(
-        width: MediaQuery.of(context).size.width * 0.064,
+        width: globals.widthMediaQuery * 24,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
@@ -281,7 +282,7 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
         style: AppFonts.body2(color: AppColors.grayscale90),
       ),
       trailing: Container(
-        width: MediaQuery.of(context).size.width * 0.064,
+        width: globals.widthMediaQuery * 24,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(

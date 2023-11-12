@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           AssetImage('assets/icons/frame/24px/Icon-button.png'),
                     ),
                   ),
-                  SizedBox(width: MediaQuery.of(context).size.width * 0.0097),
+                  SizedBox(width: globals.widthMediaQuery * 3.6375),
                   InkWell(
                     onTap: () {},
                     child: const Image(
@@ -89,15 +89,15 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: SingleChildScrollView(
           child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.867,
+            height: globals.heightMediaQuery * 704.004,
             child: Stack(
               children: [
                 // Background Image (Bottom Sheet)
                 _isLoading == false
                     ? Positioned(
-                        bottom: MediaQuery.of(context).size.height * 0.15,
-                        left: MediaQuery.of(context).size.width * 0.6,
-                        right: MediaQuery.of(context).size.width * 0.05,
+                        bottom: globals.heightMediaQuery * 121.8,
+                        left: globals.widthMediaQuery * 225,
+                        right: globals.widthMediaQuery * 18.75,
                         child: Image.asset(
                           'assets/illustrations/cow_eating.png',
                           fit: BoxFit.fill,
@@ -107,8 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 // Content
                 Padding(
-                  padding: EdgeInsets.all(
-                      MediaQuery.of(context).size.width * 0.0426),
+                  padding: EdgeInsets.all(globals.widthMediaQuery * 16),
                   child: Column(
                     children: _isLoading
                         ? [
@@ -144,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
           ),
-          SizedBox(width: MediaQuery.of(context).size.width * 0.015),
+          SizedBox(width: globals.widthMediaQuery * 6),
           Expanded(
             child: CardWidget(
               color: const Color.fromRGBO(246, 239, 205, 1),
@@ -162,12 +161,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      SizedBox(height: MediaQuery.of(context).size.height * 0.135),
+      SizedBox(height: globals.heightMediaQuery * 110),
       const TitleText(text: 'Want to start your farm\nright now and join?'),
-      SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+      SizedBox(height: globals.heightMediaQuery * 24),
       SizedBox(
-        height: MediaQuery.of(context).size.height * 0.06,
-        width: MediaQuery.of(context).size.width * 0.288,
+        height: globals.heightMediaQuery * 48,
+        width: globals.widthMediaQuery * 108,
         child: PrimaryButton(
           text: 'Join now',
           onPressed: () {
@@ -180,7 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
           status: PrimaryButtonStatus.idle,
         ),
       ),
-      SizedBox(height: MediaQuery.of(context).size.height * 0.011),
+      SizedBox(height: globals.heightMediaQuery * 9),
       PrimaryTextButton(
         status: TextStatus.idle,
         text: 'Sign in',
