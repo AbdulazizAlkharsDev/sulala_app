@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nuts_activity_indicator/nuts_activity_indicator.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
+import '../../../theme/colors/colors.dart';
+import '../../../theme/fonts/fonts.dart';
 
 enum PrimaryButtonPosition {
   primary,
@@ -31,8 +32,7 @@ class PrimaryButton extends StatelessWidget {
         backgroundColor: _getButtonColor(status),
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius:
-              BorderRadius.circular(MediaQuery.of(context).size.width * 0.08),
+          borderRadius: BorderRadius.circular(globals.widthMediaQuery * 30),
         ),
       ),
       child: _buildButtonContent(),

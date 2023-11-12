@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import '../../../theme/colors/colors.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
+import '../../../theme/fonts/fonts.dart';
 
 class Tags extends StatefulWidget {
   final String text;
@@ -64,9 +65,9 @@ class _TagsState extends State<Tags> {
                 Icon(
                   widget.icon,
                   color: iconColor,
-                  size: MediaQuery.of(context).size.width * 0.0533,
+                  size: globals.widthMediaQuery * 30,
                 ),
-                SizedBox(width: MediaQuery.of(context).size.width * 0.021),
+                SizedBox(width: globals.widthMediaQuery * 8),
               ],
             ),
           Text(widget.text,

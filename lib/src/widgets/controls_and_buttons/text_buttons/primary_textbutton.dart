@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nuts_activity_indicator/nuts_activity_indicator.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
+
+import '../../../theme/colors/colors.dart';
+
 
 enum TextButtonPosition {
   primary,

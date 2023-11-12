@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nuts_activity_indicator/nuts_activity_indicator.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import '../../../theme/colors/colors.dart';
+import '../../../theme/fonts/fonts.dart';
 
 enum SecondaryButtonPosition {
   primary,
