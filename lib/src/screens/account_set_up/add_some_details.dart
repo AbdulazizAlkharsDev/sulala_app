@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
+import '../../theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';

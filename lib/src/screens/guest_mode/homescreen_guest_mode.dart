@@ -5,7 +5,7 @@ import 'package:sulala_app/src/screens/guest_mode/search_page_house_farm.dart';
 import 'package:sulala_app/src/screens/guest_mode/shimmer_homescreen.dart';
 import 'package:sulala_app/src/screens/sign_in/sign_in.dart';
 import 'package:sulala_app/src/screens/sign_up/join_now.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
+import '../../theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
 import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
