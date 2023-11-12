@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/screens/sign_up/sign_up.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/buttons/primary_button.dart';
-import 'package:sulala_app/src/widgets/inputs/text_fields/primary_text_field.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
+import '../../theme/colors/colors.dart';
+import '../../theme/fonts/fonts.dart';
+import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
+import '../../widgets/inputs/text_fields/primary_text_field.dart';
+import 'sign_up.dart';
 
 class JoinNow extends StatefulWidget {
   const JoinNow({
@@ -68,7 +69,7 @@ class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
             Align(
               alignment: Alignment.topCenter,
               child: SizedBox(
-                width: MediaQuery.of(context).size.width,
+                width: globals.widthMediaQuery * 375,
                 child: Image.asset(
                   "assets/graphic/Animal_p.png",
                   fit: BoxFit.fitWidth,
@@ -86,16 +87,18 @@ class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(
-                            MediaQuery.of(context).size.width * 0.085),
+                          globals.widthMediaQuery * 32,
+                        ),
                         topRight: Radius.circular(
-                            MediaQuery.of(context).size.width * 0.085),
+                          globals.widthMediaQuery * 32,
+                        ),
                       ),
                     ),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
-                        MediaQuery.of(context).size.width * 0.042,
+                        globals.widthMediaQuery * 16,
                         0,
-                        MediaQuery.of(context).size.width * 0.042,
+                        globals.widthMediaQuery * 16,
                         MediaQuery.of(context)
                             .viewInsets
                             .bottom, // Adjusts for keyboard
@@ -103,7 +106,7 @@ class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.05,
+                            height: globals.heightMediaQuery * 41,
                           ),
                           _contentState == 0
                               ? Column(
@@ -115,9 +118,7 @@ class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
                                       ),
                                     ),
                                     SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.05,
+                                      height: globals.heightMediaQuery * 41,
                                     ),
                                     PrimaryTextField(
                                       controller:
@@ -136,14 +137,10 @@ class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
                                       },
                                     ),
                                     SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.03,
+                                      height: globals.heightMediaQuery * 24,
                                     ),
                                     SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.064,
+                                      height: globals.heightMediaQuery * 52,
                                       width: double.infinity,
                                       child: PrimaryButton(
                                         text: "Continue",
@@ -174,9 +171,7 @@ class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
                                       ),
                                     ),
                                     SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.05,
+                                      height: globals.heightMediaQuery * 41,
                                     ),
                                     PrimaryTextField(
                                       controller: whoOwnTheFarmController,
@@ -191,14 +186,10 @@ class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
                                       },
                                     ),
                                     SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.03,
+                                      height: globals.heightMediaQuery * 24,
                                     ),
                                     SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.064,
+                                      height: globals.heightMediaQuery * 52,
                                       width: double.infinity,
                                       child: PrimaryButton(
                                         text: "Continue",

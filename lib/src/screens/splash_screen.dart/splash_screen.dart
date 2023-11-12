@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:showcaseview/showcaseview.dart';
-import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar.dart';
+
+import 'package:sulala_app/src/data/globals.dart' as globals;
+
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
+import '../../widgets/pages/main_widgets/navigation_bar.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -45,22 +48,25 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    double widthMediaQuery = MediaQuery.of(context).size.width / 375;
+    // double heightMediaQuery = MediaQuery.of(context).size.height / 812;
+    // double widthMediaQuery = MediaQuery.of(context).size.width / 375;
     return Scaffold(
       body: Column(
         children: [
           Expanded(
             child: SizedBox(
-              width: 375 * widthMediaQuery,
+              width: 375 * globals.widthMediaQuery,
               child: Padding(
-                padding: EdgeInsets.fromLTRB(24 * widthMediaQuery,
-                    50 * heightMediaQuery, 24 * widthMediaQuery, 0),
+                padding: EdgeInsets.fromLTRB(
+                    24 * globals.widthMediaQuery,
+                    50 * globals.heightMediaQuery,
+                    24 * globals.widthMediaQuery,
+                    0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 50 * heightMediaQuery,
+                      height: 50 * globals.heightMediaQuery,
                     ),
                     Center(
                       child: Image.asset(
@@ -69,7 +75,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 125 * heightMediaQuery,
+                      height: 125 * globals.heightMediaQuery,
                     ),
                     Text(
                       'Stay Connected',
