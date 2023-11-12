@@ -80,7 +80,7 @@ class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
               child: Column(
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.228,
+                    height: globals.heightMediaQuery * 185,
                   ),
                   Container(
                     decoration: BoxDecoration(

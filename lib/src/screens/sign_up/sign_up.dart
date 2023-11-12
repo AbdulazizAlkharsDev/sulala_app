@@ -89,8 +89,6 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    // double width = MediaQuery.of(context).size.width / 372;
-    // double height = MediaQuery.of(context).size.height / 812;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -137,7 +135,7 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
               child: Column(
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.228,
+                    height: globals.heightMediaQuery * 185,
                   ),
                   Container(
                     decoration: BoxDecoration(

@@ -39,8 +39,7 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
 
   @override
   Widget build(BuildContext context) {
-    // double heightMediaQuery = MediaQuery.of(context).size.height / 812;
-    // double widthMediaQuery = MediaQuery.of(context).size.width / 375;
+
 
     return Scaffold(
       appBar: AppBar(
