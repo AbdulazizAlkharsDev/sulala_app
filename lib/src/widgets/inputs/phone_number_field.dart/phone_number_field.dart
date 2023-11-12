@@ -3,7 +3,7 @@ import 'package:sulala_app/src/data/countries_data.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/inputs/draw_ups/draw_up_widget.dart';
-
+import 'package:sulala_app/src/data/globals.dart' as globals;
 import '../../lists/countries_widget/countries_widget.dart';
 
 class PhoneNumberField extends StatefulWidget {
@@ -150,7 +150,7 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.025),
+                    SizedBox(width: globals.widthMediaQuery * 9),
                     Image.asset(
                       countryFlag,
                       width: 24,
@@ -161,14 +161,14 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
                     ),
                     Icon(Icons.arrow_drop_down_rounded,
                         color: AppColors.primary40,
-                        size: MediaQuery.of(context).size.width * 0.034),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.005),
+                        size: globals.widthMediaQuery * 13),
+                    SizedBox(width: globals.widthMediaQuery * 2),
                   ],
                 ),
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height * 0.05,
+              height: globals.heightMediaQuery * 41,
               width: 1,
               color: _borderColor,
             ),
@@ -234,7 +234,7 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
             content: Column(
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.95,
+                  height: globals.heightMediaQuery * 772,
                   child: CountriesWidget(
                     onCountrySelected: _onCountrySelected,
                   ),
