@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class AnimalListWidget extends StatelessWidget {
   final double avatarRadius;
@@ -34,7 +35,7 @@ class AnimalListWidget extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.0389,
+            width: globals.widthMediaQuery * 15,
           ),
           CircleAvatar(
             backgroundColor: Colors.transparent,
@@ -42,7 +43,7 @@ class AnimalListWidget extends StatelessWidget {
             backgroundImage: AssetImage(imagePath),
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.0243,
+            width: globals.widthMediaQuery * 9,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
+
+import 'package:sulala_app/src/data/globals.dart' as globals;
+
+import '../../../theme/colors/colors.dart';
+import '../../../theme/fonts/fonts.dart';
 
 class StaffListWidget extends StatelessWidget {
   final double avatarRadius;
@@ -34,7 +37,7 @@ class StaffListWidget extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.0389,
+            width: globals.widthMediaQuery * 15,
           ),
           CircleAvatar(
             backgroundColor: Colors.transparent,
@@ -42,7 +45,7 @@ class StaffListWidget extends StatelessWidget {
             backgroundImage: AssetImage(imagePath),
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.0243,
+            width: globals.widthMediaQuery * 9,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -63,11 +66,13 @@ class StaffListWidget extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          Icon(Icons.arrow_forward_ios_rounded,
-              color: AppColors.primary40,
-              size: MediaQuery.of(context).size.width * 0.034),
+          Icon(
+            Icons.arrow_forward_ios_rounded,
+            color: AppColors.primary40,
+            size: globals.widthMediaQuery * 13,
+          ),
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.0389,
+            width: globals.widthMediaQuery * 15,
           ),
         ],
       ),

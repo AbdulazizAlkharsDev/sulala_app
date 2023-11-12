@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
 
+import 'package:sulala_app/src/data/globals.dart' as globals;
+
+import '../../../theme/colors/colors.dart';
+import '../../../theme/fonts/fonts.dart';
 
 class TableText extends StatefulWidget {
   final String text1;
@@ -34,7 +36,7 @@ class _TableTextState extends State<TableText> {
         Row(
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.0389,
+              width: globals.widthMediaQuery * 15,
             ),
             Text(
               truncateTextWithEllipsis(widget.text1, 25),
@@ -50,7 +52,7 @@ class _TableTextState extends State<TableText> {
               ),
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.0389,
+              width: globals.widthMediaQuery * 15,
             ),
           ],
         ),

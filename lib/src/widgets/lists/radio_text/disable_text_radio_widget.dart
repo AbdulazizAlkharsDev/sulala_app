@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class DisableTextRadioWidget extends StatefulWidget {
   final String text;
@@ -30,7 +31,7 @@ class _DisableTextRadioWidgetState extends State<DisableTextRadioWidget> {
     return Row(
       children: [
         SizedBox(
-          width: MediaQuery.of(context).size.width * 0.0389,
+          width: globals.widthMediaQuery * 15,
         ),
         Text(
           widget.truncateTextWithEllipsis(widget.text, 25),
@@ -80,7 +81,7 @@ class _DisableTextRadioWidgetState extends State<DisableTextRadioWidget> {
           ),
         ),
         SizedBox(
-          width: MediaQuery.of(context).size.width * 0.0389,
+          width: globals.widthMediaQuery * 15,
         ),
       ],
     );

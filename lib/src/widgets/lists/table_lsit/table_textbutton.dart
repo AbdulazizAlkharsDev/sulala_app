@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
-import 'package:sulala_app/src/widgets/controls_and_buttons/text_buttons/primary_textbutton.dart';
+
+import '../../../theme/colors/colors.dart';
+import '../../../theme/fonts/fonts.dart';
+import '../../controls_and_buttons/text_buttons/primary_textbutton.dart';
 
 class TableTextButton extends StatefulWidget {
   final String textHead;

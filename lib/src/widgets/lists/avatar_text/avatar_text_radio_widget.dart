@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
 import 'package:sulala_app/src/widgets/controls_and_buttons/radio/radio_active.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class AvatarTextRadio extends StatefulWidget {
   final double avatarRadius;
@@ -42,8 +43,8 @@ class _AvatarTextRadioState extends State<AvatarTextRadio> {
           backgroundImage: AssetImage(widget.imagePath),
         ),
         SizedBox(
-            width: MediaQuery.of(context).size.width *
-                0.0243), // You can adjust the spacing between avatar and text
+            width: globals.widthMediaQuery *
+                9), // You can adjust the spacing between avatar and text
         Text(
           widget.truncateTextWithEllipsis(widget.text, 15),
           style: AppFonts.body2(

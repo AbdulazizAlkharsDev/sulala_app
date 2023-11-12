@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
+import '../../../theme/colors/colors.dart';
+import '../../../theme/fonts/fonts.dart';
 
 class TextToggleWidget extends StatefulWidget {
   final String text;
@@ -51,7 +52,7 @@ class _TextToggleWidgetState extends State<TextToggleWidget> {
       child: Row(
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.0389,
+            width: globals.widthMediaQuery * 15,
           ),
           Text(
             widget.truncateTextWithEllipsis(widget.text, 25),
@@ -91,7 +92,7 @@ class _TextToggleWidgetState extends State<TextToggleWidget> {
             ),
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.0389,
+            width: globals.widthMediaQuery * 15,
           ),
         ],
       ),

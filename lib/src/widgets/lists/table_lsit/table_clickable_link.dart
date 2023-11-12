@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
+
+import 'package:sulala_app/src/data/globals.dart' as globals;
 import 'package:url_launcher/url_launcher_string.dart';
+
+import '../../../theme/colors/colors.dart';
+import '../../../theme/fonts/fonts.dart';
 
 class TableClickableText extends StatefulWidget {
   final String text1;
@@ -56,7 +59,7 @@ class _TableClickableTextState extends State<TableClickableText> {
                 Image.asset(
                   widget.iconPath,
                 ),
-                SizedBox(width: MediaQuery.of(context).size.width * 0.0194),
+                SizedBox(width: globals.widthMediaQuery * 7),
                 GestureDetector(
                   onTap: _launchUrl,
                   child: Text(

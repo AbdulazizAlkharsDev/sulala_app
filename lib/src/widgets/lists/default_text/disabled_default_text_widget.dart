@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
+
+import '../../../theme/colors/colors.dart';
+import '../../../theme/fonts/fonts.dart';
 
 class DisablesDefaultTextWidget extends StatefulWidget {
   final String textHead;
@@ -34,7 +36,7 @@ class _DisablesDefaultTextWidgetState extends State<DisablesDefaultTextWidget> {
         Row(
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.0389,
+              width: globals.widthMediaQuery * 15,
             ),
             Text(
               truncateTextWithEllipsis(widget.textHead, 25),
@@ -48,7 +50,7 @@ class _DisablesDefaultTextWidgetState extends State<DisablesDefaultTextWidget> {
                 "assets/icons/frame/24px/24_Check.png",
               ),
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.0389,
+              width: globals.widthMediaQuery * 15,
             ),
           ],
         ),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sulala_app/src/theme/colors/colors.dart';
-import 'package:sulala_app/src/theme/fonts/fonts.dart';
+
+import 'package:sulala_app/src/data/globals.dart' as globals;
+
+import '../../../theme/colors/colors.dart';
+import '../../../theme/fonts/fonts.dart';
 
 class MultiLinesWidget extends StatelessWidget {
   final String textHead;
@@ -33,7 +36,7 @@ class MultiLinesWidget extends StatelessWidget {
           Row(
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.0389,
+                width: globals.widthMediaQuery * 15,
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -45,9 +48,7 @@ class MultiLinesWidget extends StatelessWidget {
                       color: AppColors.grayscale90,
                     ),
                   ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.0046,
-                  ),
+                  SizedBox(height: globals.heightMediaQuery * 4),
                   Text(
                     truncateTextWithEllipsis(textBody, 20),
                     style: AppFonts.body2(
@@ -58,19 +59,19 @@ class MultiLinesWidget extends StatelessWidget {
               ),
               const Spacer(),
               Icon(Icons.arrow_forward_ios_rounded,
-                    color: AppColors.primary40,
-                    size: MediaQuery.of(context).size.width * 0.034),
+                  color: AppColors.primary40,
+                  size: globals.widthMediaQuery * 15),
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.0389,
+                width: globals.widthMediaQuery * 15,
               ),
             ],
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.017,
+            height: globals.heightMediaQuery * 14,
           ),
           Container(
             //Check it again please (it is taking the width of the screen)I need it to take the width of the row
-            width: MediaQuery.of(context).size.width * 0.9,
+            width: globals.widthMediaQuery * 337,
             height: 1,
             color: AppColors.grayscale20,
           ),
