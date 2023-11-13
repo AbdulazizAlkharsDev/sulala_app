@@ -196,16 +196,19 @@ class _SearchPageState extends State<SearchPage> {
                     SizedBox(
                       width: globals.widthMediaQuery * 4,
                     ),
-                    SecondaryIconButton(
-                      status: SecondaryIconButtonStatus.idle,
-                      icon: Icons.clear,
-                      onPressed: () {
-                        setState(() {
-                          _searchController.clear();
-                          filterOptions('');
-                          Navigator.pop(context);
-                        });
-                      },
+                    SizedBox(
+                      height: globals.heightMediaQuery * 40,
+                      child: SecondaryIconButton(
+                        status: SecondaryIconButtonStatus.idle,
+                        icon: Icons.clear,
+                        onPressed: () {
+                          setState(() {
+                            _searchController.clear();
+                            filterOptions('');
+                            Navigator.pop(context);
+                          });
+                        },
+                      ),
                     ),
                   ],
                 ),
@@ -225,27 +228,24 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                 ),
               if (filteredOptions.isNotEmpty)
-                SizedBox(
-                  height: globals.heightMediaQuery * 135,
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: filteredOptions.length,
-                      itemBuilder: (context, index) {
-                        final option = filteredOptions[index];
-                        return Padding(
-                          padding: EdgeInsets.all(
-                            globals.widthMediaQuery * 10,
-                          ),
-                          child: StaffListWidget(
-                            imagePath: option['imagePath'],
-                            textHead: option['title'],
-                            textBody: option['subtitle'],
-                            avatarRadius: globals.widthMediaQuery * 24,
-                            onPressed: () => navigateToUserDetailsPage(option),
-                          ),
-                        );
-                      }),
-                ),
+                ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: filteredOptions.length,
+                    itemBuilder: (context, index) {
+                      final option = filteredOptions[index];
+                      return Padding(
+                        padding: EdgeInsets.only(
+                          top: globals.widthMediaQuery * 10,
+                        ),
+                        child: StaffListWidget(
+                          imagePath: option['imagePath'],
+                          textHead: option['title'],
+                          textBody: option['subtitle'],
+                          avatarRadius: globals.widthMediaQuery * 24,
+                          onPressed: () => navigateToUserDetailsPage(option),
+                        ),
+                      );
+                    }),
               SizedBox(height: globals.heightMediaQuery * 24),
               if (filteredAnimals.isNotEmpty)
                 Padding(
@@ -269,7 +269,9 @@ class _SearchPageState extends State<SearchPage> {
                       itemBuilder: (context, index) {
                         final option = filteredAnimals[index];
                         return Padding(
-                          padding: EdgeInsets.all(globals.widthMediaQuery * 10),
+                          padding: EdgeInsets.only(
+                            top: globals.widthMediaQuery * 10,
+                          ),
                           child: AnimalListWidget(
                             avatarRadius: globals.widthMediaQuery * 24,
                             imagePath: option['imagePath'],

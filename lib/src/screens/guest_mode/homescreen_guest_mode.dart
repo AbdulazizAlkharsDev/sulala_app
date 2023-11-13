@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           AssetImage('assets/icons/frame/24px/Icon-button.png'),
                     ),
                   ),
-                  SizedBox(width: globals.widthMediaQuery * 3.6375),
+                  SizedBox(width: globals.widthMediaQuery * 4),
                   InkWell(
                     onTap: () {},
                     child: const Image(

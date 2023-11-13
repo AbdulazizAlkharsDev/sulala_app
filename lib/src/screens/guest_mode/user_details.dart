@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:sulala_app/src/data/globals.dart' as globals;
-
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
 import '../../widgets/controls_and_buttons/buttons/icon_secondary_button.dart';
@@ -10,6 +8,7 @@ import '../../widgets/controls_and_buttons/buttons/secondary_button.dart';
 import '../../widgets/inputs/draw_ups/draw_up_widget.dart';
 import '../../widgets/lists/table_lsit/table_clickable_link.dart';
 import '../../widgets/other/two_information_block.dart';
+import 'search_page_owner_animals.dart';
 
 class UserDetails extends StatefulWidget {
   final String imagePath;
@@ -100,8 +99,8 @@ class _SearchDetails extends State<UserDetails> {
                   children: [
                     Flexible(
                       child: SizedBox(
-                        width: globals.widthMediaQuery * 169,
-                        height: globals.heightMediaQuery * 41,
+                        width: globals.widthMediaQuery * 165,
+                        height: globals.heightMediaQuery * 40,
                         child: IconSecondaryButton(
                           iconPath:
                               'assets/icons/frame/24px/20_Status-farm.png',
@@ -115,14 +114,18 @@ class _SearchDetails extends State<UserDetails> {
                     ),
                     Flexible(
                       child: SizedBox(
-                        height: globals.heightMediaQuery * 15,
-                        width: globals.widthMediaQuery * 169,
+                        width: globals.widthMediaQuery * 165,
+                        height: globals.heightMediaQuery * 40,
                         child: IconSecondaryButton(
                           iconPath:
                               'assets/icons/frame/24px/Outlined_Cow_green_icon.png',
                           onPressed: () {
-                            Navigator.pushNamed(
-                                context, '/search_owner_animals');
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const SearchPageOwnerAnimals(),
+                              ),
+                            );
                           },
                           text: "View animals",
                           status: SecondaryIconStatus.idle,
@@ -132,7 +135,7 @@ class _SearchDetails extends State<UserDetails> {
                   ],
                 ),
                 SizedBox(
-                  height: globals.heightMediaQuery * 33,
+                  height: globals.heightMediaQuery * 32,
                 ),
                 const TwoInformationBlock(
                     head1: '24',
@@ -140,7 +143,7 @@ class _SearchDetails extends State<UserDetails> {
                     subtitle1: 'Animals',
                     subtitle2: 'Collaborations'),
                 SizedBox(
-                  height: globals.heightMediaQuery * 33,
+                  height: globals.heightMediaQuery * 32,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,7 +158,7 @@ class _SearchDetails extends State<UserDetails> {
                       height: globals.heightMediaQuery * 14,
                     ),
                     SizedBox(
-                      height: globals.heightMediaQuery * 41,
+                      height: globals.heightMediaQuery * 40,
                       child: TableClickableText(
                         text1: 'Phone number',
                         urlText: widget.phoneNumber,
@@ -172,7 +175,7 @@ class _SearchDetails extends State<UserDetails> {
                         iconPath: 'assets/icons/frame/24px/16_Mail.png',
                       ),
                     ),
-                    SizedBox(height: globals.heightMediaQuery * 53),
+                    SizedBox(height: globals.heightMediaQuery * 52),
                   ],
                 ),
               ],

@@ -61,7 +61,7 @@ class _ButtonSearchBarState extends State<ButtonSearchBar> {
 
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.grayscale0,
+        color: Colors.transparent,
         borderRadius: BorderRadius.circular(24.0),
         border: Border.all(
           color: isFocused ? AppColors.primary30 : AppColors.grayscale20,
