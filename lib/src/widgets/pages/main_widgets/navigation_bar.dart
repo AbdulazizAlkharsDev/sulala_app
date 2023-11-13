@@ -33,45 +33,51 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
         ),
         bottomNavigationBar: Stack(
           children: [
-            SizedBox(
-              height: globals.heightMediaQuery * 60,
-              child: BottomNavigationBar(
-                iconSize: globals.widthMediaQuery * 24,
-                currentIndex: _currentIndex,
-                onTap: (index) {
-                  setState(() {
-                    _currentIndex = index;
-                  });
-                },
-                items: <BottomNavigationBarItem>[
-                  const BottomNavigationBarItem(
-                    icon: Icon(Icons.home_outlined),
-                    activeIcon: Icon(Icons.home),
-                    label: 'Home',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Image.asset(
-                      "assets/icons/frame/24px/Outlined_Cow_Icon.png",
-                      scale: 24 / (globals.widthMediaQuery * 24),
+            Theme(
+              data: Theme.of(context).copyWith(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+              ),
+              child: SizedBox(
+                height: globals.heightMediaQuery * 60,
+                child: BottomNavigationBar(
+                  iconSize: globals.widthMediaQuery * 24,
+                  currentIndex: _currentIndex,
+                  onTap: (index) {
+                    setState(() {
+                      _currentIndex = index;
+                    });
+                  },
+                  items: <BottomNavigationBarItem>[
+                    const BottomNavigationBarItem(
+                      icon: Icon(Icons.home_outlined),
+                      activeIcon: Icon(Icons.home),
+                      label: 'Home',
                     ),
-                    activeIcon: Image.asset(
-                      "assets/icons/frame/24px/Filled_Cow_Icon.png",
-                      scale: 24 / (globals.widthMediaQuery * 24),
+                    BottomNavigationBarItem(
+                      icon: Image.asset(
+                        "assets/icons/frame/24px/Outlined_Cow_Icon.png",
+                        scale: 24 / (globals.widthMediaQuery * 24),
+                      ),
+                      activeIcon: Image.asset(
+                        "assets/icons/frame/24px/Filled_Cow_Icon.png",
+                        scale: 24 / (globals.widthMediaQuery * 24),
+                      ),
+                      label: 'Animals',
                     ),
-                    label: 'Animals',
-                  ),
-                  const BottomNavigationBarItem(
-                    icon: Icon(Icons.account_circle_outlined),
-                    activeIcon: Icon(Icons.account_circle),
-                    label: 'Profile',
-                  )
-                ],
-                selectedItemColor: AppColors.primary20,
-                unselectedItemColor: AppColors.grayscale50,
-                selectedLabelStyle:
-                    AppFonts.caption3(color: AppColors.primary20),
-                unselectedLabelStyle:
-                    AppFonts.caption3(color: AppColors.grayscale50),
+                    const BottomNavigationBarItem(
+                      icon: Icon(Icons.account_circle_outlined),
+                      activeIcon: Icon(Icons.account_circle),
+                      label: 'Profile',
+                    )
+                  ],
+                  selectedItemColor: AppColors.primary20,
+                  unselectedItemColor: AppColors.grayscale50,
+                  selectedLabelStyle:
+                      AppFonts.caption3(color: AppColors.primary20),
+                  unselectedLabelStyle:
+                      AppFonts.caption3(color: AppColors.grayscale50),
+                ),
               ),
             ),
             Positioned(
@@ -79,8 +85,8 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
               left: 0,
               child: Container(
                 width: totalWidth,
-                height: 2.0,
-                color: Colors.grey[400],
+                height: 1.0,
+                color: AppColors.grayscale20,
               ),
             ),
             Positioned(
@@ -89,7 +95,7 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
               child: Container(
                 width: lineWidth,
                 height: 2.0,
-                color: Colors.green,
+                color: AppColors.primary20,
               ),
             ),
           ],
