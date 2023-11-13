@@ -74,7 +74,7 @@ class _PrimaryTextFieldState extends State<PrimaryTextField> {
             : AppColors.grayscale20;
 
     final Color backgroundColor =
-        widget.errorMessage != null ? AppColors.error10 : AppColors.grayscale0;
+        widget.errorMessage != null ? AppColors.error10 : Colors.transparent;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

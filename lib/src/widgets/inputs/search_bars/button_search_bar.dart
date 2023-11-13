@@ -100,7 +100,7 @@ class _ButtonSearchBarState extends State<ButtonSearchBar> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(2.0),
+            padding: const EdgeInsets.all(3.0),
             child: InkWell(
               onTap: widget.onIconPressed,
               splashColor: Colors.transparent,

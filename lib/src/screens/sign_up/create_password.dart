@@ -114,7 +114,7 @@ class _CreatePasswordState extends State<CreatePassword> {
                             setState(() {
                               buttonStatus = PrimaryButtonStatus.loading;
                             });
-                            Navigator.pushNamed(context, '/');
+                            Navigator.pushNamed(context, '/reg_home_page');
                           } else {
                             setState(() {
                               isPasswordValid = true;

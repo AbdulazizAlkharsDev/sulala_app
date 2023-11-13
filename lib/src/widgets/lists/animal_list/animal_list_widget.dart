@@ -36,9 +36,6 @@ class AnimalListWidget extends StatelessWidget {
       onTap: onPressed,
       child: Row(
         children: [
-          SizedBox(
-            width: globals.widthMediaQuery * 15,
-          ),
           CircleAvatar(
             backgroundColor: Colors.transparent,
             radius: avatarRadius,
