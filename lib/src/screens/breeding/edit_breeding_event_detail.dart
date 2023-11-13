@@ -30,6 +30,7 @@ class _EditBreedingEventDetailsState extends State<EditBreedingEventDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0.0,
         centerTitle: true,
         title: Text(
           'Harry',

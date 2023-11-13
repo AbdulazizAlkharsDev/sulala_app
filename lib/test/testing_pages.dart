@@ -17,6 +17,7 @@ class _ExamplePageState extends State<ExamplePage> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
+          scrolledUnderElevation: 0.0,
           title: const Text('Example Page'),
         ),
         body: Center(

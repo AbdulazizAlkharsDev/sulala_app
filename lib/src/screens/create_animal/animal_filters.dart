@@ -51,6 +51,7 @@ class _AnimalFilters extends State<AnimalFilters> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          scrolledUnderElevation: 0.0,
           automaticallyImplyLeading: false,
           elevation: 0,
           backgroundColor: Colors.transparent,

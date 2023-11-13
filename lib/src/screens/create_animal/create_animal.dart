@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/data/globals.dart' as globals;
 import '../../theme/colors/colors.dart';
@@ -62,6 +61,7 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          scrolledUnderElevation: 0.0,
           backgroundColor: Colors.transparent,
           centerTitle: true,
           elevation: 0,

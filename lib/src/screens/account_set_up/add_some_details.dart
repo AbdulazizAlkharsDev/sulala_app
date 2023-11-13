@@ -116,6 +116,7 @@ class _AddSomeDetailsPageState extends State<AddSomeDetailsPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          scrolledUnderElevation: 0.0,
           backgroundColor: Colors.transparent,
           elevation: 0,
           leading: IconButton(

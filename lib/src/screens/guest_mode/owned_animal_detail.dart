@@ -48,6 +48,7 @@ class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails>
         resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
+          scrolledUnderElevation: 0.0,
           backgroundColor: Colors.transparent,
           elevation: 0,
           leading: Padding(

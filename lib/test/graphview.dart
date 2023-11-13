@@ -26,6 +26,7 @@ class _TreeViewPageState extends State<TreeViewPage> {
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
+            scrolledUnderElevation: 0.0,
             elevation: 0,
             backgroundColor: Colors.transparent,
             centerTitle: true,

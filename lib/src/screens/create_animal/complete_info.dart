@@ -119,6 +119,7 @@ class _CompleteInfo extends State<CompleteInfo> {
     var nameController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0.0,
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,

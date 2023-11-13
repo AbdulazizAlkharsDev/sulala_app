@@ -31,9 +31,9 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Sulala App',
       routes: {
-        '/': (context) => const SplashScreen(),
+        '/reg_home_page': (context) => const SplashScreen(),
         '/create_password': (context) => const CreatePassword(),
-        '/reg_home_page': (context) => const RegHomePage(),
+        '/': (context) => const RegHomePage(),
         '/notifications': (context) => NotificationList(),
       },
       debugShowCheckedModeBanner: false,

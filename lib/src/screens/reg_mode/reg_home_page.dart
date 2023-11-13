@@ -63,11 +63,11 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
   late List<AnimalData> _chartData;
   int sumOfNextTwoCards = 0;
   List<EventData> events = [
-    // EventData(title: 'Horse Vaccination', subtitle: '09.01.2023'),
-    // EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
-    // EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
-    // EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
-    // EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
+    EventData(title: 'Horse Vaccination', subtitle: '09.01.2023'),
+    EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
+    EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
+    EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
+    EventData(title: 'Cow Health Checkup', subtitle: '01.09.2023'),
   ];
   int _selectedIndex = -1;
 
@@ -152,6 +152,7 @@ class _RegHomePage extends ConsumerState<RegHomePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          scrolledUnderElevation: 0.0,
           automaticallyImplyLeading: false,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

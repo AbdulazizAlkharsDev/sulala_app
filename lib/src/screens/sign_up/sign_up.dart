@@ -95,6 +95,7 @@ class _SignUpState extends State<SignUp> with SingleTickerProviderStateMixin {
         resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
+          scrolledUnderElevation: 0.0,
           automaticallyImplyLeading: false,
           backgroundColor: Colors.transparent,
           elevation: 0,

@@ -25,6 +25,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          scrolledUnderElevation: 0.0,
           backgroundColor: Colors.transparent,
           elevation: 0,
           automaticallyImplyLeading: false,

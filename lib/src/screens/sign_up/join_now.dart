@@ -40,6 +40,7 @@ class _JoinNowState extends State<JoinNow> with SingleTickerProviderStateMixin {
         resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
+          scrolledUnderElevation: 0.0,
           automaticallyImplyLeading: false,
           backgroundColor: Colors.transparent,
           elevation: 0,

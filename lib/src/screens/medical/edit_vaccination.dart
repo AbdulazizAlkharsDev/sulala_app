@@ -26,6 +26,7 @@ class _EditVaccinationState extends State<EditVaccination> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          scrolledUnderElevation: 0.0,
           elevation: 0,
           backgroundColor: Colors.transparent,
           actions: [

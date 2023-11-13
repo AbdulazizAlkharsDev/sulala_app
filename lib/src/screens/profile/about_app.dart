@@ -16,6 +16,7 @@ class _AboutApp extends State<AboutApp> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          scrolledUnderElevation: 0.0,
           backgroundColor: Colors.transparent,
           elevation: 0,
           automaticallyImplyLeading: false,

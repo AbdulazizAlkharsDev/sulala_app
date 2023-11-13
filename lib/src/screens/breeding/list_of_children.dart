@@ -131,6 +131,7 @@ class _ListOfChildrenState extends State<ListOfChildren> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0.0,
         centerTitle: true,
         title: Text(
           'Harry',
