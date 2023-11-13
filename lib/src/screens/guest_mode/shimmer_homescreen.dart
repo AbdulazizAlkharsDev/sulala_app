@@ -31,12 +31,12 @@ class ShimmerHomePageWidget extends StatelessWidget {
                           baseColor: Colors.grey[300]!,
                           highlightColor: Colors.grey[100]!,
                           child: Container(
-                            width: globals.widthMediaQuery * 48,
+                            width: globals.widthMediaQuery * 49,
                             height: globals.heightMediaQuery * 49,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(
-                                  globals.widthMediaQuery / 188),
+                                  globals.widthMediaQuery * 188),
                             ),
                           ),
                         ),
@@ -92,12 +92,12 @@ class ShimmerHomePageWidget extends StatelessWidget {
                           baseColor: Colors.grey[300]!,
                           highlightColor: Colors.grey[100]!,
                           child: Container(
-                            width: globals.widthMediaQuery * 48,
-                            height: globals.heightMediaQuery * 48,
+                            width: globals.widthMediaQuery * 49,
+                            height: globals.heightMediaQuery * 49,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(
-                                  globals.widthMediaQuery / 187),
+                                  globals.widthMediaQuery * 188),
                             ),
                           ),
                         ),

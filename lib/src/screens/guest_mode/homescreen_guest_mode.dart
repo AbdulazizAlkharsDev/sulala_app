@@ -95,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 // Background Image (Bottom Sheet)
                 _isLoading == false
                     ? Positioned(
-                        bottom: globals.heightMediaQuery * 121.8,
+                        bottom: globals.heightMediaQuery * 110,
                         left: globals.widthMediaQuery * 225,
                         right: globals.widthMediaQuery * 18.75,
                         child: Image.asset(
@@ -179,7 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
           status: PrimaryButtonStatus.idle,
         ),
       ),
-      SizedBox(height: globals.heightMediaQuery * 9),
+      SizedBox(height: globals.heightMediaQuery * 8),
       PrimaryTextButton(
         status: TextStatus.idle,
         text: 'Sign in',

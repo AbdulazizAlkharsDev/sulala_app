@@ -57,6 +57,7 @@ dependencies:
   showcaseview: ^2.0.3
   graphview: ^1.2.0
   graphite: ^1.1.2
+  persistent_bottom_nav_bar_v2: ^4.2.8
 
 dev_dependencies:
   flutter_test:

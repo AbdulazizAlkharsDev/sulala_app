@@ -60,7 +60,7 @@ class CardWidget extends StatelessWidget {
             ),
             Center(
               child: SizedBox(
-                width: globals.widthMediaQuery * 132,
+                width: globals.widthMediaQuery * 133,
                 height: globals.heightMediaQuery * 40,
                 child: PrimaryButton(
                   status: PrimaryButtonStatus.idle,
