@@ -200,7 +200,7 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
                 mammals.isNotEmpty
                     ? _filteredMammals.isNotEmpty
                         ? SizedBox(
-                            height: globals.heightMediaQuery,
+                            height: globals.heightMediaQuery * 812,
                             child: ListView.builder(
                               shrinkWrap: true,
                               itemCount: _filteredMammals.length,

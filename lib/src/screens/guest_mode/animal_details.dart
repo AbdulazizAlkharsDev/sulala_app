@@ -56,7 +56,7 @@ class _AnimalDetailsState extends State<AnimalDetails> {
             Align(
               alignment: Alignment.topCenter,
               child: SizedBox(
-                width: globals.widthMediaQuery,
+                width: globals.widthMediaQuery * 375,
                 child: Image.asset(
                   'assets/graphic/Animal_p.png',
                   fit: BoxFit.fitWidth,
