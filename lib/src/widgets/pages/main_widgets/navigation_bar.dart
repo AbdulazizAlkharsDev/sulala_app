@@ -23,51 +23,76 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double totalWidth = MediaQuery.of(context).size.width;
+    double lineWidth = totalWidth / 3;
     return SafeArea(
       child: Scaffold(
         body: IndexedStack(
           index: _currentIndex,
           children: _pages,
         ),
-        bottomNavigationBar: SizedBox(
-          height: globals.heightMediaQuery * 60,
-          child: BottomNavigationBar(
-            iconSize: globals.widthMediaQuery * 24,
-            currentIndex: _currentIndex,
-            onTap: (index) {
-              setState(() {
-                _currentIndex = index;
-              });
-            },
-            items: <BottomNavigationBarItem>[
-              const BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined),
-                activeIcon: Icon(Icons.home),
-                label: 'Home',
+        bottomNavigationBar: Stack(
+          children: [
+            SizedBox(
+              height: globals.heightMediaQuery * 60,
+              child: BottomNavigationBar(
+                iconSize: globals.widthMediaQuery * 24,
+                currentIndex: _currentIndex,
+                onTap: (index) {
+                  setState(() {
+                    _currentIndex = index;
+                  });
+                },
+                items: <BottomNavigationBarItem>[
+                  const BottomNavigationBarItem(
+                    icon: Icon(Icons.home_outlined),
+                    activeIcon: Icon(Icons.home),
+                    label: 'Home',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Image.asset(
+                      "assets/icons/frame/24px/Outlined_Cow_Icon.png",
+                      scale: 24 / (globals.widthMediaQuery * 24),
+                    ),
+                    activeIcon: Image.asset(
+                      "assets/icons/frame/24px/Filled_Cow_Icon.png",
+                      scale: 24 / (globals.widthMediaQuery * 24),
+                    ),
+                    label: 'Animals',
+                  ),
+                  const BottomNavigationBarItem(
+                    icon: Icon(Icons.account_circle_outlined),
+                    activeIcon: Icon(Icons.account_circle),
+                    label: 'Profile',
+                  )
+                ],
+                selectedItemColor: AppColors.primary20,
+                unselectedItemColor: AppColors.grayscale50,
+                selectedLabelStyle:
+                    AppFonts.caption3(color: AppColors.primary20),
+                unselectedLabelStyle:
+                    AppFonts.caption3(color: AppColors.grayscale50),
               ),
-              BottomNavigationBarItem(
-                icon: Image.asset(
-                  "assets/icons/frame/24px/Outlined_Cow_Icon.png",
-                  scale: 24 / (globals.widthMediaQuery * 24),
-                ),
-                activeIcon: Image.asset(
-                  "assets/icons/frame/24px/Filled_Cow_Icon.png",
-                  scale: 24 / (globals.widthMediaQuery * 24),
-                ),
-                label: 'Animals',
+            ),
+            Positioned(
+              top: 0,
+              left: 0,
+              child: Container(
+                width: totalWidth,
+                height: 2.0,
+                color: Colors.grey[400],
               ),
-              const BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle_outlined),
-                activeIcon: Icon(Icons.account_circle),
-                label: 'Profile',
-              )
-            ],
-            selectedItemColor: AppColors.primary20,
-            unselectedItemColor: AppColors.grayscale50,
-            selectedLabelStyle: AppFonts.caption3(color: AppColors.primary20),
-            unselectedLabelStyle:
-                AppFonts.caption3(color: AppColors.grayscale50),
-          ),
+            ),
+            Positioned(
+              top: 0,
+              left: lineWidth * _currentIndex,
+              child: Container(
+                width: lineWidth,
+                height: 2.0,
+                color: Colors.green,
+              ),
+            ),
+          ],
         ),
       ),
     );
