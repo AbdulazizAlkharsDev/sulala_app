@@ -3,10 +3,11 @@ import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
 import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
 import '../../widgets/inputs/search_bars/button_search_bar.dart';
-import '../guest_mode/owned_animal_detail.dart';
 import 'animal_filters.dart';
 import 'create_animal.dart';
 import 'package:sulala_app/src/data/globals.dart' as globals;
+
+import 'owned_animal_detail_reg_mode.dart';
 
 class UserListOfAnimals extends StatefulWidget {
   final List<String> selectedFilters;
@@ -99,7 +100,7 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => OwnedAnimalDetails(
+        builder: (context) => OwnedAnimalDetailsRegMode(
           imagePath: mammal['image'],
           title: mammal['name'],
           geninfo: mammal['subtitle'],

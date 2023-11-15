@@ -9,12 +9,12 @@ import '../../widgets/pages/owned_animal/breeding_info.dart';
 import '../../widgets/pages/owned_animal/general_info_animal_widget.dart';
 import '../medical/mammals_medical.dart';
 
-class OwnedAnimalDetails extends StatefulWidget {
+class OwnedAnimalDetailsRegMode extends StatefulWidget {
   final String imagePath;
   final String title;
   final String geninfo;
 
-  const OwnedAnimalDetails({
+  const OwnedAnimalDetailsRegMode({
     Key? key,
     required this.imagePath,
     required this.title,
@@ -22,10 +22,11 @@ class OwnedAnimalDetails extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<OwnedAnimalDetails> createState() => _OwnedAnimalDetailsState();
+  State<OwnedAnimalDetailsRegMode> createState() =>
+      _OwnedAnimalDetailsRegModeState();
 }
 
-class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails>
+class _OwnedAnimalDetailsRegModeState extends State<OwnedAnimalDetailsRegMode>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
@@ -51,24 +52,45 @@ class _OwnedAnimalDetailsState extends State<OwnedAnimalDetails>
           scrolledUnderElevation: 0.0,
           backgroundColor: Colors.transparent,
           elevation: 0,
+          leadingWidth: globals.widthMediaQuery * 56,
           leading: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.only(left: globals.widthMediaQuery * 16),
             child: Container(
               decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-              ),
+                  color: AppColors.grayscale10, shape: BoxShape.circle),
               child: IconButton(
-                icon: const Icon(
-                  Icons.arrow_back,
+                padding: EdgeInsets.zero,
+                icon: Icon(
+                  Icons.arrow_back_rounded,
                   color: Colors.black,
+                  size: globals.widthMediaQuery * 24,
                 ),
                 onPressed: () {
+                  // Handle close button press
                   Navigator.pop(context);
                 },
               ),
             ),
           ),
+          actions: [
+            Padding(
+              padding: EdgeInsets.only(right: globals.widthMediaQuery * 16),
+              child: Container(
+                width: globals.widthMediaQuery * 40,
+                decoration: const BoxDecoration(
+                    color: AppColors.grayscale10, shape: BoxShape.circle),
+                child: IconButton(
+                  padding: EdgeInsets.zero,
+                  icon: Image.asset(
+                      'assets/icons/frame/24px/edit_icon_button.png'),
+                  onPressed: () {
+                    // Handle close button press
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
         body: Stack(
           children: [

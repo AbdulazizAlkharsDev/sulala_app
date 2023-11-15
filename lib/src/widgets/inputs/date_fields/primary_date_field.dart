@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/theme/colors/colors.dart';
 import 'package:sulala_app/src/theme/fonts/fonts.dart';
+import 'package:sulala_app/src/data/globals.dart' as globals;
 
 class PrimaryDateField extends StatefulWidget {
   final String hintText;
@@ -195,6 +196,7 @@ class _PrimaryDateFieldState extends State<PrimaryDateField> {
                   ),
                 ),
                 IconButton(
+                  padding: EdgeInsets.only(right: globals.widthMediaQuery * 10),
                   onPressed: () {
                     if (_selectedDate != null) {
                       clearDate();

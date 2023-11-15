@@ -307,25 +307,7 @@ class _CompleteInfo extends State<CompleteInfo> {
                       Row(
                         children: [
                           Text(
-                            'Sire (Father)',
-                            style: AppFonts.body2(color: AppColors.grayscale70),
-                          ),
-                          const Spacer(),
-                          PrimaryTextButton(
-                            onPressed: () {},
-                            status: TextStatus.idle,
-                            text: 'Add',
-                            position: TextButtonPosition.right,
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: globals.heightMediaQuery * 16,
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'Dam (Mother)',
+                            'Children',
                             style: AppFonts.body2(color: AppColors.grayscale70),
                           ),
                           const Spacer(),
@@ -344,7 +326,9 @@ class _CompleteInfo extends State<CompleteInfo> {
               SizedBox(
                 height: globals.heightMediaQuery * 16,
               ),
-              const Divider(),
+              const Divider(
+                color: AppColors.grayscale20,
+              ),
               SizedBox(
                 height: globals.heightMediaQuery * 16,
               ),
@@ -462,7 +446,9 @@ class _CompleteInfo extends State<CompleteInfo> {
                 ),
               ),
               SizedBox(height: globals.heightMediaQuery * 16),
-              const Divider(),
+              const Divider(
+                color: AppColors.grayscale20,
+              ),
               SizedBox(height: globals.heightMediaQuery * 16),
               Text(
                 "Dates",
@@ -485,7 +471,9 @@ class _CompleteInfo extends State<CompleteInfo> {
                       color: AppColors.primary40, size: 20),
                 ],
               ),
-              const Divider(),
+              const Divider(
+                color: AppColors.grayscale20,
+              ),
               SizedBox(height: globals.heightMediaQuery * 16),
               Text(
                 "Add Tag",
@@ -504,7 +492,9 @@ class _CompleteInfo extends State<CompleteInfo> {
                       color: AppColors.primary40, size: 20),
                 ],
               ),
-              const Divider(),
+              const Divider(
+                color: AppColors.grayscale20,
+              ),
               SizedBox(height: globals.heightMediaQuery * 16),
               Text(
                 "Custom Fields",
@@ -527,7 +517,9 @@ class _CompleteInfo extends State<CompleteInfo> {
                       color: AppColors.primary40, size: 20),
                 ],
               ),
-              const Divider(),
+              const Divider(
+                color: AppColors.grayscale20,
+              ),
               SizedBox(height: globals.heightMediaQuery * 16),
               Text(
                 "Additional Notes",
