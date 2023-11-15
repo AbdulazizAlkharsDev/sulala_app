@@ -167,6 +167,7 @@ class _UserListOfAnimalsState extends State<UserListOfAnimals> {
                     );
                   },
                 ),
+                SizedBox(height: globals.heightMediaQuery * 16),
                 mammals.isNotEmpty
                     ? Visibility(
                         visible: widget.selectedFilters

@@ -47,6 +47,60 @@ A few resources to get you started if this is your first Flutter project:
   ),
   ],
 
+
+  AppBar(
+        scrolledUnderElevation: 0.0,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(
+          'Create Animal',
+          style: AppFonts.headline3(color: AppColors.grayscale90),
+        ),
+        leadingWidth: globals.widthMediaQuery * 56,
+        leading: Padding(
+          padding: EdgeInsets.only(left: globals.widthMediaQuery * 16),
+          child: Container(
+            decoration: const BoxDecoration(
+                color: AppColors.grayscale10, shape: BoxShape.circle),
+            child: IconButton(
+              padding: EdgeInsets.zero,
+              icon: Icon(
+                Icons.arrow_back_rounded,
+                color: Colors.black,
+                size: globals.widthMediaQuery * 24,
+              ),
+              onPressed: () {
+                // Handle close button press
+                Navigator.pop(context);
+              },
+            ),
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: globals.widthMediaQuery * 16),
+            child: Container(
+              width: globals.widthMediaQuery * 40,
+              decoration: const BoxDecoration(
+                  color: AppColors.grayscale10, shape: BoxShape.circle),
+              child: IconButton(
+                padding: EdgeInsets.zero,
+                icon: Icon(
+                  Icons.close_rounded,
+                  color: Colors.black,
+                  size: globals.widthMediaQuery * 24,
+                ),
+                onPressed: () {
+                  // Handle close button press
+                  Navigator.pop(context);
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.

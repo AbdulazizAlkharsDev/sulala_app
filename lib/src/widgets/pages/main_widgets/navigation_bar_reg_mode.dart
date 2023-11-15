@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sulala_app/src/screens/create_animal/user_list_of_animals.dart';
 import '../../../screens/profile/profile_page.dart';
-import '../../../../test/testing_pages.dart';
 import '../../../screens/reg_mode/reg_home_page.dart';
 import '../../../theme/colors/colors.dart';
 import '../../../theme/fonts/fonts.dart';
@@ -17,7 +17,9 @@ class _NavigationBarRegModeState extends State<NavigationBarRegMode> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
     const HomeScreenRegMode(),
-    const ExamplePage(),
+    const UserListOfAnimals(
+      selectedFilters: [],
+    ),
     const ProfilePage(),
   ];
 

@@ -34,38 +34,46 @@ class _SelectedOptionsPageState extends State<SelectedOptionsPage> {
           'Create Animal',
           style: AppFonts.headline3(color: AppColors.grayscale90),
         ),
-        leading: IconButton(
-          padding: EdgeInsets.zero,
-          icon: Container(
-            width: globals.widthMediaQuery * 37.5,
-            height: globals.widthMediaQuery * 37.5,
-            decoration: BoxDecoration(
-              color: AppColors.grayscale10,
-              borderRadius: BorderRadius.circular(50),
+        leadingWidth: globals.widthMediaQuery * 56,
+        leading: Padding(
+          padding: EdgeInsets.only(left: globals.widthMediaQuery * 16),
+          child: Container(
+            decoration: const BoxDecoration(
+                color: AppColors.grayscale10, shape: BoxShape.circle),
+            child: IconButton(
+              padding: EdgeInsets.zero,
+              icon: Icon(
+                Icons.arrow_back_rounded,
+                color: Colors.black,
+                size: globals.widthMediaQuery * 24,
+              ),
+              onPressed: () {
+                // Handle close button press
+                Navigator.pop(context);
+              },
             ),
-            child: const Icon(Icons.arrow_back, color: Colors.black),
           ),
-          onPressed: () {
-            // Handle close button press
-            Navigator.pop(context);
-          },
         ),
         actions: [
-          IconButton(
-            padding: EdgeInsets.zero,
-            icon: Container(
-              width: globals.widthMediaQuery * 37.5,
-              height: globals.widthMediaQuery * 37.5,
-              decoration: BoxDecoration(
-                color: AppColors.grayscale10,
-                borderRadius: BorderRadius.circular(50),
+          Padding(
+            padding: EdgeInsets.only(right: globals.widthMediaQuery * 16),
+            child: Container(
+              width: globals.widthMediaQuery * 40,
+              decoration: const BoxDecoration(
+                  color: AppColors.grayscale10, shape: BoxShape.circle),
+              child: IconButton(
+                padding: EdgeInsets.zero,
+                icon: Icon(
+                  Icons.close_rounded,
+                  color: Colors.black,
+                  size: globals.widthMediaQuery * 24,
+                ),
+                onPressed: () {
+                  // Handle close button press
+                  Navigator.pop(context);
+                },
               ),
-              child: const Icon(Icons.close_rounded, color: Colors.black),
             ),
-            onPressed: () {
-              // Handle close button press
-              Navigator.pop(context);
-            },
           ),
         ],
       ),
@@ -111,7 +119,9 @@ class _SelectedOptionsPageState extends State<SelectedOptionsPage> {
               ],
             ),
             SizedBox(height: globals.heightMediaQuery * 8),
-            const Divider(),
+            const Divider(
+              color: AppColors.grayscale70,
+            ),
             SizedBox(height: globals.heightMediaQuery * 8),
             Row(
               children: [
@@ -133,7 +143,9 @@ class _SelectedOptionsPageState extends State<SelectedOptionsPage> {
               ],
             ),
             SizedBox(height: globals.heightMediaQuery * 8),
-            const Divider(),
+            const Divider(
+              color: AppColors.grayscale70,
+            ),
             SizedBox(height: globals.heightMediaQuery * 8),
             Row(
               children: [

@@ -39,7 +39,7 @@ class _DrowupAnimalSpeciesState extends State<DrowupAnimalSpecies> {
       heading: 'Animal Species',
       heightFactor: 0.9,
       content: SizedBox(
-        height: globals.heightMediaQuery * 552.16,
+        height: globals.heightMediaQuery * 530,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

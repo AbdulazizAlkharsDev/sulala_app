@@ -71,22 +71,25 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
             style: AppFonts.headline3(color: AppColors.grayscale90),
           ),
           actions: [
-            IconButton(
-              padding: EdgeInsets.zero,
-              icon: Container(
-                  width: globals.widthMediaQuery * 37.5,
-                  height: globals.widthMediaQuery * 37.5,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.grayscale10,
-                  ),
-                  child: const Icon(
-                    Icons.close_rounded,
-                    color: AppColors.grayscale90,
-                  )),
-              onPressed: () {
-                Navigator.pop(context);
-              },
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(
+                padding: EdgeInsets.zero,
+                icon: Container(
+                    width: globals.widthMediaQuery * 37.5,
+                    height: globals.widthMediaQuery * 37.5,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.grayscale10,
+                    ),
+                    child: const Icon(
+                      Icons.close_rounded,
+                      color: AppColors.grayscale90,
+                    )),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
             ),
           ],
         ),
@@ -101,6 +104,9 @@ class _CreateAnimalPageState extends State<CreateAnimalPage> {
                 Text(
                   'Animal Type',
                   style: AppFonts.headline2(color: AppColors.grayscale90),
+                ),
+                SizedBox(
+                  height: globals.heightMediaQuery * 24,
                 ),
                 Column(
                   children: [

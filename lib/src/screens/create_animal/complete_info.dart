@@ -129,21 +129,25 @@ class _CompleteInfo extends State<CompleteInfo> {
         ),
         automaticallyImplyLeading: false,
         actions: [
-          IconButton(
-            padding: EdgeInsets.zero,
-            icon: Container(
-              width: globals.widthMediaQuery * 37.5,
-              height: globals.widthMediaQuery * 37.5,
-              decoration: BoxDecoration(
-                color: AppColors.grayscale10,
-                borderRadius: BorderRadius.circular(50),
+          Padding(
+            padding: EdgeInsets.only(right: globals.widthMediaQuery * 16),
+            child: Container(
+              width: globals.widthMediaQuery * 40,
+              decoration: const BoxDecoration(
+                  color: AppColors.grayscale10, shape: BoxShape.circle),
+              child: IconButton(
+                padding: EdgeInsets.zero,
+                icon: Icon(
+                  Icons.close_rounded,
+                  color: Colors.black,
+                  size: globals.widthMediaQuery * 24,
+                ),
+                onPressed: () {
+                  // Handle close button press
+                  Navigator.pop(context);
+                },
               ),
-              child: const Icon(Icons.close_rounded, color: Colors.black),
             ),
-            onPressed: () {
-              // Handle close button press
-              Navigator.pop(context);
-            },
           ),
         ],
       ),

@@ -41,7 +41,7 @@ class _DrowupAnimalBreedState extends State<DrowupAnimalBreed> {
       heading: 'Animal Breed',
       heightFactor: 0.9,
       content: SizedBox(
-        height: globals.heightMediaQuery * 552.16,
+        height: globals.heightMediaQuery * 530,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

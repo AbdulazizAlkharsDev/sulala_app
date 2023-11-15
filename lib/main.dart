@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/data/globals.dart' as globals;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sulala_app/src/screens/splash_screen.dart/splash_screen.dart';
 import 'package:sulala_app/src/screens/sign_up/create_password.dart';
 import 'package:sulala_app/src/screens/reg_mode/notifications_list.dart';
 import 'package:sulala_app/src/screens/reg_mode/reg_home_page.dart';
+import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar_reg_mode.dart';
 
 import 'src/theme/colors/colors.dart';
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Sulala App',
       routes: {
-        '/': (context) => const SplashScreen(),
+        '/': (context) => const NavigationBarRegMode(),
         '/create_password': (context) => const CreatePassword(),
         '/reg_home_page': (context) => const HomeScreenRegMode(),
         '/notifications': (context) => NotificationList(),
