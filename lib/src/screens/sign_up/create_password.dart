@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sulala_app/src/data/globals.dart' as globals;
+import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar_reg_mode.dart';
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
 import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
@@ -115,7 +116,12 @@ class _CreatePasswordState extends State<CreatePassword> {
                             setState(() {
                               buttonStatus = PrimaryButtonStatus.loading;
                             });
-                            Navigator.pushNamed(context, '/reg_home_page');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const NavigationBarRegMode(),
+                                ));
                           } else {
                             setState(() {
                               isPasswordValid = true;

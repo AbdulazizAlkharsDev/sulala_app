@@ -6,17 +6,17 @@ import '../../../theme/colors/colors.dart';
 import '../../../theme/fonts/fonts.dart';
 import 'package:sulala_app/src/data/globals.dart' as globals;
 
-class MyAppHomePage extends StatefulWidget {
-  const MyAppHomePage({Key? key}) : super(key: key);
+class NavigationBarGuestMode extends StatefulWidget {
+  const NavigationBarGuestMode({Key? key}) : super(key: key);
 
   @override
-  State<MyAppHomePage> createState() => _MyAppHomePageState();
+  State<NavigationBarGuestMode> createState() => _NavigationBarGuestModeState();
 }
 
-class _MyAppHomePageState extends State<MyAppHomePage> {
+class _NavigationBarGuestModeState extends State<NavigationBarGuestMode> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
-    const HomeScreen(),
+    const HomeScreenGuestMode(),
     const ExamplePage(),
     const ProfilePage(),
   ];

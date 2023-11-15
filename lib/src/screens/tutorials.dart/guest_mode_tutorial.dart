@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:showcaseview/showcaseview.dart';
-import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar.dart';
+import 'package:sulala_app/src/widgets/pages/main_widgets/navigation_bar_guest_mode.dart';
 import '../../theme/colors/colors.dart';
 import '../../theme/fonts/fonts.dart';
 import '../../widgets/controls_and_buttons/buttons/primary_button.dart';
@@ -73,7 +73,8 @@ class _GuestModeTutorial extends State<GuestModeTutorial> {
                       onTap: () {
                         _cancelShowcase();
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const MyAppHomePage()));
+                            builder: (context) =>
+                                const NavigationBarGuestMode()));
                       },
                       child: const Padding(
                         padding: EdgeInsets.all(8.0),

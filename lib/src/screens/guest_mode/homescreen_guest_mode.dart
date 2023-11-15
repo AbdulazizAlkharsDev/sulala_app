@@ -13,14 +13,14 @@ import '../../widgets/pages/homepage_widgets/card.dart';
 import '../../widgets/pages/homepage_widgets/title_text.dart';
 import 'package:sulala_app/src/data/globals.dart' as globals;
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreenGuestMode extends StatefulWidget {
+  const HomeScreenGuestMode({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreenGuestMode> createState() => _HomeScreenGuestModeState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenGuestModeState extends State<HomeScreenGuestMode> {
   double heightMediaQuery = globals.heightMediaQuery;
   double widthMediaQuery = globals.widthMediaQuery;
   bool _isLoading = true; // Add a boolean for loading state

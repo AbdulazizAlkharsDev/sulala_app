@@ -12,14 +12,14 @@ import '../../widgets/pages/homepage_widgets/card.dart';
 import 'show_filter_reg.dart';
 import 'small_card_widget.dart';
 
-class RegHomePage extends ConsumerStatefulWidget {
-  const RegHomePage({super.key});
+class HomeScreenRegMode extends ConsumerStatefulWidget {
+  const HomeScreenRegMode({super.key});
 
   @override
-  ConsumerState<RegHomePage> createState() => _RegHomePage();
+  ConsumerState<HomeScreenRegMode> createState() => _RegHomePage();
 }
 
-class _RegHomePage extends ConsumerState<RegHomePage> {
+class _RegHomePage extends ConsumerState<HomeScreenRegMode> {
   Future<void> _refreshData() async {
     // Implement your data fetching or refreshing logic here
     // For example, you can fetch new data and update the chart, events, etc.
